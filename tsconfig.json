@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "baseUrl": ".",
+    "paths": {
+      "macro-md": ["~/git/macro-md/dist/"]
+    },
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
