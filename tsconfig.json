@@ -4,10 +4,8 @@
     "target": "esnext",
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "outDir": "dist",
     "baseUrl": ".",
-    "paths": {
-      "macro-md": ["~/git/macro-md/dist/"]
-    },
     "strict": true,
     "skipLibCheck": true
   }
