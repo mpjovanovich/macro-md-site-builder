@@ -10,7 +10,7 @@ cd tmp-gh-pages
 
 # Initialize a new git repository and add the remote
 git init
-git remote add origin https://github.com/your-username/your-repo.git
+git remote add origin https://github.com/mpjovanovich/macro-md-site-builder.git
 
 # Checkout a new orphan branch
 git checkout --orphan gh-pages
