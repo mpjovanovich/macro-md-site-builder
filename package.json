@@ -5,7 +5,7 @@
   "main": "dist/test.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "deploy": "npx gh-pages -d output -V",
+    "deploy": "npx gh-pages -d output",
     "start": "node dist/test.js",
     "quicktest": "node --loader ts-node/esm test.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
