@@ -1,3 +1,4 @@
+# This file is a duplicate between "main" and "site branches", but I'm afraid of losing it if it's only on one branch.
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
