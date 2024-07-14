@@ -20,7 +20,9 @@ let { frontmatter, content } = extractFrontmatter(markdown);
 let html = await parseString(content, macroPath, { useGitHubStyleIds: true });
 html = getSiteHtml(html, frontmatter);
 html = await prettier.format(html, prettierOptions);
-fs.mkdirSync(outputDir);
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir);
+}
 fs.writeFileSync(outputPath, html);
 
 // Sanity check
