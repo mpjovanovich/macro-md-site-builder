@@ -7,7 +7,8 @@ const macroPath =
 const markdownPath =
   "/home/mpjovanovich/git/macro-md-site-builder/content/test.md";
 const outputPath =
-  "/home/mpjovanovich/git/macro-md-site-builder/site/index.html";
+  "/home/mpjovanovich/git/macro-md-site-builder/output/index.html";
+const outputDir = outputPath.substring(0, outputPath.lastIndexOf("/"));
 const prettierOptions = {
   parser: "html",
   printWidth: 80,
@@ -19,6 +20,7 @@ let { frontmatter, content } = extractFrontmatter(markdown);
 let html = await parseString(content, macroPath, { useGitHubStyleIds: true });
 html = getSiteHtml(html, frontmatter);
 html = await prettier.format(html, prettierOptions);
+fs.mkdirSync(outputDir);
 fs.writeFileSync(outputPath, html);
 
 // Sanity check

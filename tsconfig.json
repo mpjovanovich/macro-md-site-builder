@@ -4,6 +4,7 @@
     "target": "esnext",
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "rootDir": "src",
     "outDir": "dist",
     "baseUrl": ".",
     "strict": true,
