@@ -1,7 +1,7 @@
 # Commit local changes so I don't forget
 git add .
 git commit -m "Pre-deploy commit"
-git push origin master
+git push origin main 
 
 # Build the site
 npm run build && npm run start
