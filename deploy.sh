@@ -16,8 +16,11 @@ git checkout --orphan site
 # Write over .gitignore file with the one for the site
 cp .gitignore_site .gitignore
 
+# Remove all files from the new branch
+git reset
+
 # Copy the contents of the "output" directory to the root of the repository
-mv output site
+mv output site/
 
 # Move the assets folder to the root of the repository
 cp -r assets site/
