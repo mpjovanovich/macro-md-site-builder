@@ -79,13 +79,13 @@ function getSiteHtml(html: string, frontmatter?: Frontmatter): string {
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/assets/images/favicon-32x32.png"
+            href="https://mpjovanovich.github.io/macro-md-site-builder/assets/images/favicon-32x32.png"
         >
         <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/assets/images/favicon-16x16.png"
+            href="https://mpjovanovich.github.io/macro-md-site-builder/assets/images/favicon-16x16.png"
         >
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,8 +97,8 @@ function getSiteHtml(html: string, frontmatter?: Frontmatter): string {
             href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
             rel="stylesheet"
         >
-        <link rel="stylesheet" href="/assets/css/style.css">
-        <link rel="stylesheet" href="/assets/css/highlight.css">
+        <link rel="stylesheet" href="https://mpjovanovich.github.io/macro-md-site-builder/assets/css/style.css">
+        <link rel="stylesheet" href="https://mpjovanovich.github.io/macro-md-site-builder/assets/css/highlight.css">
     </head>
     <body>
         ${html}
