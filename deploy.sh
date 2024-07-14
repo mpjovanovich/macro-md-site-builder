@@ -10,7 +10,7 @@ npm run build && npm run start
 git checkout --orphan site
 
 # Write over .gitignore file with the one for the site
-mv .gitignore_site .gitignore
+cp .gitignore_site .gitignore
 
 # Remove existing site
 git rm -rf --cached .
@@ -28,6 +28,9 @@ git add .github/*
 # Commit and push
 git commit -m "Pre-deploy commit"
 git push origin site
+
+# Switch back .gitignore
+cp .gitignore_main .gitignore
 
 # Go back to main
 git checkout main
