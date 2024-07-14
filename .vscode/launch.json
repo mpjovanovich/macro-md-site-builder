@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "QuickTest",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/src/test.ts",
+      "program": "${workspaceFolder}/src/compile.ts",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     }
   ]

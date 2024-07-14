@@ -1,15 +1,31 @@
 import { execSync } from "child_process";
-import fs from "fs";
+// import fs from "fs/promises";
+import fs from "fs-extra";
 import { parseFile, parseString } from "macro-md";
+import { html } from "parse5";
+import path, { resolve } from "path";
 import prettier from "prettier";
 
 /*
  * TODO:
- * - Loop through directory structure in content folder and parse.
  * - Code highlight probably will need library adjustment.
  * */
 
 type Frontmatter = { [key: string]: string };
+
+async function compileMarkdownToHtml(
+  markdownFilePath: string,
+  outputFilePath: string
+): Promise<void> {
+  let markdown = await fs.readFile(markdownFilePath, "utf-8");
+  let { frontmatter, content } = extractFrontmatter(markdown);
+  let html = await parseString(content, macroFilePath, {
+    useGitHubStyleIds: true,
+  });
+  html = getSiteHtml(html, frontmatter);
+  html = await prettier.format(html, prettierOptions);
+  await fs.writeFile(outputFilePath, html);
+}
 
 function getGitRootDir(): string {
   return execSync("git rev-parse --show-toplevel").toString().trim();
@@ -91,26 +107,52 @@ function getSiteHtml(html: string, frontmatter?: Frontmatter): string {
   return html;
 }
 
+async function processDirectory(markdownDirectory: string): Promise<void> {
+  const entries = await fs.readdir(markdownDirectory, { withFileTypes: true });
+  for (const entry of entries) {
+    const markdownFilePath = path.join(markdownDirectory, entry.name);
+
+    if (entry.isDirectory()) {
+      console.log(`Processing directory: ${markdownFilePath}`);
+
+      // Create the corresponding directory in the output folder
+      const outputDirectoryPath = markdownFilePath
+        .replace("/content/", "/output/")
+        .replace(/\/$/, "");
+      await fs.mkdir(outputDirectoryPath, { recursive: true });
+
+      // Recursively process the directory
+      await processDirectory(markdownFilePath);
+    } else if (entry.isFile()) {
+      console.log(`Processing file: ${markdownFilePath}`);
+
+      // Replace the .md file extension with .html
+      const htmlFileName = entry.name.replace(/\.md$/, ".html");
+      const htmlFilePath = path
+        .join(entry.parentPath, htmlFileName)
+        .replace("/content/", "/output/");
+
+      // Process the markdown file
+      await compileMarkdownToHtml(markdownFilePath, htmlFilePath);
+    }
+  }
+}
+
 const gitRootDir = getGitRootDir();
-const macroPath = `${gitRootDir}/src/macros.js`;
-const markdownPath = `${gitRootDir}/content/test.md`;
-const outputPath = `${gitRootDir}/output/index.html`;
-const outputDir = outputPath.substring(0, outputPath.lastIndexOf("/"));
+const macroFilePath = `${gitRootDir}/src/macros.js`;
+const markdownDirectoryPath = `${gitRootDir}/content/`;
+const htmlDirectoryPath = `${gitRootDir}/output/`;
 const prettierOptions = {
   parser: "html",
   printWidth: 80,
   tabWidth: 2,
 };
 
-let markdown = fs.readFileSync(markdownPath, "utf-8");
-let { frontmatter, content } = extractFrontmatter(markdown);
-let html = await parseString(content, macroPath, { useGitHubStyleIds: true });
-html = getSiteHtml(html, frontmatter);
-html = await prettier.format(html, prettierOptions);
-if (!fs.existsSync(outputDir)) {
-  fs.mkdirSync(outputDir);
+// If the directory exists, delete it. Make a new one.
+if (await fs.pathExists(htmlDirectoryPath)) {
+  await fs.rm(htmlDirectoryPath, { recursive: true });
 }
-fs.writeFileSync(outputPath, html);
+await fs.mkdir(htmlDirectoryPath, { recursive: true });
 
-// Sanity check
-// console.log(markdown.substring(0, 100));
+// Loop through files in the markdown directory recursively
+await processDirectory(markdownDirectoryPath);
