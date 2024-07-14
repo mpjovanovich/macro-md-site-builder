@@ -19,8 +19,8 @@ cp .gitignore_site .gitignore
 # Remove all files from the new branch
 git reset
 
-# Copy the contents of the "output" directory to the root of the repository
-mv output site/
+# Copy the contents of the "output" directory to the root o
+mv output/ site/
 
 # Move the assets folder to the root of the repository
 cp -r assets site/
@@ -34,7 +34,7 @@ git commit -m "Pre-deploy commit"
 git push origin site
 
 # Switch back .gitignore
-cp .gitignore_main .gitignore
+# cp .gitignore_main .gitignore
 
 # Go back to main
-git checkout main
+git checkout main --force
