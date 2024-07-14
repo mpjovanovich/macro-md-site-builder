@@ -3,7 +3,7 @@ title: Algorithms
 course: SDEV120
 ---
 
-yes test yes
+Woohoo.
 
 ^fig(linear regression,60){https://imgs.xkcd.com/comics/linear_regression_2x.png}
 

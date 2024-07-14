@@ -20,7 +20,7 @@ cp .gitignore_site .gitignore
 git reset
 
 # Copy the contents of the "output" directory to the root o
-mv output/* site/
+mv output site
 
 # Move the assets folder to the root of the repository
 cp -r assets site/
@@ -34,7 +34,7 @@ git commit -m "Pre-deploy commit"
 git push origin site
 
 # Cleanup
-#rm -rf site
+rm -rf site
 
 # Go back to main
 git checkout main --force
