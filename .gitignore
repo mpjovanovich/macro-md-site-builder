@@ -1,5 +1,4 @@
 .vscode
-dist/
+src/
 node_modules/
-output/
-*.tgz
+site/
