@@ -2,11 +2,12 @@ import { parseFile, parseString } from "macro-md";
 import fs from "fs";
 import prettier from "prettier";
 
-const macroPath = "/home/mpjovanovich/git/macro-md-site-builder/testMacro.js";
+const macroPath =
+  "/home/mpjovanovich/git/macro-md-site-builder/src/testMacro.js";
 const markdownPath =
   "/home/mpjovanovich/git/macro-md-site-builder/content/test.md";
 const outputPath =
-  "/home/mpjovanovich/git/macro-md-site-builder/output/index.html";
+  "/home/mpjovanovich/git/macro-md-site-builder/site/index.html";
 const prettierOptions = {
   parser: "html",
   printWidth: 80,
