@@ -6,14 +6,15 @@ git push origin main
 # Build the site
 npm run build && npm run start
 
+# Remove upstream and local site branches
+git push origin --delete site
+git branch -D site
+
 # Create a "site" orphan branch. Not sure if this will work with GitHub Actions trigger yet.
 git checkout --orphan site
 
 # Write over .gitignore file with the one for the site
 cp .gitignore_site .gitignore
-
-# Remove existing site
-# git rm -rf --cached .
 
 # Copy the contents of the "output" directory to the root of the repository
 mv output site
