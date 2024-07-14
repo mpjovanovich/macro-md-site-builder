@@ -6,12 +6,11 @@ git push origin main
 # Build the site
 npm run build && npm run start
 
-# Remove the "site" branch if it exists, upstream and local
-git push origin --delete site
-git branch -D site
-
 # Create a "site" orphan branch. Not sure if this will work with GitHub Actions trigger yet.
 git checkout --orphan site
+
+# Write over .gitignore file with the one for the site
+mv .gitignore_site .gitignore
 
 # Remove existing site
 git rm -rf --cached .
@@ -23,11 +22,12 @@ mv output site
 cp -r assets site/
 
 # Add new files and push to site branch
-cd site
-git add .
+git add site/*
+git add .github/*
+
+# Commit and push
 git commit -m "Pre-deploy commit"
 git push origin site
 
 # Go back to main
-cd ..
 git checkout main
