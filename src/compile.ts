@@ -97,8 +97,8 @@ function getSiteHtml(html: string, frontmatter?: Frontmatter): string {
             href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
             rel="stylesheet"
         >
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/highlight.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/highlight.css">
     </head>
     <body>
         ${html}
