@@ -15,6 +15,9 @@ rm -rf site
 # Copy the contents of the "output" directory to the root of the repository
 mv output site
 
+# Move the assets folder to the root of the repository
+mv assets/ site/.
+
 # Add new files and push to site branch
 cd site
 git add .
