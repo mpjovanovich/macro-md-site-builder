@@ -1,0 +1,28 @@
+{
+  "name": "macro-md-site-builder",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "dist/test.js",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "deploy": "npx gh-pages -d output",
+    "start": "node dist/test.js",
+    "quicktest": "node --loader ts-node/esm test.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "gh-pages": "^6.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "macro-md": "^1.3.1",
+    "parse5": "^7.1.2",
+    "prettier": "^3.3.3"
+  }
+}
