@@ -20,3 +20,7 @@ cd site
 git add .
 git commit -m "Pre-deploy commit"
 git push origin site
+
+# Go back to main
+cd ..
+git checkout main
