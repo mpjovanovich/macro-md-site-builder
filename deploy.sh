@@ -7,16 +7,16 @@ git push origin main
 npm run build && npm run start
 
 # Create a "site" orphan branch. Not sure if this will work with GitHub Actions trigger yet.
-git checkout site
+git checkout --orphan site
 
 # Remove existing site
-rm -rf site
+git rm -rf --cached .
 
 # Copy the contents of the "output" directory to the root of the repository
 mv output site
 
 # Move the assets folder to the root of the repository
-mv assets/ site/.
+cp -r assets site/
 
 # Add new files and push to site branch
 cd site
