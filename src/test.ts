@@ -1,13 +1,21 @@
-import { parseFile, parseString } from "macro-md";
+import { execSync } from "child_process";
 import fs from "fs";
+import { parseFile, parseString } from "macro-md";
 import prettier from "prettier";
 
-const macroPath =
-  "/home/mpjovanovich/git/macro-md-site-builder/src/testMacro.js";
-const markdownPath =
-  "/home/mpjovanovich/git/macro-md-site-builder/content/test.md";
-const outputPath =
-  "/home/mpjovanovich/git/macro-md-site-builder/output/index.html";
+/*
+ * TODO:
+ * - Loop through directory structure in content folder and parse.
+ * - Code highlight probably will need library adjustment.
+ * */
+
+function getGitRootDir(): string {
+  return execSync("git rev-parse --show-toplevel").toString().trim();
+}
+const gitRootDir = getGitRootDir();
+const macroPath = `${gitRootDir}/src/testMacro.js`;
+const markdownPath = `${gitRootDir}/content/test.md`;
+const outputPath = `${gitRootDir}/output/index.html`;
 const outputDir = outputPath.substring(0, outputPath.lastIndexOf("/"));
 const prettierOptions = {
   parser: "html",
