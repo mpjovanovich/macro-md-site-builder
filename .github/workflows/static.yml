@@ -6,6 +6,9 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["site"]
+  create:
+    # This triggers the workflow when a branch is created. Otherwise temp "site" branch won't trigger.
+    # The above line really doesn't do anything with my workflow.
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
