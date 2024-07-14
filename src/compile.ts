@@ -9,34 +9,11 @@ import prettier from "prettier";
  * - Code highlight probably will need library adjustment.
  * */
 
+type Frontmatter = { [key: string]: string };
+
 function getGitRootDir(): string {
   return execSync("git rev-parse --show-toplevel").toString().trim();
 }
-const gitRootDir = getGitRootDir();
-const macroPath = `${gitRootDir}/src/testMacro.js`;
-const markdownPath = `${gitRootDir}/content/test.md`;
-const outputPath = `${gitRootDir}/output/index.html`;
-const outputDir = outputPath.substring(0, outputPath.lastIndexOf("/"));
-const prettierOptions = {
-  parser: "html",
-  printWidth: 80,
-  tabWidth: 2,
-};
-
-let markdown = fs.readFileSync(markdownPath, "utf-8");
-let { frontmatter, content } = extractFrontmatter(markdown);
-let html = await parseString(content, macroPath, { useGitHubStyleIds: true });
-html = getSiteHtml(html, frontmatter);
-html = await prettier.format(html, prettierOptions);
-if (!fs.existsSync(outputDir)) {
-  fs.mkdirSync(outputDir);
-}
-fs.writeFileSync(outputPath, html);
-
-// Sanity check
-// console.log(markdown.substring(0, 100));
-
-type Frontmatter = { [key: string]: string };
 
 function extractFrontmatter(markdown: string): {
   frontmatter: Frontmatter;
@@ -113,3 +90,27 @@ function getSiteHtml(html: string, frontmatter?: Frontmatter): string {
 `;
   return html;
 }
+
+const gitRootDir = getGitRootDir();
+const macroPath = `${gitRootDir}/src/macros.js`;
+const markdownPath = `${gitRootDir}/content/test.md`;
+const outputPath = `${gitRootDir}/output/index.html`;
+const outputDir = outputPath.substring(0, outputPath.lastIndexOf("/"));
+const prettierOptions = {
+  parser: "html",
+  printWidth: 80,
+  tabWidth: 2,
+};
+
+let markdown = fs.readFileSync(markdownPath, "utf-8");
+let { frontmatter, content } = extractFrontmatter(markdown);
+let html = await parseString(content, macroPath, { useGitHubStyleIds: true });
+html = getSiteHtml(html, frontmatter);
+html = await prettier.format(html, prettierOptions);
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir);
+}
+fs.writeFileSync(outputPath, html);
+
+// Sanity check
+// console.log(markdown.substring(0, 100));

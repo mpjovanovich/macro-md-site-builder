@@ -2,17 +2,17 @@
   "name": "macro-md-site-builder",
   "type": "module",
   "version": "1.0.0",
-  "main": "dist/test.js",
+  "main": "dist/compile.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "deploy": "npx gh-pages -d output",
-    "start": "node dist/test.js",
-    "quicktest": "node --loader ts-node/esm test.ts",
+    "start": "node dist/compile.js",
+    "quicktest": "node --loader ts-node/esm compile.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "devDependencies": {
     "@types/node": "^20.14.10",
