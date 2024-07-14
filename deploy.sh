@@ -6,6 +6,10 @@ git push origin main
 # Build the site
 npm run build && npm run start
 
+# Remove the "site" branch if it exists, upstream and local
+git push origin --delete site
+git branch -D site
+
 # Create a "site" orphan branch. Not sure if this will work with GitHub Actions trigger yet.
 git checkout --orphan site
 
