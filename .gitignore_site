@@ -1,0 +1,6 @@
+# Ignore everything
+*
+
+# But not these items
+!site/
+!site/**/*
