@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["site"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,7 +39,7 @@ jobs:
           # Upload entire repository
           # path: './content' ## This is confirmed to work
           # Will need action to compile to output on the server since it's in the .gitignore file
-          path: './output'
+          path: "./output"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
