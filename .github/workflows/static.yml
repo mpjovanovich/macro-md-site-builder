@@ -4,9 +4,10 @@ name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["site"]
+  # push:
+  #   branches: ["site"]
   create:
+    branches: ["site"]
     # This triggers the workflow when a branch is created. Otherwise temp "site" branch won't trigger.
     # The above line really doesn't do anything with my workflow.
 

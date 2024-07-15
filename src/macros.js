@@ -73,7 +73,7 @@ export function demo(content) {
 }
 demo[MACRO_IDENTIFIER] = "demo";
 
-export function fig(content, altText = "figure", width = "100") {
+export function fig(content, altText, width = "100") {
   const href = getChildAttributeValue(content, "a", "href");
   content = `<img src="${href}" alt="${altText}" style="width:${width}%;height:auto;">`;
   content = wrapHtml(content, "span");

@@ -100,6 +100,8 @@ Types of algorithms:
     </span>
 </figure>
 
+~~fig(sorting,60){https://miro.medium.com/v2/resize:fit:640/format:webp/0*nh6F_qERbgD3xmV-.gif}
+
 "How do we arrange a set of items in a specific order?"
 
 - Bubble sort

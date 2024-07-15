@@ -1,6 +1,6 @@
 > This tomb holds Diophantus. Ah, what a marvel! And the tomb tells scientifically the measure of his life. God vouchsafed that he should be a boy for the sixth part of his life; when a twelfth was added, his cheeks acquired a beard; He kindled for him the light of marriage after a seventh, and in the fifth year after his marriage He granted him a son. Alas! Late-begotten and miserable child, when he had reached the measure of half his father's life, the chill grave took him. After consoling his grief by this science of numbers for four years, he reached the end of his life.
 
-^summary(How old was Diophantus when he died?){
+~~summary(How old was Diophantus when he died?){
 
 Suppose that Diophantus lived to be d years of age. He was a boy for d/6 years; had to shave after d/12 more years; was married after a further d/7 years; had a son 5 years later; his son died d/2 years later; then Diophantus died 4 years later. So:
 

@@ -91,7 +91,7 @@ Many of these, e.g. bell, were used for old printers.
 
 ##### Punctuation and Symbols
 
-- ! " # $ % & ' ( ) \* + , - . / : ; < = > ? @ [ \ ] \_ ` { | } ~ ;
+- ! " # $ % & ' ( ) \* + , - . / : ; < = > ? @ ^ [ \ ] \_ ` { | } ~ ;
 - ...
 
 ## Unicode (Universal Character Set)
