@@ -26,12 +26,11 @@ mv output site
 cp -r assets site/
 
 # Add new files and push to site branch
-git add site/*
-git add .github/*
+git add site/* .github/*
 
 # Commit and push
 git commit -m "Deploy commit"
-git push origin site
+git push origin site --force
 
 # Cleanup
 rm -rf site
