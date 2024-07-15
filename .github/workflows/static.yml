@@ -4,8 +4,8 @@ name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["site"]
+  # push:
+  #   branches: ["site"]
   create:
     # This triggers the workflow when a branch is created. Otherwise temp "site" branch won't trigger.
     # The above line really doesn't do anything with my workflow.
@@ -28,6 +28,7 @@ concurrency:
 jobs:
   # Single deploy job since we're just deploying
   deploy:
+    if: github.event.ref_type == 'branch' && github.event.ref == 'site'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -30,7 +30,7 @@ git add site/*
 git add .github/*
 
 # Commit and push
-git commit -m "Pre-deploy commit"
+git commit -m "Deploy commit"
 git push origin site
 
 # Cleanup
