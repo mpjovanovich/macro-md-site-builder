@@ -1,11 +1,17 @@
 ---
-title: Algorithms
+layout: base
+title: algorithms
 course: SDEV120
 ---
 
-Woohoo.
-
-^fig(linear regression,60){https://imgs.xkcd.com/comics/linear_regression_2x.png}
+<figure>
+    <span>
+        <img src="https://imgs.xkcd.com/comics/linear_regression_2x.png" style="width: 60%;">
+    </span>
+    <figcaption>
+        <a href=""></a>
+    </figcaption>
+</figure>
 
 - [Algorithms](#algorithms)
   - [What is an Algorithm?](#what-is-an-algorithm)
@@ -27,12 +33,6 @@ Woohoo.
     - [Data Mining](#data-mining)
 
 # Algorithms
-
-| Name           | Classifications | Applications |
-| -------------- | --------------- | ------------ |
-| Bubble sort    | Sorting         | Sorting      |
-| Insertion sort | Sorting         | Sorting      |
-| Merge sort     | Sorting         | Sorting      |
 
 ## What is an Algorithm?
 
@@ -94,7 +94,11 @@ Types of algorithms:
 
 ### Sorting
 
-^fig(bubble sort,80){https://miro.medium.com/v2/0*nh6F_qERbgD3xmV-.gif}
+<figure>
+    <span>
+        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*nh6F_qERbgD3xmV-.gif" style="width: 60%;">
+    </span>
+</figure>
 
 "How do we arrange a set of items in a specific order?"
 
@@ -160,7 +164,11 @@ Types of algorithms:
 
 ### Classification
 
-^fig(neural network,60){https://miro.medium.com/v2/resize:fit:720/format:webp/1*bhFifratH9DjKqMBTeQG5A.gif}
+<figure>
+    <span>
+        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*bhFifratH9DjKqMBTeQG5A.gif" style="width: 60%;">
+    </span>
+</figure>
 
 "How do we categorize items from a set of data?"
 
@@ -191,7 +199,11 @@ Types of algorithms:
 
 ### Data Mining
 
-^fig{https://miro.medium.com/v2/resize:fit:640/format:webp/1*psbhLB_qOFm7UdeYZoLgeA.gif}
+<figure>
+    <span>
+        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*psbhLB_qOFm7UdeYZoLgeA.gif" style="">
+    </span>
+</figure>
 
 "How do we find patterns in a set of data?"
 
@@ -199,8 +211,6 @@ Types of algorithms:
 - Principal component analysis (PCA)
 - K-means clustering
 
-^demo{
+<p class="demo">Demo:</p>
 
 https://github.com/mpjovanovich/k-means_plus_plus
-
-}
