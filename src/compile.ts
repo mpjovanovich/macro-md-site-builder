@@ -123,7 +123,7 @@ async function processDirectory(markdownDirectory: string): Promise<void> {
 
       // Recursively process the directory
       await processDirectory(markdownFilePath);
-    } else if (entry.isFile()) {
+    } else if (entry.isFile() && entry.name.endsWith(".md")) {
       console.log(`Processing file: ${markdownFilePath}`);
 
       // Replace the .md file extension with .html

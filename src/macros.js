@@ -2,10 +2,8 @@ import { MACRO_IDENTIFIER } from "macro-md";
 import { parseFragment, serialize } from "parse5";
 
 /*
- * Sandbox macros for testing.
- * These are in no way robust. Use at your own risk.
+ * HELPERS
  */
-
 function getChildAttributeValue(content, elementName, attributeName) {
   // Check if content is a string or a node
   let fragment;
@@ -41,27 +39,9 @@ function getChildAttributeValue(content, elementName, attributeName) {
   return value;
 }
 
-export function upper(content) {
-  return content.toUpperCase();
-}
-upper[MACRO_IDENTIFIER] = "upper";
-
-export function lower(content) {
-  return content.toLowerCase();
-}
-lower[MACRO_IDENTIFIER] = "lower";
-
-export function wrap(content, wrapper) {
-  return `${wrapper}${content}${wrapper}`;
-}
-wrap[MACRO_IDENTIFIER] = "wrap";
-
-export function wrapHtml(content, wrapperElement, classList = "") {
-  const html = `<${wrapperElement} class="${classList}">${content}</${wrapperElement}>`;
-  return html;
-}
-wrapHtml[MACRO_IDENTIFIER] = "wrapHtml";
-
+/*
+ * MACROS
+ */
 export function addAttribute(content, attributeName, attributeValue) {
   const fragment = parseFragment(content);
   if (fragment.childNodes.length === 0) {
@@ -102,10 +82,14 @@ export function fig(content, altText = "figure", width = "100") {
 }
 fig[MACRO_IDENTIFIER] = "fig";
 
-demo[MACRO_IDENTIFIER] = "demo";
-export function head(content) {
-  return `<head>
-    <title>Test</title>
-    </head>`;
+export function summary(content, summary) {
+  return `<details><summary>${summary}</summary>${content}</details>`;
 }
-head[MACRO_IDENTIFIER] = "head";
+summary[MACRO_IDENTIFIER] = "summary";
+
+export function wrapHtml(content, wrapperElement, classList = "") {
+  const classAttribute = classList ? ` class="${classList}"` : "";
+  const html = `<${wrapperElement} ${classAttribute}>${content}</${wrapperElement}>`;
+  return html;
+}
+wrapHtml[MACRO_IDENTIFIER] = "wrapHtml";
