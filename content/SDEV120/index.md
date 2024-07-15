@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Home
 course: SDEV120
 ---
@@ -54,37 +53,37 @@ Grading:
 
 [Computer Orientation](../common/computer_orientation.html?course=SDEV120)
 
-[Propositional Logic - Intro and Connectives](propositional_logic_intro_connectives.md)
+[Propositional Logic - Intro and Connectives](propositional_logic_intro_connectives.html)
 
 ## Day 2
 
-[Propositional Logic - Order of Operations](propositional_logic_order_of_operations.md)
+[Propositional Logic - Order of Operations](propositional_logic_order_of_operations.html)
 
-[Solving Problems with Truth Tables](solving_problems_with_truth_tables.md)
+[Solving Problems with Truth Tables](solving_problems_with_truth_tables.html)
 
-[Solving Problems with Logical Arguments](solving_problems_with_logical_arguments.md)
+[Solving Problems with Logical Arguments](solving_problems_with_logical_arguments.html)
 
 ## Day 3
 
-[Logic Gates](logic_gates.md)
+[Logic Gates](logic_gates.html)
 
-[Set Theory](set_theory.md)
+[Set Theory](set_theory.html)
 
 # Module 02
 
 ## Day 4
 
-[Algorithms and Structured Programming](algorithms.md)
+[Algorithms and Structured Programming](algorithms.html)
 
-[Pseudocode](pseudocode.md)
+[Pseudocode](pseudocode.html)
 
 [draw.io](https://app.diagrams.net/) - Online flowcharting tool
 
 ## Day 5
 
-[Flowcharts](flowcharts.md)
+[Flowcharts](flowcharts.html)
 
-[Decision Trees](decision_tree.md)
+[Decision Trees](decision_tree.html)
 
 # Module 03
 
@@ -98,11 +97,11 @@ Grading:
 
 ## Day 7
 
-[Grammars and Arithmetic](grammars_arithmetic.md)
+[Grammars and Arithmetic](grammars_arithmetic.html)
 
-[Coding Environments](coding_environments.md)
+[Coding Environments](coding_environments.html)
 
-[Data Types](data_types.md)
+[Data Types](data_types.html)
 
 # Module 04
 
@@ -118,7 +117,7 @@ Review Python:
 
 Input and Output in Python
 
-[Decision](decision.md)
+[Decision](decision.html)
 
 Midterm Review
 
@@ -126,13 +125,13 @@ Midterm Review
 
 ## Day 9
 
-[UML](uml.md)
+[UML](uml.html)
 
 # Module 06
 
 ## Day 10
 
-[Functions and Modularity](functions_modularity.md)
+[Functions and Modularity](functions_modularity.html)
 
 ## Day 11
 
@@ -146,7 +145,7 @@ Midterm Review
 
 ## Day 13
 
-[Numbering Systems for Computing](numbering_systems.md)
+[Numbering Systems for Computing](numbering_systems.html)
 
 <!-- Intro Assignment: Numbering Systems for Computing
 
@@ -167,9 +166,9 @@ Arrays
 
 ## Day 15
 
-<!-- [Data Types in Detail](data_types_detail.md) -->
+<!-- [Data Types in Detail](data_types_detail.html) -->
 
-[Encoding Text for Computing](encoding_text.md)
+[Encoding Text for Computing](encoding_text.html)
 
 Final Review
 

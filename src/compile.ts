@@ -20,6 +20,7 @@ async function compileMarkdownToHtml(
   let markdown = await fs.readFile(markdownFilePath, "utf-8");
   let { frontmatter, content } = extractFrontmatter(markdown);
   let html = await parseString(content, macroFilePath, {
+    macroDelimiter: "~~",
     useGitHubStyleIds: true,
   });
   html = getSiteHtml(html, frontmatter);
