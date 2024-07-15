@@ -154,5 +154,5 @@ if (await fs.pathExists(htmlDirectoryPath)) {
 }
 await fs.mkdir(htmlDirectoryPath, { recursive: true });
 
-// Loop through files in the markdown directory recursively
+// Process the files
 await processDirectory(markdownDirectoryPath);
