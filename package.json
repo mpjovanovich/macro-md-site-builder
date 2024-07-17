@@ -5,6 +5,7 @@
   "main": "dist/compile.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",
+    "start": "node dist/compile.js",
     "quicktest": "node --loader ts-node/esm compile.ts"
   },
   "keywords": [],
