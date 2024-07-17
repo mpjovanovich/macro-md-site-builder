@@ -66,7 +66,7 @@ Lab
 
 [Variables, Constants, Data Types](../SDEV120/data_types.html?course=SDEV140)
 
-[String Concatenation, Formatting, and Manipulation](string_manipulation.md)
+[String Concatenation, Formatting, and Manipulation](string_manipulation.html)
 
 Lab
 
@@ -86,21 +86,21 @@ Logical Operators
 
 ### Day 4
 
-[Functions](functions.md)
+[Functions](functions.html)
 
 ### Day 5
 
-[Error Handling and Input Validation](error_handling.md)
+[Error Handling and Input Validation](error_handling.html)
 
 ## Module 04: Loops
 
 ### Day 6
 
-[Loops](loops.md)
+[Loops](loops.html)
 
 ### Day 7
 
-[Loops](loops.md)
+[Loops](loops.html)
 
 ## Midterm
 
@@ -126,34 +126,34 @@ Lab, walkthrough or partial walkthrough
 
 Multidimensional Arrays
 
-[Dictionaries](dictionaries.md)
+[Dictionaries](dictionaries.html)
 
 ## Module 06: Event Driven Programming
 
 ### Day 11
 
-[Event Driven Programming](event_driven_programming.md)
+[Event Driven Programming](event_driven_programming.html)
 
 ### Day 12
 
 ## Module 07: File I/O and Parsing
 
-[File I/O](file_io.md)
+[File I/O](file_io.html)
 
-[File Parsing](file_parsing.md)
+[File Parsing](file_parsing.html)
 
 ## Module 08: Object Oriented Programming
 
 ### Day 13
 
-[OOP Basics](oop_basics.md)
+[OOP Basics](oop_basics.html)
 
-[Encapsulation](encapsulation.md)
+[Encapsulation](encapsulation.html)
 
 ### Day 14
 
-[Inheritance](inheritance.md)
+[Inheritance](inheritance.html)
 
-[Abstraction](abstraction.md)
+[Abstraction](abstraction.html)
 
-[Polymorphism](polymorphism.md)
+[Polymorphism](polymorphism.html)

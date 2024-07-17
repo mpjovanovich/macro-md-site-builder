@@ -58,7 +58,7 @@ CSS - selectors, properties, values
 
 [JavaScript Intro](../SDEV255/javascript_intro.html?course=SDEV264)
 
-[Typescript Intro](typescript_intro.md)
+[Typescript Intro](typescript_intro.html)
 
 [Using Git and GitHub](../common/git.html?course=SDEV264)
 
@@ -73,29 +73,29 @@ More on TypeScript:
 
 [JSON](../SDEV255/json.html?course=SDEV264)
 
-[Arrow Functions](arrow_functions.md)
+[Arrow Functions](arrow_functions.html)
 
-[First Class Functions](first_class_functions.md)
+[First Class Functions](first_class_functions.html)
 
 ## Module 02: Creating an Application in React Native
 
 ### Day 3
 
-[React Native Orientation](react_native_orientation.md)
+[React Native Orientation](react_native_orientation.html)
 
-[Node.js Technologies](nodejs.md)
+[Node.js Technologies](nodejs.html)
 
-[React Native Application Structure](react_native_application_structure.md)
+[React Native Application Structure](react_native_application_structure.html)
 
-[Intro to JSX](jsx_intro.md)
+[Intro to JSX](jsx_intro.html)
 
 ## Module 03: Component Based Layouts
 
 ### Day 4:
 
-[Basic Styling and the Box Model](basic_styling_box_model.md)
+[Basic Styling and the Box Model](basic_styling_box_model.html)
 
-[Layouts and Alignment](layouts_alignment.md)
+[Layouts and Alignment](layouts_alignment.html)
 
 ## Module 04: Parent-Child Communication
 
@@ -121,7 +121,7 @@ Passing typed props from parent to child
 
 ### Day 6
 
-[Basic State Management](state_management.md)
+[Basic State Management](state_management.html)
 
 ### Day 7
 
@@ -135,7 +135,7 @@ Prof was ill.
 
 Review: State
 
-[The Render Tree](react_render_tree.md)
+[The Render Tree](react_render_tree.html)
 
 Lab will also cover:
 
@@ -191,10 +191,10 @@ One on one code reviews
 
 ## Day 16
 
-[AsyncStorage](asyncstorage.md)
+[AsyncStorage](asyncstorage.html)
 
-[Side Effects](side_effects.md)
+[Side Effects](side_effects.html)
 
-[Memoization](memoization.md)
+[Memoization](memoization.html)
 
 Tying it all together: [Snack: Memoized JSON AsyncStorage](https://snack.expo.dev/@mpjovanovich/asyncstorage-json-memoized)

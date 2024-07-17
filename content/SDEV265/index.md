@@ -61,7 +61,7 @@ course: SDEV265
 Lecture:
 
 - Course Overview
-- [Tips to be successful in this class](intro_to_course.md)
+- [Tips to be successful in this class](intro_to_course.html)
 - Demo previous projects
 - [Software Development Life Cycle (SDLC)](../common/sdlc.html?course=SDEV265)
 
@@ -78,8 +78,8 @@ Activities:
 
 Lecture:
 
-- [Intro to Software Engineering](software_engineering.md)
-- [Git Basics](git_basics.md)
+- [Intro to Software Engineering](software_engineering.html)
+- [Git Basics](git_basics.html)
 
 Discussion:
 
@@ -95,8 +95,8 @@ Intro to Assignments:
 
 Lecture:
 
-- [Configuration Management](configuration_management.md)
-- [Git - Beyond the Basics](git_advanced.md)
+- [Configuration Management](configuration_management.html)
+- [Git - Beyond the Basics](git_advanced.html)
 
 Intro to Assignments:
 
@@ -135,7 +135,7 @@ Intro to Assignments:
 
 Lecture:
 
-- [Feasibility](feasibility.md)
+- [Feasibility](feasibility.html)
 
 Intro to Assignments:
 
@@ -145,13 +145,13 @@ Intro to Assignments:
 
 Lecture:
 
-- [Requirements Elicitation](requirements_elicitation.md)
+- [Requirements Elicitation](requirements_elicitation.html)
 
-- [Requirements Specification](requirements_specification.md)
+- [Requirements Specification](requirements_specification.html)
 
   - We covered this last time
 
-- [Requirements Validation](requirements_validation.md)
+- [Requirements Validation](requirements_validation.html)
 
 Intro to Assignments:
 
@@ -165,15 +165,15 @@ Performance Review and Career Development
 
 ### Day 9
 
-- [Software Testing Overview](software_testing_overview.md)
+- [Software Testing Overview](software_testing_overview.html)
 
-- [Development Testing](development_testing.md)
+- [Development Testing](development_testing.html)
 
-- [Release Testing](release_testing.md)
+- [Release Testing](release_testing.html)
 
-- [User Testing](user_testing.md)
+- [User Testing](user_testing.html)
 
-- [Software Testing Review](software_testing_review.md)
+- [Software Testing Review](software_testing_review.html)
 
 Intro to Assignments:
 
@@ -199,15 +199,15 @@ Professor out
 
 ### Day 13
 
-Review: [UML](../SDEV120/uml.md?course=SDEV265)
+Review: [UML](../SDEV120/uml.html?course=SDEV265)
 
-[Types of Data](types_of_data.md)
+[Types of Data](types_of_data.html)
 
-[Data Passing and APIs](data_passing_apis.md)
+[Data Passing and APIs](data_passing_apis.html)
 
-[Data Hierarchies](data_hierarchies.md)
+[Data Hierarchies](data_hierarchies.html)
 
-[Data Modeling and Mapping](data_modeling_mapping.md)
+[Data Modeling and Mapping](data_modeling_mapping.html)
 
 ## M06: Modular Design and SOLID Programming
 
@@ -215,32 +215,32 @@ Review: [UML](../SDEV120/uml.md?course=SDEV265)
 
 <!-- This was too much material for one day -->
 
-[Modular Design](modular_design.md)
+[Modular Design](modular_design.html)
 
-[Software Architectural Patterns](software_architectural_patterns.md)
+[Software Architectural Patterns](software_architectural_patterns.html)
 
 <!-- Review of OOP -->
 
 <!-- Do on its own day next run -->
 
-[SOLID Programming Principles](solid.md)
+[SOLID Programming Principles](solid.html)
 
-- [Single Responsibility Principle](single_responsibility_principle.md)
+- [Single Responsibility Principle](single_responsibility_principle.html)
 
-- [Open/Closed Principle](open_closed_principle.md)
+- [Open/Closed Principle](open_closed_principle.html)
 
-- [Liskov Substitution Principle](liskov_substitution_principle.md)
+- [Liskov Substitution Principle](liskov_substitution_principle.html)
 
-- [Interface Segregation Principle](interface_segregation_principle.md)
+- [Interface Segregation Principle](interface_segregation_principle.html)
 
-- [Dependency Inversion Principle](dependency_inversion_principle.md)
+- [Dependency Inversion Principle](dependency_inversion_principle.html)
 
 ## M07: Distributed Architectures
 
 ### Day 15
 
-[Distributed Systems](distributed_systems.md)
+[Distributed Systems](distributed_systems.html)
 
-[Software Communication Patterns](software_communication_patterns.md)
+[Software Communication Patterns](software_communication_patterns.html)
 
-<!-- [Virtualization](virtualization.md) -->
+<!-- [Virtualization](virtualization.html) -->

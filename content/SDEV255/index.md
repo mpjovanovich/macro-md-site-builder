@@ -45,7 +45,7 @@ No class - MLK Day
 
 [Computer Orientation](../common/computer_orientation.html?course=SDEV255)
 
-[Intro to Full Stack Development](intro_full_stack_development.md)
+[Intro to Full Stack Development](intro_full_stack_development.html)
 
 [Development Tools and Git](../common/git.html?course=SDEV255)
 
@@ -55,67 +55,67 @@ Review suggested workflow: VS Code, Live Server, Browser Dev Tools
 
 ## Day 3
 
-[JavaScript: Intro](javascript_intro.md)
+[JavaScript: Intro](javascript_intro.html)
 
 # Module 03
 
 ## Day 4
 
-[JavaScript: Manipulating the DOM](javascript_manipulating_dom.md)
+[JavaScript: Manipulating the DOM](javascript_manipulating_dom.html)
 
-[JavaScript: Events](javascript_events.md)
+[JavaScript: Events](javascript_events.html)
 
 # Module 04
 
 ## Day 5
 
-[Understanding URLs](urls.md)
+[Understanding URLs](urls.html)
 
 Using and configuring XAMPP
 
 Accessing the book material
 
-[PHP: Intro, Syntax, and Data Types](php_intro.md)
+[PHP: Intro, Syntax, and Data Types](php_intro.html)
 
-[PHP: Decisions and Loops](php_decisions_loops.md)
+[PHP: Decisions and Loops](php_decisions_loops.html)
 
-[PHP: Functions](php_functions.md)
+[PHP: Functions](php_functions.html)
 
 # Module 05
 
 ## Day 6
 
-[PHP: Classes and Objects](php_classes_objects.md)
+[PHP: Classes and Objects](php_classes_objects.html)
 
 # Module 06
 
 ## Day 7
 
-[PHP: Include and Require](php_include_require.md)
+[PHP: Include and Require](php_include_require.html)
 
-[PHP: Ternary and Null Coalescing Operators](php_ternary_null_coalescing_operators.md)
+[PHP: Ternary and Null Coalescing Operators](php_ternary_null_coalescing_operators.html)
 
-[PHP: Superglobals](php_superglobal_arrays.md)
+[PHP: Superglobals](php_superglobal_arrays.html)
 
-[PHP: GET](php_GET.md)
+[PHP: GET](php_GET.html)
 
 ## Day 8
 
 [Web Forms](../common/html_forms.html?course=SDEV255)
 
-[PHP: Exception Handling](php_exception_handling.md)
+[PHP: Exception Handling](php_exception_handling.html)
 
 # Module 07
 
 ## Day 9
 
-[PHP: POST](php_POST.md)
+[PHP: POST](php_POST.html)
 
-[PHP: Input Sanitization](php_input_sanitization.md)
+[PHP: Input Sanitization](php_input_sanitization.html)
 
-[PHP: Input Validation](php_input_validation.md)
+[PHP: Input Validation](php_input_validation.html)
 
-[PHP: Filter Functions](php_filter_functions.md)
+[PHP: Filter Functions](php_filter_functions.html)
 
 JS Async and Defer - https://i.stack.imgur.com/wfL82.png
 
@@ -148,21 +148,21 @@ Case Study: High DOP Multi-layer-cached Application for Forecasting and Data Mig
     - Weekend forecast for full range
 -->
 
-[Client Side State Management](state_management.md)
+[Client Side State Management](state_management.html)
 
 JSON
 
 ## Day 11
 
-[Session Storage](sessions.md)
+[Session Storage](sessions.html)
 
-[HTTP Headers](php_http_headers.md)
+[HTTP Headers](php_http_headers.html)
 
-[HTTP Status Codes](php_http_status_codes.md)
+[HTTP Status Codes](php_http_status_codes.html)
 
-[PHP: POST](php_POST.md)
+[PHP: POST](php_POST.html)
 
-[PHP: Redirect After POST](php_redirect_after_post.md)
+[PHP: Redirect After POST](php_redirect_after_post.html)
 
 ## Day 12
 
@@ -198,15 +198,15 @@ SQL
 
 SQL Joins
 
-[Interfacing with a Database in PHP](php_database.md)
+[Interfacing with a Database in PHP](php_database.html)
 
 ## Day 14
 
 <!-- Populating Application Fields from a Database -->
 
-<!-- [Populating Application Fields from a Database](populating_fields.md) -->
+<!-- [Populating Application Fields from a Database](populating_fields.html) -->
 
-[SQL Prepared Statements](php_prepared_statements.md)
+[SQL Prepared Statements](php_prepared_statements.html)
 
 <!-- Lab: Both of the above. Make this extremely simple. -->
 
@@ -216,13 +216,13 @@ Individual meetings
 
 ## Overflow Topics
 
-<!-- [Function Chaining](function_chaining.md) -->
+<!-- [Function Chaining](function_chaining.html) -->
 
-[JSON](json.md)
+[JSON](json.html)
 
-[Asyncronous JavaScript](javascript_async.md)
+[Asyncronous JavaScript](javascript_async.html)
 
-[Javascript Fetch API](javascript_fetch.md)
+[Javascript Fetch API](javascript_fetch.html)
 
 Tying it All Together: Full Stack Application Walkthrough
 

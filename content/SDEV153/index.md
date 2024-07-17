@@ -31,11 +31,11 @@ course: SDEV153
 
 <!-- # Old Lecture Schedule
 
-[M02: Project Planning; Intro to CSS](m02.md)
+[M02: Project Planning; Intro to CSS](m02.html)
 
-[M03: CSS Part II; Containers; The Box Model](m03.md)
+[M03: CSS Part II; Containers; The Box Model](m03.html)
 
-[M04: Images; Media Elements; Favicon; Reserved Characters; CSS Rounded Corners](m04.md)
+[M04: Images; Media Elements; Favicon; Reserved Characters; CSS Rounded Corners](m04.html)
 
 # New Lecture Schedule
 
@@ -43,29 +43,29 @@ course: SDEV153
 
 ### Day 1
 
-[CSS: Size Units](css_size_units.md)
+[CSS: Size Units](css_size_units.html)
 
-[CSS: Print Media](css_print_media.md)
+[CSS: Print Media](css_print_media.html)
 
-[CSS: Using Multiple Stylesheets](css_multiple_stylesheets.md)
+[CSS: Using Multiple Stylesheets](css_multiple_stylesheets.html)
 
-[CSS: Functions and Properties](css_functions_properties.md)
+[CSS: Functions and Properties](css_functions_properties.html)
 
 ### Day 2
 
-[CSS Responsive Design](css_responsive_design.md)
+[CSS Responsive Design](css_responsive_design.html)
 
-[Mobile First Design](mobile_first_design.md)
+[Mobile First Design](mobile_first_design.html)
 
 ## Module 06
 
 ### Day 1
 
-[HTML Forms](../common/html_forms.md)
+[HTML Forms](../common/html_forms.html)
 
 ## Remaining Odds and Ends
 
-[Web Fonts and Font Embedding](fonts.md)
+[Web Fonts and Font Embedding](fonts.html)
 
 HTML Tables
 
