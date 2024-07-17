@@ -5,10 +5,7 @@
   "main": "dist/compile.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "deploy": "npx gh-pages -d output",
-    "start": "node dist/compile.js",
-    "quicktest": "node --loader ts-node/esm compile.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "quicktest": "node --loader ts-node/esm compile.ts"
   },
   "keywords": [],
   "author": "",
