@@ -22,6 +22,7 @@ async function compileMarkdownToHtml(
   let html = await parseString(content, macroFilePath, {
     macroDelimiter: "~~",
     useGitHubStyleIds: true,
+    useHighlightJS: true,
   });
   html = getSiteHtml(html, frontmatter);
   html = await prettier.format(html, prettierOptions);
@@ -98,7 +99,7 @@ function getSiteHtml(html: string, frontmatter?: Frontmatter): string {
             href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
             rel="stylesheet"
         >
-        <link rel="stylesheet" href="https://mpjovanovich.github.io/macro-md-site-builder/assets/css/style.css">
+        <link rel="stylesheet" href="https://mpjovanovich.github.io/macro-md-site-builder/assets/css/styles.css">
         <link rel="stylesheet" href="https://mpjovanovich.github.io/macro-md-site-builder/assets/css/highlight.css">
     </head>
     <body>
