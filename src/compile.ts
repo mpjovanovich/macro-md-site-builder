@@ -123,17 +123,27 @@ async function processDirectory(markdownDirectory: string): Promise<void> {
 
       // Recursively process the directory
       await processDirectory(markdownFilePath);
-    } else if (entry.isFile() && entry.name.endsWith(".md")) {
-      console.log(`Processing file: ${markdownFilePath}`);
+      // } else if (entry.isFile() && entry.name.endsWith(".md")) {
+    } else if (entry.isFile()) {
+      if (entry.name.endsWith(".md")) {
+        console.log(`Processing file: ${markdownFilePath}`);
 
-      // Replace the .md file extension with .html
-      const htmlFileName = entry.name.replace(/\.md$/, ".html");
-      const htmlFilePath = path
-        .join(markdownDirectory, htmlFileName)
-        .replace("/content/", "/output/");
+        // Replace the .md file extension with .html
+        const htmlFileName = entry.name.replace(/\.md$/, ".html");
+        const htmlFilePath = path
+          .join(markdownDirectory, htmlFileName)
+          .replace("/content/", "/output/");
 
-      // Process the markdown file
-      await compileMarkdownToHtml(markdownFilePath, htmlFilePath);
+        // Process the markdown file
+        await compileMarkdownToHtml(markdownFilePath, htmlFilePath);
+      } else {
+        // Copy the file to the output directory
+        const outputFilePath = markdownFilePath.replace(
+          "/content/",
+          "/output/"
+        );
+        await fs.copy(markdownFilePath, outputFilePath);
+      }
     }
   }
 }
