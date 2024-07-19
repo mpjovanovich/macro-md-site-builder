@@ -54,14 +54,14 @@ We can create a stylesheet object and reference it in the `style` attribute.
 - Better tooling support (e.g. linting and auto-completion).
 
 ```jsx
-<Text style={styles.importantText}>Some text</Text>;
-
 const styles = StyleSheet.create({
   importantText: {
     color: "red",
     fontSize: 20,
   },
 });
+
+<Text style={styles.importantText}>Some text</Text>;
 ```
 
 ## Inheritance
