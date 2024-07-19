@@ -130,7 +130,7 @@ async function processDirectory(markdownDirectory: string): Promise<void> {
       // Replace the .md file extension with .html
       const htmlFileName = entry.name.replace(/\.md$/, ".html");
       const htmlFilePath = path
-        .join(entry.parentPath, htmlFileName)
+        .join(markdownDirectory, htmlFileName)
         .replace("/content/", "/output/");
 
       // Process the markdown file
