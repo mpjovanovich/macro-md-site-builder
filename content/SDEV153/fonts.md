@@ -97,8 +97,11 @@ https://fonts.googleapis.com/css2?family=Nunito&display=swap
 
 - If different font weights are needed in the site, they must all be requested:
 
-```css
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+```html
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+/>
 ```
 
 - Variable weight fonts effectively take the place of using multiple font versions, but may not be available.

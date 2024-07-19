@@ -1,7 +1,6 @@
 import { execSync } from "child_process";
 import fs from "fs-extra";
 import { parseFile, parseString } from "macro-md";
-import { html } from "parse5";
 import path, { resolve } from "path";
 import prettier from "prettier";
 
