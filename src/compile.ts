@@ -61,11 +61,14 @@ function extractFrontmatter(markdown: string): {
 
 function getSiteHtml(html: string, frontmatter?: Frontmatter): string {
   let title = "Notes";
+  let breadcrumbText = "";
   if (frontmatter?.course) {
     title = frontmatter.course;
+    breadcrumbText = `<a href="https://mpjovanovich.github.io/course-notes/${frontmatter}/index.html">${frontmatter.course}</a>`;
   }
   if (frontmatter?.title) {
     title += " - " + frontmatter.title;
+    breadcrumbText += `&nbsp;&gt;&nbsp;<a href="">${frontmatter.title}</a>`;
   }
 
   html = `
@@ -101,6 +104,7 @@ function getSiteHtml(html: string, frontmatter?: Frontmatter): string {
         <link rel="stylesheet" href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css">
     </head>
     <body>
+        <h1 class="breadcrumb">${breadcrumbText}</h1>
         ${html}
     </body>
 `;
