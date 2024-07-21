@@ -25,7 +25,8 @@ body {
 }
 
 body > p,
-body > ol {
+body > ol,
+body > ul {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -272,6 +273,9 @@ tbody tr {
   padding: 1rem;
 }
 
+/* 
+* GENERIC CLASSES
+*/
 .center {
   text-align: center;
   margin: auto 0;
@@ -280,6 +284,14 @@ tbody tr {
 .left {
   text-align: left;
   margin: auto 20px;
+}
+
+.top-space {
+  margin-top: 2rem;
+}
+
+.top-space-more {
+  margin-top: 4rem;
 }
 
 /* 
@@ -312,8 +324,14 @@ body > ul:first-of-type {
 /* 
 * CUSTOM COMPONENTS
 */
-.demo {
+.focusContentTitle {
   color: #408080;
-  font-weight: 700;
-  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.focusContent {
+  border: 3px solid #408080;
+  border-radius: 8px;
+  padding: 0 20px;
+  margin-top: 3rem;
 }

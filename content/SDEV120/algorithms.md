@@ -1,17 +1,7 @@
 ---
-layout: base
-title: algorithms
+title: Algorithms
 course: SDEV120
 ---
-
-<figure>
-    <span>
-        <img src="https://imgs.xkcd.com/comics/linear_regression_2x.png" style="width: 60%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
 
 - [Algorithms](#algorithms)
   - [What is an Algorithm?](#what-is-an-algorithm)
@@ -33,6 +23,15 @@ course: SDEV120
     - [Data Mining](#data-mining)
 
 # Algorithms
+
+<figure>
+    <span>
+        <img src="https://imgs.xkcd.com/comics/linear_regression_2x.png" style="width: 60%;">
+    </span>
+    <figcaption>
+        <a href=""></a>
+    </figcaption>
+</figure>
 
 ## What is an Algorithm?
 
@@ -203,7 +202,7 @@ Types of algorithms:
 
 <figure>
     <span>
-        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*psbhLB_qOFm7UdeYZoLgeA.gif" style="">
+        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*psbhLB_qOFm7UdeYZoLgeA.gif">
     </span>
 </figure>
 
@@ -213,6 +212,8 @@ Types of algorithms:
 - Principal component analysis (PCA)
 - K-means clustering
 
-<p class="demo">Demo:</p>
+~~demo{
 
 https://github.com/mpjovanovich/k-means_plus_plus
+
+}
