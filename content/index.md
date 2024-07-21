@@ -1,6 +1,5 @@
 ---
-layout: base
-title: Ivy Tech Course Notes - Courses
+title: Ivy Tech Course Notes
 ---
 
 - [INFM 109](INFM109/index.html)
