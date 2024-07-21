@@ -4,7 +4,7 @@ title: Intro to Full Stack Development
 course: SDEV255
 ---
 
-- [What is a Web Application?](#what-is-a-web-application)
+- [Intro to Full Stack Development](#intro-to-full-stack-development)
   - [The Client-Server Model](#the-client-server-model)
   - [Request / Response Cycle](#request--response-cycle)
     - [Front-end vs. Back-end](#front-end-vs-back-end)
@@ -13,7 +13,7 @@ course: SDEV255
 - [Development Environments](#development-environments)
   - [Local Development Environment](#local-development-environment)
 - [Technology Stack](#technology-stack)
-  - [The XAMPP Stack - What We Will Use](#the-xampp-stack---what-we-will-use)
+  - [The XAMPP Stack](#the-xampp-stack)
     - [Web Browser](#web-browser)
     - [JavaScript](#javascript)
     - [Apache](#apache)
@@ -22,9 +22,9 @@ course: SDEV255
     - [SQL](#sql)
     - [Summary of the Stack](#summary-of-the-stack)
 
-# What is a Web Application?
+# Intro to Full Stack Development
 
-A web application is a program that:
+A **web application** is a program that:
 
 - Runs on a web server
 - May be accessed through a web browser, mobile app, desktop app
@@ -163,7 +163,7 @@ A **technology stack** is a set of programs that work together to provide a serv
   - React
   - Node.js
 
-## The XAMPP Stack - What We Will Use
+## The XAMPP Stack
 
 <figure class="left">
     <span>

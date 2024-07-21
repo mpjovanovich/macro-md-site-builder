@@ -1,32 +1,33 @@
 /* 
-TODO:
-Better spacing rules for headings specific rules for more top margin, but only when not preceded
-by another heading. E.g. If h2 is preceded by h1, no top margin;
-else top margin. 
-
-For relative selector rules, see:
-https://www.w3schools.com/cssref/css_selectors.php
-Lots of cool new selector rules to try.
+* CSS RESET
 */
-
 *,
 *:after,
 *:before {
   box-sizing: border-box;
 }
 
+/* 
+* GENERAL STYLES
+*/
 body {
   background-color: white;
   color: #202124;
   font-size: 18px;
-  margin: 20px auto;
+  margin: 0 auto;
   max-width: 100%;
   min-width: 950px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   max-width: 1600px;
   line-height: 1.75em;
-  padding: 6rem;
+  padding: 4rem 6rem;
+}
+
+body > p,
+body > ol {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 a {
@@ -161,19 +162,28 @@ h4,
 h5,
 h6 {
   font-family: Arimo, Helvetica, sans-serif;
-  padding: 1.2rem 0;
-  margin: 1rem 0 0 0;
+  padding: 1.4rem 1rem;
+  margin: 2em 0 1em 0;
 }
 
 h1 {
-  border-top: 1px solid #ddd;
-  margin-top: 4rem;
-  padding: 40px 0;
+  padding: 2rem 1rem;
+  background-color: #408080;
+  color: #fff;
+  font-size: 1.8rem;
 }
 
-h1.page-title {
-  text-align: center;
-  border-bottom: 2px solid #ddd;
+h2 {
+  background-color: #eee;
+  font-weight: normal;
+}
+
+h3 {
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 3px 0 2px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 hr {
@@ -272,19 +282,38 @@ tbody tr {
   margin: auto 20px;
 }
 
+/* 
+* HEADING AND TABLE OF CONTENTS
+*/
+h1.breadcrumb {
+  font-size: 1.5rem;
+  border-width: 0;
+  background-color: #408080;
+  padding: 40px;
+  margin: 0;
+}
+
+h1.breadcrumb,
+h1.breadcrumb a,
+h1.breadcrumb a:visited,
+h1.breadcrumb a:focus,
+h1.breadcrumb a:active,
+h1.breadcrumb a:hover {
+  color: #fff;
+}
+
+/* This should be the table of contents. If we forget a TOC it will cause stying issues, 
+so there should always be a TOC */
+body > ul:first-of-type {
+  border: 2px solid #ddd;
+  margin: 0;
+}
+
+/* 
+* CUSTOM COMPONENTS
+*/
 .demo {
   color: #408080;
   font-weight: 700;
   margin-top: 2rem;
-}
-
-.header {
-  color: #333333;
-  background-color: #e2e2e2;
-  font-size: 2.2rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-.page-title + ul {
-  line-height: 1;
 }
