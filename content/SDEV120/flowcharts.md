@@ -1,14 +1,9 @@
 ---
-layout: base
 title: Flowcharts
 course: SDEV120
 ---
 
-<figure>
-    <span>
-        <img src="https://imgs.xkcd.com/comics/flow_charts.png" style="width: 80%;">
-    </span>
-</figure>
+~~fig{https://imgs.xkcd.com/comics/flow_charts.png}
 
 - [Flowcharts](#flowcharts)
   - [Flowchart Symbols](#flowchart-symbols)
@@ -18,7 +13,6 @@ course: SDEV120
     - [Decision](#decision)
     - [Input / Output](#input--output)
     - [Data Store](#data-store)
-    - [Process](#process-1)
 
 # Flowcharts
 
@@ -32,33 +26,21 @@ Flowchart symbols are standardized, but verbage and symbols are not.
 
 ### Terminator
 
-<figure>
-    <span>
-        <img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-01.svg" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-01.svg}
 
 - Oval or rounded rectangle.
 - Indicates the start or end of a process.
 
 ### Flow Arrow
 
-<figure>
-    <span>
-        <img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-06.svg" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-06.svg}
 
 - Arrow connecting two symbols.
 - Indicates the flow of the process.
 
 ### Process
 
-<figure>
-    <span>
-        <img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-02.svg" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-02.svg}
 
 - Rectangle.
 - Represents a process, action, or operation.
@@ -70,11 +52,7 @@ Flowchart symbols are standardized, but verbage and symbols are not.
 
 ### Decision
 
-<figure>
-    <span>
-        <img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-11.svg" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-11.svg}
 
 - Represents a decision point.
 - Branches to different parts of the flowchart based on a condition.
@@ -89,11 +67,7 @@ Flowchart symbols are standardized, but verbage and symbols are not.
 
 ### Input / Output
 
-<figure>
-    <span>
-        <img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-04.svg" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-04.svg}
 
 - Represents input or output.
 - May have arrow pointing to or from the symbol.
@@ -116,28 +90,9 @@ _Output Example:_
 
 ### Data Store
 
-<figure>
-    <span>
-        <img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-05.svg" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-05.svg}
 
 - Cylinder
 - Represents a data store
   - Database
   - File
-
-### Process
-
-<figure>
-    <span>
-        <img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/flowchart/discovery/flowchart-symbols-08.svg" style="width: 60%;">
-    </span>
-</figure>
-
-- Rectangle
-- Represents a "sub-process" that is defined elsewhere
-- Examples:
-  - "Calculate total"
-  - "Print invoice"
-  - "Add new customer"
