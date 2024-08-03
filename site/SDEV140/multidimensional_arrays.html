@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Multidimensional Arrays</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Multidimensional Arrays</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#multidimensional-arrays">Multidimensional Arrays</a>
+        <ul>
+          <li>
+            <a href="#when-to-use-multidimensional-arrays"
+              >When to Use Multidimensional Arrays</a
+            >
+          </li>
+          <li>
+            <a href="#python---lists-of-lists">Python - Lists of Lists</a>
+          </li>
+          <li><a href="#accessing-values">Accessing Values</a></li>
+          <li><a href="#modifying-values">Modifying Values</a></li>
+          <li>
+            <a href="#practical-example---tic-tac-toe"
+              >Practical Example - Tic Tac Toe</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="multidimensional-arrays">Multidimensional Arrays</h1>
+    <ul>
+      <li>A multidimensional array is an array of arrays.</li>
+    </ul>
+    <h2 id="when-to-use-multidimensional-arrays">
+      When to Use Multidimensional Arrays
+    </h2>
+    <ul>
+      <li>
+        When you need to represent data that is naturally multidimensional:
+        <ul>
+          <li>Tables, grids, matrices (2d)</li>
+          <li>Cubes (3d)</li>
+          <li>Hypercubes (4d+)</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="python-lists-of-lists">Python - Lists of Lists</h2>
+    <pre><code class="language-python"><span class="hljs-comment"># A 2D array</span>
+my_grid = [[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]]
+
+<span class="hljs-comment"># Whitespace is ignored, so this can be more readable:</span>
+my_grid = [
+    [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+    [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>],
+    [<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>],
+]
+</code></pre>
+    <h2 id="accessing-values">Accessing Values</h2>
+    <ul>
+      <li>
+        To access a value in a multidimensional array, you need to specify the
+        index of each dimension.
+      </li>
+      <li>
+        For example, to access the value <code>5</code> in <code>my_grid</code>:
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment">############################################</span>
+<span class="hljs-comment">## LONG WAY - showing for demo purposes ##</span>
+<span class="hljs-comment">############################################</span>
+
+<span class="hljs-comment"># Get the list at index 1 and store in a temp variable</span>
+row = my_grid[<span class="hljs-number">1</span>]
+print(row) <span class="hljs-comment"># [4, 5, 6]</span>
+
+<span class="hljs-comment"># Get the value at index 1 of the list stored in row</span>
+x = row[<span class="hljs-number">1</span>]
+print(x) <span class="hljs-comment"># 5</span>
+
+<span class="hljs-comment">############################################</span>
+<span class="hljs-comment">## SHORT WAY ##</span>
+<span class="hljs-comment">############################################</span>
+
+<span class="hljs-comment"># Get the value at index 1 of the list at index 1 of my_grid</span>
+x = my_grid[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]
+print(x) <span class="hljs-comment"># 5</span>
+</code></pre>
+    <h2 id="modifying-values">Modifying Values</h2>
+    <ul>
+      <li>
+        To modify a value in a multidimensional array, you need to specify the
+        index of each dimension.
+      </li>
+      <li>
+        For example, to change the value <code>5</code> to <code>99</code> in
+        <code>my_grid</code>:
+      </li>
+    </ul>
+    <pre><code class="language-python">my_grid[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">99</span>
+</code></pre>
+    <h2 id="practical-example-tic-tac-toe">Practical Example - Tic Tac Toe</h2>
+    <ul>
+      <li>Initialize a 3x3 board:</li>
+    </ul>
+    <pre><code class="language-python">board = [
+    [<span class="hljs-string">" "</span>, <span class="hljs-string">" "</span>, <span class="hljs-string">" "</span>],
+    [<span class="hljs-string">" "</span>, <span class="hljs-string">" "</span>, <span class="hljs-string">" "</span>],
+    [<span class="hljs-string">" "</span>, <span class="hljs-string">" "</span>, <span class="hljs-string">" "</span>],
+]
+</code></pre>
+    <ul>
+      <li>Print the board using a loop with friendly formatting:</li>
+    </ul>
+    <pre><code class="language-python">print(<span class="hljs-string">"-------------"</span>)
+<span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> board:
+    print(<span class="hljs-string">"|"</span>, end=<span class="hljs-string">""</span>)
+    <span class="hljs-keyword">for</span> val <span class="hljs-keyword">in</span> row:
+        print(<span class="hljs-string">f" <span class="hljs-subst">{val}</span> |"</span>, end=<span class="hljs-string">""</span>)
+    print()
+    print(<span class="hljs-string">"-------------"</span>)
+</code></pre>
+    <ul>
+      <li>Prompt the user for a row and column:</li>
+    </ul>
+    <pre><code class="language-python">print(<span class="hljs-string">"User X"</span>)
+row = int(input(<span class="hljs-string">"Enter a row: "</span>))
+col = int(input(<span class="hljs-string">"Enter a column: "</span>))
+</code></pre>
+    <ul>
+      <li>Place an X in the specified row and column:</li>
+    </ul>
+    <pre><code class="language-python">board[row][col] = <span class="hljs-string">"X"</span>
+</code></pre>
+    <ul>
+      <li>Print the board... and so on.</li>
+    </ul>
+  </body>
+</html>

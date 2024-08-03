@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - POST</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - POST</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#post">POST</a>
+        <ul>
+          <li>
+            <a href="#post-vs-get">POST (vs GET)</a>
+            <ul>
+              <li><a href="#security">Security</a></li>
+              <li><a href="#data-format">Data Format</a></li>
+              <li>
+                <a href="#summary-which-to-use">Summary: Which to Use?</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#verifying-that-a-form-was-submitted"
+              >Verifying that a Form was Submitted</a
+            >
+          </li>
+          <li><a href="#php-post-array">PHP POST Array</a></li>
+          <li>
+            <a href="#verifying-that-a-form-was-submitted-1"
+              >Verifying that a Form was Submitted</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="post">POST</h1>
+    <p>
+      A POST request is used to send data to a server to create or update a
+      resource.
+    </p>
+    <h2 id="post-vs-get-">POST (vs GET)</h2>
+    <h3 id="security">Security</h3>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>GET</th>
+          <th>POST</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Variables in URL</td>
+          <td>Yes</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Caching</td>
+          <td>Yes</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Encryption with HTTPS</td>
+          <td>No</td>
+          <td>Yes</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="data-format">Data Format</h3>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>GET</th>
+          <th>POST</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data Size Limit</td>
+          <td>2048 characters</td>
+          <td>No limit</td>
+        </tr>
+        <tr>
+          <td>Data Type</td>
+          <td>Text only</td>
+          <td>Text or binary</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="summary-which-to-use-">Summary: Which to Use?</h3>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>GET</th>
+          <th>POST</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data Retrieval</td>
+          <td>Yes</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Persistent URLs</td>
+          <td>Yes</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Presentation Changes</td>
+          <td>Yes</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Sensitive Data</td>
+          <td>No</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>File Uploads</td>
+          <td>No</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Application Changes</td>
+          <td>No</td>
+          <td>Yes</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>GET</em></p>
+    <ul>
+      <li>
+        Data retrieval
+        <ul>
+          <li>Searching</li>
+          <li>Navigating</li>
+        </ul>
+      </li>
+      <li>
+        Persistent URLs
+        <ul>
+          <li>Bookmarks</li>
+          <li>Sharing</li>
+        </ul>
+      </li>
+      <li>
+        Change presentation (Safe operations)
+        <ul>
+          <li>Sorting</li>
+          <li>Filtering</li>
+          <li>Pagination</li>
+        </ul>
+      </li>
+    </ul>
+    <p><em>POST</em></p>
+    <ul>
+      <li>
+        Data creation or modification
+        <ul>
+          <li>Form submissions</li>
+          <li>File uploads</li>
+        </ul>
+      </li>
+      <li>
+        Change application state (Unsafe operations)
+        <ul>
+          <li>Database updates</li>
+          <li>File management</li>
+          <li>Email</li>
+          <li>Authentication</li>
+          <li>Session management</li>
+          <li>Logging</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="verifying-that-a-form-was-submitted">
+      Verifying that a Form was Submitted
+    </h2>
+    <ul>
+      <li>
+        Use <code>$_SERVER[&#39;REQUEST_METHOD&#39;]</code> to verify the
+        request method.
+      </li>
+      <li>
+        This ensures that the form is only processed when the form is submitted.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-keyword">if</span> ($_SERVER[<span class="hljs-string">'REQUEST_METHOD'</span>] === <span class="hljs-string">'POST'</span>) {
+    <span class="hljs-comment">// We will only get here if the form was submitted.</span>
+}
+</code></pre>
+    <h2 id="php-post-array">PHP POST Array</h2>
+    <p>
+      PHP automatically creates an associative array called
+      <code>$_POST</code> that contains the form data. The array keys are the
+      <code>name</code> attributes of the form elements.
+    </p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">if</span> ($_SERVER[<span class="hljs-string">'REQUEST_METHOD'</span>] === <span class="hljs-string">'POST'</span>) {
+    <span class="hljs-keyword">echo</span> $_POST[<span class="hljs-string">'name'</span>] . &lt;br /&gt;;
+    <span class="hljs-keyword">echo</span> $_POST[<span class="hljs-string">'age'</span>] . &lt;br /&gt;;
+}
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"process.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"age"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Submit"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+    <h2 id="verifying-that-a-form-was-submitted">
+      Verifying that a Form was Submitted
+    </h2>
+    <ul>
+      <li>
+        Use <code>$_SERVER[&#39;REQUEST_METHOD&#39;]</code> to verify the
+        request method.
+      </li>
+      <li>
+        This ensures that the form is only processed when the form is submitted.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-keyword">if</span> ($_SERVER[<span class="hljs-string">'REQUEST_METHOD'</span>] === <span class="hljs-string">'POST'</span>) {
+    <span class="hljs-comment">// We will only get here if the form was submitted.</span>
+}
+</code></pre>
+  </body>
+</html>

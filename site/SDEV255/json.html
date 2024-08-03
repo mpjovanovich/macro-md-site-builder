@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - JavaScript - JSON</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">JavaScript - JSON</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#json">JSON</a>
+        <ul>
+          <li>
+            <a href="#how-is-it-used">How is it used?</a>
+            <ul>
+              <li><a href="#serialization">Serialization</a></li>
+              <li><a href="#representing-objects">Representing Objects</a></li>
+            </ul>
+          </li>
+          <li><a href="#syntax">Syntax</a></li>
+          <li>
+            <a href="#serialization-1">Serialization</a>
+            <ul>
+              <li>
+                <a href="#serialize-to-a-string">Serialize to a String</a>
+              </li>
+              <li>
+                <a href="#deserialize-from-a-string"
+                  >Deserialize from a String</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="json">JSON</h1>
+    <ul>
+      <li>
+        <strong>JSON</strong> stands for
+        <strong>JavaScript Object Notation</strong>.
+      </li>
+      <li>
+        While it has &quot;JavaScript&quot; in the name, JSON is
+        <strong>language independent</strong>.
+      </li>
+    </ul>
+    <h2 id="how-is-it-used-">How is it used?</h2>
+    <h3 id="serialization">Serialization</h3>
+    <p>To <strong>serialize</strong> data means to encode it as a string.</p>
+    <ul>
+      <li>Send data between applications or clients and servers.</li>
+      <li>Store data in files.</li>
+      <li>Store data in databases.</li>
+    </ul>
+    <h3 id="representing-objects">Representing Objects</h3>
+    <p>Represent objects in JavaScript.</p>
+    <ul>
+      <li>
+        <strong>Objects</strong> are a way of grouping together related data and
+        functions (recall from OOP).
+      </li>
+      <li>
+        <strong>Properties</strong> are variables / constants that belong to an
+        object.
+      </li>
+    </ul>
+    <h2 id="syntax">Syntax</h2>
+    <p>Example - Basic Syntax:</p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> person = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"Socrates"</span>,
+  <span class="hljs-attr">birthYear</span>: <span class="hljs-number">-469</span>,
+};
+
+<span class="hljs-comment">// Get the name property</span>
+<span class="hljs-keyword">const</span> name = socrates.name;
+</code></pre>
+    <p>Example - Array as a Property:</p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> person = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"Socrates"</span>,
+  <span class="hljs-attr">children</span>: [<span class="hljs-string">"Lamprocles"</span>, <span class="hljs-string">"Sophroniscus"</span>],
+};
+
+<span class="hljs-comment">// Get the first child</span>
+<span class="hljs-keyword">const</span> firstChild = socrates.children[<span class="hljs-number">0</span>];
+</code></pre>
+    <p>Example - JSON as a Property:</p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> socrates = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"Socrates"</span>,
+  <span class="hljs-attr">birthYear</span>: <span class="hljs-number">-469</span>,
+  <span class="hljs-attr">children</span>: [
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"Lamprocles"</span>,
+      <span class="hljs-attr">birthYear</span>: <span class="hljs-number">-440</span>,
+    },
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"Sophroniscus"</span>,
+      <span class="hljs-attr">birthYear</span>: <span class="hljs-number">-441</span>,
+    },
+  ],
+};
+
+<span class="hljs-comment">// Get the first child's name</span>
+<span class="hljs-keyword">const</span> firstChildName = socrates.children[<span class="hljs-number">0</span>].name;
+</code></pre>
+    <h2 id="serialization">Serialization</h2>
+    <h3 id="serialize-to-a-string">Serialize to a String</h3>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> socrates = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"Socrates"</span>,
+  <span class="hljs-attr">birthYear</span>: <span class="hljs-number">-469</span>,
+};
+
+<span class="hljs-keyword">const</span> socratesString = <span class="hljs-built_in">JSON</span>.stringify(socrates);
+</code></pre>
+    <h3 id="deserialize-from-a-string">Deserialize from a String</h3>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> socratesString = <span class="hljs-string">'{"name":"Socrates","birthYear":-469}'</span>;
+<span class="hljs-keyword">const</span> socrates = <span class="hljs-built_in">JSON</span>.parse(socratesString);
+</code></pre>
+  </body>
+</html>

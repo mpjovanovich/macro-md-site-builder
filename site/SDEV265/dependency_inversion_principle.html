@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Dependency Inversion Principle</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Dependency Inversion Principle</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#dependency-inversion-principle"
+          >Dependency Inversion Principle</a
+        >
+        <ul>
+          <li><a href="#example">Example</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="dependency-inversion-principle">Dependency Inversion Principle</h1>
+    <p>
+      &quot;High-level modules should not depend on low-level modules. Both
+      should depend on abstractions. Abstractions should not depend on details.
+      Details should depend on abstractions.&quot;
+    </p>
+    <p>
+      A <strong>dependency</strong> is when one class or package uses another
+      class or package.
+    </p>
+    <p>Abstractions here refers to interfaces or abstract base classes.</p>
+    <h2 id="example">Example</h2>
+    <pre><code class="language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomButton1</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handle_click</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomButton2</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handle_click</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginForm</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Direct reference to CustomButton - dependency</span>
+        self.button = CustomButton1()
+</code></pre>
+    <p><strong>Dependencies:</strong></p>
+    <pre><code>CustomButton1 &lt;-- LoginForm
+</code></pre>
+    <p>
+      What if we later want to use CustomButton2? We would have to change the
+      LoginForm class.
+    </p>
+    <p>
+      <strong><em>Fix:</em></strong>
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment">## This is the abstraction.</span>
+<span class="hljs-comment">## High-level module</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Button</span>:</span>
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handle_click</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-comment">## Lower-level module</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomButton1</span><span class="hljs-params">(Button)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handle_click</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Do handle click things</span>
+        <span class="hljs-keyword">return</span>
+
+<span class="hljs-comment">## Lower-level module</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomButton2</span><span class="hljs-params">(Button)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handle_click</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Do handle click things</span>
+        <span class="hljs-keyword">return</span>
+
+<span class="hljs-comment">## Lower-level module</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginForm</span>:</span>
+    <span class="hljs-comment"># Let's now pass in the button when we create the LoginForm</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, button: Button)</span>:</span>
+        self.button = button
+</code></pre>
+    <p><strong>Dependencies:</strong></p>
+    <pre><code>Button &lt;-- CustomButton1, CustomButton2
+Button &lt;-- LoginForm
+</code></pre>
+    <p>Our Button abstraction is &quot;bridge&quot; between modules</p>
+  </body>
+</html>

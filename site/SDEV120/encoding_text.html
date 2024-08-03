@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Encoding Text for Computing</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Encoding Text for Computing</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#encoding-text-for-computing">Encoding Text for Computing</a>
+        <ul>
+          <li>
+            <a href="#ascii-american-standard-code-for-information-interchange"
+              >ASCII (American Standard Code for Information Interchange)</a
+            >
+            <ul>
+              <li><a href="#how-many-values">How many values?</a></li>
+              <li>
+                <a href="#what-kinds-of-characters"
+                  >What Kinds of Characters?</a
+                >
+                <ul>
+                  <li><a href="#control-characters">Control Characters</a></li>
+                  <li>
+                    <a href="#printable-characters">Printable Characters</a>
+                    <ul>
+                      <li><a href="#numbers">Numbers</a></li>
+                      <li><a href="#letters">Letters</a></li>
+                      <li>
+                        <a href="#punctuation-and-symbols"
+                          >Punctuation and Symbols</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#unicode-universal-character-set"
+              >Unicode (Universal Character Set)</a
+            >
+            <ul>
+              <li>
+                <a href="#how-many-values-1">How many values?</a>
+                <ul>
+                  <li>
+                    <a href="#utf-8-8-bit-unicode-transformation-format"
+                      >UTF-8 (8-bit Unicode Transformation Format)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#utf-16-16-bit-unicode-transformation-format"
+                      >UTF-16 (16-bit Unicode Transformation Format)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#utf-32-32-bit-unicode-transformation-format"
+                      >UTF-32 (32-bit Unicode Transformation Format)</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#what-kinds-of-additional-characters"
+                  >What Kinds of (additional) Characters?</a
+                >
+                <ul>
+                  <li>
+                    <a href="#scripts-writing-systems"
+                      >Scripts (writing systems)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#mathematical-symbols">Mathematical symbols</a>
+                  </li>
+                  <li><a href="#currency">Currency</a></li>
+                  <li><a href="#notational-systems">Notational Systems</a></li>
+                  <li><a href="#emojis">Emojis</a></li>
+                </ul>
+              </li>
+              <li><a href="#usage">Usage</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="encoding-text-for-computing">Encoding Text for Computing</h1>
+    <figure>
+      <span
+        ><img
+          src="https://www.unicode.org/announcements/annc-iuc45-life-before-after.png"
+          alt="Figure"
+          style="width: 40%; height: auto"
+      /></span>
+    </figure>
+    <p>
+      A computer can only store numbers, so we need a way to represent text as
+      numbers.
+    </p>
+    <p class="demo">Demo:</p>
+
+    <ul>
+      <li>m02_letter_is_capital.py</li>
+    </ul>
+    <h2 id="ascii-american-standard-code-for-information-interchange-">
+      ASCII (American Standard Code for Information Interchange)
+    </h2>
+    <p>Origins in telegraphy from Bell during 1960s.</p>
+    <p>Very widely used today.</p>
+    <p>
+      <strong><em>Summary:</em></strong>
+    </p>
+    <ul>
+      <li>
+        ASCII is a small and concise way to represent typical usage “text”
+        characters.
+      </li>
+    </ul>
+    <h3 id="how-many-values-">How many values?</h3>
+    <p>Each character is mapped to a number.</p>
+    <p>7-bit ASCII is the original standard</p>
+    <ul>
+      <li>2<sup>7</sup> = 128 characters</li>
+    </ul>
+    <h3 id="what-kinds-of-characters-">What Kinds of Characters?</h3>
+    <p>
+      Reference:
+      <a href="https://www.ascii-code.com/">https://www.ascii-code.com/</a>
+    </p>
+    <h4 id="control-characters">Control Characters</h4>
+    <ul>
+      <li>Backspace</li>
+      <li>Carriage return</li>
+      <li>Line feed</li>
+      <li>Tab</li>
+      <li>Bell</li>
+      <li>...</li>
+    </ul>
+    <p>Many of these, e.g. bell, were used for old printers.</p>
+    <h4 id="printable-characters">Printable Characters</h4>
+    <h5 id="numbers">Numbers</h5>
+    <ul>
+      <li>0-9</li>
+    </ul>
+    <h5 id="letters">Letters</h5>
+    <ul>
+      <li>A-Z</li>
+      <li>a-z</li>
+    </ul>
+    <h5 id="punctuation-and-symbols">Punctuation and Symbols</h5>
+    <ul>
+      <li>
+        ! &quot; # $ % &amp; &#39; ( ) * + , - . / : ; &lt; = &gt; ? @ ^ [ \ ] _
+        ` { | } ~ ;
+      </li>
+      <li>...</li>
+    </ul>
+    <h2 id="unicode-universal-character-set-">
+      Unicode (Universal Character Set)
+    </h2>
+    <h3 id="how-many-values-">How many values?</h3>
+    <p>
+      As of Unicode 15.1, there are 157,492 characters in the Unicode Standard
+    </p>
+    <p>ACII is a subset of Unicode.</p>
+    <ul>
+      <li>This means everything from ASCII is included in Unicode.</li>
+    </ul>
+    <p>
+      <strong><em>Summary:</em></strong>
+    </p>
+    <ul>
+      <li>
+        Unicode can represent more symbols than ASCII but uses more memory due
+        to larger charter encoding.
+      </li>
+    </ul>
+    <h4 id="utf-8-8-bit-unicode-transformation-format-">
+      UTF-8 (8-bit Unicode Transformation Format)
+    </h4>
+    <ul>
+      <li>
+        Variable length encoding: Number of bytes per character varies.
+        <ul>
+          <li>Most common characters are 1 byte.</li>
+          <li>Can be up to 4 bytes.</li>
+        </ul>
+      </li>
+      <li>8-bit ASCII is a subset of UTF-8.</li>
+      <li>See: HTML head section of web page.</li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span> /&gt;</span>
+</code></pre>
+    <h4 id="utf-16-16-bit-unicode-transformation-format-">
+      UTF-16 (16-bit Unicode Transformation Format)
+    </h4>
+    <ul>
+      <li>Fixed length encoding: Always 2 bytes per character.</li>
+      <li>Greater efficiency at cost of storage space.</li>
+      <li>Necessary for some languages.</li>
+    </ul>
+    <h4 id="utf-32-32-bit-unicode-transformation-format-">
+      UTF-32 (32-bit Unicode Transformation Format)
+    </h4>
+    <ul>
+      <li>Fixed length encoding: Always 4 bytes per character.</li>
+      <li>Greater effieciency at cost of storage space.</li>
+      <li>Necessary for some languages.</li>
+    </ul>
+    <h3 id="what-kinds-of-additional-characters-">
+      What Kinds of (additional) Characters?
+    </h3>
+    <p>
+      Reference:
+      <a href="https://unicode.org/charts/">https://unicode.org/charts/</a>
+    </p>
+    <h4 id="scripts-writing-systems-">Scripts (writing systems)</h4>
+    <ul>
+      <li>
+        Cyrillic
+        <ul>
+          <li>
+            А Б В Г Д Е Ё Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я
+          </li>
+        </ul>
+      </li>
+      <li>
+        Greek
+        <ul>
+          <li>Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω</li>
+        </ul>
+      </li>
+      <li>
+        Armenian
+        <ul>
+          <li>
+            Ա Բ Գ Դ Ե Զ Է Ը Թ Ժ Ի Լ Խ Ծ Կ Հ Ձ Ղ Ճ Մ Յ Ն Շ Ո Չ Պ Ջ Ռ Ս Վ Տ Ր Ց Ւ
+            Փ Ք Օ Ֆ
+          </li>
+        </ul>
+      </li>
+      <li>
+        Hebrew
+        <ul>
+          <li>א ב ג ד ה ו ז ח ט י כ ל מ נ ס ע פ צ ק ר ש ת</li>
+        </ul>
+      </li>
+      <li>
+        Arabic
+        <ul>
+          <li>ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن ه و ي</li>
+        </ul>
+      </li>
+      <li>...</li>
+    </ul>
+    <h4 id="mathematical-symbols">Mathematical symbols</h4>
+    <ul>
+      <li>
+        Greek letters
+        <ul>
+          <li>α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ ς σ τ υ φ χ ψ ω</li>
+        </ul>
+      </li>
+      <li>
+        Operators
+        <ul>
+          <li>
+            <ul>
+              <li>
+                <ul>
+                  <li>
+                    × ÷ = ≠ &lt; &gt; ≤ ≥ ≈ ≡ ≈ ∞ √ ∑ ∏ ∫ ∂ ∇ ∆ √ ∛ ∜ ∝ ∟ ∠ ∡ °
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Arrows
+        <ul>
+          <li>
+            ← → ↑ ↓ ↔ ↕ ↖ ↗ ↘ ↙ ↚ ↛ ↜ ↝ ↞ ↟ ↠ ↡ ↢ ↣ ↤ ↥ ↦ ↧ ↨ ↩ ↪ ↫ ↬ ↭
+            ↮ ↯ ↰ ↱ ↲ ↳ ↴ ↵ ↶ ↷ ↸ ↹ ↺ ↻ ↼ ↽ ↾ ↿ ⇀ ⇁ ⇂ ⇃ ⇄ ⇅ ⇆ ⇇ ⇈ ⇉ ⇊ ⇋ ⇌ ⇍ ⇎ ⇏
+            ⇐ ⇒ ⇑ ⇓ ⇔ ⇕ ⇖ ⇗ ⇘ ⇙ ⇚ ⇛ ⇜ ⇝ ⇞ ⇟ ⇠ ⇡ ⇢ ⇣ ⇤ ⇥ ⇦ ⇧ ⇨ ⇩ ⇪ ⇫ ⇬ ⇭ ⇮ ⇯ ⇰ ⇱
+            ⇲ ⇳ ⇴ ⇵ ⇶ ⇷ ⇸ ⇹ ⇺ ⇻ ⇼ ⇽ ⇾ ⇿
+          </li>
+        </ul>
+      </li>
+      <li>...</li>
+    </ul>
+    <h4 id="currency">Currency</h4>
+    <ul>
+      <li>$ € £ ¥ ¢ ₽ ₩ ₱ ₿ ฿ ₫ ₴ ₸ ₮ ₵ ₲ ₪ ₡</li>
+    </ul>
+    <h4 id="notational-systems">Notational Systems</h4>
+    <ul>
+      <li>
+        Braille
+        <ul>
+          <li>
+            ⠠ ⠡ ⠢ ⠣ ⠤ ⠥ ⠦ ⠧ ⠨ ⠩ ⠪ ⠫ ⠬ ⠭ ⠮ ⠯ ⠰ ⠱ ⠲ ⠳ ⠴ ⠵ ⠶ ⠷ ⠸ ⠹ ⠺ ⠻ ⠼ ⠽ ⠾ ⠿
+          </li>
+        </ul>
+      </li>
+      <li>
+        Musical notation
+        <ul>
+          <li>♩ ♪ ♫ ♬ ♭ ♮ ♯</li>
+        </ul>
+      </li>
+      <li>
+        Alchemy
+        <ul>
+          <li>🜁 🜂 🜃 🜄 🜅 🜆 🜇 🜈 🜉 🜊 🜋 🜌 🜍 🜎 🜏</li>
+        </ul>
+      </li>
+      <li>
+        Chess
+        <ul>
+          <li>♔ ♕ ♖ ♗ ♘ ♙ ♚ ♛ ♜ ♝ ♞ ♟</li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="emojis">Emojis</h4>
+    <p>Book of Genesis (per ChatGPT):</p>
+    <p>
+      🌌🪶🌍🌿🚶‍♂️🚶‍♀️ 🍎🐍👫🚪 🌊🚶‍♂️🚢 🏞️🕊️🍃 🌈🚪🪣🌧️ 👨‍👩‍👧‍👦🌾🐄🐑🐓 🌆🧱🗼 🌍🚪👥🚚
+      🌄🛏️🌅
+    </p>
+    <h3 id="usage">Usage</h3>
+    <ul>
+      <li>
+        <p>
+          An application can display a character only if it can access a font
+          which contains a glyph for the character.
+        </p>
+      </li>
+      <li>
+        <p>Very few fonts have full Unicode coverage;</p>
+        <ul>
+          <li>If I try to type Egyptian on my PC, it won&#39;t work.</li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Windows</em>: To insert an ASCII character, press and hold down
+          ALT while typing the character code. For example, to insert the degree
+          (º) symbol, press and hold down ALT while typing 0176 on the numeric
+          keypad.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Mac</em>: To insert an ASCII character, press and hold down Option
+          while typing the character code. For example, to insert the degree (º)
+          symbol, press and hold down Option while typing 0176 on the numeric
+          keypad.
+        </p>
+      </li>
+      <li>
+        <p>Random Trivia: �</p>
+        <ul>
+          <li>
+            &quot;replacement character&quot; (U+FFFD) and is used to indicate
+            problems when a system is unable to render a stream of data to a
+            correct symbol.
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

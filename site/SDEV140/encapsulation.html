@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Encapsulation</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Encapsulation</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#encapsulation">Encapsulation</a>
+        <ul>
+          <li><a href="#access-modifiers">Access Modifiers</a></li>
+          <li>
+            <a href="#pythonic-guidelines---controlling-access"
+              >Pythonic Guidelines - Controlling Access</a
+            >
+          </li>
+          <li><a href="#summary">Summary</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#basics---examples">Basics - Examples</a>
+        <ul>
+          <li>
+            <a href="#example-1-maintaining-state"
+              >Example 1: Maintaining State</a
+            >
+          </li>
+          <li>
+            <a href="#example-2-objects-as-properties"
+              >Example 2: Objects as Properties</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="encapsulation">Encapsulation</h1>
+    <p>Primary purposes of <strong>encapsulation</strong> are to:</p>
+    <ul>
+      <li>
+        Bundle the data (properties) and methods (functions) that operate on the
+        data into a single unit.
+      </li>
+      <li>Prevent direct access to the data from outside the class.</li>
+    </ul>
+    <p><em>Example</em>:</p>
+    <ul>
+      <li>Class = <code>BankAccount</code></li>
+      <li>
+        Methods that users of class should see (friendly public interface /
+        API):
+        <ul>
+          <li><code>transfer_to_account()</code></li>
+        </ul>
+      </li>
+      <li>
+        Methods that users of class should not see (internal &quot;banky&quot;
+        implementation details):
+        <ul>
+          <li><code>_negotiate_routing_channel()</code></li>
+          <li><code>_await_confirmation_code()</code></li>
+          <li><code>_log_transaction()</code></li>
+          <li><code>_send_confirmation_email()</code></li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="access-modifiers">Access Modifiers</h2>
+    <p>
+      <strong
+        ><em>Note:</em> We are discussing general OOP principles here. Python
+        does not have access modifiers. It instead uses naming conventions to
+        indicate access.</strong
+      >
+    </p>
+    <ul>
+      <li>
+        We can control access to properties and methods using
+        <strong>access modifiers</strong>.
+        <ul>
+          <li>Also called <strong>visibility modifiers</strong>.</li>
+        </ul>
+      </li>
+      <li>
+        Access modifiers are typically implemented as keywords that go before
+        the property or method.
+      </li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Modifier</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>public</td>
+          <td>Accessible from anywhere.</td>
+        </tr>
+        <tr>
+          <td>protected</td>
+          <td>Accessible from within the class and any subclasses.</td>
+        </tr>
+        <tr>
+          <td>private</td>
+          <td>Accessible only from within the class.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>C# Example</em>:</p>
+    <pre><code class="language-csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>
+{
+    <span class="hljs-comment">// Private property</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> name;
+
+    <span class="hljs-comment">// Public method</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoSomething</span>(<span class="hljs-params"></span>)</span>
+    {
+        <span class="hljs-comment">// Access the name property</span>
+        Console.WriteLine(<span class="hljs-keyword">this</span>.name);
+    }
+}
+</code></pre>
+    <h2 id="pythonic-guidelines-controlling-access">
+      Pythonic Guidelines - Controlling Access
+    </h2>
+    <figure>
+      <span
+        ><img
+          src="https://miro.medium.com/v2/1*ls5qApmZPtUIV3Z_wll7Fw.png"
+          alt="Figure"
+          style="width: 25%; height: auto"
+      /></span>
+    </figure>
+    <p>
+      Per
+      <a href="https://peps.python.org/pep-0008/#designing-for-inheritance"
+        >PEP 8 - Designing for Inheritance</a
+      >...
+    </p>
+    <ul>
+      <li>
+        Pythonic way of implementing public:
+        <ul>
+          <li>
+            &quot;Public attributes should have no leading underscores.&quot;
+          </li>
+        </ul>
+      </li>
+      <li>
+        Pythonic way of implementing protected:
+        <ul>
+          <li>
+            &quot;Use one leading underscore only for non-public methods and
+            instance variables.&quot;
+          </li>
+        </ul>
+      </li>
+      <li>
+        Pythonic way of implementing private:
+        <ul>
+          <li>
+            &quot;If your class is intended to be subclassed, and you have
+            attributes that you do not want subclasses to use, consider naming
+            them with double leading underscores and no trailing underscores.
+            This invokes Python’s name mangling algorithm, where the name of the
+            class is mangled into the attribute name.&quot;
+          </li>
+          <li>Not nearly as common as public and protected.</li>
+        </ul>
+      </li>
+      <li>&quot;If in doubt, choose non-public.&quot;</li>
+    </ul>
+    <p><em>Python Example</em>:</p>
+    <pre><code class="language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+    <span class="hljs-comment"># Public property</span>
+    name = <span class="hljs-string">'Bob'</span>
+
+    <span class="hljs-comment"># Protected property</span>
+    _age = <span class="hljs-number">30</span>
+
+    <span class="hljs-comment"># Private property</span>
+    __ssn = <span class="hljs-string">'123-45-6789'</span>
+
+    <span class="hljs-comment"># Public method</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">do_something</span><span class="hljs-params">(self)</span>:</span>
+        print(self.name)
+
+    <span class="hljs-comment"># Protected method</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_do_something</span><span class="hljs-params">(self)</span>:</span>
+        print(self._age)
+
+    <span class="hljs-comment"># Private method</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__do_something</span><span class="hljs-params">(self)</span>:</span>
+        print(self.__ssn)
+</code></pre>
+    <h2 id="summary">Summary</h2>
+    <p>Public is what the &quot;outside&quot; world is meant to see.</p>
+    <p>Protected is what subclasses are meant to see.</p>
+    <p>Private is what only the class itself is meant to see.</p>
+    <h1 id="basics-examples">Basics - Examples</h1>
+    <h2 id="example-1-maintaining-state">Example 1: Maintaining State</h2>
+    <ul>
+      <li>We can keep track of the state of an object using properties.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Define the class:</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BankAccount</span>:</span>
+    <span class="hljs-comment"># CONSTRUCTOR</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, initial_balance = <span class="hljs-number">0</span>)</span>:</span>
+        <span class="hljs-comment"># We don't want the user to directly access the balance property,</span>
+        <span class="hljs-comment"># so we make it non-public by prefixing it with an underscore.</span>
+        self._balance = initial_balance
+
+    <span class="hljs-comment"># PUBLIC METHODS</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deposit</span><span class="hljs-params">(self, amount)</span>:</span>
+        <span class="hljs-keyword">if</span> amount &gt; <span class="hljs-number">0</span>:
+            self._balance += amount
+            print(<span class="hljs-string">f"Deposited $<span class="hljs-subst">{amount}</span>. New balance: $<span class="hljs-subst">{self._balance}</span>"</span>)
+        <span class="hljs-keyword">else</span>:
+            print(<span class="hljs-string">"Invalid deposit amount. Please deposit a positive amount."</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">withdraw</span><span class="hljs-params">(self, amount)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+        <span class="hljs-keyword">if</span> amount &lt;= <span class="hljs-number">0</span>:
+            print(<span class="hljs-string">"Invalid withdrawal amount. Amount must be greater than 0."</span>)
+        <span class="hljs-keyword">elif</span> amount &gt; self._balance:
+            print(<span class="hljs-string">"Insufficient funds."</span>)
+        <span class="hljs-keyword">else</span>:
+            self._balance -= amount
+            print(<span class="hljs-string">f"Withdrew $<span class="hljs-subst">{amount}</span>. New balance: $<span class="hljs-subst">{self._balance}</span>"</span>)
+
+    <span class="hljs-comment"># We still want the user to be able to view the balance - just not change it.</span>
+    <span class="hljs-comment"># We can accomplish this by creating a getter method that returns the value of the balance property.</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_balance</span><span class="hljs-params">(self)</span> -&gt; float:</span>
+        <span class="hljs-keyword">return</span> self._balance
+
+<span class="hljs-comment"># Use the class:</span>
+account = BankAccount(initial_balance=<span class="hljs-number">1000</span>)
+print(<span class="hljs-string">f"Initial balance: $<span class="hljs-subst">{account.get_balance()}</span>"</span>)
+account.deposit(<span class="hljs-number">500</span>)
+account.withdraw(<span class="hljs-number">200</span>)
+account.withdraw(<span class="hljs-number">1000</span>)  <span class="hljs-comment"># Should fail due to insufficient funds</span>
+print(<span class="hljs-string">f"Final balance: $<span class="hljs-subst">{account.get_balance()}</span>"</span>)
+</code></pre>
+    <h2 id="example-2-objects-as-properties">
+      Example 2: Objects as Properties
+    </h2>
+    <ul>
+      <li>We can use objects as properties of other objects.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Define the class:</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+    <span class="hljs-comment"># CONSTRUCTOR</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(
+        self,
+        first_name,
+        last_name,
+        father = None,
+        mother = None
+    )</span>:</span>
+        <span class="hljs-comment"># Initialize properties to the values passed to the constructor</span>
+        self.first_name = first_name
+        self.last_name = last_name
+        self.father = father
+        self.mother = mother
+
+        <span class="hljs-comment"># Initialize children property as an empty list</span>
+        self.children = []
+
+    <span class="hljs-comment"># PUBLIC METHODS</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_child</span><span class="hljs-params">(self, child)</span>:</span>
+        self.children.append(child)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_info</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Print the name</span>
+        father = <span class="hljs-string">'N/A'</span>
+        mother = <span class="hljs-string">'N/A'</span>
+        <span class="hljs-keyword">if</span> self.father != <span class="hljs-literal">None</span>:
+            father = self.father._get_full_name()
+        <span class="hljs-keyword">if</span> self.mother != <span class="hljs-literal">None</span>:
+            mother = self.mother._get_full_name()
+        print(
+            <span class="hljs-string">f"Name: <span class="hljs-subst">{self._get_full_name()}</span>, Father: <span class="hljs-subst">{father}</span>, Mother: <span class="hljs-subst">{mother}</span>"</span>
+        )
+
+        <span class="hljs-comment"># Print children</span>
+        <span class="hljs-keyword">if</span> len(self.children) &gt; <span class="hljs-number">0</span>:
+            print(<span class="hljs-string">"Begin Children:"</span>)
+            <span class="hljs-keyword">for</span> child <span class="hljs-keyword">in</span> self.children:
+                print(<span class="hljs-string">"  "</span>, end=<span class="hljs-string">""</span>)
+                child.print_info()
+            print(<span class="hljs-string">"End Children"</span>)
+
+    <span class="hljs-comment"># PROTECTED METHODS</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_get_full_name</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.first_name + <span class="hljs-string">" "</span> + self.last_name
+
+<span class="hljs-comment"># Create parents</span>
+father = Person(<span class="hljs-string">"John"</span>, <span class="hljs-string">"Doe"</span>)
+mother = Person(<span class="hljs-string">"Jane"</span>, <span class="hljs-string">"Doe"</span>)
+
+<span class="hljs-comment"># Create children</span>
+child1 = Person(<span class="hljs-string">"Bobby"</span>, <span class="hljs-string">"Beebop"</span>, father, mother)
+child2 = Person(<span class="hljs-string">"Charles"</span>, <span class="hljs-string">"Beebop"</span>, father, mother)
+child3 = Person(<span class="hljs-string">"Davey"</span>, <span class="hljs-string">"Beebop"</span>, father, mother)
+
+<span class="hljs-comment"># Add children to father</span>
+father.add_child(child1)
+father.add_child(child2)
+father.add_child(child3)
+
+<span class="hljs-comment"># Print father's info</span>
+father.print_info()
+</code></pre>
+  </body>
+</html>

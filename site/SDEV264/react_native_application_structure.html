@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - React Native Application Structure</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">React Native Application Structure</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#react-native-application-structure"
+          >React Native Application Structure</a
+        >
+        <ul>
+          <li><a href="#assets">assets</a></li>
+          <li><a href="#node_modules">node_modules</a></li>
+          <li><a href="#gitingore">.gitingore</a></li>
+          <li><a href="#appjson">app.json</a></li>
+          <li><a href="#apptsx">App.tsx</a></li>
+          <li><a href="#babelconfigjs">babel.config.js</a></li>
+          <li><a href="#package-lockjson">package-lock.json</a></li>
+          <li><a href="#packagejson">package.json</a></li>
+          <li><a href="#tsconfigjson">tsconfig.json</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="react-native-application-structure">
+      React Native Application Structure
+    </h1>
+    <figure>
+      <span
+        ><img
+          src="images/react_project_1.png"
+          alt="Figure"
+          style="width: 100%; height: auto"
+      /></span>
+    </figure>
+    <p>React structure via Expo</p>
+    <h2 id="assets">assets</h2>
+    <p>Used to store media.</p>
+    <ul>
+      <li>Icons</li>
+      <li>Images</li>
+      <li>Fonts</li>
+      <li>Video</li>
+      <li>Audio</li>
+    </ul>
+    <h2 id="node_modules">node_modules</h2>
+    <ul>
+      <li>Contains all the dependencies for the project.</li>
+      <li>Packages installed put content here.</li>
+      <li>Not manually edited.</li>
+    </ul>
+    <h2 id="-gitingore">.gitingore</h2>
+    <ul>
+      <li>Files and directories to be ignored by Git.</li>
+      <li>Not specific to React Native; any Git project can have this file.</li>
+    </ul>
+    <h2 id="app-json">app.json</h2>
+    <ul>
+      <li>General configuration file with metadata for the app.</li>
+      <li>Used when building (compiling) the app.</li>
+      <li>Name, version, paths, etc.</li>
+    </ul>
+    <h2 id="app-tsx">App.tsx</h2>
+    <ul>
+      <li>Main entry point for the app.</li>
+      <li>Actual JSX code that devs write and edit.</li>
+    </ul>
+    <h2 id="babel-config-js">babel.config.js</h2>
+    <ul>
+      <li>Configuration JavaScript compiler, Babel.</li>
+      <li>Not manually edited.</li>
+    </ul>
+    <h2 id="package-lock-json">package-lock.json</h2>
+    <ul>
+      <li>Lock file for npm.</li>
+      <li>
+        Ensures that the same versions of packages are installed for all
+        developers.
+      </li>
+    </ul>
+    <h2 id="package-json">package.json</h2>
+    <ul>
+      <li><strong>manifest file</strong> for the project.</li>
+      <li>Name, version, dependencies, scripts, etc.</li>
+      <li>
+        <code>npm install</code>, it reads this file and installs the
+        dependencies listed.
+      </li>
+      <li>
+        <code>npm start</code> reads this file and runs the script listed.
+      </li>
+    </ul>
+    <h2 id="tsconfig-json">tsconfig.json</h2>
+    <ul>
+      <li>TypeScript configuration file.</li>
+      <li>Options for how TypeScript should be compiled to JavaScript.</li>
+      <li>Not manually edited.</li>
+    </ul>
+  </body>
+</html>

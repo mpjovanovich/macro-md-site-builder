@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Propositional Logic - Intro and Connectives</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href=""
+        >Propositional Logic - Intro and Connectives</a
+      >
+    </h1>
+    <ul>
+      <li>
+        <a href="#propositional-logic">Propositional Logic</a>
+        <ul>
+          <li><a href="#propositions">Propositions</a></li>
+          <li>
+            <a href="#logical-connectives">Logical Connectives</a>
+            <ul>
+              <li>
+                <a href="#negation-not">Negation (NOT)</a>
+                <ul>
+                  <li><a href="#example">Example</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#conjunction-and">Conjunction (AND)</a>
+                <ul>
+                  <li><a href="#example-1">Example</a></li>
+                  <li><a href="#example-2">Example</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#disjunction-or">Disjunction (OR)</a>
+                <ul>
+                  <li><a href="#example-3">Example</a></li>
+                  <li><a href="#example-4">Example</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#exclusive-or-xor">Exclusive OR (XOR)</a>
+                <ul>
+                  <li><a href="#example-5">Example</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#conditional--implication-if"
+                  >Conditional / Implication (IF)</a
+                >
+                <ul>
+                  <li><a href="#example-6">Example</a></li>
+                </ul>
+              </li>
+              <li><a href="#biconditional-iff">Biconditional (IFF)</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="propositional-logic">Propositional Logic</h1>
+    <p>
+      <strong>Deductive logic</strong> is a systematic way of thinking that
+      allows us to determine the truth value of a statement based on the truth
+      values of other statements.
+    </p>
+    <p>
+      <strong>Propositional logic</strong> is a type of deductive logic that
+      deals with propositions.
+    </p>
+    <p>
+      <strong>Boolean algebra</strong> is a type of algebra that deals with
+      propositions, named after George Boole.
+    </p>
+    <h2 id="propositions">Propositions</h2>
+    <p>
+      <strong>Propositions</strong> are statements that are either true or
+      false.
+    </p>
+    <p>
+      We can assign variables to propositions to make them easier to work with:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Variable</th>
+          <th align="left">Proposition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">A</td>
+          <td align="left">It is raining.</td>
+        </tr>
+        <tr>
+          <td align="left">B</td>
+          <td align="left">It is cold.</td>
+        </tr>
+        <tr>
+          <td align="left">C</td>
+          <td align="left">It is snowing.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>More meaningful variable names can also be used:</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Variable</th>
+          <th align="left">Proposition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">Raining</td>
+          <td align="left">It is raining.</td>
+        </tr>
+        <tr>
+          <td align="left">Cold</td>
+          <td align="left">It is cold.</td>
+        </tr>
+        <tr>
+          <td align="left">Snowing</td>
+          <td align="left">It is snowing.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="logical-connectives">Logical Connectives</h2>
+    <p>
+      <strong>Logical connectives</strong> are symbols that are used to combine
+      propositions into more complex propositions.
+    </p>
+    <p>
+      A <strong>unary operator</strong> is an operator that takes one operand.
+    </p>
+    <ul>
+      <li><strong>Negation</strong> is a unary operator.</li>
+    </ul>
+    <p>
+      A <strong>binary operator</strong> is an operator that takes two operands.
+    </p>
+    <ul>
+      <li>
+        <strong>Conjunction</strong>, <strong>disjunction</strong>, and
+        <strong>exclusive OR</strong> are binary operators.
+      </li>
+    </ul>
+    <h3 id="negation-not-">Negation (NOT)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">P</th>
+          <th align="right">¬P</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">True</td>
+          <td align="right">False</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="right">True</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Symbol</strong>: ¬</p>
+    <p><strong>Python</strong>: NOT</p>
+    <p>
+      <strong>Description</strong>: Returns the opposite truth value of
+      propositions.
+    </p>
+    <p><strong>Used When</strong>: You hear the word &quot;not&quot;.</p>
+    <h4 id="example">Example</h4>
+    <details>
+      <summary>Express using propositions: "It is not raining".</summary>
+      <div>
+        <p>Let P = It is raining.</p>
+        <p>¬P</p>
+      </div>
+    </details>
+
+    <h3 id="conjunction-and-">Conjunction (AND)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">P</th>
+          <th align="left">Q</th>
+          <th align="right">P ∧ Q</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">True</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">False</td>
+          <td align="right">False</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">True</td>
+          <td align="right">False</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">False</td>
+          <td align="right">False</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Symbol</strong>: ∧</p>
+    <p><strong>Python</strong>: AND</p>
+    <p>
+      <strong>Description</strong>: Evaluates to true if all propositions are
+      true.
+    </p>
+    <p>
+      <strong>Used When</strong>: You hear the word &quot;and&quot; or
+      &quot;is&quot;.
+    </p>
+    <h4 id="example">Example</h4>
+    <details>
+      <summary>Express using propositions: "It is raining and cold".</summary>
+      <div>
+        <p>Let P = It is raining.</p>
+        <p>Let Q = It is cold.</p>
+        <p>P ∧ Q</p>
+      </div>
+    </details>
+
+    <h4 id="example">Example</h4>
+    <details>
+      <summary>Express using propositions: "Spot is a dog".</summary>
+      <div>
+        <p>Let Spot = Is Spot.</p>
+        <p>Let Dog = Is a dog.</p>
+        <p>Spot ∧ Dog</p>
+      </div>
+    </details>
+
+    <h3 id="disjunction-or-">Disjunction (OR)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">P</th>
+          <th align="left">Q</th>
+          <th align="right">P ∨ Q</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">True</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">False</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">True</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">False</td>
+          <td align="right">False</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Symbol</strong>: ∨</p>
+    <p><strong>Python</strong>: OR</p>
+    <p>
+      <strong>Description</strong>: Evaluates to true if any proposition is
+      true.
+    </p>
+    <p><strong>Used When</strong>: You hear the word &quot;or&quot;.</p>
+    <h4 id="example">Example</h4>
+    <details>
+      <summary>
+        Express using propositions: "It is raining or cold (possibly both)".
+      </summary>
+      <div>
+        <p>Let P = It is raining.</p>
+        <p>Let Q = It is cold.</p>
+        <p>P ∨ Q</p>
+      </div>
+    </details>
+
+    <h4 id="example">Example</h4>
+    <p>Karen is an Ivy Tech student or a Purdue student.</p>
+    <details>
+      <summary>
+        Express using propositions: "Karen is an Ivy Tech student or a Purdue
+        student.".
+      </summary>
+      <div>
+        <p>Let KarenIvyStudent = Karen is an Ivy Tech student.</p>
+        <p>Let KarenPurdueStudent = Karen is a Purdue student.</p>
+        <p>KarenIvyStudent ∨ KarenPurdueStudent</p>
+      </div>
+    </details>
+
+    <h3 id="exclusive-or-xor-">Exclusive OR (XOR)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">P</th>
+          <th align="left">Q</th>
+          <th align="right">P ⊕ Q</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">True</td>
+          <td align="right">False</td>
+        </tr>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">False</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">True</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">False</td>
+          <td align="right">False</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Symbol</strong>: ⊕</p>
+    <p><strong>Python</strong>: doesn&#39;t exist</p>
+    <p>
+      <strong>Description</strong>: Evaluates to true if one and only one
+      proposition is true.
+    </p>
+    <p>
+      <strong>Used When</strong>: You hear the word &quot;either&quot;, or it is
+      implied in the context.
+    </p>
+    <h4 id="example">Example</h4>
+    <details>
+      <summary>
+        Express using propositions: "Ted either went to the store or the gym.".
+      </summary>
+      <div>
+        <p>Let P = Ted went to the store.</p>
+        <p>Let Q = Ted went to the gym.</p>
+        <p>P ⊕ Q</p>
+      </div>
+    </details>
+
+    <h3 id="conditional-implication-if-">Conditional / Implication (IF)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">P</th>
+          <th align="left">Q</th>
+          <th align="right">P → Q</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">True</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">False</td>
+          <td align="right">False</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">True</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">False</td>
+          <td align="right">True</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Symbol</strong>: → or ⇒</p>
+    <p><strong>Python</strong>: <code>if</code></p>
+    <p>
+      <strong>Description</strong>: Evaluates to true if a condition implies the
+      truth of another proposition (if P is true than Q must also be true).
+    </p>
+    <p>Read as &quot;P implies Q&quot; or &quot;If P, then Q&quot;.</p>
+    <p>
+      <strong>Used When</strong>: You hear the word &quot;if&quot; or
+      &quot;is&quot;.
+    </p>
+    <h4 id="example">Example</h4>
+    <details>
+      <summary>
+        Express using propositions: "If it is raining, then Bill uses an
+        umbrella."
+      </summary>
+      <div>
+        <p>Let P = It is raining.</p>
+        <p>Let Q = Bill uses an umbrella.</p>
+        <p>P → Q</p>
+      </div>
+    </details>
+
+    <h3 id="biconditional-iff-">Biconditional (IFF)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">P</th>
+          <th align="left">Q</th>
+          <th align="right">P ↔ Q</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">True</td>
+          <td align="right">True</td>
+        </tr>
+        <tr>
+          <td align="left">True</td>
+          <td align="left">False</td>
+          <td align="right">False</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">True</td>
+          <td align="right">False</td>
+        </tr>
+        <tr>
+          <td align="left">False</td>
+          <td align="left">False</td>
+          <td align="right">True</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Symbol</strong>: ↔ or ⇔</p>
+    <p><strong>Python</strong>: doesn&#39;t exist</p>
+    <p>
+      <strong>Description</strong>: Evaluates to true if both propositions
+      always have the same truth value. This implies that both propositions are
+      either true or false.
+    </p>
+    <p>
+      <strong>Used When</strong>: You hear the words &quot;if and only if&quot;.
+    </p>
+    <p>
+      <strong><em>Example</em></strong>
+    </p>
+    <p>Let P = John is alive. Let Q = John&#39;s heart is beating.</p>
+    <ul>
+      <li>John is alive if and only if John&#39;s heart is beating = P ↔ Q</li>
+    </ul>
+  </body>
+</html>

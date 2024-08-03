@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Grammar and Arithmetic</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Grammar and Arithmetic</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#grammar-and-arithmetic">Grammar and Arithmetic</a>
+        <ul>
+          <li><a href="#grammar-and-syntax">Grammar and Syntax</a></li>
+          <li><a href="#expressions">Expressions</a></li>
+          <li><a href="#statements">Statements</a></li>
+          <li><a href="#syntax-trees">Syntax Trees</a></li>
+          <li><a href="#comparisons-in-python">Comparisons in Python</a></li>
+          <li>
+            <a href="#logical-operators-in-python"
+              >Logical Operators in Python</a
+            >
+          </li>
+          <li>
+            <a href="#function-composition">Function Composition</a>
+            <ul>
+              <li>
+                <a href="#arithmetic-function-composition"
+                  >Arithmetic Function Composition</a
+                >
+              </li>
+              <li>
+                <a href="#boolean-function-composition"
+                  >Boolean Function Composition</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#for-the-homework">For the Homework</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="grammar-and-arithmetic">Grammar and Arithmetic</h1>
+    <figure>
+      <span>
+        <img src="https://imgs.xkcd.com/comics/code_quality_2x.png" style="" />
+      </span>
+    </figure>
+
+    <h2 id="grammar-and-syntax">Grammar and Syntax</h2>
+    <p>
+      We can explore how programming languages work by examining the basic
+      building blocks of code.
+    </p>
+    <p>
+      <strong>Grammar</strong> is the set of rules that defines the structure of
+      a language.
+    </p>
+    <p>
+      <strong>Syntax</strong> is the set of rules that defines how symbols can
+      be arranged to form valid code. It is a subset of grammar.
+    </p>
+    <p><em>Example</em></p>
+    <p>&quot;I went to the store last Saturday.&quot;</p>
+    <p>Expressions: &quot;(I) (went) (to the store) (last Saturday).&quot;</p>
+    <p>
+      How many ways can we rearrange the words to form a gramatically valid
+      sentence?
+    </p>
+    <p><em>Example</em></p>
+    <pre><code class="language-python">x = <span class="hljs-number">5</span> <span class="hljs-comment"># Synactically correct</span>
+<span class="hljs-number">5</span> = x <span class="hljs-comment"># Syntax error</span>
+</code></pre>
+    <h2 id="expressions">Expressions</h2>
+    <p>Expressions <strong>evaluate</strong> to a value.</p>
+    <ul>
+      <li>A valid unit of code that resolves to a value (MDN Web Docs)</li>
+      <li>
+        May assign a value to a variable, or it may simply evaluate to a value.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-number">3</span> - <span class="hljs-number">1</span>
+x + y
+f(x) / <span class="hljs-number">2</span>
+</code></pre>
+    <h2 id="statements">Statements</h2>
+    <p>Statements <strong>execute</strong> to do something.</p>
+    <ul>
+      <li>
+        A line of code commanding a task. Every program consists of a sequence
+        of statements. (MDN Web Docs)
+      </li>
+      <li>In python ends with a line break.</li>
+      <li>In other languages ends with a semicolon.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># All of the above, plus...</span>
+x = <span class="hljs-number">9</span>
+<span class="hljs-keyword">if</span> x &gt; y:
+print(<span class="hljs-string">'Test'</span>)
+<span class="hljs-keyword">return</span>
+</code></pre>
+    <h2 id="syntax-trees">Syntax Trees</h2>
+    <p>
+      A <strong>syntax tree</strong> is a visual representation of the syntax of
+      a programming language for some expression.
+    </p>
+    <pre><code>Sytax tree for: (7 + 3) * (5 - 2)
+</code></pre>
+    <figure>
+      <span>
+        <img src="images/parse_tree.png" style="" />
+      </span>
+    </figure>
+
+    <p><em>Expanding Function Calls</em></p>
+    <pre><code>Given f(x) = x / 2
+Find the syntax tree for: 10 * f(10) + 3 
+</code></pre>
+    <p><em>More examples</em></p>
+    <pre><code>1) 5 + 3 * 2
+
+2) (5 + 3) * 2 
+
+3)  10 / 2 / 2 - 1
+
+4)  10 / (2 / 2) - 1
+
+5)  Given f(x) = x * 2 + 2
+    Find: f(2) * f(3)
+</code></pre>
+    <h2 id="comparisons-in-python">Comparisons in Python</h2>
+    <p>
+      A comparison always returns a boolean value, either <code>True</code> or
+      <code>False</code>.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Operator</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>==</td>
+          <td>Equal to</td>
+        </tr>
+        <tr>
+          <td>!=</td>
+          <td>Not equal to</td>
+        </tr>
+        <tr>
+          <td>&lt;</td>
+          <td>Less than</td>
+        </tr>
+        <tr>
+          <td>&gt;</td>
+          <td>Greater than</td>
+        </tr>
+        <tr>
+          <td>&lt;=</td>
+          <td>Less than or equal to</td>
+        </tr>
+        <tr>
+          <td>&gt;=</td>
+          <td>Greater than or equal to</td>
+        </tr>
+      </tbody>
+    </table>
+    <pre><code class="language-python">print(<span class="hljs-number">5</span> == <span class="hljs-number">5</span>) <span class="hljs-comment"># True</span>
+print(<span class="hljs-number">5</span> != <span class="hljs-number">5</span>) <span class="hljs-comment"># False</span>
+</code></pre>
+    <h2 id="logical-operators-in-python">Logical Operators in Python</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Operator</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>and</td>
+          <td>conjunction</td>
+        </tr>
+        <tr>
+          <td>or</td>
+          <td>disjunction</td>
+        </tr>
+        <tr>
+          <td>not</td>
+          <td>negation</td>
+        </tr>
+      </tbody>
+    </table>
+    <pre><code class="language-python">print( <span class="hljs-literal">True</span> <span class="hljs-keyword">and</span> <span class="hljs-literal">False</span> ) <span class="hljs-comment"># False</span>
+print( <span class="hljs-literal">True</span> <span class="hljs-keyword">or</span> <span class="hljs-literal">False</span> ) <span class="hljs-comment"># True</span>
+print( <span class="hljs-keyword">not</span> <span class="hljs-literal">True</span> ) <span class="hljs-comment"># False</span>
+</code></pre>
+    <h2 id="function-composition">Function Composition</h2>
+    <p>
+      <strong>Function Composition</strong> is the process of combining two or
+      more functions to produce a new function.
+    </p>
+    <h3 id="arithmetic-function-composition">
+      Arithmetic Function Composition
+    </h3>
+    <pre><code>f(x) = x + 1
+g(x) = x * 2
+</code></pre>
+    <p>An example of function composition is <code>f(g(x))</code>.</p>
+    <p>
+      Evaluate <code>f( g(3) )</code> by plugging in <code>3</code> for
+      <code>x</code>:
+    </p>
+    <pre><code>f( g(3) )
+  = f(3 * 2)
+  = f(6)
+  = 6 + 1
+  = 7
+</code></pre>
+    <p><em>More examples</em></p>
+    <pre><code>1) g( f(3) )
+
+2) g( f(2) + 4 )
+
+3) f( f(2) )
+
+4) f( f( f(6) + 1 ) + 2 ) + 3
+</code></pre>
+    <h3 id="boolean-function-composition">Boolean Function Composition</h3>
+    <pre><code>f(x, y) = x and y
+g(x, y) = x or y
+</code></pre>
+    <p>An example of function composition is <code>f(g(x, y), x)</code>.</p>
+    <p>
+      Evaluate <code>f( g(True, False), True)</code> by plugging the values into
+      the functions:
+    </p>
+    <pre><code>f( g(True, False), True)
+  = f(True or False, True)
+  = f(True, True)
+  = True and True
+  = True
+</code></pre>
+    <p><em>More examples</em></p>
+    <pre><code>1) g( f(True, False), False)
+
+2) f( f(True, False), False )
+
+3) g( f(True, False), g(True, True) )
+</code></pre>
+    <h2 id="for-the-homework">For the Homework</h2>
+    <ul>
+      <li>draw.io to make syntax trees</li>
+    </ul>
+  </body>
+</html>

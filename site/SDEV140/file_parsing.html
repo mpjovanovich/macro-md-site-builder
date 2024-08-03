@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - File Parsing</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">File Parsing</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#file-parsing">File Parsing</a>
+        <ul>
+          <li><a href="#validating-data">Validating Data</a></li>
+          <li><a href="#cleaning-data">Cleaning Data</a></li>
+          <li>
+            <a href="#example-manually-parsing-a-csv-file"
+              >Example: Manually Parsing a CSV File</a
+            >
+            <ul>
+              <li><a href="#scenario">Scenario</a></li>
+              <li><a href="#useful-functions">Useful Functions</a></li>
+            </ul>
+          </li>
+          <li><a href="#third-party-libraries">Third Party Libraries</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="file-parsing">File Parsing</h1>
+    <p>
+      <strong>File parsing</strong> is the process of extracting and
+      transforming data from a file into a usable format.
+    </p>
+    <p>We should not trust data in a file to conform to our expectations.</p>
+    <h2 id="validating-data">Validating Data</h2>
+    <p>
+      <strong>Data validation</strong> is the process of ensuring that data is
+      correct and useful.
+    </p>
+    <ul>
+      <li>Check for empty lines</li>
+      <li>Check for missing fields</li>
+      <li>Check data types</li>
+      <li>Check data ranges</li>
+      <li>Check for invalid characters</li>
+      <li>Check for bad data formats</li>
+    </ul>
+    <h2 id="cleaning-data">Cleaning Data</h2>
+    <p>Data should be validated and cleaned.</p>
+    <ul>
+      <li>
+        <strong>Trim</strong> / <strong>strip</strong> whitespace
+        <ul>
+          <li>
+            Remove tabs, spaces, and newlines from the beginning and end of a
+            string
+          </li>
+          <li>
+            These terms are used interchangeably depending on the programming
+            language
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Normalize</strong> / <strong>standardize</strong> data
+        <ul>
+          <li>Convert data to a consistent format</li>
+          <li>
+            For example,
+            <ul>
+              <li>
+                Convert all text to lowercase for case-insensitive comparisons
+              </li>
+              <li>Convert dates to a consistent format</li>
+              <li>...</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Remove <strong>duplicates</strong></li>
+    </ul>
+    <h2 id="example-manually-parsing-a-csv-file">
+      Example: Manually Parsing a CSV File
+    </h2>
+    <p>Suppose we have a CSV file with the following data:</p>
+    <h3 id="scenario">Scenario</h3>
+    <p>Suppose we have a CSV file with the following data:</p>
+    <pre><code class="language-csv">Name,Email,Phone
+Alice,alice@mail.ez,555-555-1234
+Bob,bob@mail,555-555-5678
+Alice,alice@mail.ez,555-555-1234
+Jane, jane@mail.ez,555-555-9012
+Tom,tom@mail.ez,
+
+Zane,zane@mail.ez,555-3456
+</code></pre>
+    <p>What are some potential issues with this data?</p>
+    <h3 id="useful-functions">Useful Functions</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>strip()</code></td>
+          <td>Remove whitespace from the beginning and end of a string</td>
+        </tr>
+        <tr>
+          <td><code>split()</code></td>
+          <td>Split a string into a list of strings using a delimiter</td>
+        </tr>
+        <tr>
+          <td><code>len()</code></td>
+          <td>Get the length of a string or list</td>
+        </tr>
+        <tr>
+          <td><code>contains()</code></td>
+          <td>Check if a string contains a substring</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="third-party-libraries">Third Party Libraries</h2>
+    <p>
+      Many programming languages have third-party libraries that can help with
+      file parsing.
+    </p>
+    <ul>
+      <li>
+        Python: <code>csv</code>, <code>pandas</code>, <code>openpyxl</code>,
+        <code>xlrd</code>...
+      </li>
+    </ul>
+    <p>No need to reinvent the wheel. Use these libraries when appropriate.</p>
+  </body>
+</html>

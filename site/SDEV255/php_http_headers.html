@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - HTTP Headers</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - HTTP Headers</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#http-headers">HTTP Headers</a>
+        <ul>
+          <li>
+            <a href="#common-http-headers-for-php"
+              >Common HTTP Headers for PHP</a
+            >
+          </li>
+          <li>
+            <a href="#viewing-in-developer-tools">Viewing in Developer Tools</a>
+          </li>
+          <li>
+            <a href="#setting-headers-with-php">Setting Headers with PHP</a>
+            <ul>
+              <li><a href="#example">Example</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="http-headers">HTTP Headers</h1>
+    <ul>
+      <li>Sent by the server to the client with the response.</li>
+      <li>Server sets default headers.</li>
+      <li>
+        See
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers"
+          >HTTP response headers</a
+        >
+      </li>
+    </ul>
+    <h2 id="common-http-headers-for-php">Common HTTP Headers for PHP</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Header</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Content-Type</td>
+          <td>The MIME type of the content.</td>
+        </tr>
+        <tr>
+          <td>Content-Disposition</td>
+          <td>How the content should be displayed.</td>
+        </tr>
+        <tr>
+          <td>Content-Length</td>
+          <td>The length of the content in bytes.</td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td>The URL to redirect to.</td>
+        </tr>
+        <tr>
+          <td>Set-Cookie</td>
+          <td>Set a cookie.</td>
+        </tr>
+        <tr>
+          <td>Expires</td>
+          <td>The date/time the content expires.</td>
+        </tr>
+        <tr>
+          <td>Cache-Control</td>
+          <td>How the content should be cached.</td>
+        </tr>
+        <tr>
+          <td>Pragma</td>
+          <td>How the content should be cached (backwards compatibility).</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="viewing-in-developer-tools">Viewing in Developer Tools</h2>
+    <ul>
+      <li>
+        In your browser, open Developer Tools (usually F12 or use the menu).
+      </li>
+      <li>Click on the Network tab.</li>
+      <li>Click on a request to view the headers.</li>
+    </ul>
+    <figure>
+      <span>
+        <img src="images/dev_tools_headers.png" style="" />
+      </span>
+      <figcaption>
+        <p>Dev Tools</p>
+      </figcaption>
+    </figure>
+
+    <h2 id="setting-headers-with-php">Setting Headers with PHP</h2>
+    <ul>
+      <li>Use the <code>header()</code> function.</li>
+      <li>Must be called before any output is sent to the client.</li>
+      <li>
+        See
+        <a href="https://www.php.net/manual/en/function.header.php">header()</a>
+        in the PHP manual.
+      </li>
+    </ul>
+    <h3 id="example">Example</h3>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+header(<span class="hljs-string">'Content-Type: text/html; charset=utf-8'</span>);
+header(<span class="hljs-string">'Cache-Control: no-cache, no-store, must-revalidate'</span>);
+header(<span class="hljs-string">'Expires: '</span> . gmdate(<span class="hljs-string">'D, d M Y H:i:s \G\M\T'</span>, time() + <span class="hljs-number">3600</span>)); <span class="hljs-comment">// Expires in one hour</span>
+header(<span class="hljs-string">'Pragma: no-cache'</span>);
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+  </body>
+</html>

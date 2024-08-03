@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - Intro to JavaScript</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">Intro to JavaScript</a>
+    </h1>
+    <ul>
+      <li><a href="#javascript">JavaScript?</a></li>
+      <li>
+        <a href="#where-do-i-write-javascript">Where do I Write JavaScript?</a>
+      </li>
+      <li>
+        <a href="#the-console-and-debugging">The Console and Debugging</a>
+        <ul>
+          <li>
+            <a href="#developer-tools-and-the-console"
+              >Developer Tools and the Console</a
+            >
+            <ul>
+              <li><a href="#consolelog">console.log()</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#syntax-and-basic-concepts">Syntax and Basic Concepts</a>
+        <ul>
+          <li><a href="#comments">Comments</a></li>
+          <li><a href="#semicolons">Semicolons</a></li>
+          <li><a href="#curly-braces">Curly Braces</a></li>
+          <li><a href="#conventions">Conventions</a></li>
+          <li>
+            <a href="#variables-and-constants">Variables and Constants</a>
+            <ul>
+              <li><a href="#data-types">Data Types</a></li>
+              <li>
+                <a href="#declaration-and-scope">Declaration and Scope</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#strings">Strings</a>
+            <ul>
+              <li><a href="#concatenation">Concatenation</a></li>
+              <li><a href="#template-literals">Template Literals</a></li>
+            </ul>
+          </li>
+          <li><a href="#arrays">Arrays</a></li>
+          <li><a href="#if-statements">If Statements</a></li>
+          <li>
+            <a href="#loops">Loops</a>
+            <ul>
+              <li><a href="#while">While</a></li>
+              <li><a href="#for">For</a></li>
+              <li><a href="#foreach">Foreach</a></li>
+            </ul>
+          </li>
+          <li><a href="#functions">Functions</a></li>
+        </ul>
+      </li>
+    </ul>
+    <figure>
+      <span
+        ><img
+          src="images/javascript_rotten_child.png"
+          alt="Figure"
+          style="width: 40%; height: auto"
+      /></span>
+    </figure>
+    <h2 id="developer-tools-and-the-console">
+      Developer Tools and the Console
+    </h2>
+    <p><strong>Developer tools</strong> in browser, hit <code>F12</code>.</p>
+    <p>For playground and exploration:</p>
+    <ul>
+      <li>Go to &quot;Console&quot;</li>
+      <li>Switch to multiline editor mode (book-looking icon)</li>
+      <li>
+        You will need to refresh the page to reset any existing variables.
+      </li>
+    </ul>
+    <p>To debug existing code:</p>
+    <ul>
+      <li>Go to &quot;Debugger&quot;</li>
+      <li>Set breakpoints and step through as needed.</li>
+    </ul>
+    <h3 id="console-log-">console.log()</h3>
+    <p>Use <code>console.log()</code> to print values to the console.</p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> myVariable = <span class="hljs-string">"Hello, world!"</span>;
+<span class="hljs-built_in">console</span>.log(myVariable);
+</code></pre>
+    <h1 id="syntax-and-basic-concepts">Syntax and Basic Concepts</h1>
+    <h2 id="comments">Comments</h2>
+    <p>Code that is put in comments will not be executed.</p>
+    <p>
+      Useful both for documentation and debugging, &quot;commenting out
+      code&quot;.
+    </p>
+    <pre><code class="language-javascript"><span class="hljs-comment">/*
+This is a multi-line comment.
+So many lines!
+Whoa!
+*/</span>
+
+<span class="hljs-comment">// This is a single-line comment.</span>
+</code></pre>
+    <h2 id="semicolons">Semicolons</h2>
+    <figure>
+      <span
+        ><img
+          src="https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Java-Jokes-768x935.jpg"
+          alt="Figure"
+          style="width: 40%; height: auto"
+      /></span>
+    </figure>
+    <p>
+      Javascript is a semicolon-terminated language. They are required after
+      every statement.
+    </p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> y = <span class="hljs-number">6</span>;
+<span class="hljs-keyword">let</span> z = x + y;
+</code></pre>
+    <p>
+      But... if you don&#39;t use them JS will try to add them for you when the
+      code runs.
+    </p>
+    <p>This is called <strong>automatic semicolon insertion (ASI)</strong>.</p>
+    <p>
+      <strong><em>Prof note:</em></strong> my code editor (VS Code) will not let
+      me omit semicolons in the notes, so we&#39;ll demo this without semicolons
+      in class.
+    </p>
+    <p>
+      <strong>Takeaway</strong>: Always use semicolons. Don&#39;t rely on ASI.
+    </p>
+    <h2 id="curly-braces">Curly Braces</h2>
+    <p>JavaScript uses curly braces to denote blocks of code.</p>
+    <p>(Unlike Python, which uses indentation.)</p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// This is an arbitrary block of code just to prove the point.</span>
+<span class="hljs-comment">// We're normally talking about if statements, loops, functions, etc.</span>
+{
+  <span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;
+}
+print(x); <span class="hljs-comment">// Error: x is not defined</span>
+</code></pre>
+    <h2 id="conventions">Conventions</h2>
+    <p>
+      See
+      <a href="https://google.github.io/styleguide/jsguide.html"
+        >Google&#39;s JavaScript Style Guide</a
+      >
+    </p>
+    <p>No hard rules, but there are some common conventions. Usually:</p>
+    <ul>
+      <li>camelCase for variable and function names.</li>
+      <li>All caps for constants.</li>
+      <li>Two spaces for indentation.</li>
+      <li>
+        The <code>{</code> goes on the same line as the block that it belongs
+        with.
+      </li>
+      <li>80 character line limit before wrapping.</li>
+    </ul>
+    <p>
+      A <strong>linter</strong> is a tool that analyzes your code and reports
+      any errors or warnings.
+    </p>
+    <p>Consider using a linter to help you follow conventions.</p>
+    <h2 id="variables-and-constants">Variables and Constants</h2>
+    <h3 id="data-types">Data Types</h3>
+    <p>JavaScript is a dynamically typed language.</p>
+    <ul>
+      <li>Don&#39;t declare variable types.</li>
+      <li>Variables can be reassigned to different data types.</li>
+    </ul>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;
+x = <span class="hljs-string">"Hello, world!"</span>;
+</code></pre>
+    <p>Some common data types:</p>
+    <ul>
+      <li><code>string</code></li>
+      <li><code>number</code></li>
+      <li><code>boolean</code></li>
+      <li><code>undefined</code></li>
+      <li><code>object</code></li>
+    </ul>
+    <h3 id="declaration-and-scope">Declaration and Scope</h3>
+    <p>
+      In modern JS, variables are declared with <code>let</code> or
+      <code>const</code>.
+    </p>
+    <ul>
+      <li><code>const</code> is used for values that will not change.</li>
+      <li><code>let</code> is used for values that will change.</li>
+    </ul>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> PI = <span class="hljs-number">3.14</span>;
+<span class="hljs-keyword">let</span> r = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> area = PI * r * r;
+</code></pre>
+    <p>
+      In older JS you may see <code>var</code> used instead of <code>let</code>.
+      <code>var</code> is function-scoped, while <code>let</code> is
+      block-scoped.
+    </p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">var</span> x = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>;
+}
+<span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// 10</span>
+</code></pre>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;
+}
+<span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// 5</span>
+</code></pre>
+    <p>
+      <strong>Takeaway:</strong> Use <code>const</code> for values that will not
+      change, and <code>let</code> for values that will change.
+    </p>
+    <h2 id="strings">Strings</h2>
+    <h3 id="concatenation">Concatenation</h3>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> firstName = <span class="hljs-string">"John"</span>;
+<span class="hljs-keyword">let</span> lastName = <span class="hljs-string">"Doe"</span>;
+<span class="hljs-keyword">let</span> fullName = firstName + <span class="hljs-string">" "</span> + lastName;
+</code></pre>
+    <h3 id="template-literals">Template Literals</h3>
+    <p>
+      <strong>Template literals</strong> are string literals that allow embedded
+      expressions via interpolation.
+    </p>
+    <p>
+      <strong>String interpolation</strong> is where a string literal contains
+      one or more placeholders which can have expressions embedded in them.
+    </p>
+    <p>
+      Use backticks, dollar sign, and curly braces to interpolate variables into
+      strings.
+    </p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> firstName = <span class="hljs-string">"John"</span>;
+<span class="hljs-keyword">let</span> lastName = <span class="hljs-string">"Doe"</span>;
+<span class="hljs-keyword">let</span> fullName = <span class="hljs-string">`<span class="hljs-subst">${firstName}</span> <span class="hljs-subst">${lastName}</span>`</span>;
+</code></pre>
+    <p>We can put any valid JavaScript expression inside the curly braces.</p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> price = <span class="hljs-number">5.99</span>;
+<span class="hljs-keyword">let</span> quantity = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> total = <span class="hljs-string">`The total is $<span class="hljs-subst">${price * quantity}</span>`</span>;
+</code></pre>
+    <h2 id="arrays">Arrays</h2>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> myArray = [<span class="hljs-string">"Bingo"</span>, <span class="hljs-string">"Rolly"</span>, <span class="hljs-string">"Spot"</span>];
+</code></pre>
+    <h2 id="if-statements">If Statements</h2>
+    <p>If, else if, else:</p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">if</span> (condition1) {
+  <span class="hljs-comment">// code to be executed if condition1 is true</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (condition2) {
+  <span class="hljs-comment">// code to be executed if condition1 is false and condition2 is true</span>
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">// code to be executed if both condition1 and condition2 are false</span>
+}
+</code></pre>
+    <h2 id="loops">Loops</h2>
+    <h3 id="while">While</h3>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) {
+  <span class="hljs-built_in">console</span>.log(i);
+  i++;
+}
+</code></pre>
+    <h3 id="for">For</h3>
+    <pre><code class="language-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+  <span class="hljs-built_in">console</span>.log(i);
+}
+</code></pre>
+    <h3 id="foreach">Foreach</h3>
+    <pre><code class="language-javascript"><span class="hljs-keyword">let</span> myArray = [<span class="hljs-string">"Bingo"</span>, <span class="hljs-string">"Rolly"</span>, <span class="hljs-string">"Spot"</span>];
+myArray.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(item);
+});
+</code></pre>
+    <h2 id="functions">Functions</h2>
+    <p>Basic function syntax:</p>
+    <pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// code to be executed</span>
+}
+</code></pre>
+    <p>With arguments:</p>
+    <pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params">arg1, arg2</span>) </span>{
+  <span class="hljs-comment">// code to be executed</span>
+}
+</code></pre>
+    <p>With return value:</p>
+    <pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params">arg1, arg2</span>) </span>{
+  returnValue = arg1 + arg2;
+  <span class="hljs-keyword">return</span> returnValue;
+}
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Set Theory</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Set Theory</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#set-theory">Set Theory</a>
+        <ul>
+          <li><a href="#definitions">Definitions</a></li>
+          <li><a href="#notation">Notation</a></li>
+          <li><a href="#subsets-and-supersets">Subsets and Supersets</a></li>
+          <li><a href="#proper-subsets">Proper Subsets</a></li>
+          <li>
+            <a href="#venn-diagrams">Venn Diagrams</a>
+            <ul>
+              <li><a href="#intersection">Intersection</a></li>
+              <li><a href="#union">Union</a></li>
+              <li><a href="#complement">Complement</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#quizzes-and-walkthroughs">Quizzes and Walkthroughs</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <blockquote>
+      <p>
+        Russell&#39;s paradox: consider &quot;the set of all sets that are not
+        members of themselves&quot;, which leads to a contradiction since it
+        must be a member of itself and not a member of itself.
+      </p>
+    </blockquote>
+    <h1 id="set-theory">Set Theory</h1>
+    <h2 id="definitions">Definitions</h2>
+    <ul>
+      <li>
+        A <strong>set</strong> is a collection of distinct, unordered
+        <strong>elements</strong>.
+        <ul>
+          <li>
+            <code>{ a, b, a, c }</code> is not a set because it contains
+            duplicates.
+          </li>
+          <li>
+            <code>{ a, b, c }</code> is the same as
+            <code>{ c, b, a }</code> because order doesn&#39;t matter.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="notation">Notation</h2>
+    <ul>
+      <li>
+        Sets are usually denoted with capital letters.
+        <ul>
+          <li><code>A = { a, b, c }</code></li>
+        </ul>
+      </li>
+      <li>
+        A set that contains no elements is called the
+        <strong>empty set</strong> or the <strong>null set</strong>.
+        <ul>
+          <li><code>{}</code></li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="subsets-and-supersets">Subsets and Supersets</h2>
+    <ul>
+      <li>
+        A set A is a <strong>subset</strong> of a set B if every element of A is
+        also an element of B.
+        <ul>
+          <li><code>A = { a, b, c }</code></li>
+          <li><code>B = { a, b, c, d, e }</code></li>
+          <li>Therefore A is a subset of B.</li>
+        </ul>
+      </li>
+      <li>
+        A set B is a <strong>superset</strong> of a set A if every element of A
+        is also an element of B.
+        <ul>
+          <li>This is the inverse of a subset relationship.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Subset / superset example:</p>
+    <ul>
+      <li>Dog is subset of...</li>
+      <li>Canine is subset of...</li>
+      <li>Mammal is subset of...</li>
+      <li>Animal</li>
+    </ul>
+    <p>Likewise:</p>
+    <ul>
+      <li>Animal is superset of...</li>
+      <li>Mammal is superset of...</li>
+      <li>Canine is superset of...</li>
+      <li>Dog</li>
+    </ul>
+    <h2 id="proper-subsets">Proper Subsets</h2>
+    <ul>
+      <li>
+        Oddly enough, equality is considered a subset relationship.
+        <ul>
+          <li><code>A = { a, b, c }</code></li>
+          <li><code>B = { a, b, c }</code></li>
+          <li>Therefore A is a subset of B.</li>
+        </ul>
+      </li>
+      <li>
+        A set A is a <strong>proper subset</strong> of a set B if every element
+        of A is also an element of B, but A and B are not equal.
+        <ul>
+          <li><code>A = { a, b, c }</code></li>
+          <li><code>B = { a, b, c, d, e }</code></li>
+          <li>Therefore A is a proper subset of B.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="venn-diagrams">Venn Diagrams</h2>
+    <p>
+      Logical relationships between sets can be represented visually using Venn
+      diagrams.
+    </p>
+    <p><img src="images/venn1.png" alt="Venn diagram" /></p>
+    <h3 id="intersection">Intersection</h3>
+    <ul>
+      <li>
+        The <strong>intersection</strong> of two sets is the set of elements
+        that are in both sets.
+      </li>
+      <li>Symbol: <code>∩</code></li>
+      <li>
+        Logical AND
+        <ul>
+          <li><code>A = { a, b, c }</code></li>
+          <li><code>B = { a, b, c, d, e }</code></li>
+          <li><code>A ∩ B = { a, b, c }</code></li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <p>Venn...</p>
+    <h3 id="union">Union</h3>
+    <ul>
+      <li>
+        The <strong>union</strong> of two sets is the set of elements that are
+        in either set.
+      </li>
+      <li>Symbol: <code>∪</code></li>
+      <li>
+        Logical OR
+        <ul>
+          <li><code>A = { a, b, c }</code></li>
+          <li><code>B = { a, b, c, d, e }</code></li>
+          <li><code>A ∪ B = { a, b, c, d, e }</code></li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <p>Venn...</p>
+    <h3 id="complement">Complement</h3>
+    <ul>
+      <li>
+        The <strong>complement</strong> of a set is the set of elements that are
+        not in the set within the context of a universal set.
+      </li>
+      <li>Symbol: <code>&#39;</code></li>
+      <li>
+        Logical NOT
+        <ul>
+          <li>Given a universal set <code>U = { a, b, c, d, e }</code></li>
+          <li><code>A = { a, b, c }</code></li>
+          <li><code>A&#39; = { d, e }</code></li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <p>Venn...</p>
+    <h2 id="quizzes-and-walkthroughs">Quizzes and Walkthroughs</h2>
+    <p class="demo">Demo:</p>
+
+    <p>Translating from Venn to set notation, and vice versa.</p>
+    <p><em>Quiz 1</em></p>
+    <details>
+      <summary>
+        Solve:
+        <ul>
+          <li>A = { dog, oak, cherry, red, cow }</li>
+          <li>B = { oak, dog, cow, elm, maple, goose }</li>
+          <li>C = { door, silk }</li>
+          <li>Find: C ∩ A ∪ B</li>
+        </ul>
+      </summary>
+      <div>
+        <ul>
+          <li>
+            { door, silk } ∩ { dog, oak, cherry, red, cow } ) ∪ { oak, dog, cow,
+            elm, maple, goose }
+          </li>
+          <li>{ } ∪ { oak, dog, cow, elm, maple, goose }</li>
+          <li>{ oak, dog, cow, elm, maple, goose }</li>
+        </ul>
+      </div>
+    </details>
+
+    <p>Let&#39;s Venn this - does it line up?</p>
+    <p><em>Quiz 2</em></p>
+    <p><img src="images/set_quiz.png" alt="Quiz 2" /></p>
+    <details>
+      <summary>
+        Create an expression that represents the area outlined in red.
+      </summary>
+      <div>
+        <p>(A ∨ B) ∧ ¬C</p>
+        <p>or with set notation:</p>
+        <p>(A ∪ B) ∩ C'</p>
+      </div>
+    </details>
+
+    <p>Let&#39;s set notation this - does it line up?</p>
+  </body>
+</html>

@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Data Modeling and Mapping</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Data Modeling and Mapping</a>
+    </h1>
+    <blockquote>
+      <p>
+        &quot;A database is not just a collection of data, it&#39;s a collection
+        of answers to questions that we haven&#39;t yet thought to ask&quot;
+        -Fred Brooks, former IBM Fellow
+      </p>
+    </blockquote>
+    <ul>
+      <li>
+        <a href="#data-modeling">Data Modeling</a>
+        <ul>
+          <li>
+            <a href="#database">Database</a>
+            <ul>
+              <li>
+                <a href="#entity-relationship-diagram-erd"
+                  >Entity-Relationship Diagram (ERD)</a
+                >
+                <ul>
+                  <li><a href="#cardinality">Cardinality</a></li>
+                  <li>
+                    <a href="#crows-foot-notation">Crow&#39;s Foot Notation</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#software-application">Software Application</a>
+            <ul>
+              <li><a href="#class-diagram">Class Diagram</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#object-relational-mapping-orm"
+              >Object-Relational Mapping (ORM)</a
+            >
+            <ul>
+              <li>
+                <a href="#case-studies">Case Studies</a>
+                <ul>
+                  <li><a href="#example-1">Example 1</a></li>
+                  <li><a href="#example-2">Example 2</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="data-modeling">Data Modeling</h1>
+    <p>
+      <strong>Data models</strong> are used to define and organize structured
+      data and interfaces within a software system.
+    </p>
+    <p>This can be in the context of:</p>
+    <ul>
+      <li>
+        Database
+        <ul>
+          <li>Tables</li>
+          <li>Columns</li>
+          <li>Relationships</li>
+        </ul>
+      </li>
+      <li>
+        Software application
+        <ul>
+          <li>API</li>
+          <li>User interface</li>
+        </ul>
+      </li>
+      <li>
+        Business process (e.g. workflow)
+        <ul>
+          <li>Data exchange format</li>
+        </ul>
+      </li>
+      <li>
+        System architecture (e.g. network)
+        <ul>
+          <li>Data flow</li>
+          <li>Data storage components</li>
+          <li>Data processing components</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      In this section we will focus on the interface between a database and a
+      software application.
+    </p>
+    <h2 id="database">Database</h2>
+    <h3 id="entity-relationship-diagram-erd-">
+      Entity-Relationship Diagram (ERD)
+    </h3>
+    <p><img src="images/erd.png" alt="ERD" /></p>
+    <ul>
+      <li>
+        Used to model relationships between entities <em>in a database</em>.
+      </li>
+      <li>Entities are represented as tables.</li>
+    </ul>
+    <h4 id="cardinality">Cardinality</h4>
+    <p>
+      <strong>Cardinality</strong> describes the relationship between entities.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Cardinality</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1:1</td>
+          <td>One-to-one</td>
+        </tr>
+        <tr>
+          <td>1:N</td>
+          <td>One-to-many</td>
+        </tr>
+        <tr>
+          <td>M:N</td>
+          <td>Many-to-many</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>
+        1:1 relationship
+        <ul>
+          <li>
+            Zero or one instance of entity A can be associated with zero or one
+            instance of entity B.
+          </li>
+          <li>
+            Zero or one instance of entity A can be associated with zero or one
+            instance of entity A.
+          </li>
+          <li>
+            E.g.:
+            <ul>
+              <li>One person has one passport.</li>
+              <li>One passport belongs to one person.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        1:N relationship
+        <ul>
+          <li>
+            For one instance of entity A there exists zero to many instances of
+            entity B.
+          </li>
+          <li>
+            For one instance of entity B there exists zero or one instance of
+            entity A.
+          </li>
+          <li>
+            E.g.:
+            <ul>
+              <li>One department has many employees.</li>
+              <li>One employee belongs to one department.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        M:N relationship
+        <ul>
+          <li>
+            For one instance of entity A there exists zero to many instances of
+            entity B.
+          </li>
+          <li>
+            For one instance of entity B there exists zero to many instances of
+            entity A.
+          </li>
+          <li>
+            E.g.:
+            <ul>
+              <li>One student can take many courses.</li>
+              <li>One course can have many students.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="crow-s-foot-notation">Crow's Foot Notation</h4>
+    <p>
+      <strong>Crow&#39;s Foot Notation</strong> is a visual representation of
+      cardinality.
+    </p>
+    <figure>
+      <span
+        ><img
+          src="images/crows_feet.png"
+          alt="Figure"
+          style="width: 90%; height: auto"
+      /></span>
+    </figure>
+    <p class="demo">Exercise:</p>
+
+    <p>
+      Use Crow&#39;s Foot Notation to model some of the above relationships.
+    </p>
+    <h2 id="software-application">Software Application</h2>
+    <h3 id="class-diagram">Class Diagram</h3>
+    <figure>
+      <span
+        ><img
+          src="https://www.drawio.com/assets/img/blog/class-diagram-example.png"
+          alt="Figure"
+          style="width: 100%; height: auto"
+      /></span>
+    </figure>
+    <p>Shows:</p>
+    <ul>
+      <li>Classes in a system</li>
+      <li>Attributes and methods of classes</li>
+      <li>Relationships between classes</li>
+    </ul>
+    <h2 id="object-relational-mapping-orm-">Object-Relational Mapping (ORM)</h2>
+    <p>
+      <strong>Object-Relational Mapping (ORM)</strong> is a programming
+      technique that converts data between incompatible type systems in
+      object-oriented programming languages.
+    </p>
+    <p>
+      Most often used to map a relational database to an object-oriented
+      programming language.
+    </p>
+    <br />
+
+    <p><em>Typical case, retrieval:</em></p>
+    <ul>
+      <li>Software application queries a database.</li>
+      <li>Database returns data in a tabular format.</li>
+      <li>
+        ORM converts this data into objects that can be used in the application.
+      </li>
+    </ul>
+    <br />
+
+    <p><em>Typical case, storage:</em></p>
+    <ul>
+      <li>Software application creates or updates an object.</li>
+      <li>
+        ORM converts this object into a format that can be stored in a database.
+      </li>
+      <li>Database stores this data in a tabular format.</li>
+    </ul>
+    <h3 id="case-studies">Case Studies</h3>
+    <h4 id="example-1">Example 1</h4>
+    <p>Simple one-to-one mapping for each field.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Table.Field</th>
+          <th>Object.Attribute</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Person.id</td>
+          <td>Person.id</td>
+        </tr>
+        <tr>
+          <td>Person.first_name</td>
+          <td>Person.first_name</td>
+        </tr>
+        <tr>
+          <td>Person.age</td>
+          <td>Person.age</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="example-2">Example 2</h4>
+    <p>
+      Each person can have multiple addresses; e.g. shipping, billing, home,
+      work.
+    </p>
+    <p>Person class has a dictionary of addresses - one per type.</p>
+    <br />
+
+    <p class="demo">Walkthrough:</p>
+
+    <p>Draw ERD and class diagram for the following entities.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Table.Field</th>
+          <th>Object.Attribute</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Person.id</td>
+          <td>Person.id</td>
+        </tr>
+        <tr>
+          <td>Person.first_name</td>
+          <td>Person.first_name</td>
+        </tr>
+        <tr>
+          <td>Person.age</td>
+          <td>Person.age</td>
+        </tr>
+        <tr>
+          <td>NA</td>
+          <td>Person.addresses</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Table.Field</th>
+          <th>Object.Attribute</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PersonAddress.id</td>
+          <td>PersonAddress.id</td>
+        </tr>
+        <tr>
+          <td>PersonAddress.type</td>
+          <td>PersonAddress.type</td>
+        </tr>
+        <tr>
+          <td>PersonAddress.person_id</td>
+          <td>NA</td>
+        </tr>
+        <tr>
+          <td>PersonAddress.address_id</td>
+          <td>NA</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Table.Field</th>
+          <th>Object.Attribute</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Address.id</td>
+          <td>Address.id</td>
+        </tr>
+        <tr>
+          <td>Address.street</td>
+          <td>Address.street</td>
+        </tr>
+        <tr>
+          <td>Address.city</td>
+          <td>Address.city</td>
+        </tr>
+        <tr>
+          <td>Address.zip</td>
+          <td>Address.zip</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="demo">Demo:</p>
+
+    <p>
+      <a href="https://github.com/mpjovanovich/python_ocr_demo"
+        >Python OCR Demo</a
+      >
+    </p>
+  </body>
+</html>

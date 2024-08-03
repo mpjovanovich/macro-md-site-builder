@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Logic Gates</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Logic Gates</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#logic-gates">Logic Gates</a>
+        <ul>
+          <li><a href="#foundations">Foundations</a></li>
+          <li><a href="#basic-gates">Basic Gates</a></li>
+          <li><a href="#operations-with-gates">Operations with Gates</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="logic-gates">Logic Gates</h1>
+    <p>
+      For an excellent logic gate sandbox, see:
+      <a href="https://logic.ly/demo">Logic.ly</a>.
+    </p>
+    <h2 id="foundations">Foundations</h2>
+    <ul>
+      <li>
+        Computers recognize only two states, based on the presence or absence of
+        an electrical signal.
+        <ul>
+          <li>High voltage = 1 = true</li>
+          <li>Low voltage = 0 = false</li>
+        </ul>
+      </li>
+      <li>
+        A <strong>logic gate</strong> is a device that performs a logical
+        operation on one or more binary inputs and produces a single binary
+        output.
+      </li>
+      <li>
+        A <strong>circut</strong> is a collection of logic gates that work
+        together to perform a specific task.
+      </li>
+    </ul>
+    <h2 id="basic-gates">Basic Gates</h2>
+    <p>
+      The logical connectives that we&#39;ve learned so far have corresponding
+      logic gates.
+    </p>
+    <p>
+      The truth table for each gate matches the truth table for the
+      corresponding logical connective.
+    </p>
+    <p class="demo">Demo:</p>
+
+    <p>Logic.ly</p>
+    <figure>
+      <span>
+        <img src="images/basic_logic_gates.png" style="" />
+      </span>
+      <figcaption>
+        <a href=""></a>
+      </figcaption>
+    </figure>
+
+    <h2 id="operations-with-gates">Operations with Gates</h2>
+    <p class="demo">Demo:</p>
+
+    <p>One bit magnitude comparator</p>
+    <figure>
+      <span>
+        <img src="images/one_bit_magnitude_comparator.png" style="" />
+      </span>
+      <figcaption>
+        <a href=""></a>
+      </figcaption>
+    </figure>
+
+    <p>
+      Using A = 1, B = 1 as an example, let’s figure out the inputs to the gates
+      that lead to each outcome:
+    </p>
+    <p><strong>What is the logic circuit for A &lt; B?</strong></p>
+    <ul>
+      <li>¬A ∧ B</li>
+      <li>0 ∧ 1 = False</li>
+    </ul>
+    <p><strong>What is the logic circuit for A &gt; B?</strong></p>
+    <ul>
+      <li>A ∧ ¬B</li>
+      <li>1 ∧ 0 = False</li>
+    </ul>
+    <p><strong>What is the logic circuit for A = B?</strong></p>
+    <ul>
+      <li>¬( (¬A ∧ B) ∨ (A ∧ ¬B) )</li>
+      <li>A ∨ ¬B ∧ ¬A ∨ B</li>
+      <li>A ∨ (¬B ∧ ¬A) ∨ B</li>
+      <li>1 ∨ (0 ∧ 0) ∨ 1</li>
+      <li>1 ∨ 0 ∨ 1 = True</li>
+    </ul>
+  </body>
+</html>

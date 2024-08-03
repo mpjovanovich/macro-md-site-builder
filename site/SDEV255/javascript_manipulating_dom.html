@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - JavaScript - Manipulating the DOM</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">JavaScript - Manipulating the DOM</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#manipulating-the-dom">Manipulating the DOM</a>
+        <ul>
+          <li>
+            <a href="#document-object-model-dom">Document Object Model (DOM)</a>
+          </li>
+          <li><a href="#dom-tree">DOM Tree</a></li>
+          <li>
+            <a href="#getting-elements-from-the-dom"
+              >Getting Elements from the DOM</a
+            >
+            <ul>
+              <li><a href="#by-id">By ID</a></li>
+              <li>
+                <a href="#by-css-selector">By CSS Selector</a>
+                <ul>
+                  <li>
+                    <a href="#selecting-elements-by-id"
+                      >Selecting Elements by ID:</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#selecting-elements-by-class"
+                      >Selecting Elements by Class:</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#selecting-elements-by-tag-name"
+                      >Selecting Elements by Tag Name:</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#selecting-nested-elements"
+                      >Selecting Nested Elements:</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#getting-children-of-an-element"
+                  >Getting Children of an Element</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#modifying-html-elements">Modifying HTML Elements</a>
+            <ul>
+              <li>
+                <a href="#changing-element-text">Changing Element Text:</a>
+              </li>
+              <li><a href="#form-input-retrieval">Form Input Retrieval:</a></li>
+              <li>
+                <a href="#changing-element-style">Changing Element Style:</a>
+              </li>
+              <li>
+                <a href="#changing-element-attributes"
+                  >Changing Element Attributes:</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#adding-and-removing-elements"
+              >Adding and Removing Elements</a
+            >
+          </li>
+          <li><a href="#css-vs-javascript">CSS vs JavaScript</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="manipulating-the-dom">Manipulating the DOM</h1>
+    <h2 id="document-object-model-dom-">Document Object Model (DOM)</h2>
+    <p>
+      The <strong>Document Object Model (DOM)</strong> represents the HTML
+      document as a tree of objects in memory.
+    </p>
+    <p>
+      We can change the DOM using JavaScript to manipulate the HTML document
+      without reloading the page.
+    </p>
+    <p>
+      The underlying HTML file is not changed, but the DOM is updated to reflect
+      the changes.
+    </p>
+    <h2 id="dom-tree">DOM Tree</h2>
+    <p>The DOM is a tree of objects that represent the HTML document.</p>
+    <p>
+      The tree is made up of <strong>nodes</strong>, which have properties and
+      methods that we can use to manipulate them.
+    </p>
+    <p>The root node of the tree is the <code>document</code> object.</p>
+    <p>
+      See:
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Using_the_Document_Object_Model#what_is_a_dom_tree"
+        >Using the Document Object Model</a
+      >
+    </p>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Paragraph<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+    <figure>
+      <span>
+        <img
+          src="https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Using_the_Document_Object_Model/using_the_w3c_dom_level_1_core-doctree.jpg"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a href=""></a>
+      </figcaption>
+    </figure>
+
+    <h2 id="getting-elements-from-the-dom">Getting Elements from the DOM</h2>
+    <h3 id="by-id">By ID</h3>
+    <p><strong>document.getElementById()</strong></p>
+    <ul>
+      <li>Used to select a single element from the DOM.</li>
+      <li>Takes an HTML ID as an argument.</li>
+      <li>Returns the element with the matching ID.</li>
+    </ul>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Selects the HTML element with the ID 'header'</span>
+<span class="hljs-keyword">const</span> header = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"header"</span>);
+</code></pre>
+    <h3 id="by-css-selector">By CSS Selector</h3>
+    <p><strong>document.querySelector()</strong></p>
+    <ul>
+      <li>Used to select a single element from the DOM.</li>
+      <li>Takes a CSS selector as an argument.</li>
+      <li>Returns the first element that matches the selector.</li>
+      <li>If no element matches the selector, returns <code>null</code>.</li>
+    </ul>
+    <h4 id="selecting-elements-by-id-">Selecting Elements by ID:</h4>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Selects the HTML element with the ID 'header'</span>
+<span class="hljs-keyword">const</span> header = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#header"</span>);
+</code></pre>
+    <h4 id="selecting-elements-by-class-">Selecting Elements by Class:</h4>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Selects all HTML elements with the class 'btn'</span>
+<span class="hljs-keyword">const</span> buttons = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">".btn"</span>);
+</code></pre>
+    <h4 id="selecting-elements-by-tag-name-">
+      Selecting Elements by Tag Name:
+    </h4>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Selects all &lt;p&gt; elements on the page</span>
+<span class="hljs-keyword">const</span> paragraphs = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">"p"</span>);
+</code></pre>
+    <h4 id="selecting-nested-elements-">Selecting Nested Elements:</h4>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Selects the &lt;h2&gt; element inside an &lt;article&gt;</span>
+<span class="hljs-keyword">const</span> articleTitle = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"article h2"</span>);
+</code></pre>
+    <h3 id="getting-children-of-an-element">Getting Children of an Element</h3>
+    <p><strong>element.children</strong></p>
+    <ul>
+      <li>Returns a collection of all the child elements of the element.</li>
+      <li>Returns an empty collection if the element has no children.</li>
+    </ul>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Fetch the parent element:</span>
+<span class="hljs-keyword">const</span> body = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"body"</span>);
+
+<span class="hljs-comment">// Fetch the children of the parent element:</span>
+<span class="hljs-keyword">const</span> bodyChildren = body.children;
+
+<span class="hljs-comment">// We can loop through this collection to access each child element:</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; bodyChildren.length; i++) {
+  <span class="hljs-built_in">console</span>.log(bodyChildren[i]);
+}
+</code></pre>
+    <h2 id="modifying-html-elements">Modifying HTML Elements</h2>
+    <h3 id="changing-element-text-">Changing Element Text:</h3>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> paragraph = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"paragraph"</span>);
+
+<span class="hljs-comment">// Change the text:</span>
+paragraph.textContent = <span class="hljs-string">"This is new content."</span>;
+</code></pre>
+    <h3 id="form-input-retrieval-">Form Input Retrieval:</h3>
+    <p>
+      Instead of using <code>textContent</code>, we can use
+      <code>value</code> to retrieve the value entered in an HTML input field.
+    </p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Retrieves the value entered in an input field</span>
+<span class="hljs-keyword">const</span> inputField = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#username"</span>);
+<span class="hljs-keyword">const</span> userInput = inputField.value;
+</code></pre>
+    <h3 id="changing-element-style-">Changing Element Style:</h3>
+    <p>The style property of a node has properties for each CSS style.</p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> someDiv = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"someDiv"</span>);
+
+<span class="hljs-comment">// Change color:</span>
+someDiv.style.color = <span class="hljs-string">"red"</span>;
+
+<span class="hljs-comment">// Hide an element:</span>
+someDiv.style.display = <span class="hljs-string">"none"</span>;
+</code></pre>
+    <h3 id="changing-element-attributes-">Changing Element Attributes:</h3>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Change the href attribute of a link:</span>
+<span class="hljs-keyword">const</span> someLink = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"someLink"</span>);
+someLink.href = <span class="hljs-string">"https://www.google.com"</span>;
+</code></pre>
+    <h2 id="adding-and-removing-elements">Adding and Removing Elements</h2>
+    <p><strong>document.createElement()</strong></p>
+    <p>Creates a new element.</p>
+    <p><strong>element.appendChild()</strong></p>
+    <p>Adds a new child element to the end of the element.</p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Create a new paragraph element:</span>
+<span class="hljs-keyword">const</span> newParagraph = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"p"</span>);
+
+<span class="hljs-comment">// Set the text and ID of the new paragraph:</span>
+newParagraph.textContent = <span class="hljs-string">"This is a new paragraph."</span>;
+newParagraph.id = <span class="hljs-string">"myParagraph"</span>;
+
+<span class="hljs-comment">// Add the new paragraph to the article:</span>
+<span class="hljs-keyword">const</span> article = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#myArticle"</span>);
+article.appendChild(newParagraph);
+</code></pre>
+    <p><strong>element.removeChild()</strong></p>
+    <p>Removes a child element from the element.</p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Fetch the article and paragraph elements:</span>
+<span class="hljs-keyword">const</span> article = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#myArticle"</span>);
+<span class="hljs-keyword">const</span> paragraph = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#myParagraph"</span>);
+
+<span class="hljs-comment">// Remove the paragraph from the article:</span>
+article.removeChild(paragraph);
+</code></pre>
+    <h2 id="css-vs-javascript">CSS vs JavaScript</h2>
+    <p>
+      CSS is used to style the page, while JavaScript is used to add
+      functionality to the page.
+    </p>
+    <p>Generally, if you can do something with CSS you should use CSS.</p>
+  </body>
+</html>

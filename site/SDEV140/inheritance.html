@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Inheritance</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Inheritance</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#inheritance">Inheritance</a>
+        <ul>
+          <li><a href="#base-class">Base Class</a></li>
+          <li><a href="#derived-class">Derived Class</a></li>
+          <li>
+            <a href="#why-use-a-derived-class">Why use a Derived Class?</a>
+          </li>
+          <li><a href="#why-use-inheritance">Why use Inheritance?</a></li>
+          <li><a href="#inheritance-example">Inheritance Example</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="inheritance">Inheritance</h1>
+    <ul>
+      <li>One of the &quot;three pillars of OOP&quot;</li>
+      <li>
+        <strong>Inheritance</strong> is the idea of extending functionality from
+        an existing class.
+      </li>
+    </ul>
+    <h2 id="base-class">Base Class</h2>
+    <p>The class from which other classes inherit is called the:</p>
+    <ul>
+      <li><strong>Base class</strong></li>
+      <li><strong>Parent class</strong></li>
+      <li><strong>Superclass</strong></li>
+    </ul>
+    <p>Typically more general in terms of functionality.</p>
+    <h2 id="derived-class">Derived Class</h2>
+    <p>The class that inherits from another class is called the:</p>
+    <ul>
+      <li><strong>Derived class</strong></li>
+      <li><strong>Child class</strong></li>
+      <li><strong>Subclass</strong></li>
+    </ul>
+    <p>Typically more specialized in terms of functionality.</p>
+    <h2 id="why-use-a-derived-class-">Why use a Derived Class?</h2>
+    <ul>
+      <li>Override properties/methods from base class.</li>
+      <li>Add new properties/methods specific to derived class.</li>
+    </ul>
+    <h2 id="why-use-inheritance-">Why use Inheritance?</h2>
+    <ul>
+      <li>Override properties/methods from base class.</li>
+      <li>Add new properties/methods specific to derived class.</li>
+    </ul>
+    <h2 id="inheritance-example">Inheritance Example</h2>
+    <pre><code class="language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Quadrilateral</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, side1, side2, side3, side4)</span>:</span>
+        <span class="hljs-comment">## Protected attributes</span>
+        self._side1 = side1
+        self._side2 = side2
+        self._side3 = side3
+        self._side4 = side4
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._side1 + self._side2 + self._side3 + self._side4
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span><span class="hljs-params">(Quadrilateral)</span>:</span>
+    <span class="hljs-comment">## Call parent class constructor</span>
+    <span class="hljs-comment">## super = 'Quadrilateral'</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, width, height)</span>:</span>
+        super().__init__(width, height, width, height)
+        self.__width = width
+        self.__height = height
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.__width * self.__height
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Square</span><span class="hljs-params">(Quadrilateral)</span>:</span>
+    <span class="hljs-comment">## Call parent class constructor</span>
+    <span class="hljs-comment">## super = 'Quadrilateral'</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, side)</span>:</span>
+        super().__init__(side, side, side, side)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._side1 ** <span class="hljs-number">2</span>
+
+<span class="hljs-comment">## Create instances of derived classes</span>
+r = Rectangle(<span class="hljs-number">5</span>, <span class="hljs-number">10</span>)
+s = Square(<span class="hljs-number">5</span>)
+
+print(<span class="hljs-string">f"Rectangle area: <span class="hljs-subst">{r.area()}</span>"</span>)
+print(<span class="hljs-string">f"Rectangle perimeter: <span class="hljs-subst">{r.perimeter()}</span>"</span>)
+print(<span class="hljs-string">f"Square area: <span class="hljs-subst">{s.area()}</span>"</span>)
+print(<span class="hljs-string">f"Square perimeter: <span class="hljs-subst">{s.perimeter()}</span>"</span>)
+</code></pre>
+  </body>
+</html>

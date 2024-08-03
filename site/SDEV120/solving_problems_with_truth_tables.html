@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Solving Problems with Truth Tables</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Solving Problems with Truth Tables</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#solving-problems-with-truth-tables"
+          >Solving Problems with Truth Tables</a
+        >
+      </li>
+    </ul>
+    <h1 id="solving-problems-with-truth-tables">
+      Solving Problems with Truth Tables
+    </h1>
+    <p>
+      <strong><em>Determine the number of rows needed.</em></strong>
+    </p>
+    <p>Number of rows = 2<sup>n</sup> where n is the number of variables</p>
+    <ul>
+      <li>1 variable = 2<sup>1</sup> = 2 rows</li>
+      <li>2 variables = 2<sup>2</sup> = 4 rows</li>
+      <li>3 variables = 2<sup>3</sup> = 8 rows</li>
+      <li>4 variables = 2<sup>4</sup> = 16 rows</li>
+      <li>...</li>
+    </ul>
+    <p>
+      <strong
+        ><em
+          >Follow the algorithm below until you hit the last T/F alternating
+          column.</em
+        ></strong
+      >
+    </p>
+    <ul>
+      <li>
+        Fill first column with top half T and bottom half F. Move to the next
+        column.
+      </li>
+      <li>
+        For each block of consecutive T or F in the previous column fill the
+        next column with half T and half F
+      </li>
+      <li>Repeat until you hit the last T / F alternating column</li>
+    </ul>
+    <p><em>Example</em></p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">A</th>
+          <th align="left">B</th>
+          <th align="left">C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left">T</td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left">F</td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left">T</td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left">F</td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left">T</td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left">F</td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left">T</td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left">F</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong
+        ><em
+          >Fill in the last column with the logical expression that you are
+          trying to solve for. Leave placeholder columns in between.</em
+        ></strong
+      >
+    </p>
+    <p><em>Example</em></p>
+    <p>If trying to find the truth table for ¬A ∧ B ∨ C:</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">A</th>
+          <th align="left">B</th>
+          <th align="left">C</th>
+          <th align="left"></th>
+          <th align="right">¬A ∧ B ∨ C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Be sure each row starts with T and not F.</p>
+    <p>
+      <strong
+        ><em
+          >Fill in the placeholder columns with the intermediate results of the
+          logical expression. Do this in the order that the expression is
+          evaluated, one binary operation at a time (or unary operation in the
+          case of &quot;not&quot;).</em
+        ></strong
+      >
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">A</th>
+          <th align="left">B</th>
+          <th align="left">C</th>
+          <th align="left">¬A</th>
+          <th align="left">¬A ∧ B</th>
+          <th align="right">¬A ∧ B ∨ C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left">T</td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left">F</td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left">T</td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+        <tr>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left">F</td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="right"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong
+        ><em
+          >Fill in the rows one at a time with the results of the logical
+          expressions. Done this way you are always comparing one row in the
+          table to another row in the table. The final row will be the result of
+          the full logical expression.</em
+        ></strong
+      >
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th align="center">A</th>
+          <th align="center">B</th>
+          <th align="center">C</th>
+          <th align="center">¬A</th>
+          <th align="center">¬A ∧ B</th>
+          <th align="center">¬A ∧ B ∨ C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">T</td>
+        </tr>
+        <tr>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+        </tr>
+        <tr>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">T</td>
+        </tr>
+        <tr>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+        </tr>
+        <tr>
+          <td align="center">F</td>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center">T</td>
+        </tr>
+        <tr>
+          <td align="center">F</td>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center">T</td>
+        </tr>
+        <tr>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center">T</td>
+        </tr>
+        <tr>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center">F</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

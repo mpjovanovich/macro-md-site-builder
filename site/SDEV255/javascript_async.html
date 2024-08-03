@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - Asynchronous JavaScript</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">Asynchronous JavaScript</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#asynchronous-code">Asynchronous Code</a>
+        <ul>
+          <li>
+            <a href="#blocking-code">Blocking Code</a>
+            <ul>
+              <li><a href="#io-bound">I/O Bound</a></li>
+              <li><a href="#cpu-bound">CPU Bound</a></li>
+              <li><a href="#async-to-the-rescue">Async to the Rescue</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#asynchronous-code-in-javascript"
+              >Asynchronous Code in JavaScript</a
+            >
+            <ul>
+              <li><a href="#promise">Promise</a></li>
+              <li>
+                <a href="#then">Then</a>
+                <ul>
+                  <li><a href="#examples">Examples</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="asynchronous-code">Asynchronous Code</h1>
+    <p>
+      <strong>Syncronous</strong> code is executed in sequence - each statement
+      waits for the previous one to finish.
+    </p>
+    <p>
+      <strong>Asynchronous</strong> code does not guarantee the order of
+      execution.
+    </p>
+    <p>
+      Async is not JS specific. It is a programming concept that is used in many
+      languages.
+    </p>
+    <h2 id="blocking-code">Blocking Code</h2>
+    <p>
+      We refer to a long running operation as a
+      <strong>blocking operation</strong>. Code that comes after the operation
+      is blocked from executing until the operation is complete.
+    </p>
+    <p>
+      Blocking operations are considered to be either
+      <strong>I/O bound</strong> or <strong>CPU bound</strong>.
+    </p>
+    <h3 id="i-o-bound">I/O Bound</h3>
+    <p>Waiting for input/output operations to complete.</p>
+    <ul>
+      <li>Reading a file from disk</li>
+      <li>Making a network request</li>
+      <li>Waiting for a database query to return</li>
+    </ul>
+    <h3 id="cpu-bound">CPU Bound</h3>
+    <p>Waiting for the CPU to complete a task.</p>
+    <ul>
+      <li>Performing a complex calculation</li>
+      <li>Rendering a large image</li>
+      <li>Processing a large amount of data</li>
+    </ul>
+    <h3 id="async-to-the-rescue">Async to the Rescue</h3>
+    <p>
+      Async code is used to avoid blocking operations by allowing other code to
+      execute while the operation is pending (waiting to complete).
+    </p>
+    <ul>
+      <li>
+        <strong>Performance</strong> - Other tasks can be performed while
+        waiting
+      </li>
+      <li>
+        <strong>Responsiveness</strong> - User interface remains responsive
+        while waiting
+      </li>
+    </ul>
+    <h2 id="asynchronous-code-in-javascript">
+      Asynchronous Code in JavaScript
+    </h2>
+    <p>General pattern is to:</p>
+    <ul>
+      <li>Create a promise function to start the long running task.</li>
+      <li>
+        Create a <code>then</code> method to handle the result of the long
+        running task when finished.
+      </li>
+    </ul>
+    <h3 id="promise">Promise</h3>
+    <p>
+      JS uses the
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+        >promise</a
+      >
+      object to implement async code.
+    </p>
+    <ul>
+      <li>
+        Return from function and continue with other code while the long
+        function is working.
+      </li>
+      <li>Value that is returned is a promise object.</li>
+      <li>
+        Promise can be in one of three states:
+        <ul>
+          <li>Pending</li>
+          <li>Fulfilled</li>
+          <li>Rejected</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="then">Then</h3>
+    <p>
+      The <code>then</code> method is used to handle the result of a promise,
+      much like an event listener.
+    </p>
+    <ul>
+      <li>
+        Accepts a callback function that is called when the promise function is
+        completed (resolved).
+      </li>
+      <li>Can be chained to handle multiple promises.</li>
+    </ul>
+    <h4 id="examples">Examples</h4>
+    <p class="demo">Simulate an I/O or CPU bound operation.</p>
+
+    <p>
+      We&#39;re mostly concerned with consuming promises, but here&#39;s an
+      example of a function that returns a promise.
+    </p>
+    <pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longRunningOperation</span>(<span class="hljs-params">processName</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> {
+    <span class="hljs-comment">// Print the start message</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Starting <span class="hljs-subst">${processName}</span>`</span>);
+
+    <span class="hljs-comment">// Get a random number between 1 and 3</span>
+    <span class="hljs-keyword">const</span> waitTime = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">3</span> + <span class="hljs-number">1</span>);
+
+    <span class="hljs-comment">// Wait for the random number of seconds</span>
+    setTimeout(resolve, <span class="hljs-number">1000</span> * waitTime);
+  });
+}
+</code></pre>
+    <p class="demo">Example: Run an async operation to avoid blocking</p>
+
+    <pre><code class="language-javascript"><span class="hljs-comment">// Kick off the long running operation</span>
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-string">"Process A"</span>;
+longRunningOperation(p1).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Finished <span class="hljs-subst">${p1}</span>`</span>));
+
+<span class="hljs-comment">// Do other work while waiting</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Doing other work..."</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Doing even more work..."</span>);
+</code></pre>
+    <p class="demo">Example: Run several async operations</p>
+
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> p1 = <span class="hljs-string">"Process A"</span>;
+longRunningOperation(p1).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Finished <span class="hljs-subst">${p1}</span>`</span>));
+
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-string">"Process B"</span>;
+longRunningOperation(p2).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Finished <span class="hljs-subst">${p2}</span>`</span>));
+
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-string">"Process C"</span>;
+longRunningOperation(p3).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Finished <span class="hljs-subst">${p3}</span>`</span>));
+</code></pre>
+    <p class="demo">Example: Chain several async operations</p>
+
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> p1 = <span class="hljs-string">"Process A"</span>;
+longRunningOperation(p1)
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> p2 = <span class="hljs-string">"Process B"</span>;
+    <span class="hljs-keyword">return</span> longRunningOperation(p2);
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> p3 = <span class="hljs-string">"Process C"</span>;
+    <span class="hljs-keyword">return</span> longRunningOperation(p3);
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Finished all processes.`</span>));
+</code></pre>
+    <p class="demo">Example: Returning a value</p>
+
+    <p>The <code>then</code> method can also return a value.</p>
+    <pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chainedWorkFunction</span>(<span class="hljs-params">value</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> {
+    <span class="hljs-comment">// Print the original value</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Value = <span class="hljs-subst">${value}</span>`</span>);
+
+    <span class="hljs-comment">// Add one to the value to simulate useful work</span>
+    value++;
+
+    <span class="hljs-comment">// Return the value with resolve</span>
+    resolve(value);
+  });
+}
+
+<span class="hljs-comment">// Call it once...</span>
+chainedWorkFunction(<span class="hljs-number">1</span>).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Final value: <span class="hljs-subst">${result}</span>`</span>));
+</code></pre>
+    <p class="demo">Example: Chaining returned values</p>
+
+    <pre><code class="language-javascript"><span class="hljs-comment">// Call it several times.</span>
+<span class="hljs-comment">// First call</span>
+chainedWorkFunction(<span class="hljs-number">1</span>)
+  <span class="hljs-comment">// Second call</span>
+  .then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> chainedWorkFunction(result);
+  })
+  <span class="hljs-comment">// Third call</span>
+  .then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> chainedWorkFunction(result);
+  })
+  <span class="hljs-comment">// Print result</span>
+  .then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Final value: <span class="hljs-subst">${result}</span>`</span>);
+  });
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Input Validation</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Input Validation</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#input-validation">Input Validation</a>
+        <ul>
+          <li>
+            <a href="#presence-checks">Presence Checks</a>
+            <ul>
+              <li><a href="#truthy-and-falsy">Truthy and Falsy</a></li>
+              <li><a href="#built-in-functions">Built in Functions</a></li>
+              <li>
+                <a href="#comparison-of-functions">Comparison of Functions</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#data-type-checks">Data Type Checks</a></li>
+          <li><a href="#value-checks">Value Checks</a></li>
+          <li>
+            <a href="#regular-expression-checks">Regular Expression Checks</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="input-validation">Input Validation</h1>
+    <h2 id="presence-checks">Presence Checks</h2>
+    <h3 id="truthy-and-falsy">Truthy and Falsy</h3>
+    <ul>
+      <li>When put into an if statement, variables are cast to boolean.</li>
+      <li>This concept is called &quot;truthy&quot; and &quot;falsy&quot;.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$var = <span class="hljs-string">''</span>;
+<span class="hljs-keyword">if</span> ($var) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'true'</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'false'</span>;
+}
+</code></pre>
+    <h3 id="built-in-functions">Built in Functions</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Returns true if</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>isset()</code></td>
+          <td>Variable exists and is not <code>null</code></td>
+        </tr>
+        <tr>
+          <td><code>empty()</code></td>
+          <td>Variable exists and != false</td>
+        </tr>
+        <tr>
+          <td><code>is_null()</code></td>
+          <td>Variable is <code>null</code></td>
+        </tr>
+        <tr>
+          <td><code>array_key_exists()</code></td>
+          <td>Key exists in the array</td>
+        </tr>
+      </tbody>
+    </table>
+    <pre><code class="language-php"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">'name'</span>])) {
+    <span class="hljs-comment">// do something</span>
+}
+</code></pre>
+    <h3 id="comparison-of-functions">Comparison of Functions</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Value</th>
+          <th><code>truthy</code></th>
+          <th><code>isset()</code></th>
+          <th><code>empty()</code></th>
+          <th><code>is_null()</code></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>false</code></td>
+          <td>false</td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>true</code></td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>null</code></td>
+          <td>false</td>
+          <td>false</td>
+          <td>true</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td><code>&#39;&#39;</code></td>
+          <td>false</td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>&#39;abc&#39;</code></td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>&#39;0&#39;</code></td>
+          <td>false</td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>&#39;1&#39;</code></td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>0</code></td>
+          <td>false</td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>1</code></td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>[]</code></td>
+          <td>false</td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td><code>[1,2,3]</code></td>
+          <td>true</td>
+          <td>true</td>
+          <td>false</td>
+          <td>false</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="data-type-checks">Data Type Checks</h2>
+    <ul>
+      <li><code>is_string()</code></li>
+      <li><code>is_numeric()</code></li>
+      <li><code>is_int()</code></li>
+      <li><code>is_float()</code></li>
+      <li><code>is_bool()</code></li>
+      <li><code>is_array()</code></li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">if</span> (is_array($_GET[<span class="hljs-string">'items'</span>])) {
+    <span class="hljs-comment">// do something</span>
+}
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <h2 id="value-checks">Value Checks</h2>
+    <ul>
+      <li><code>==</code> - check if two values are equal</li>
+      <li>
+        <code>===</code> - check if two values are equal and of the same type
+      </li>
+      <li>
+        <code>array_key_exists()</code> - check if a key exists in an array
+      </li>
+      <li><code>in_array()</code> - check if a value exists in an array</li>
+      <li>
+        <code>ctype_digit()</code> - check if a string contains only digits
+      </li>
+      <li>
+        <code>ctype_alpha()</code> - check if a string contains only letters
+      </li>
+      <li>
+        <code>ctype_alnum()</code> - check if a string contains only letters and
+        digits
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">if</span> (in_array($_GET[<span class="hljs-string">'color'</span>], [<span class="hljs-string">'red'</span>, <span class="hljs-string">'green'</span>, <span class="hljs-string">'blue'</span>])) {
+    <span class="hljs-comment">// do something</span>
+}
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <h2 id="regular-expression-checks">Regular Expression Checks</h2>
+    <ul>
+      <li><code>preg_match()</code> - check if a string matches a pattern</li>
+      <li>
+        <code>preg_match_all()</code> - check if a string matches a pattern
+        multiple times
+      </li>
+      <li><code>preg_replace()</code> - replace a pattern in a string</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">'/^[a-zA-Z0-9]+$/'</span>, $_GET[<span class="hljs-string">'username'</span>])) {
+    <span class="hljs-comment">// do something</span>
+}
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+  </body>
+</html>

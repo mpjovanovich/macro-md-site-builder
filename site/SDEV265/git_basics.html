@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Git Basics</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Git Basics</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#git">Git</a>
+        <ul>
+          <li><a href="#what-is-git">What is Git?</a></li>
+          <li><a href="#github">GitHub</a></li>
+          <li><a href="#git-repositories">Git Repositories</a></li>
+          <li>
+            <a href="#how-to-interface-with-git">How to Interface with Git</a>
+            <ul>
+              <li><a href="#the-browser">The Browser</a></li>
+              <li>
+                <a href="#vs-code-source-control-panel"
+                  >VS Code Source Control Panel</a
+                >
+              </li>
+              <li><a href="#terminals-and-shells">Terminals and Shells</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="git">Git</h1>
+    <p><img src="https://git-scm.com/images/logo@2x.png" alt="Git" /></p>
+    <p>
+      Git is a powerful tool that you&#39;ll almost certainly come across in
+      your career.
+    </p>
+    <h2 id="what-is-git-">What is Git?</h2>
+    <p>
+      <strong>Git</strong> is a program that runs on a computer. It needs to be
+      installed like any other program:
+    </p>
+    <ul>
+      <li>
+        <a href="https://git-scm.com/">Git (installation and documentation)</a>
+      </li>
+    </ul>
+    <p>Git is a <strong>version control system (VCS)</strong>:</p>
+    <ul>
+      <li>Stores files and their history</li>
+      <li>Tracks changes to files over time</li>
+      <li>Allow for point in time recovery and comparison</li>
+      <li>
+        Allows more than one person to work on (or examine) the same file at the
+        same time.
+      </li>
+    </ul>
+    <h2 id="github">GitHub</h2>
+    <figure>
+      <span
+        ><img
+          src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+          alt="Figure"
+          style="width: 20%; height: auto"
+      /></span>
+    </figure>
+    <p><strong>GitHub</strong> is a website that hosts Git repositories.</p>
+    <p>GitHub is not the same as Git.</p>
+    <h2 id="git-repositories">Git Repositories</h2>
+    <p>
+      A <strong>repository</strong> is a collection of files and their history.
+    </p>
+    <ul>
+      <li><p>Should be one repository per project.</p></li>
+      <li><p>Roughly equivalent to a folder on your computer.</p></li>
+      <li><p>A user can have many repositories:</p></li>
+    </ul>
+    <p><img src="images/github_repos.png" alt="GitHub Repositories" /></p>
+    <p>
+      Files can be uploaded to the repository via drag and drop, or the upload
+      button:
+    </p>
+    <p><img src="images/github_repos_2.png" alt="GitHub Upload" /></p>
+    <h2 id="how-to-interface-with-git">How to Interface with Git</h2>
+    <h3 id="the-browser">The Browser</h3>
+    <ul>
+      <li>Recommended for beginners</li>
+    </ul>
+    <h3 id="vs-code-source-control-panel">VS Code Source Control Panel</h3>
+    <p>The GUI for Git can be accessed in the VS Code Source Control Panel:</p>
+    <p>
+      <img
+        src="images/vscode_source_control_1.png"
+        alt="VS Code Source Control"
+      />
+    </p>
+    <ul>
+      <li>
+        The number in the circle indicates the number of files that have been
+        changed.
+      </li>
+      <li>A commit message is required before you press the button.</li>
+    </ul>
+    <p>After committing, you can push to GitHub with the Sync button:</p>
+    <p>
+      <img
+        src="images/vscode_source_control_2.png"
+        alt="VS Code Source Control"
+      />
+    </p>
+    <h3 id="terminals-and-shells">Terminals and Shells</h3>
+    <p>
+      Git commands are in the form
+      <code>git [your_command_here] --[optional_flags_here]</code>.
+    </p>
+    <p>
+      Git commands are typed into a <strong>terminal</strong> which runs a
+      <strong>shell</strong>.
+    </p>
+    <ul>
+      <li>
+        <p>
+          A <strong>terminal</strong> provides a user interface into a shell.
+        </p>
+        <ul>
+          <li>This is what you type commands into.</li>
+          <li>Like the part of the car that you see and interact with.</li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          A <strong>shell</strong> is a program that executes text
+          <strong>commands</strong>.
+        </p>
+        <ul>
+          <li>This is what actually runs the command.</li>
+          <li>Like the &quot;engine&quot; of a car.</li>
+          <li>Usually use <code>bash</code> or <code>zsh</code> shells.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>The CLI for Git can be accessed in a VS Code terminal:</p>
+    <ul>
+      <li><code>Ctrl + ~</code> or <code>View &gt; Terminal</code>.</li>
+    </ul>
+    <p>Make sure that you are in the root directory of your project:</p>
+    <ul>
+      <li>Use the <code>pwd</code> command to see the current directory.</li>
+    </ul>
+    <p>
+      Make sure that you have the correct shell selected, <em>bash</em> or
+      <em>zsh</em>:
+    </p>
+    <p><img src="images/vscode_terminal_2.png" alt="VS Code Terminal" /></p>
+    <p><img src="images/vscode_terminal_1.png" alt="VS Code Terminal" /></p>
+  </body>
+</html>

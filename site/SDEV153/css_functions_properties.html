@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV153 - Functions and Properties</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV153/index.html"
+        >SDEV153</a
+      >&nbsp;&gt;&nbsp;<a href="">Functions and Properties</a>
+    </h1>
+    <h1 id="functions">Functions</h1>
+    <figure>
+      <span
+        ><img
+          src="https://web.dev/static/learn/css/functions/image/a-diagram-a-function-de-e40ae94dbccc1.svg"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>CSS has built-in functions that can be used to manipulate values.</li>
+    </ul>
+    <h2 id="common-css-functions">Common CSS Functions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>var()</code></td>
+          <td>Returns a custom property value.</td>
+          <td><code>color: var(--main-color);</code></td>
+        </tr>
+        <tr>
+          <td><code>is()</code></td>
+          <td>Compares an element&#39;s type and/or state to a given value.</td>
+          <td><code>:is(h1,h2,h3){ /* */ }</code></td>
+        </tr>
+        <tr>
+          <td><code>not()</code></td>
+          <td>Compares an element&#39;s type and/or state to a given value.</td>
+          <td><code>:not(p){ /* */ }</code></td>
+        </tr>
+        <tr>
+          <td><code>min()</code></td>
+          <td>
+            Returns the minimum value of a list of comma-separated expressions.
+          </td>
+          <td><code>width: min(100%, 500px);</code></td>
+        </tr>
+        <tr>
+          <td><code>max()</code></td>
+          <td>
+            Returns the maximum value of a list of comma-separated expressions.
+          </td>
+          <td><code>width: max(100%, 500px);</code></td>
+        </tr>
+        <tr>
+          <td><code>clamp()</code></td>
+          <td>Clamps a value between an upper and lower bound.</td>
+          <td><code>width: clamp(100px, 50%, 200px);</code></td>
+        </tr>
+        <tr>
+          <td><code>calc()</code></td>
+          <td>Performs a calculation to determine a value.</td>
+          <td><code>width: calc(100% - 20px);</code></td>
+        </tr>
+        <tr>
+          <td><code>repeat()</code></td>
+          <td>Repeats an argument the requested number of times.</td>
+          <td><code>grid-template-columns: repeat(3, 1fr);</code></td>
+        </tr>
+        <tr>
+          <td><code>hsl() / hsla()</code></td>
+          <td>
+            Defines colors using the Hue-Saturation-Lightness-Alpha model
+            (HSLA).
+          </td>
+          <td><code>color: hsla(120, 100%, 50%, 0.3);</code></td>
+        </tr>
+        <tr>
+          <td><code>rgb() / rgba()</code></td>
+          <td>Defines colors using the Red-Green-Blue-Alpha model (RGBA).</td>
+          <td><code>color: rgba(255, 0, 0, 0.3);</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="demos">Demos</h2>
+    <p>
+      <a href="https://codepen.io/Mike-Jovanovich/pen/oNmMjZq"
+        >CSS clamp() function</a
+      >
+    </p>
+    <p>
+      <a href="https://codepen.io/Mike-Jovanovich/pen/QWYBjbe"
+        >Custom Variables and Properties</a
+      >
+    </p>
+  </body>
+</html>

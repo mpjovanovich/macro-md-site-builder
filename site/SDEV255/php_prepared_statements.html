@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - SQL Prepared Statements</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">SQL Prepared Statements</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#sql-prepared-statements">SQL Prepared Statements</a>
+        <ul>
+          <li>
+            <a href="#advantages-over-regular-sql-statements"
+              >Advantages Over Regular SQL Statements</a
+            >
+          </li>
+          <li>
+            <a href="#naive-dynamic-query-approach-concatenation"
+              >Naive Dynamic Query Approach: Concatenation</a
+            >
+          </li>
+          <li><a href="#sql-injection-attack">SQL Injection Attack</a></li>
+          <li>
+            <a href="#php-prepared-statement-syntax"
+              >PHP Prepared Statement Syntax</a
+            >
+            <ul>
+              <li><a href="#example-insert">Example Insert</a></li>
+              <li><a href="#example-update">Example Update</a></li>
+              <li><a href="#example-delete">Example Delete</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="sql-prepared-statements">SQL Prepared Statements</h1>
+    <p>
+      A <strong>prepared statement</strong> is a used to execute similar SQL
+      statements repeatedly.
+    </p>
+    <h2 id="advantages-over-regular-sql-statements">
+      Advantages Over Regular SQL Statements
+    </h2>
+    <ul>
+      <li>
+        <strong>Performance</strong> - Precompiled and optimized by the database
+        engine (saves a few extra steps that DB normally has to do each time).
+      </li>
+      <li>
+        <strong>Security</strong> - Immune to SQL injection attacks. Database
+        engine can distinguish between SQL statement and data that the user has
+        provided.
+      </li>
+      <li>
+        <strong>Convenience</strong> - Prepared statements can be used to
+        execute the same SQL statement multiple times with different parameters.
+        This means that the application does not need to create a new SQL
+        statement every time it wants to execute the statement.
+      </li>
+      <li>
+        <strong>Readability</strong> - Prepared statements can make the
+        application code more readable. This is because the SQL statement is
+        separated from the data that the user has provided.
+      </li>
+    </ul>
+    <h2 id="naive-dynamic-query-approach-concatenation">
+      Naive Dynamic Query Approach: Concatenation
+    </h2>
+    <pre><code class="language-php"><span class="hljs-comment">// Get the user id from the query string</span>
+$userid = $_GET[<span class="hljs-string">'userid'</span>];
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE userid = $userid"</span>;
+</code></pre>
+    <h2 id="sql-injection-attack">SQL Injection Attack</h2>
+    <p>
+      A <strong>SQL injection attack</strong> is a code injection technique
+      where SQL statements are submitted as GET or POST values.
+    </p>
+    <pre><code class="language-php"><span class="hljs-comment">// http://example.com?userid=1;DROP TABLE users;</span>
+$userid = $_GET[<span class="hljs-string">'userid'</span>];
+<span class="hljs-comment">// $userid = "1;DROP TABLE users;"</span>
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE userid = $userid"</span>;
+</code></pre>
+    <p>We should sanitize the input, but also use prepared statements.</p>
+    <h2 id="php-prepared-statement-syntax">PHP Prepared Statement Syntax</h2>
+    <p><strong>Single Parameter Binding</strong></p>
+    <pre><code class="language-php">$user_id = <span class="hljs-number">1</span>;
+
+<span class="hljs-comment">// Create the SQL. :userid is a placeholder</span>
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE userid = :userid"</span>;
+
+<span class="hljs-comment">// $db is our PDO connection object.</span>
+<span class="hljs-comment">// It has methods on it to prepare statements.</span>
+$stmt = $db-&gt;prepare($sql);
+
+<span class="hljs-comment">// Bind the parameter to the placeholder</span>
+<span class="hljs-comment">// Use a PDO constant to specify the data type for the third argument for safety</span>
+$stmt-&gt;bindParam(<span class="hljs-string">':userid'</span>, $user_id, PDO::PARAM_INT);
+
+<span class="hljs-comment">// Execute the statement</span>
+$stmt-&gt;execute();
+
+<span class="hljs-comment">// Fetch the results</span>
+$results = $stmt-&gt;fetchAll();
+</code></pre>
+    <p><strong>Multiple Parameter Binding</strong></p>
+    <pre><code class="language-php"><span class="hljs-comment">// ...</span>
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE category_id = :category_id AND price &lt;= :price"</span>;
+$stmt = $db-&gt;prepare($sql);
+$stmt-&gt;bindParam(<span class="hljs-string">':category_id'</span>, $category_id, PDO::PARAM_INT);
+$stmt-&gt;bindParam(<span class="hljs-string">':price'</span>, $price, PDO::PARAM_FLOAT);
+$stmt-&gt;execute();
+<span class="hljs-comment">// No need to fetch results if we're doing an insert, update, or delete</span>
+</code></pre>
+    <h3 id="example-insert">Example Insert</h3>
+    <pre><code class="language-php"><span class="hljs-comment">// ...</span>
+$sql = <span class="hljs-string">"INSERT INTO users (username, title) VALUES (:username, :title)"</span>;
+$stmt = $db-&gt;prepare($sql);
+$stmt-&gt;bindParam(<span class="hljs-string">':username'</span>, $username, PDO::PARAM_STR);
+$stmt-&gt;bindParam(<span class="hljs-string">':title'</span>, $title, PDO::PARAM_STR);
+$stmt-&gt;execute();
+<span class="hljs-comment">// No need to fetch results for an insert</span>
+$stmt-&gt;execute();
+</code></pre>
+    <h3 id="example-update">Example Update</h3>
+    <pre><code class="language-php"><span class="hljs-comment">// ...</span>
+$sql = <span class="hljs-string">"UPDATE users SET username = :username, title = :title WHERE userid = :userid"</span>;
+$stmt = $db-&gt;prepare($sql);
+$stmt-&gt;bindParam(<span class="hljs-string">':username'</span>, $username, PDO::PARAM_STR);
+$stmt-&gt;bindParam(<span class="hljs-string">':title'</span>, $title, PDO::PARAM_STR);
+$stmt-&gt;bindParam(<span class="hljs-string">':userid'</span>, $userid, PDO::PARAM_INT);
+$stmt-&gt;execute();
+</code></pre>
+    <h3 id="example-delete">Example Delete</h3>
+    <pre><code class="language-php"><span class="hljs-comment">// ...</span>
+$sql = <span class="hljs-string">"DELETE FROM users WHERE userid = :userid"</span>;
+$stmt = $db-&gt;prepare($sql);
+$stmt-&gt;bindParam(<span class="hljs-string">':userid'</span>, $userid, PDO::PARAM_INT);
+$stmt-&gt;execute();
+</code></pre>
+  </body>
+</html>

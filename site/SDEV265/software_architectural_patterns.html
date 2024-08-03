@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Software Architectural Patterns</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Software Architectural Patterns</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#software-architectural-patterns"
+          >Software Architectural Patterns</a
+        >
+        <ul>
+          <li>
+            <a href="#layered-architectures">Layered Architectures</a>
+            <ul>
+              <li>
+                <a href="#monolithic-architecture">Monolithic Architecture</a>
+              </li>
+              <li>
+                <a href="#multi-tier-architecture">Multi-tier Architecture</a>
+                <ul>
+                  <li>
+                    <a href="#three-tier-architecture-example"
+                      >Three-tier Architecture Example</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#service-architectures">Service Architectures</a>
+            <ul>
+              <li>
+                <a href="#service-oriented-architecture-soa"
+                  >Service-oriented Architecture (SOA)</a
+                >
+              </li>
+              <li><a href="#microservices">Microservices</a></li>
+              <li><a href="#summary">Summary</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="software-architectural-patterns">
+      Software Architectural Patterns
+    </h1>
+    <h2 id="layered-architectures">Layered Architectures</h2>
+    <p>
+      <strong>Layered architecture</strong>: Layers of modules that communicate
+      with adjacent layers. Each layer may be composed of multiple modules.
+    </p>
+    <h3 id="monolithic-architecture">Monolithic Architecture</h3>
+    <p>
+      <strong>Monolithic architecture</strong>: Single-tiered software
+      application in which the user interface and data access code are combined
+      into a single program from a single platform.
+    </p>
+    <p>Best used when:</p>
+    <ul>
+      <li>Application is small</li>
+      <li>Application is simple</li>
+      <li>Application is not expected to grow</li>
+    </ul>
+    <h3 id="multi-tier-architecture">Multi-tier Architecture</h3>
+    <p>
+      <strong>n-tier architecture</strong>: A specific type of layered
+      architecture with n layers. Each layer communicates with adjacent layers.
+    </p>
+    <h4 id="three-tier-architecture-example">
+      Three-tier Architecture Example
+    </h4>
+    <figure>
+      <span
+        ><img
+          src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*4jyJN40XarxOInJvA9zEVw.jpeg"
+          alt="Figure"
+          style="width: 100%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>
+        Presentation layer
+        <ul>
+          <li>User interface</li>
+          <li>&quot;View&quot; logic</li>
+          <li>Collect user input and display output</li>
+        </ul>
+      </li>
+      <li>
+        Business logic layer
+        <ul>
+          <li>Application logic</li>
+        </ul>
+      </li>
+      <li>
+        Data access layer
+        <ul>
+          <li>Database access</li>
+        </ul>
+      </li>
+    </ul>
+    <p><em>Scenario:</em></p>
+    <p>
+      If I have a web form to collect user account creation data, round trip
+      through layers might be:
+    </p>
+    <ul>
+      <li>
+        Presentation layer
+        <ul>
+          <li>HTML form</li>
+        </ul>
+      </li>
+      <li>
+        Business logic layer
+        <ul>
+          <li>Validate fields</li>
+          <li>Hash password</li>
+          <li>Create instance of user class</li>
+        </ul>
+      </li>
+      <li>
+        Data access layer
+        <ul>
+          <li>Establish connection to database</li>
+          <li>Insert user into database</li>
+        </ul>
+      </li>
+      <li>
+        Business logic layer
+        <ul>
+          <li>Send confirmation email</li>
+          <li>Redirect to confirmation page</li>
+        </ul>
+      </li>
+      <li>
+        Presentation layer
+        <ul>
+          <li>Confirmation page</li>
+        </ul>
+      </li>
+    </ul>
+    <p>No - too complex for this course</p>
+    <h2 id="service-architectures">Service Architectures</h2>
+    <p>*Paradigms below are not mutually exclusive from those above.</p>
+    <p>*Advanced topic - We will not go into detail, just cover briefly.</p>
+    <h3 id="service-oriented-architecture-soa-">
+      Service-oriented Architecture (SOA)
+    </h3>
+    <p>
+      <strong>Service-oriented architecture (SOA)</strong>: Design pattern where
+      services are provided to other components via a communication protocol
+      over a network.
+    </p>
+    <p>
+      Allows services to communicate with each other across different platforms
+      and languages by standardizing data exchange protocols and interfaces.
+    </p>
+    <p>
+      Each service is a self-contained unit, but may perform multiple functions.
+    </p>
+    <p>Services are larger in scope (relative to microservices), e.g.:</p>
+    <h3 id="microservices">Microservices</h3>
+    <p>
+      <strong>Microservices</strong>: Architectural style that structures an
+      application as a collection of small, autonomous services.
+    </p>
+    <p>
+      Each service represents a single business function, and behave like a
+      &quot;mini-application&quot; with its own data storage, processing, and
+      communication.
+    </p>
+    <h3 id="summary">Summary</h3>
+    <p>Difference in focus:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Microservices</th>
+          <th>SOA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Small, autonomous services</td>
+          <td>Larger services</td>
+        </tr>
+        <tr>
+          <td>Decoupled from implementation details in rest of app</td>
+          <td>More tightly coupled (relatively)</td>
+        </tr>
+        <tr>
+          <td>Independent</td>
+          <td>Interdependent (relatively)</td>
+        </tr>
+        <tr>
+          <td>Single business function</td>
+          <td>Multiple related business functions</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Data Passing and APIs</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Data Passing and APIs</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#data-passing-and-apis">Data Passing and APIs</a>
+        <ul>
+          <li>
+            <a href="#application-programming-interface-api"
+              >Application Programming Interface (API)</a
+            >
+          </li>
+          <li><a href="#web-services">Web Services</a></li>
+          <li><a href="#demos">Demos</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="data-passing-and-apis">Data Passing and APIs</h1>
+    <h2 id="application-programming-interface-api-">
+      Application Programming Interface (API)
+    </h2>
+    <p>
+      An <strong>API</strong> is a set of rules and protocols that allow one
+      software application to interact with another.
+    </p>
+    <p>A function signature is a type of API.</p>
+    <p>Can be used to:</p>
+    <ul>
+      <li>Access web services</li>
+      <li>Access databases</li>
+      <li>Access hardware</li>
+      <li>Access software libraries</li>
+    </ul>
+    <h2 id="web-services">Web Services</h2>
+    <p>Web services are a type of API that is accessed over the internet.</p>
+    <p>
+      Your application sends a request to a web service (someone else&#39;s
+      application) and receives a response.
+    </p>
+    <p>Common use cases:</p>
+    <ul>
+      <li>Data exchange between systems</li>
+      <li>Payment processing</li>
+      <li>Weather data</li>
+      <li>Geolocation</li>
+    </ul>
+    <h2 id="demos">Demos</h2>
+    <p>
+      <a
+        href="https://developers.google.com/maps/documentation/address-validation/requests-validate-address"
+        >Google Address Validation Service</a
+      >
+    </p>
+    <p>
+      *You will need a Google Maps API key to run this demo on your own.
+      It&#39;s free but they require a credit card on file.
+    </p>
+    <pre><code class="language-bash">curl -X POST -d <span class="hljs-string">'{
+  "address": {
+    "regionCode": "US",
+    "postalCode": "47905",
+    "addressLines": ["3101 S Creasy Ln"]
+  }
+}'</span> \
+-H <span class="hljs-string">'Content-Type: application/json'</span> \
+<span class="hljs-string">"https://addressvalidation.googleapis.com/v1:validateAddress?key=<span class="hljs-variable">$GOOGLE_MAPS_API_KEY</span>"</span> \
+&gt; api_result.json
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Flowcharts</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Flowcharts</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#arrays">Arrays</a>
+        <ul>
+          <li><a href="#definitions">Definitions</a></li>
+          <li>
+            <a href="#manipulating-arrays">Manipulating Arrays</a>
+            <ul>
+              <li><a href="#creating-an-array">Creating an Array</a></li>
+              <li><a href="#adding-to-an-array">Adding to an Array</a></li>
+              <li>
+                <a href="#accessing-an-array-element"
+                  >Accessing an Array Element</a
+                >
+              </li>
+              <li>
+                <a href="#reassigning-an-array-element"
+                  >Reassigning an Array Element</a
+                >
+              </li>
+              <li>
+                <a href="#getting-the-length-of-an-array-in-python"
+                  >Getting the Length of an Array in Python</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#looping-through-arrays">Looping Through Arrays</a>
+            <ul>
+              <li><a href="#looping-by-index">Looping by Index</a></li>
+              <li><a href="#foreach-loops">&quot;foreach&quot; Loops</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#strings-are-arrays-sort-of"
+              >Strings are Arrays (Sort of)</a
+            >
+          </li>
+          <li>
+            <a href="#ordered-lists">Ordered Lists</a>
+            <ul>
+              <li>
+                <a href="#getting-items-from-an-ordered-list-by-index"
+                  >Getting item(s) from an ordered list by index.</a
+                >
+              </li>
+              <li>
+                <a href="#getting-items-from-an-ordered-list-by-range"
+                  >Getting item(s) from an ordered list by range.</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#searching-arrays">Searching Arrays</a>
+            <ul>
+              <li><a href="#linear-search">Linear Search</a></li>
+              <li><a href="#binary-search">Binary Search</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#parallel-arrays">Parallel Arrays</a>
+        <ul>
+          <li><a href="#definition">Definition</a></li>
+        </ul>
+      </li>
+    </ul>
+    <figure>
+      <span>
+        <img src="https://imgs.xkcd.com/comics/donald_knuth.png" style="" />
+      </span>
+    </figure>
+
+    <h1 id="arrays">Arrays</h1>
+    <h2 id="definitions">Definitions</h2>
+    <ul>
+      <li>An array is a series or list of values in computer memory.</li>
+      <li>
+        An array is a way to store multiple related variables of the same data
+        type.
+      </li>
+      <li>
+        An array is a container with n elements, where n is the length of the
+        array.
+      </li>
+    </ul>
+    <h2 id="manipulating-arrays">Manipulating Arrays</h2>
+    <p>The things in the array are called <strong>elements</strong>.</p>
+    <p>Each element occupies a position in the array:</p>
+    <ul>
+      <li><strong>index</strong></li>
+      <li><strong>address</strong></li>
+      <li><strong>position</strong></li>
+    </ul>
+    <p>
+      In most programming languages, the first element is at position 0. We call
+      this a <strong>zero-based array</strong>.
+    </p>
+    <h3 id="creating-an-array">Creating an Array</h3>
+    <pre><code class="language-python"><span class="hljs-comment">## Initialize an empty array</span>
+arr = []
+</code></pre>
+    <pre><code class="language-python"><span class="hljs-comment">## Initialize an array with values</span>
+arr = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]
+</code></pre>
+    <h3 id="adding-to-an-array">Adding to an Array</h3>
+    <pre><code class="language-python"><span class="hljs-comment">## Add an element to the end of the array</span>
+arr = []
+arr.append( <span class="hljs-string">'a'</span> )
+<span class="hljs-comment"># Array now contains: ['a']</span>
+</code></pre>
+    <h3 id="accessing-an-array-element">Accessing an Array Element</h3>
+    <pre><code class="language-python"><span class="hljs-comment">## Access an element by index</span>
+arr = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]
+print( arr[<span class="hljs-number">0</span>] ) <span class="hljs-comment"># Will print 'a'</span>
+print( arr[<span class="hljs-number">1</span>] ) <span class="hljs-comment"># Will print 'b'</span>
+</code></pre>
+    <h3 id="reassigning-an-array-element">Reassigning an Array Element</h3>
+    <pre><code class="language-python"><span class="hljs-comment">## Reassign an element by index</span>
+arr = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]
+arr[<span class="hljs-number">0</span>] = <span class="hljs-string">'z'</span>
+print( arr[<span class="hljs-number">0</span>] ) <span class="hljs-comment"># Will print 'z'</span>
+</code></pre>
+    <h3 id="getting-the-length-of-an-array-in-python">
+      Getting the Length of an Array in Python
+    </h3>
+    <p>We can use the “len” function to get the length of an array.</p>
+    <pre><code class="language-python"><span class="hljs-comment">## After this code is executed the “length” variable will hold an integer</span>
+<span class="hljs-comment">## with the number of elements of the array</span>
+arr = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]
+length = len( arr )
+print(length) <span class="hljs-comment"># Will print 4</span>
+</code></pre>
+    <pre><code class="language-python"><span class="hljs-comment">## Get the last element of an array</span>
+arr = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]
+last_element = arr[ len( arr ) - <span class="hljs-number">1</span> ]
+print( last_element ) <span class="hljs-comment"># Will print 'd'</span>
+</code></pre>
+    <h2 id="looping-through-arrays">Looping Through Arrays</h2>
+    <h3 id="looping-by-index">Looping by Index</h3>
+    <p>
+      We can use a counter variable to access an array element by position as we
+      move through a loop.
+    </p>
+    <pre><code class="language-python">arr = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]
+<span class="hljs-comment">## We can create a counter variable that we can then use to</span>
+<span class="hljs-comment">## access an element by index - by its position within the array.</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( len( arr ) ):
+    print( <span class="hljs-string">'The current index is: '</span> + str(i) )
+    print( <span class="hljs-string">'The array value at this position is: '</span> + arr[i] )
+</code></pre>
+    <ul>
+      <li>
+        <span class="demo">demo:</span>
+        <a
+          href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/m06_array_index_with_loop.py"
+          >m06_array_index_with_loop.py</a
+        >
+      </li>
+    </ul>
+    <h3 id="-foreach-loops">"foreach" Loops</h3>
+    <ul>
+      <li>Many languages offer a <code>foreach</code> loop.</li>
+      <li>
+        Convenient way to iterate over a collection of data without index and
+        counter variable.
+      </li>
+    </ul>
+    <pre><code class="language-python">arr = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]
+
+<span class="hljs-comment"># We can call "letter" anything we want.</span>
+<span class="hljs-keyword">for</span> letter <span class="hljs-keyword">in</span> arr:
+    print( letter ) <span class="hljs-comment"># prints: a, b, c, d</span>
+</code></pre>
+    <h2 id="strings-are-arrays-sort-of-">Strings are Arrays (Sort of)</h2>
+    <p>Strings are an iterable collection of characters.</p>
+    <p>Anything we can do with an array, we can do with a string.</p>
+    <pre><code class="language-python">long_word = [<span class="hljs-string">'Acetylcholinergic neurotransmission'</span>,]
+
+<span class="hljs-keyword">for</span> letter <span class="hljs-keyword">in</span> long_word:
+    print( letter )
+</code></pre>
+    <p>
+      <span class="demo">demo:</span> Write a program that prompts the user to
+      enter an animal name. Then prompt to enter a second animal name. If the
+      entries are the same print “Match”, otherwise print “Not a match”.
+    </p>
+    <ul>
+      <li>
+        <a
+          href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/string_comparison.py"
+          >string_comparison.py</a
+        >
+      </li>
+    </ul>
+    <h2 id="ordered-lists">Ordered Lists</h2>
+    <h3 id="getting-item-s-from-an-ordered-list-by-index-">
+      Getting item(s) from an ordered list by index.
+    </h3>
+    <p>
+      <span class="demo">demo:</span>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/get_nth_largest_city.py"
+        >get_nth_largest_city.py</a
+      >
+    </p>
+    <h3 id="getting-item-s-from-an-ordered-list-by-range-">
+      Getting item(s) from an ordered list by range.
+    </h3>
+    <p>
+      <span class="demo">demo:</span>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/get_top_n_largest_cities.py"
+        >get_top_n_largest_cities.py</a
+      >
+    </p>
+    <p>
+      <span class="demo">demo:</span>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/get_top_n_smallest_cities.py"
+        >get_top_n_smallest_cities.py</a
+      >
+    </p>
+    <p>
+      <span class="demo">demo:</span>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/alphabet_get_every_nth.py"
+        >alphabet_get_every_nth.py</a
+      >
+    </p>
+    <h2 id="searching-arrays">Searching Arrays</h2>
+    <h3 id="linear-search">Linear Search</h3>
+    <p>Algorithm:</p>
+    <ul>
+      <li>
+        Initialize a flag variable - a boolean variable that tells whether the
+        item was found. This will start with a value of “False”.
+      </li>
+      <li>
+        Use a loop to iterate through each item, and compare against the search
+        target.
+      </li>
+      <li>
+        If the search target is found then set the flag variable to “True”.
+      </li>
+    </ul>
+    <p>
+      <span class="demo">demo:</span>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/linear_search.py"
+        >linear_search.py</a
+      >
+    </p>
+    <h3 id="binary-search">Binary Search</h3>
+    <p>More efficient than linear search, but the array must be sorted.</p>
+    <p>Algorithm:</p>
+    <ul>
+      <li>Check middle element of array.</li>
+      <li>If the target is the middle element, then we are done.</li>
+      <li>
+        If the target is less than the middle element
+        <ul>
+          <li>Start over, searching the left half of the array.</li>
+        </ul>
+      </li>
+      <li>
+        If the target is greater than the middle element
+        <ul>
+          <li>Start over, searching the right half of the array.</li>
+        </ul>
+      </li>
+      <li>Repeat until the target is found or the array is empty.</li>
+    </ul>
+    <p>TODO:</p>
+    <p>
+      <span class="demo">demo:</span>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/binary.py"
+        >binary.py</a
+      >
+    </p>
+    <h1 id="parallel-arrays">Parallel Arrays</h1>
+    <h2 id="definition">Definition</h2>
+    <p>
+      <strong>Parallel arrays</strong> are a set of arrays that store related
+      information for a given index / position.
+    </p>
+    <p>
+      E.g.: Here are two arrays below - name and age. The parallel arrays give
+      the data a table structure. By looking at some index into the arrays we
+      can extract a “row” of data which are related.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">index</th>
+          <th align="center">name</th>
+          <th align="left">age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">0</td>
+          <td align="center">Terri Gourd</td>
+          <td align="left">23</td>
+        </tr>
+        <tr>
+          <td align="left">1</td>
+          <td align="center">Jonny Chocolate</td>
+          <td align="left">17</td>
+        </tr>
+        <tr>
+          <td align="left">2</td>
+          <td align="center">Sven Iglinsin</td>
+          <td align="left">34</td>
+        </tr>
+        <tr>
+          <td align="left">3</td>
+          <td align="center">The Q</td>
+          <td align="left">999999</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>This example had just two arrays, but there may be as many as needed.</p>
+    <p>
+      <span class="demo">demo:</span> Write a program that first prompts a user
+      to enter the names of a student then the student’s final grade. Do this
+      until the user types “done”. Print each student’s name and total score and
+      exit the program.
+    </p>
+    <ul>
+      <li>
+        <a
+          href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/m06_enter_student_grades.py"
+          >m06_enter_student_grades.py</a
+        >
+      </li>
+    </ul>
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV140_Intro_Software_Development/moving_average_parallel_arrays.py"
+        >Parallel Arrays Visualized: Moving Average</a
+      >
+    </p>
+    <!-- ## Removing and Updating From Parallel Arrays
+
+When we delete from a set of parallel arrays, all arrays need a value removed (by index).
+
+- We can’t use the “remove” method in this case - we don’t know what the corresponding values for the parallel arrays will be.
+
+```python
+## After this code is executed the "target_index" variable will hold an integer
+## with the array index of the argument that was passed in
+arr = ['a','b','c','d']
+target_index = arr.index( 'd' )
+```
+
+<span class="demo">demo:</span> m06_update_array_parallel.py
+
+<span class="demo">demo:</span> m06_remove_array_parallel.py
+
+- How do the indexes of other elements change if we delete one value?
+- If I remove Alf, what is the index of Cory? -->
+  </body>
+</html>

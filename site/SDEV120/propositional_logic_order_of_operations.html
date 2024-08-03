@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Propositional Logic - Order of Operations</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Propositional Logic - Order of Operations</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#order-of-operations">Order of Operations</a>
+        <ul>
+          <li>
+            <a href="#arithmetic-order-of-operations"
+              >Arithmetic Order of Operations</a
+            >
+            <ul>
+              <li><a href="#modulus">Modulus</a></li>
+              <li><a href="#practice-problems">Practice Problems</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#logical-order-of-operations"
+              >Logical Order of Operations</a
+            >
+            <ul>
+              <li><a href="#practice-problems-1">Practice Problems</a></li>
+              <li><a href="#exclusive-or">Exclusive Or</a></li>
+              <li><a href="#de-morgans-laws">De Morgan&#39;s Laws</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="order-of-operations">Order of Operations</h1>
+    <h2 id="arithmetic-order-of-operations">Arithmetic Order of Operations</h2>
+    <table>
+      <thead>
+        <tr>
+          <th align="center">Precedence</th>
+          <th align="left">Operator</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center">1</td>
+          <td align="left">()</td>
+          <td align="left">Parentheses</td>
+        </tr>
+        <tr>
+          <td align="center">2</td>
+          <td align="left">^</td>
+          <td align="left">Exponent</td>
+        </tr>
+        <tr>
+          <td align="center">3</td>
+          <td align="left">*</td>
+          <td align="left">Multiplication</td>
+        </tr>
+        <tr>
+          <td align="center">3</td>
+          <td align="left">/</td>
+          <td align="left">Division</td>
+        </tr>
+        <tr>
+          <td align="center">3</td>
+          <td align="left">%</td>
+          <td align="left">Modulus</td>
+        </tr>
+        <tr>
+          <td align="center">4</td>
+          <td align="left">+</td>
+          <td align="left">Addition</td>
+        </tr>
+        <tr>
+          <td align="center">4</td>
+          <td align="left">-</td>
+          <td align="left">Subtraction</td>
+        </tr>
+        <tr>
+          <td align="center">5</td>
+          <td align="left">=</td>
+          <td align="left">Assignment</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Order of operations:</p>
+    <ul>
+      <li>
+        Expressions in brackets evaluate before the outside of the brackets
+      </li>
+      <li>Operators with higher precedence evaluate first</li>
+      <li>Expressions evaluate left to right</li>
+    </ul>
+    <h3 id="modulus">Modulus</h3>
+    <p>
+      The <strong>modulus</strong> operator returns the remainder of a division
+      operation.
+    </p>
+    <p>
+      <strong><em>Examples:</em></strong>
+    </p>
+    <pre><code>4 % 2   = 2, R0 = 0
+5 % 2   = 2, R1 = 1
+11 % 9  = 1, R2 = 2
+1 % 7   = 0, R1 = 1
+</code></pre>
+    <h3 id="practice-problems">Practice Problems</h3>
+    <details>
+      <summary>Solve: 100 - 25 * 3 / 5</summary>
+      <div>
+        <p>100 - ((25 * 3) / 5)</p>
+        <p>100 - (75 / 5)</p>
+        <p>100 - 15</p>
+        <p>85</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Solve: 32 / 4 + 12 / 6 - 9 % 2</summary>
+      <div>
+        <p>(32 / 4) + (12 / 6) - (9 % 2)</p>
+        <p>8 + 2 - 1</p>
+        <p>9</p>
+      </div>
+    </details>
+
+    <h2 id="logical-order-of-operations">Logical Order of Operations</h2>
+    <table>
+      <thead>
+        <tr>
+          <th align="center">Precedence</th>
+          <th align="left">Operator</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center">1</td>
+          <td align="left">()</td>
+          <td align="left">Parentheses</td>
+        </tr>
+        <tr>
+          <td align="center">2</td>
+          <td align="left">¬</td>
+          <td align="left">Negation</td>
+        </tr>
+        <tr>
+          <td align="center">3</td>
+          <td align="left">∧</td>
+          <td align="left">Conjunction</td>
+        </tr>
+        <tr>
+          <td align="center">4</td>
+          <td align="left">∨</td>
+          <td align="left">Disjunction</td>
+        </tr>
+        <tr>
+          <td align="center">5</td>
+          <td align="left">→</td>
+          <td align="left">Implication</td>
+        </tr>
+        <tr>
+          <td align="center">6</td>
+          <td align="left">↔</td>
+          <td align="left">Biconditional</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="practice-problems">Practice Problems</h3>
+    <p>For the following values of x, y, and z:</p>
+    <pre><code>x = True, y = True, z = True
+x = False, y = False, z = False
+x = True, y = True, z = False
+</code></pre>
+    <p>Plug in the values and evaluate the following expressions:</p>
+    <pre><code>1. x ∧ y ∧ z
+2. x ∨ y ∧ z
+3. ( x ∨ y ) ∧ z
+4. ¬x ∧ y
+5. ¬( x ∧ y )
+6. ¬( x ∨ y )
+</code></pre>
+    <h3 id="exclusive-or">Exclusive Or</h3>
+    <p>
+      How do we represent exclusive or if we don&#39;t have an exclusive or
+      operator?
+    </p>
+    <pre><code>P is true AND Q is false OR P is false AND Q is true:
+
+(P ∧ ¬Q) ∨ (¬P ∧ Q)
+</code></pre>
+    <h3 id="de-morgan-s-laws">De Morgan's Laws</h3>
+    <p>
+      De Morgan&#39;s Laws are a set of rules that allow us to distribute
+      negation across conjunction and disjunction:
+    </p>
+    <pre><code>¬(P ∧ Q) ≡ ¬P ∨ ¬Q
+¬(P ∨ Q) ≡ ¬P ∧ ¬Q
+</code></pre>
+    <p>Let&#39;s check for logical equivalence using a truth table:</p>
+    <p>Rule 1:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>P</th>
+          <th>Q</th>
+          <th>(P ∧ Q)</th>
+          <th>¬(P ∧ Q)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T</td>
+          <td>T</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>T</td>
+          <td>F</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>T</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>F</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th>P</th>
+          <th>Q</th>
+          <th>(P ∧ Q)</th>
+          <th>¬P ∨ ¬Q</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T</td>
+          <td>T</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>T</td>
+          <td>F</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>T</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>F</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Rule 2:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>P</th>
+          <th>Q</th>
+          <th>(P ∨ Q)</th>
+          <th>¬(P ∨ Q)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T</td>
+          <td>T</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>T</td>
+          <td>F</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>T</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>F</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th>P</th>
+          <th>Q</th>
+          <th>(P ∨ Q)</th>
+          <th>¬P ∧ ¬Q</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T</td>
+          <td>T</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>T</td>
+          <td>F</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>T</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>F</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

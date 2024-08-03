@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Intro</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Intro</a>
+    </h1>
+    <ul>
+      <li><a href="#php-intro">PHP: Intro</a></li>
+      <li>
+        <a href="#syntax">Syntax</a>
+        <ul>
+          <li><a href="#printing-output">Printing Output</a></li>
+          <li>
+            <a href="#php-variable-naming-conventions"
+              >PHP Variable Naming Conventions</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#basic-data-types">Basic Data Types</a>
+        <ul>
+          <li><a href="#type-casting">Type Casting</a></li>
+          <li><a href="#strings">Strings</a></li>
+          <li><a href="#string-concatenation">String Concatenation</a></li>
+          <li>
+            <a href="#common-string-functions">Common String Functions</a>
+          </li>
+          <li><a href="#arrays">Arrays</a></li>
+          <li><a href="#indexed-arrays">Indexed Arrays</a></li>
+          <li>
+            <a href="#associative-arrays">Associative Arrays</a>
+            <ul>
+              <li><a href="#array-functions">Array Functions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#embedding-php-in-html">Embedding PHP in HTML</a>
+        <ul>
+          <li><a href="#shorthand-echo">Shorthand Echo</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#configuration">Configuration</a>
+        <ul>
+          <li>
+            <a href="#phpini">php.ini</a>
+            <ul>
+              <li>
+                <a href="#things-we-might-change">Things we Might Change</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#displaying-phpinfo">Displaying phpinfo()</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="php-intro">PHP: Intro</h1>
+    <p>PHP allows us to create <strong>dynamic web pages</strong>.</p>
+    <ul>
+      <li>Account logins</li>
+      <li>Shopping carts</li>
+      <li>Database access</li>
+      <li>Content management systems</li>
+      <li>Search and filter</li>
+      <li>... many more ...</li>
+    </ul>
+    <p>PHP can be embedded in HTML files or a file can have exclusively PHP.</p>
+    <p>PHP files end with the <code>.php</code> extension.</p>
+    <h1 id="syntax">Syntax</h1>
+    <ul>
+      <li>
+        Code is enclosed in <code>&lt;?php</code> and <code>?&gt;</code> tags.
+      </li>
+      <li>Statements end with a semicolon, <code>;</code>.</li>
+      <li>PHP is case-sensitive.</li>
+      <li>
+        If a file has only PHP code, it is recommended to omit the closing
+        <code>?&gt;</code> tag.
+        <ul>
+          <li>
+            <a
+              href="https://www.php.net/manual/en/language.basic-syntax.phptags.php"
+              >PHP tags</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="printing-output">Printing Output</h2>
+    <ul>
+      <li>We can use the <code>echo</code> statement to print output.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"Hello, Mercury!"</span>;
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <h2 id="php-variable-naming-conventions">
+      PHP Variable Naming Conventions
+    </h2>
+    <ul>
+      <li>Start with a dollar sign, <code>$</code></li>
+      <li>Can use letters, numbers, or underscores</li>
+      <li>First character cannot be a number</li>
+      <li>
+        Names are case-sensitive
+        <ul>
+          <li><code>$age</code> and <code>$Age</code> are different</li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="basic-data-types">Basic Data Types</h1>
+    <ul>
+      <li>PHP is a <strong>loosely typed language.</strong></li>
+      <li>
+        The data type is determined by the value rather than explicitly
+        declared.
+      </li>
+      <li>
+        Common types:
+        <ul>
+          <li>
+            <strong>String</strong>
+            <ul>
+              <li>A sequence of characters</li>
+              <li>Enclosed in single or double quotes</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Integer</strong>
+            <ul>
+              <li>A whole number</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Float</strong>
+            <ul>
+              <li>A number with a decimal point</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Boolean</strong>
+            <ul>
+              <li><code>true</code> or <code>false</code></li>
+            </ul>
+          </li>
+          <li>
+            <strong>Array</strong>
+            <ul>
+              <li>A collection of values</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Object</strong>
+            <ul>
+              <li>A collection of data and functions</li>
+            </ul>
+          </li>
+          <li>
+            <strong>NULL</strong>
+            <ul>
+              <li>No value</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="type-casting">Type Casting</h2>
+    <ul>
+      <li>We can convert between types using <strong>type casting</strong>.</li>
+      <li>
+        To cast a value to a type, put the type in parentheses in front of the
+        value.
+      </li>
+    </ul>
+    <pre><code class="language-php">$myString = <span class="hljs-string">"123"</span>;
+$myInt = (int) $myString;
+<span class="hljs-keyword">echo</span> $myInt; <span class="hljs-comment">// 123</span>
+</code></pre>
+    <h2 id="strings">Strings</h2>
+    <h2 id="string-concatenation">String Concatenation</h2>
+    <ul>
+      <li>We can use the <code>.</code> operator to concatenate strings.</li>
+    </ul>
+    <pre><code class="language-php">$firstName = <span class="hljs-string">"Bobby"</span>;
+$lastName = <span class="hljs-string">"Beebop"</span>;
+$fullName = $firstName . <span class="hljs-string">" "</span> . $lastName;
+<span class="hljs-keyword">echo</span> $fullName; <span class="hljs-comment">// Bobby Beebop</span>
+</code></pre>
+    <ul>
+      <li>
+        We can also use the <code>.=</code> operator to append to a string.
+      </li>
+    </ul>
+    <pre><code class="language-php">$name = <span class="hljs-string">"Bobby"</span>;
+$name .= <span class="hljs-string">" Beebop"</span>;
+<span class="hljs-keyword">echo</span> $name; <span class="hljs-comment">// Bobby Beebop</span>
+</code></pre>
+    <h2 id="common-string-functions">Common String Functions</h2>
+    <p>
+      <a href="https://www.php.net/manual/en/ref.strings.php"
+        >PHP String Functions</a
+      >
+    </p>
+    <pre><code class="language-php">$myString = <span class="hljs-string">"Hello, Mercury!"</span>;
+<span class="hljs-keyword">echo</span> strlen($myString); <span class="hljs-comment">// 16</span>
+<span class="hljs-keyword">echo</span> strtoupper($myString); <span class="hljs-comment">// HELLO, MERCURY!</span>
+<span class="hljs-keyword">echo</span> strtolower($myString); <span class="hljs-comment">// hello, mercury!</span>
+<span class="hljs-keyword">echo</span> str_replace(<span class="hljs-string">"Mercury"</span>, <span class="hljs-string">"Venus"</span>, $myString); <span class="hljs-comment">// Hello, Venus!</span>
+<span class="hljs-keyword">echo</span> substr($myOtherString, <span class="hljs-number">7</span>); <span class="hljs-comment">// Mercury!</span>
+
+<span class="hljs-comment">// We should always trim user input.</span>
+$myOtherString = <span class="hljs-string">"  Hello, Mercury!  "</span>;
+<span class="hljs-keyword">echo</span> trim($myOtherString); <span class="hljs-comment">// Hello, Mercury!</span>
+</code></pre>
+    <h2 id="arrays">Arrays</h2>
+    <h2 id="indexed-arrays">Indexed Arrays</h2>
+    <p>Referencing:</p>
+    <pre><code class="language-php">$names = [<span class="hljs-string">"Bobby"</span>, <span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Jimmy"</span>];
+<span class="hljs-keyword">echo</span> $names[<span class="hljs-number">0</span>]; <span class="hljs-comment">// Bobby</span>
+</code></pre>
+    <p>Appending:</p>
+    <pre><code class="language-php">$names = [<span class="hljs-string">"Bobby"</span>, <span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Jimmy"</span>];
+$names[] = <span class="hljs-string">"Jane"</span>;
+</code></pre>
+    <h2 id="associative-arrays">Associative Arrays</h2>
+    <ul>
+      <li>Used to &quot;map&quot; keys to values.</li>
+      <li>Also called dictionaries, maps, or hashmaps.</li>
+      <li>Key/value pairs.</li>
+      <li>Keys are unique.</li>
+      <li>Values do not have to be unique.</li>
+    </ul>
+    <p>Referencing:</p>
+    <pre><code class="language-php">$students = [
+    <span class="hljs-string">"C0123456"</span> =&gt; <span class="hljs-string">"Jonny Danger"</span>,
+    <span class="hljs-string">"C0123457"</span> =&gt; <span class="hljs-string">"Q"</span>,
+    <span class="hljs-string">"C0123458"</span> =&gt; <span class="hljs-string">"Jennifer's Cat"</span>,
+];
+<span class="hljs-keyword">echo</span> $students[<span class="hljs-string">"C0123457"</span>]; <span class="hljs-comment">// Q</span>
+</code></pre>
+    <p>Appending:</p>
+    <pre><code class="language-php">$students = [
+    <span class="hljs-string">"C0123456"</span> =&gt; <span class="hljs-string">"Jonny Danger"</span>,
+    <span class="hljs-string">"C0123457"</span> =&gt; <span class="hljs-string">"Q"</span>,
+    <span class="hljs-string">"C0123458"</span> =&gt; <span class="hljs-string">"Jennifer's Cat"</span>,
+];
+<span class="hljs-comment">// This adds a new key/value pair to the array if it doesn't exist.</span>
+<span class="hljs-comment">// If it does it will overwrite the value.</span>
+$students[<span class="hljs-string">"C0123459"</span>] = <span class="hljs-string">"Dr. Evil"</span>;
+</code></pre>
+    <h3 id="array-functions">Array Functions</h3>
+    <p>
+      <a href="https://www.php.net/manual/en/ref.array.php"
+        >PHP Array Functions</a
+      >
+    </p>
+    <pre><code class="language-php"><span class="hljs-comment">// Indexed Arrays</span>
+$names = [<span class="hljs-string">"Bobby"</span>, <span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Jimmy"</span>];
+<span class="hljs-keyword">echo</span> count($names); <span class="hljs-comment">// 3</span>
+<span class="hljs-keyword">echo</span> implode(<span class="hljs-string">", "</span>, $names); <span class="hljs-comment">// Bobby, Sally, Jimmy</span>
+<span class="hljs-keyword">echo</span> in_array(<span class="hljs-string">"Bobby"</span>, $names); <span class="hljs-comment">// true</span>
+<span class="hljs-keyword">echo</span> array_sort($names); <span class="hljs-comment">// ["Bobby", "Jimmy", "Sally"]</span>
+</code></pre>
+    <pre><code class="language-php"><span class="hljs-comment">// Associative Arrays</span>
+$students = [
+    <span class="hljs-string">"C0123456"</span> =&gt; <span class="hljs-string">"Jonny Danger"</span>,
+    <span class="hljs-string">"C0123457"</span> =&gt; <span class="hljs-string">"Q"</span>,
+    <span class="hljs-string">"C0123458"</span> =&gt; <span class="hljs-string">"Jennifer's Cat"</span>,
+];
+<span class="hljs-keyword">echo</span> array_key_exists(<span class="hljs-string">"C0123456"</span>, $students); <span class="hljs-comment">// true</span>
+<span class="hljs-keyword">echo</span> array_keys($students); <span class="hljs-comment">// ["C0123456", "C0123457", "C0123458"]</span>
+<span class="hljs-keyword">echo</span> array_values($students); <span class="hljs-comment">// ["Jonny Danger", "Q", "Jennifer's Cat"]</span>
+</code></pre>
+    <h1 id="embedding-php-in-html">Embedding PHP in HTML</h1>
+    <ul>
+      <li>We can embed PHP in HTML files.</li>
+      <li>The PHP code is executed on the server.</li>
+      <li>The output is sent to the browser.</li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>PHP in HTML<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>PHP in HTML<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="php"><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hello, Mercury!"</span>;
+    <span class="hljs-meta">?&gt;</span></span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+    <h2 id="shorthand-echo">Shorthand Echo</h2>
+    <ul>
+      <li>
+        We can use the shorthand <code>&lt;?= ... ?&gt;</code> to echo a value.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$name = <span class="hljs-string">"Bobby Beebop"</span>;
+<span class="hljs-meta">?&gt;</span>
+&lt;h1&gt;Name: <span class="hljs-meta">&lt;?</span>= $name <span class="hljs-meta">?&gt;</span>&lt;/h1&gt;
+</code></pre>
+    <h1 id="configuration">Configuration</h1>
+    <h2 id="php-ini">php.ini</h2>
+    <ul>
+      <li>The php.ini file is the configuration file for PHP.</li>
+      <li>In Windows: C:\xampp\php\php.ini</li>
+    </ul>
+    <h3 id="things-we-might-change">Things we Might Change</h3>
+    <ul>
+      <li>
+        <code>display_errors</code>
+        <ul>
+          <li>Set to <code>On</code> to display errors in the browser.</li>
+        </ul>
+      </li>
+      <li>
+        <code>error_reporting</code>
+        <ul>
+          <li>Set to <code>E_ALL</code> to display all errors.</li>
+        </ul>
+      </li>
+      <li>
+        <code>date.timezone</code>
+        <ul>
+          <li>Set to your timezone.</li>
+          <li>
+            <a href="https://www.php.net/manual/en/timezones.php"
+              >List of supported timezones</a
+            >
+          </li>
+          <li>America/Indiana/Indianapolis</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="displaying-phpinfo-">Displaying phpinfo()</h2>
+    <ul>
+      <li>
+        The <code>phpinfo()</code> function displays information about the PHP
+        environment.
+      </li>
+      <li>Let&#39;s swap out our <code>index.php</code> file for this:</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+phpinfo();
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+  </body>
+</html>

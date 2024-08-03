@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Open/Closed Principle</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Open/Closed Principle</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#openclosed-principle">Open/Closed Principle</a>
+        <ul>
+          <li><a href="#abstract-base-classes">Abstract Base Classes</a></li>
+          <li><a href="#interfaces">Interfaces</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="open-closed-principle">Open/Closed Principle</h1>
+    <p>
+      &quot;Software entities should be open for extension but closed for
+      modification.&quot;
+    </p>
+    <p>
+      In other words, you should be able to add new functionality to a module
+      without changing its existing code.
+    </p>
+    <h2 id="abstract-base-classes">Abstract Base Classes</h2>
+    <p>
+      An <strong>abstract base class</strong> is a class that cannot be
+      instantiated and is designed to be subclassed.
+    </p>
+    <p>
+      <strong>Use Case:</strong> When you want to provide some common
+      functionality and also enforce that certain methods are implemented by all
+      subclasses.
+    </p>
+    <pre><code class="language-python"><span class="hljs-keyword">import</span> abc
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment">## Common attributes for all employees</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, employee_id: int, first_name: str, last_name: str)</span>:</span>
+        self.employee_id = employee_id
+        self.first_name = first_name
+        self.last_name = last_name
+
+    <span class="hljs-comment">## Abstract method</span>
+    <span class="hljs-comment">## There's no sensible implementation for this method in the base class</span>
+<span class="hljs-meta">    @abc.abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_year_to_date_pay</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HourlyEmployee</span><span class="hljs-params">(Employee)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, employee_id: int, first_name: str, last_name: str,
+                 hours_worked_current_year: float, hourly_rate: float)</span>:</span>
+        super().__init__(employee_id, first_name, last_name)
+        self.hours_worked_current_year = hours_worked_current_year
+        self.hourly_rate = hourly_rate
+
+    <span class="hljs-comment"># This method is required by the Employee base class</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_year_to_date_pay</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.hours_worked_current_year * self.hourly_rate
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SalariedEmployee</span><span class="hljs-params">(Employee)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, employee_id: int, first_name: str, last_name: str,
+                 salary: float, pay_periods_per_year: int,
+                 pay_periods_elapsed: int)</span>:</span>
+        super().__init__(employee_id, first_name, last_name)
+        self.salary = salary
+        self.pay_periods_per_year = pay_periods_per_year
+        self.pay_periods_elapsed = pay_periods_elapsed
+
+    <span class="hljs-comment"># This method is required by the Employee base class</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_year_to_date_pay</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> (self.salary /
+                self.pay_periods_per_year) * self.pay_periods_elapsed
+
+<span class="hljs-comment">## This function takes any employee object</span>
+<span class="hljs-comment">## We are therefore guaranteed that the calculate_year_to_date_pay method will exist</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">summarize_employee</span><span class="hljs-params">(employee: Employee)</span>:</span>
+    print(<span class="hljs-string">f"Employee ID: <span class="hljs-subst">{employee.employee_id}</span>"</span>)
+    print(<span class="hljs-string">f"Employee Name: <span class="hljs-subst">{employee.first_name}</span> <span class="hljs-subst">{employee.last_name}</span>"</span>)
+    print(<span class="hljs-string">f"Year to date pay: $<span class="hljs-subst">{employee.calculate_year_to_date_pay():<span class="hljs-number">.2</span>f}</span>"</span>)
+
+<span class="hljs-comment"># Create some employees</span>
+hourly_employee = HourlyEmployee(<span class="hljs-number">1</span>, <span class="hljs-string">"John"</span>, <span class="hljs-string">"Doe"</span>, <span class="hljs-number">100</span>, <span class="hljs-number">10</span>)
+salaried_employee = SalariedEmployee(<span class="hljs-number">2</span>, <span class="hljs-string">"Jane"</span>, <span class="hljs-string">"Doe"</span>, <span class="hljs-number">50000</span>, <span class="hljs-number">26</span>, <span class="hljs-number">2</span>)
+
+<span class="hljs-comment"># We can plug in either of our employees because they inherit from Employee</span>
+summarize_employee(hourly_employee)
+summarize_employee(salaried_employee)
+</code></pre>
+    <h2 id="interfaces">Interfaces</h2>
+    <p>
+      An <strong>interface</strong> is a <em>contract</em> that specifies the
+      methods that a class must implement.
+    </p>
+    <p>
+      <strong>Use Case:</strong> When you want to ensure that a class has
+      certain properties or methods, but you don&#39;t care about the
+      implementation.
+    </p>
+    <p>
+      Python does not have a built-in interface type, but we can use abstract
+      base classes to create interfaces. Below is an example in TypeScript.
+    </p>
+    <pre><code class="language-typescript"><span class="hljs-comment">/* ************************************************************
+ * INTERFACES
+ ************************************************************ */</span>
+<span class="hljs-comment">// There is no implementation in an interface, only method signatures.</span>
+<span class="hljs-keyword">interface</span> PaymentProcessor {
+  <span class="hljs-comment">// Property</span>
+  paymentMethod: <span class="hljs-built_in">string</span>;
+  <span class="hljs-comment">// Method signature</span>
+  processPayment(amount: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span>;
+}
+
+<span class="hljs-comment">/* ************************************************************
+ * CLASSES
+ ************************************************************ */</span>
+<span class="hljs-comment">// This class implements the PaymentProcessor interface, so it needs to have a processPayment method.</span>
+<span class="hljs-keyword">class</span> CreditCardPayment <span class="hljs-keyword">implements</span> PaymentProcessor {
+  <span class="hljs-comment">// Interface property</span>
+  paymentMethod: <span class="hljs-built_in">string</span>;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> ownerName: <span class="hljs-built_in">string</span>, <span class="hljs-keyword">private</span> cardNumber: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-keyword">this</span>.paymentMethod = <span class="hljs-string">"Credit Card"</span>;
+  }
+
+  <span class="hljs-comment">// Interface method</span>
+  processPayment(amount: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Processing <span class="hljs-subst">${amount}</span> via Credit Card.`</span>);
+  }
+
+  <span class="hljs-comment">// Additional methods - not part of interface; shown here to illustrate that a class can have</span>
+  <span class="hljs-comment">// more than just the interface methods</span>
+  validateCard(): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Validating card..."</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  }
+}
+
+<span class="hljs-comment">// This class implements the PaymentProcessor interface, so it needs to have a processPayment method.</span>
+<span class="hljs-keyword">class</span> PayPalPayment <span class="hljs-keyword">implements</span> PaymentProcessor {
+  <span class="hljs-comment">// Interface property</span>
+  paymentMethod: <span class="hljs-built_in">string</span>;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> email: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-keyword">this</span>.paymentMethod = <span class="hljs-string">"PayPal"</span>;
+  }
+
+  <span class="hljs-comment">// Interface method</span>
+  processPayment(amount: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Processing <span class="hljs-subst">${amount}</span> via PayPal for <span class="hljs-subst">${<span class="hljs-keyword">this</span>.email}</span>.`</span>);
+  }
+
+  <span class="hljs-comment">// Additional methods - not part of interface; shown here to illustrate that a class can have</span>
+  <span class="hljs-comment">// more than just the interface methods</span>
+  validateEmail(): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Validating email..."</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  }
+}
+
+<span class="hljs-comment">/* ************************************************************
+ * PROGRAM LOGIC
+ ************************************************************ */</span>
+<span class="hljs-comment">// This function doesn't care what class is passed in, as long as that class implements the</span>
+<span class="hljs-comment">// PaymentProcessor interface. This guarantees that the class has a processPayment method.</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initiatePayment</span>(<span class="hljs-params">paymentMethod: PaymentProcessor, amount: <span class="hljs-built_in">number</span></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Payment started for "</span> + paymentMethod.paymentMethod + <span class="hljs-string">"."</span>);
+
+  <span class="hljs-comment">// Use the processPayment method from the interface.</span>
+  <span class="hljs-comment">// We don't need to know which class was passed in.</span>
+  paymentMethod.processPayment(amount);
+
+  <span class="hljs-comment">// Do other stuff...</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Payment complete."</span>);
+}
+
+<span class="hljs-comment">// Create instances of payment methods</span>
+<span class="hljs-keyword">let</span> ccPayment = <span class="hljs-keyword">new</span> CreditCardPayment(<span class="hljs-string">"John Doe"</span>, <span class="hljs-string">"1234567890123456"</span>);
+<span class="hljs-keyword">let</span> ppPayment = <span class="hljs-keyword">new</span> PayPalPayment(<span class="hljs-string">"john@example.com"</span>);
+
+<span class="hljs-comment">// Process payments</span>
+initiatePayment(ccPayment, <span class="hljs-number">100</span>);
+initiatePayment(ppPayment, <span class="hljs-number">200</span>);
+</code></pre>
+  </body>
+</html>

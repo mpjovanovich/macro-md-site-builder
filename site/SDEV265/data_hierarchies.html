@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Data Hierarchies</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Data Hierarchies</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#data-hierarchies">Data Hierarchies</a>
+        <ul>
+          <li><a href="#software-code">Software (Code)</a></li>
+          <li><a href="#database">Database</a></li>
+          <li><a href="#data-architectures">Data Architectures</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="data-hierarchies">Data Hierarchies</h1>
+    <p>
+      Data hierarchies are used to organize data in a structured way. This is
+      useful for understanding how data is related and how it can be accessed.
+    </p>
+    <h2 id="software-code-">Software (Code)</h2>
+    <ul>
+      <li>
+        <strong>Application</strong>
+        <ul>
+          <li>
+            <strong>Module</strong>, package, library
+            <ul>
+              <li>
+                <strong>Namespace</strong>
+                <ul>
+                  <li>
+                    <strong>Class</strong>
+                    <ul>
+                      <li>
+                        <strong>Methods</strong> and <strong>properties</strong>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="database">Database</h2>
+    <ul>
+      <li>
+        <strong>System</strong>
+        <ul>
+          <li>
+            <strong>Database</strong>
+            <ul>
+              <li>
+                <strong>Schema</strong>
+                <ul>
+                  <li>
+                    <strong>Table</strong>, relation
+                    <ul>
+                      <li>
+                        <strong>Row</strong>, tuple, record
+                        <ul>
+                          <li><strong>Column</strong>, attribute, field</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="data-architectures">Data Architectures</h2>
+    <p>Application architectures vary widely:</p>
+    <ul>
+      <li>An application may use several databases.</li>
+      <li>
+        An application may be broken into services that are dedicated to
+        specific tasks.
+      </li>
+      <li>A database may be used by several applications.</li>
+      <li>A database may communicate with other databases. se.</li>
+    </ul>
+    <p>We will cover more on this later in the cour</p>
+  </body>
+</html>

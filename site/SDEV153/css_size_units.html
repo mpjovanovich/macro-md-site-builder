@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV153 - CSS Size Units</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV153/index.html"
+        >SDEV153</a
+      >&nbsp;&gt;&nbsp;<a href="">CSS Size Units</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#css-size-units">CSS Size Units</a>
+        <ul>
+          <li><a href="#screen-units-summary">Screen Units Summary</a></li>
+          <li>
+            <a href="#absolute-units">Absolute Units</a>
+            <ul>
+              <li><a href="#screen-media">Screen Media</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#relative-units">Relative Units</a>
+            <ul>
+              <li><a href="#fonts-and-typography">Fonts and Typography</a></li>
+              <li><a href="#containers">Containers</a></li>
+            </ul>
+          </li>
+          <li><a href="#demos">Demos</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="css-size-units">CSS Size Units</h1>
+    <h2 id="screen-units-summary">Screen Units Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th><code>Unit</code></th>
+          <th>Description</th>
+          <th>Use Case</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>px</code></td>
+          <td>Absolute pixels on screen.</td>
+          <td>Fixed-sized elements.</td>
+          <td><code>font-size: 16px;</code></td>
+        </tr>
+        <tr>
+          <td><code>%</code></td>
+          <td>1% of parent element size.</td>
+          <td>Size relative to parent.</td>
+          <td><code>width: 50%;</code></td>
+        </tr>
+        <tr>
+          <td><code>em</code></td>
+          <td>Font size of element or parent.</td>
+          <td>Size relative to parent.</td>
+          <td><code>font-size: 2em;</code></td>
+        </tr>
+        <tr>
+          <td><code>rem</code></td>
+          <td>Font size of root element.</td>
+          <td>Size relative to root.</td>
+          <td><code>font-size: 2rem;</code></td>
+        </tr>
+        <tr>
+          <td><code>ch</code></td>
+          <td>
+            Width of the &quot;0&quot; character in the element&#39;s font.
+          </td>
+          <td>Size to line length / character count.</td>
+          <td><code>width: 50ch;</code></td>
+        </tr>
+        <tr>
+          <td><code>vw</code></td>
+          <td>1% of viewport width.</td>
+          <td>Size relative to container.</td>
+          <td><code>width: 50vw;</code></td>
+        </tr>
+        <tr>
+          <td><code>vh</code></td>
+          <td>1% of viewport height.</td>
+          <td>Size relative to container.</td>
+          <td><code>height: 50vh;</code></td>
+        </tr>
+        <tr>
+          <td><code>vmin</code></td>
+          <td>1% of smaller dimension (height or width) of viewport.</td>
+          <td>Size relative to container.</td>
+          <td><code>width: 50vmin;</code></td>
+        </tr>
+        <tr>
+          <td><code>vmax</code></td>
+          <td>1% of larger dimension (height or width) of viewport.</td>
+          <td>Size relative to container.</td>
+          <td><code>width: 50vmax;</code></td>
+        </tr>
+        <tr>
+          <td><code>flex</code></td>
+          <td>Growth shrink factor for item in a flex container.</td>
+          <td>Size flex items.</td>
+          <td><code>flex: 2;</code></td>
+        </tr>
+        <tr>
+          <td><code>fr</code></td>
+          <td>Fraction of available space in a grid container.</td>
+          <td>Size CSS grid rows/columns.</td>
+          <td><code>grid-template-columns: 1fr 1fr;</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="absolute-units">Absolute Units</h2>
+    <h3 id="screen-media">Screen Media</h3>
+    <ul>
+      <li>
+        <strong>1pt</strong> = 1/72in.
+        <ul>
+          <li>Used in print media.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>1px</strong> = 1/96in.
+        <ul>
+          <li>Used in screen media.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="relative-units">Relative Units</h2>
+    <ul>
+      <li>Sized as a proportion of something else.</li>
+      <li>Useful for responsive design.</li>
+    </ul>
+    <h3 id="fonts-and-typography">Fonts and Typography</h3>
+    <ul>
+      <li><strong>1em</strong> = 1x font size of parent element.</li>
+      <li>
+        <strong>1rem</strong> = 1x font size of root element.
+        <ul>
+          <li>Default is 16px in browsers.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>line-height</strong> = space between lines of text.
+        <ul>
+          <li>Optimal line height is 1.2–1.5em.</li>
+          <li>
+            Leave at unitless value to scale with font size; e.g.
+            <code>line-height: 1.5;</code> = 1.5x font size.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="containers">Containers</h3>
+    <ul>
+      <li>
+        <strong>Viewport</strong> units = refer to visible area of browser
+        window.
+      </li>
+      <li>
+        <strong>ch</strong> = character advance; width of &quot;0&quot;
+        character in element&#39;s font.
+        <ul>
+          <li>Optimal line length for body text is 50–75ch.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="demos">Demos</h2>
+    <p>
+      <a href="https://codepen.io/Mike-Jovanovich/pen/wvNxarX"
+        >Responsive Typography</a
+      >
+    </p>
+  </body>
+</html>

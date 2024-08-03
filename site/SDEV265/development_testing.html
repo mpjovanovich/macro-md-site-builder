@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Development Testing</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Development Testing</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#development-testing">Development Testing</a>
+        <ul>
+          <li>
+            <a href="#unit-testing">Unit Testing</a>
+            <ul>
+              <li><a href="#parts-of-a-unit-test">Parts of a Unit Test</a></li>
+              <li>
+                <a href="#configuring-initial-state"
+                  >Configuring Initial State</a
+                >
+              </li>
+              <li><a href="#choosing-test-cases">Choosing Test Cases</a></li>
+              <li><a href="#partition-testing">Partition Testing</a></li>
+              <li><a href="#path-testing">Path Testing</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#component-testing">Component Testing</a>
+            <ul>
+              <li><a href="#interface-errors">Interface Errors</a></li>
+              <li><a href="#timing-errors">Timing Errors</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#you-cant-catch-em-all">You Can&#39;t Catch Em All</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="development-testing">Development Testing</h1>
+    <ul>
+      <li>Done as the program is built.</li>
+      <li>
+        Usually done by individual programmer, or paired with product support
+        team member.
+      </li>
+      <li>
+        Testing methodologies vary in degree of formality:
+        <ul>
+          <li><strong>Ad hoc testing:</strong> No formal test plan.</li>
+          <li>
+            <strong>Test driven development (TDD):</strong> Write tests before
+            writing code.
+          </li>
+          <li>Anywhere in between.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="unit-testing">Unit Testing</h2>
+    <figure>
+      <span
+        ><img
+          src="https://i.stack.imgur.com/XrF5e.png"
+          alt="Figure"
+          style="width: 100%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>
+        Tests individual components of the software (e.g. functions, classes).
+      </li>
+      <li>Automated tests run when code is compiled.</li>
+    </ul>
+    <h3 id="parts-of-a-unit-test">Parts of a Unit Test</h3>
+    <ol>
+      <li>
+        Setup
+        <ul>
+          <li>Define inputs</li>
+          <li>Define expected outputs (results)</li>
+          <li>Initialize state</li>
+        </ul>
+      </li>
+      <li>
+        Execution
+        <ul>
+          <li>Run the code</li>
+        </ul>
+      </li>
+      <li>
+        Verification
+        <ul>
+          <li>Assert that actual outputs match expected outputs</li>
+        </ul>
+      </li>
+    </ol>
+    <p>Valid input -&gt; Expected result (e.g. return value)</p>
+    <p>Invalid input -&gt; Expected result (e.g. error message)</p>
+    <h3 id="configuring-initial-state">Configuring Initial State</h3>
+    <p>
+      <strong>Test-harness:</strong> Program that simulates conditions required
+      for a test.
+    </p>
+    <p>Sometimes hard to simulate a real test case:</p>
+    <ul>
+      <li>Data (e.g. what will really be in the database)</li>
+      <li>System load</li>
+      <li>Network latency</li>
+      <li>External components</li>
+      <li>Incomplete components</li>
+    </ul>
+    <p>
+      <strong>Mocking:</strong> Replace real objects with &quot;mock&quot;
+      objects.
+    </p>
+    <ul>
+      <li>Subset of data to simulate real data</li>
+      <li>Simulate network latency or delays</li>
+      <li>Simulate responses from external components</li>
+      <li>etc.</li>
+    </ul>
+    <h3 id="choosing-test-cases">Choosing Test Cases</h3>
+    <p><strong>Normal path:</strong> Test cases that should work.</p>
+    <p>
+      <strong>Edge cases:</strong> Test cases that are at the limits of what the
+      software can handle.
+    </p>
+    <h3 id="partition-testing">Partition Testing</h3>
+    <p>
+      <strong>Partitions:</strong> groups of inputs that should behave the same
+      way.
+    </p>
+    <ul>
+      <li>Numeric: positive, negative, zero</li>
+      <li>String: empty, one character, many characters</li>
+      <li>Data set: empty, one record, many records</li>
+      <li>Categorical: one from each category (admin vs non-admin, etc.)</li>
+    </ul>
+    <figure>
+      <span
+        ><img
+          src="images/8.6_boundary_partition.jpg"
+          alt="Figure"
+          style="width: 70%; height: auto"
+      /></span>
+    </figure>
+    <p>
+      Divide input space into partitions and test one input from each partition.
+      Include both valid and invalid inputs.
+    </p>
+    <p>Edge cases are often at the boundaries of partitions.</p>
+    <h3 id="path-testing">Path Testing</h3>
+    <ul>
+      <li>
+        Test every possible <strong>path of execution</strong> through the code.
+      </li>
+      <li>All logical branches are tested; all conditional statements.</li>
+      <li>May be impossible to test every path.</li>
+      <li>Devs can help identify partitions b/c they know the code.</li>
+    </ul>
+    <h2 id="component-testing">Component Testing</h2>
+    <p>
+      Focuses on how a component interacts with other components in the system.
+    </p>
+    <h3 id="interface-errors">Interface Errors</h3>
+    <p>An <strong>interface</strong> is a boundary between two components.</p>
+    <p>
+      Changes in one interface can cause failures in upstream or downstream
+      components.
+    </p>
+    <p>Possible interface errors:</p>
+    <ul>
+      <li>
+        Function calls
+        <ul>
+          <li>Wrong number of arguments</li>
+          <li>Wrong data types used</li>
+          <li>Wrong position of arguments</li>
+          <li>Null or empty arguments not handled</li>
+        </ul>
+      </li>
+      <li>
+        Web service calls (JSON, XML, etc.)
+        <ul>
+          <li>Bad format</li>
+          <li>Missing data</li>
+        </ul>
+      </li>
+      <li>
+        Database calls (SQL, NoSQL, etc.)
+        <ul>
+          <li>Missing column or extra column</li>
+          <li>Wrong data type</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Devs could make incorrect assumptions about:</p>
+    <ul>
+      <li>Return values</li>
+      <li>
+        Error handling
+        <ul>
+          <li>
+            e.g. return magic value (-1, empty string, null) or throw an
+            exception?
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="timing-errors">Timing Errors</h3>
+    <p>
+      Often manifest as intermittent failures that cannot be reproduced by devs.
+    </p>
+    <p>Can occur in parallel processing, distributed systems, etc.</p>
+    <p>Can be caused by:</p>
+    <ul>
+      <li>
+        Component communication
+        <ul>
+          <li>Network latency</li>
+          <li>Timeouts</li>
+        </ul>
+      </li>
+      <li>
+        Resource deadlocks
+        <ul>
+          <li>Database queries trying to update the same table</li>
+          <li>Processes trying to write to same file</li>
+          <li>Processes trying to check out memory</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Can try to:</p>
+    <ul>
+      <li>Add logging messages</li>
+      <li>Use profilers</li>
+      <li>Stress test; try to overload the system</li>
+    </ul>
+    <h2 id="you-can-t-catch-em-all">You Can't Catch Em All</h2>
+    <p>&quot;I swear it worked when I tested it!&quot;</p>
+    <ul>
+      <li>
+        <strong>Emergent properties:</strong> Properties that arise from the
+        interaction of components.
+      </li>
+      <li>Impossible to test every possible combination of inputs.</li>
+      <li>Often can&#39;t test at scale.</li>
+      <li>Cost vs benefit: some tests are not worth the resources.</li>
+    </ul>
+  </body>
+</html>

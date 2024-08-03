@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - Arrow Functions</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">Arrow Functions</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#arrow-functions">Arrow Functions</a>
+        <ul>
+          <li>
+            <a href="#how-to-write-an-arrow-function"
+              >How to Write an Arrow Function</a
+            >
+          </li>
+          <li><a href="#examples">Examples</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="arrow-functions">Arrow Functions</h1>
+    <p>
+      Arrow functions are a shorthand way of writing functions in JavaScript and
+      TypeScript. They are similar to <strong>lambda functions</strong>.
+    </p>
+    <p>
+      This can be useful when writing a function that is only used once, or
+      writing a function that is very short.
+    </p>
+    <h2 id="how-to-write-an-arrow-function">How to Write an Arrow Function</h2>
+    <p>We can write a standard function as an arrow function by:</p>
+    <ul>
+      <li>
+        Putting the <strong>function signature</strong> (parameter names / data
+        types, return data type) on the left side of the
+        <code>=&gt;</code> operator
+      </li>
+      <li>
+        Putting the <strong>function body</strong> on the right side of the
+        <code>=&gt;</code> operator
+      </li>
+      <li>Assigning the function to a variable</li>
+    </ul>
+    <pre><code class="language-typescript"><span class="hljs-keyword">const</span> functionName = (param1: dataType, param2: dataType): <span class="hljs-function"><span class="hljs-params">returnType</span> =&gt;</span> {
+  <span class="hljs-comment">// function body</span>
+};
+</code></pre>
+    <h2 id="examples">Examples</h2>
+    <p>Function with one argument and a return value:</p>
+    <pre><code class="language-typescript"><span class="hljs-comment">// Standard function</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addOne</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span> </span>{
+  <span class="hljs-keyword">return</span> x + <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-comment">// Arrow function</span>
+<span class="hljs-keyword">const</span> addOne = (x: <span class="hljs-built_in">number</span>): <span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> x + <span class="hljs-number">1</span>;
+};
+
+<span class="hljs-comment">// Call the function</span>
+<span class="hljs-keyword">let</span> result = addOne(<span class="hljs-number">5</span>);
+</code></pre>
+    <p>Function with multiple arguments and a return value:</p>
+    <pre><code class="language-typescript"><span class="hljs-comment">// Standard function</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span> </span>{
+  <span class="hljs-keyword">return</span> x + y;
+}
+
+<span class="hljs-comment">// Arrow function</span>
+<span class="hljs-keyword">const</span> add = (x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span>): <span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> x + y;
+};
+
+<span class="hljs-comment">// Call the function</span>
+<span class="hljs-keyword">let</span> result = add(<span class="hljs-number">5</span>, <span class="hljs-number">3</span>);
+</code></pre>
+    <p>Function with no arguments and no return value (void function):</p>
+    <pre><code class="language-typescript"><span class="hljs-comment">// Standard function</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printSomething</span>(<span class="hljs-params"></span>): <span class="hljs-title">void</span> </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I will be printed."</span>);
+}
+
+<span class="hljs-comment">// Arrow function</span>
+<span class="hljs-keyword">const</span> printSomething = (): <span class="hljs-function"><span class="hljs-params">void</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I will be printed."</span>);
+};
+
+<span class="hljs-comment">// Call the function</span>
+printSomething();
+</code></pre>
+  </body>
+</html>

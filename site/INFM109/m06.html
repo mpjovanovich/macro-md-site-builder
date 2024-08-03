@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes - INFM 109 - M06</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">&nbsp;&gt;&nbsp;<a href="">INFM 109 - M06</a></h1>
+    <blockquote>
+      <p>
+        A computing professional should… <br />1.1 Contribute to society and to
+        human well-being, acknowledging that all people are stakeholders in
+        computing. <br />-- ACM Code of Ethics and Professional Conduct
+      </p>
+    </blockquote>
+    <ul>
+      <li>
+        <a href="#secure-information-systems">Secure Information Systems</a>
+        <ul>
+          <li>
+            <a href="#new-challenges-to-ensure-secure-information-systems"
+              >New Challenges to Ensure Secure Information Systems</a
+            >
+            <ul>
+              <li>
+                <a href="#complexity-of-systems">Complexity of Systems</a>
+              </li>
+              <li>
+                <a href="#bring-your-own-device">Bring Your Own Device</a>
+              </li>
+              <li>
+                <a href="#sophistication-of-cybercrime"
+                  >Sophistication of Cybercrime</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#perpetrators-of-cybercrime">Perpetrators of Cybercrime</a>
+            <ul>
+              <li><a href="#negligence">Negligence</a></li>
+              <li>
+                <a href="#state-based-cyber-threats"
+                  >State Based Cyber Threats</a
+                >
+                <ul>
+                  <li><a href="#case-study-stuxnet">Case Study: Stuxnet</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#attack-types">Attack Types</a></li>
+          <li>
+            <a href="#types-of-cyberattacks">Types of Cyberattacks</a>
+            <ul>
+              <li>
+                <a href="#malware">Malware</a>
+                <ul>
+                  <li>
+                    <a href="#ransomware">Ransomware</a>
+                    <ul>
+                      <li>
+                        <a href="#high-profile-examples"
+                          >High profile examples:</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#phishing">Phishing</a></li>
+              <li>
+                <a href="#man-in-the-middle-attack">Man in the Middle Attack</a>
+              </li>
+              <li>
+                <a href="#distributed-denial-of-service-ddos"
+                  >Distributed Denial of Service (DDoS)</a
+                >
+                <ul>
+                  <li>
+                    <a href="#legitimate-uses-of-bots"
+                      >Legitimate Uses of Bots</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#sql-injection">SQL Injection</a></li>
+              <li><a href="#zero-day-exploit">Zero-day Exploit</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#consequences-of-a-cyberattack"
+              >Consequences of a Cyberattack</a
+            >
+          </li>
+          <li>
+            <a href="#preventing-cyberattacks">Preventing Cyberattacks</a>
+            <ul>
+              <li>
+                <a href="#hashing-and-encryption">Hashing and Encryption</a>
+              </li>
+              <li>
+                <a href="#user-and-group-permissions"
+                  >User and Group Permissions</a
+                >
+              </li>
+              <li><a href="#separation-of-duties">Separation of Duties</a></li>
+              <li><a href="#cia-security-triad">CIA Security Triad</a></li>
+              <li>
+                <a href="#cyber-threat-tracking">Cyber Threat Tracking</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#legal-ethical-and-social-issues"
+          >Legal, Ethical, and Social Issues</a
+        >
+        <ul>
+          <li>
+            <a href="#corporate-social-responsibility"
+              >Corporate Social Responsibility</a
+            >
+            <ul>
+              <li><a href="#code-of-conduct">Code of Conduct</a></li>
+              <li><a href="#practical-examples">Practical Examples</a></li>
+              <li>
+                <a href="#how-can-corporate-responsibility-practices-go-wrong"
+                  >How can Corporate Responsibility Practices go Wrong?</a
+                >
+                <ul>
+                  <li><a href="#thorny-areas">Thorny areas</a></li>
+                  <li>
+                    <a href="#other-misleading-branding--advertising-practices"
+                      >Other Misleading Branding / Advertising Practices</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#respondeat-superior">Respondeat Superior</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#data-collection-and-privacy-concerns"
+              >Data Collection and Privacy Concerns</a
+            >
+            <ul>
+              <li>
+                <a href="#government-data-collection"
+                  >Government Data Collection</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="announcements">Announcements</h2>
+    <ul>
+      <li>...</li>
+    </ul>
+    <h2 id="agenda">Agenda</h2>
+    <ul>
+      <li>Review final paper</li>
+      <li>Lecture</li>
+      <li>Discussion</li>
+    </ul>
+    <h1 id="secure-information-systems">Secure Information Systems</h1>
+    <h2 id="new-challenges-to-ensure-secure-information-systems">
+      New Challenges to Ensure Secure Information Systems
+    </h2>
+    <h3 id="complexity-of-systems">Complexity of Systems</h3>
+    <p>Increasing complexity offers new avenues for attack.</p>
+    <ul>
+      <li>Mobile Computing</li>
+      <li>Cloud Computing</li>
+      <li>Social Media</li>
+      <li>IoT</li>
+      <li>Big Data</li>
+      <li>AI</li>
+      <li>Blockchain</li>
+    </ul>
+    <p>
+      Each new device connected to the Internet is a potential entry point for
+      an attacker.
+    </p>
+    <h3 id="bring-your-own-device">Bring Your Own Device</h3>
+    <p>
+      <strong>Bring your own device (BYOD)</strong> = employees use their own
+      devices to access company data and applications.
+    </p>
+    <p>Pros:</p>
+    <ul>
+      <li>
+        Employee
+        <ul>
+          <li>More familiar with own device.</li>
+          <li>(Reportedly) more productive.</li>
+          <li>(Reportedly) more satisfied.</li>
+        </ul>
+      </li>
+      <li>
+        Company
+        <ul>
+          <li>Can reduce need for IT support.</li>
+          <li>Can reduce need for training.</li>
+          <li>
+            Can attract and retain talent due to flexibility of work
+            environment.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>Cons:</p>
+    <ul>
+      <li>
+        Security risks
+        <ul>
+          <li>Employees may not keep their devices up to date.</li>
+          <li>Employees may not use strong passwords.</li>
+          <li>Employees may not use antivirus software.</li>
+          <li>Employees may not use a firewall.</li>
+          <li>Employees may not use encryption.</li>
+          <li>Employees may not use a VPN.</li>
+          <li>Employees may not use two-factor authentication.</li>
+          <li>Employees may not use a screen lock.</li>
+          <li>Employees may not use a password manager.</li>
+          <li>Employees may not use a privacy screen.</li>
+          <li>Employees may not use a privacy filter.</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="sophistication-of-cybercrime">Sophistication of Cybercrime</h3>
+    <p>Sophistication and level or organization of cybercrime is increasing.</p>
+    <ul>
+      <li>
+        Organized crime (large groups)
+        <ul>
+          <li>Dark web</li>
+          <li>Sell services/exploits to highest bidder</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="perpetrators-of-cybercrime">Perpetrators of Cybercrime</h2>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Perpetrator</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">Careless Insider</td>
+          <td align="left">Employee who accidentally exposes information.</td>
+        </tr>
+        <tr>
+          <td align="left">Malicious Insider</td>
+          <td align="left">Employee who intentionally exposes information.</td>
+        </tr>
+        <tr>
+          <td align="left">Cybercriminal</td>
+          <td align="left">
+            Individual who uses computers, networks, and the Internet to
+            perpetrate crime.
+          </td>
+        </tr>
+        <tr>
+          <td align="left">Hacktivist</td>
+          <td align="left">
+            Individual who hacks computers or Web sites in an attempt to promote
+            a political ideology.
+          </td>
+        </tr>
+        <tr>
+          <td align="left">Lone Wolf</td>
+          <td align="left">
+            Individual who acts alone to perpetrate a malicious act.
+          </td>
+        </tr>
+        <tr>
+          <td align="left">Cyberterrorist</td>
+          <td align="left">
+            Individual who uses computers and the Internet to cause harm to a
+            civilian population to further a political agenda.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="negligence">Negligence</h3>
+    <p>Not all compromises of sensitive information come from bad actors.</p>
+    <figure>
+      <span
+        ><img
+          src="https://i.guim.co.uk/img/media/ae4001f9311f4912db843f79ee2510db6d9419e0/0_180_1472_883/master/1472.png?width=620&dpr=1&s=none"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <h3 id="state-based-cyber-threats">State Based Cyber Threats</h3>
+    <ul>
+      <li>
+        <strong>Cyberwarfare</strong> = state-sponsored attacks on information
+        systems.
+      </li>
+      <li>
+        <strong>Cyberespionage</strong> = state-sponsored attacks on information
+        systems to steal information.
+      </li>
+    </ul>
+    <h4 id="case-study-stuxnet">Case Study: Stuxnet</h4>
+    <figure>
+      <span
+        ><img
+          src="https://media.wired.com/photos/593238c5b8eb31692072e339/master/w_1600,c_limit/Iran.jpg"
+          alt="Figure"
+          style="width: 40%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>First publicly known use of cyberwarfare</li>
+      <li>
+        <a href="https://www.wired.com/2014/11/countdown-to-zero-day-stuxnet/"
+          >An Unprecedented Look at Stuxnet, the World&#39;s First Digital
+          Weapon</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.csoonline.com/article/562691/stuxnet-explained-the-first-known-cyberweapon.html"
+          >Stuxnet explained: The first known cyberweapon</a
+        >
+      </li>
+    </ul>
+    <h2 id="attack-types">Attack Types</h2>
+    <h2 id="types-of-cyberattacks">Types of Cyberattacks</h2>
+    <h3 id="malware">Malware</h3>
+    <p>Many forms:</p>
+    <ul>
+      <li>Block access to a system or data</li>
+      <li>Install software that allows attacker to control the system</li>
+      <li>Covertly steal and transmit information</li>
+      <li>Renders system inoperable</li>
+    </ul>
+    <h4 id="ransomware">Ransomware</h4>
+    <p>
+      Malware that threatens to publish the victim&#39;s data or perpetually
+      block access to it unless a ransom is paid.
+    </p>
+    <ul>
+      <li>Ransoms pait in bitcoin.</li>
+      <li>Very lucrative business for cybercriminals</li>
+      <li>
+        Can halt essential operations for organizations. B/c of this ransom is
+        often paid.
+      </li>
+    </ul>
+    <h5 id="high-profile-examples-">High profile examples:</h5>
+    <p>
+      <a
+        href="https://www.cnet.com/personal-finance/crypto/a-timeline-of-the-biggest-ransomware-attacks/"
+        >A timeline of the biggest ransomware attacks</a
+      >.
+    </p>
+    <p>A few of these:</p>
+    <ul>
+      <li>
+        Colonial Pipeline (2021)
+        <ul>
+          <li>Oil flow shut off for 5 days</li>
+          <li>Caused a gas run</li>
+          <li>Caused power outages, including in healthcare facilities</li>
+          <li>Paid $4.4 million in ransom</li>
+        </ul>
+      </li>
+      <li>
+        University of California at San Francisco (2020)
+        <ul>
+          <li>School of medicine hacked.</li>
+          <li>Paid $1.14 million in ransom</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="phishing">Phishing</h3>
+    <p>
+      Fraudulent attempt to obtain sensitive information or data, such as
+      usernames, passwords and credit card details, by disguising oneself as a
+      trustworthy entity in an electronic communication.
+    </p>
+    <ul>
+      <li>email</li>
+      <li>text message</li>
+      <li>phone call</li>
+      <li>social media</li>
+    </ul>
+    <h3 id="man-in-the-middle-attack">Man in the Middle Attack</h3>
+    <p>
+      Malicious actor inserts him/herself into a conversation between two
+      parties, impersonates both parties and gains access to information that
+      the two parties were trying to send to each other.
+    </p>
+    <h3 id="distributed-denial-of-service-ddos-">
+      Distributed Denial of Service (DDoS)
+    </h3>
+    <p>
+      Cyberattack in which a large number of computers (or other devices) are
+      used to flood a server with requests for information in order to overload
+      the server and deny service to legitimate users.
+    </p>
+    <ul>
+      <li>
+        Server is so busy handling illigitimate requests that it can&#39;t
+        handle legitimate requests.
+      </li>
+      <li>
+        Utilizes <strong>botnets</strong>.
+        <ul>
+          <li>
+            Network of computers that have been infected with malware that
+            allows them to be controlled remotely.
+          </li>
+          <li>&quot;Zombie&quot; computers.</li>
+          <li>Infected machines do nothing until botnet is activated.</li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="legitimate-uses-of-bots">Legitimate Uses of Bots</h4>
+    <ul>
+      <li>Search engines</li>
+      <li>
+        Web site monitoring, archiving, mirroring, indexing, content filtering,
+        and categorization
+      </li>
+      <li>Automated online assistants</li>
+    </ul>
+    <br />
+
+    <p>
+      <span class="demo">demo:</span>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/tree/main/Demos/webscrape_beautifulsoup"
+        >scrape_jobs.py</a
+      >
+    </p>
+    <h3 id="sql-injection">SQL Injection</h3>
+    <p>
+      Attacker inserts malicious code into a server that uses SQL and forces the
+      server to reveal information it normally would not
+    </p>
+    <h3 id="zero-day-exploit">Zero-day Exploit</h3>
+    <p>
+      Occurs on the same day a weakness is discovered in software. At that
+      point, it&#39;s exploited before a fix becomes available from its creator.
+    </p>
+    <h2 id="consequences-of-a-cyberattack">Consequences of a Cyberattack</h2>
+    <ul>
+      <li>
+        <p>
+          <a href="https://www.varonis.com/blog/data-breach-statistics/"
+            >Data Breach Statistics</a
+          >
+        </p>
+        <ul>
+          <li>Good all around.</li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <a
+            href="https://www.itgovernance.co.uk/blog/list-of-data-breaches-and-cyber-attacks-in-2023"
+            >List of Data Breaches and Cyber Attacks in 2023</a
+          >
+        </p>
+        <ul>
+          <li>See &quot;Top data breach stats...&quot;</li>
+        </ul>
+      </li>
+      <li><p>Loss of revenue</p></li>
+      <li><p>Loss of intellectual property</p></li>
+      <li><p>Loss of productivity</p></li>
+      <li><p>Loss of reputation / customer trust</p></li>
+    </ul>
+    <h2 id="preventing-cyberattacks">Preventing Cyberattacks</h2>
+    <h3 id="hashing-and-encryption">Hashing and Encryption</h3>
+    <p>
+      Encryption used to protect data from viewers in storage or as it is
+      transmitted.
+    </p>
+    <p>Hashing used to verify integrity of data.</p>
+    <ul>
+      <li>
+        <a
+          href="https://www.encryptionconsulting.com/education-center/encryption-vs-hashing"
+          >What is difference between Encryption and Hashing?</a
+        >
+        <ul>
+          <li>See “Hashing and Encryption Use Cases”</li>
+        </ul>
+      </li>
+    </ul>
+    <p><em>Hashing demo</em></p>
+    <pre><code class="language-bash"><span class="hljs-comment">## One letter off...</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"This is unencrypted."</span> &gt; tmp1.txt
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"this is unencrypted."</span> &gt; tmp2.txt
+md5sum tmp1.txt
+md5sum tmp2.txt
+</code></pre>
+    <p><em>Encryption demo</em></p>
+    <pre><code class="language-bash"><span class="hljs-comment">## Encrypt then view file...</span>
+gpg -c tmp1.txt
+rm tmp1.txt
+<span class="hljs-comment">## Then decrypt...</span>
+gpg -o tmp1.txt -d tmp1.txt.gpg
+</code></pre>
+    <h3 id="user-and-group-permissions">User and Group Permissions</h3>
+    <p>Used to control access to files and directories.</p>
+    <p><em>Read only demo</em></p>
+    <pre><code class="language-bash"><span class="hljs-comment">## Note the permissions on tmp1.txt</span>
+ls -l
+<span class="hljs-comment">## Set tmp1.txt to read only</span>
+chmod 444 tmp1.txt
+ls -l
+<span class="hljs-comment">## Now we can't edit the file.</span>
+</code></pre>
+    <h3 id="separation-of-duties">Separation of Duties</h3>
+    <p>
+      Divide responsibilities for a system among multiple people / groups to:
+    </p>
+    <ul>
+      <li>Prevent damage from ignorant users</li>
+      <li>Limit damage from a single person</li>
+    </ul>
+    <p>Example:</p>
+    <ul>
+      <li>
+        Should the (Database Administrator) DBA be able to access/view user
+        information?
+      </li>
+      <li>Should user be able to delete a database table?</li>
+    </ul>
+    <h3 id="cia-security-triad">CIA Security Triad</h3>
+    <ul>
+      <li>
+        Confidentiality
+        <ul>
+          <li>Only authorized users can access sensitive data.</li>
+        </ul>
+      </li>
+      <li>
+        Integrity
+        <ul>
+          <li>Data is accurate and complete.</li>
+          <li>Only authorized users can modify data.</li>
+        </ul>
+      </li>
+      <li>
+        Availability
+        <ul>
+          <li>Data is accessible when needed.</li>
+          <li>&quot;Uptime&quot;</li>
+          <li>e.g., might aim for 99.999% availability.</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="cyber-threat-tracking">Cyber Threat Tracking</h3>
+    <p>
+      <a href="https://www.cisa.gov/news-events/cybersecurity-advisories"
+        >Cybersecurity Alerts &amp; Advisories CISA</a
+      >
+    </p>
+    <p>
+      Case Study: drill into SEP 26, 2023 Industrial Control Systems Advisory
+    </p>
+    <ul>
+      <li>Who is the target?</li>
+      <li>What devices might be used for the attack?</li>
+      <li>What type of attack is it?</li>
+    </ul>
+    <h1 id="legal-ethical-and-social-issues">
+      Legal, Ethical, and Social Issues
+    </h1>
+    <h2 id="corporate-social-responsibility">
+      Corporate Social Responsibility
+    </h2>
+    <h3 id="code-of-conduct">Code of Conduct</h3>
+    <p>
+      Set of rules outlining norms, rules, and responsibilities and proper
+      practices of a party or organization.
+    </p>
+    <ul>
+      <li>
+        <a href="https://abc.xyz/investor/other/google-code-of-conduct.html"
+          >Google&#39;s Code of Conduct</a
+        >
+      </li>
+      <li>
+        <a href="https://www.microsoft.com/en-us/legal/compliance/codeofconduct"
+          >Microsoft&#39;s Code of Conduct</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.apple.com/supplier-responsibility/pdf/Apple_Code_of_Conduct.pdf"
+          >Apple&#39;s Code of Conduct</a
+        >
+      </li>
+      <li>
+        <a href="https://www.facebook.com/codeofconduct"
+          >Facebook&#39;s Code of Conduct</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.amazon.com/gp/help/customer/display.html?nodeId=200109660"
+          >Amazon&#39;s Code of Conduct</a
+        >
+      </li>
+      <li>
+        <a href="https://help.twitter.com/en/rules-and-policies/twitter-rules"
+          >Twitter&#39;s Code of Conduct</a
+        >
+      </li>
+      <li>
+        <a href="https://www.uber.com/legal/community-guidelines/us-en/"
+          >Uber&#39;s Code of Conduct</a
+        >
+      </li>
+    </ul>
+    <h3 id="practical-examples">Practical Examples</h3>
+    <ul>
+      <li>
+        Interorganizational commitments
+        <ul>
+          <li>Employee diversity</li>
+          <li>Paternity/maternity leave</li>
+          <li>Diverse employee pool</li>
+        </ul>
+      </li>
+      <li>
+        Philanthropy
+        <ul>
+          <li>
+            Disaster relief
+            <ul>
+              <li>
+                <a
+                  href="https://www.aboutamazon.com/news/community/amazons-assistance-in-ukraine"
+                  >How Amazon is assisting in Ukraine</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://ccc.bc.edu/content/ccc/blog-home/2023/02/companies-respond-earthquake-turkey-syria.html"
+                  >How Companies Are Responding to the Earthquake in Turkey and
+                  Syria</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </li>
+      <li>
+        Human / environmental rights
+        <ul>
+          <li>Ethical sourcing</li>
+          <li>Labor standards</li>
+          <li>Environmental sustainability commitments</li>
+        </ul>
+      </li>
+      <li>
+        Community engagement
+        <ul>
+          <li>
+            Community partnerships
+            <ul>
+              <li>
+                E.g. what kinds of things to corporations do when they&#39;re
+                starting up a new facility in a community?
+              </li>
+            </ul>
+          </li>
+          <li>Open source</li>
+          <li>
+            Open education
+            <ul>
+              <li><a href="https://academy.oracle.com/">Oracle Acedemy</a></li>
+              <li>
+                <a href="https://learn.microsoft.com/en-us/training/"
+                  >Microsoft Learn</a
+                >
+              </li>
+              <li>...</li>
+              <li>Benefits of providing this?</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Consumer protection
+        <ul>
+          <li>Privacy</li>
+          <li>Product safety</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="how-can-corporate-responsibility-practices-go-wrong-">
+      How can Corporate Responsibility Practices go Wrong?
+    </h3>
+    <h4 id="thorny-areas">Thorny areas</h4>
+    <ul>
+      <li>
+        <strong>Greenwashing</strong> = conveying a false impression or
+        providing misleading information about how a company&#39;s products are
+        more environmentally sound.
+      </li>
+      <li>
+        <strong>Pinkwashing</strong> = conveying a false impression or providing
+        misleading information about how a company is helping to support breast
+        cancer awareness.
+        <ul>
+          <li>
+            ...and other forms of <strong>&quot;causewashing&quot;</strong>.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="other-misleading-branding-advertising-practices">
+      Other Misleading Branding / Advertising Practices
+    </h4>
+    <p>Legal but considered (by most) unethical.</p>
+    <ul>
+      <li>
+        Vague or nondescript language
+        <ul>
+          <li>E.g., &quot;all natural&quot;</li>
+        </ul>
+      </li>
+      <li>
+        Playing on public hype slogans
+        <ul>
+          <li>e.g., &quot;superfoods&quot;</li>
+        </ul>
+      </li>
+      <li>
+        Misleading statistics
+        <ul>
+          <li>
+            Cherry picking; selecting data that supports your position while
+            ignoring data that doesn&#39;t.
+          </li>
+          <li>
+            Misleading graphs; e.g., using a graph that doesn&#39;t start at
+            zero.
+          </li>
+          <li>Misleading averages; e.g., using mean instead of median.</li>
+        </ul>
+      </li>
+      <li>
+        Hidden Trade-offs
+        <ul>
+          <li>
+            E.g., promoting a product as energy-efficient but neglecting the
+            fact that it uses harmful chemicals
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="respondeat-superior">Respondeat Superior</h3>
+    <p>
+      <strong>Respondeat Superior</strong> = &quot;That the master must
+      answer&quot; (Latin)
+    </p>
+    <ul>
+      <li>
+        <p>
+          Doctrine that holds an employer or principal legally responsible for
+          the wrongful acts of an employee or agent, if such acts occur within
+          the scope of the employment or agency.
+        </p>
+      </li>
+      <li><p>How is this relevant to our discussion?</p></li>
+    </ul>
+    <h2 id="data-collection-and-privacy-concerns">
+      Data Collection and Privacy Concerns
+    </h2>
+    <p>
+      <a href="images/internet_data_collection.png">Internet Data Collection</a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Who should be responsible for setting the rules about what’s okay to
+          collect, when, where, and how?
+        </p>
+      </li>
+      <li>
+        <p>
+          If we’re not happy about how it’s currently being done, how can we
+          change the existing policies?
+        </p>
+      </li>
+    </ul>
+    <h3 id="government-data-collection">Government Data Collection</h3>
+    <p><em>FISA</em></p>
+    <ul>
+      <li>Foreign Intelligence Surveillance Act</li>
+      <li>
+        <a href="https://www.congress.gov/bill/95th-congress/house-bill/7308"
+          >Foreign Intelligence Surveillance Act of 1978</a
+        >
+      </li>
+      <li>Limited govt surveillance powers</li>
+      <li>
+        Established protections for US citizen - govt needs a warrant to collect
+        data.
+      </li>
+    </ul>
+    <p><em>Patriot Act</em></p>
+    <ul>
+      <li>
+        <a href="https://www.congress.gov/bill/107th-congress/house-bill/3162"
+          >USA PATRIOT Act</a
+        >
+      </li>
+      <li>
+        &quot;Uniting and Strengthening America by Providing Appropriate Tools
+        Required to Intercept and Obstruct Terrorism Act&quot;
+      </li>
+      <li>Greatly expanded govt surveillance powers</li>
+      <li>Passed in response to 9/11</li>
+      <li>
+        Allowed govt to:
+        <ul>
+          <li>Get warrant to monitor electroic comms without probable cause</li>
+          <li>Collect business records without warrant</li>
+          <li>Detain foreign nationals without charging them with crime.</li>
+          <li>See the link for more...</li>
+        </ul>
+      </li>
+    </ul>
+    <p><em>Freedom Act</em></p>
+    <ul>
+      <li>
+        <a href="https://www.congress.gov/bill/113th-congress/house-bill/3361"
+          >USA Freedom Act</a
+        >
+      </li>
+      <li>Limited govt surveillance powers</li>
+      <li>Ended the government&#39;s bulk collection of phone records</li>
+      <li>
+        Added more oversight and transparency of government surveillance
+        programs.
+      </li>
+      <li>Expired March 15, 2020</li>
+    </ul>
+  </body>
+</html>

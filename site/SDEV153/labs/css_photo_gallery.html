@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes - SDEV 153 Lab - CSS Static Photo Gallery</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      &nbsp;&gt;&nbsp;<a href="">SDEV 153 Lab - CSS Static Photo Gallery</a>
+    </h1>
+    <h1 id="lab-creating-a-static-photo-gallery">
+      Lab: Creating a Static Photo Gallery
+    </h1>
+    <h2 id="objective">Objective</h2>
+    <p>
+      Create a photo gallery using CSS Grid, apply rounded corners to images,
+      style the gallery using the HTML figure element, and use effective image
+      placement.
+    </p>
+    <p>We will create the following layout:</p>
+    <img src="../images/my_pretty_doggies.png" />
+
+    <h2 id="setup">Setup</h2>
+    <ul>
+      <li>
+        Create a new folder in your repository root directory called
+        css_static_photo_gallery.
+      </li>
+      <li>Create a new HTML file (index.html) and a CSS file (styles.css).</li>
+      <li>Give your HTML file the title “My Pretty Doggies”</li>
+      <li>Link the CSS file to the HTML file.</li>
+      <li>
+        Create a subdirectory called images and place the provided images in the
+        directory with the exception of the svg.
+      </li>
+    </ul>
+    <h2 id="html">HTML</h2>
+    <h3 id="grid-container">Grid Container</h3>
+    <ul>
+      <li>
+        Inside the body of your HTML file, create a div to serve as the
+        container for your photo gallery grid items.
+      </li>
+      <li>Give the div a class name of &quot;photo-gallery&quot;.</li>
+      <li>
+        The grid will contain the following direct children:
+        <ul>
+          <li>h1: &quot;My Pretty Doggies&quot;</li>
+          <li>figure: provided image</li>
+          <li>figure: provided image</li>
+          <li>figure: provided image</li>
+          <li>
+            svg: provided image;
+            <em
+              >Note: don&#39;t use the file path directly we will do this inline
+              at a later step</em
+            >
+          </li>
+          <li>figure: provided image</li>
+          <li>figure: provided image</li>
+          <li>figure: provided image</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="figure-elements">Figure Elements</h3>
+    <ul>
+      <li>
+        In each figure element, include an img element with alt text attribute.
+        <ul>
+          <li>
+            We would normally include width and height attributes, but your
+            professor did not do that in his solution so leave those out.
+          </li>
+        </ul>
+      </li>
+      <li>
+        In each figure element, include a figcaption element with a caption for
+        each image.
+      </li>
+    </ul>
+    <h3 id="svg-element">SVG Element</h3>
+    <ul>
+      <li>
+        To create the svg element, open the file with a text editor and copy the
+        contents. You can paste them directly into your HTML file where the svg
+        belongs.
+      </li>
+    </ul>
+    <h3 id="classes-for-grid-children">Classes for Grid Children</h3>
+    <ul>
+      <li>Add a class to the h1 element named &quot;secondary-bg&quot;.</li>
+      <li>Add a class to the svg element named &quot;secondary-bg&quot;.</li>
+      <li>Add a class to the svg element named &quot;merged&quot;.</li>
+    </ul>
+    <h2 id="css">CSS</h2>
+    <h3 id="basic-styles">Basic Styles</h3>
+    <ul>
+      <li>Begin by applying a CSS reset using the universal selector:</li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">box-sizing</span>: <span class="hljs-selector-tag">border-box</span>;
+<span class="hljs-selector-tag">margin</span>: 0;
+<span class="hljs-selector-tag">padding</span>: 0;
+</code></pre>
+    <ul>
+      <li>Give the body element the following styles:</li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">background-color</span>: <span class="hljs-selector-id">#999</span>;
+<span class="hljs-selector-tag">font-family</span>: "<span class="hljs-selector-tag">Roboto</span>", <span class="hljs-selector-tag">sans-serif</span>;
+<span class="hljs-selector-tag">color</span>: <span class="hljs-selector-id">#fff</span>;
+<span class="hljs-selector-tag">padding</span>: 40<span class="hljs-selector-tag">px</span>;
+</code></pre>
+    <h3 id="grid-layout">Grid Layout</h3>
+    <ul>
+      <li>
+        Set the style rules needed to up a basic grid using your photo-gallery
+        class selector:
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">display</span>: (<span class="hljs-selector-tag">you</span> <span class="hljs-selector-tag">provide</span>);
+<span class="hljs-selector-tag">grid-template-columns</span>: (<span class="hljs-selector-tag">you</span> <span class="hljs-selector-tag">provide</span>);
+<span class="hljs-selector-tag">grid-template-rows</span>: (<span class="hljs-selector-tag">you</span> <span class="hljs-selector-tag">provide</span>);
+<span class="hljs-selector-tag">gap</span>: 20<span class="hljs-selector-tag">px</span>;
+<span class="hljs-selector-tag">max-width</span>: 800<span class="hljs-selector-tag">px</span>;
+</code></pre>
+    <ul>
+      <li>
+        Set the style rule(s) for the &quot;merged&quot; class selector. The svg
+        using this class should span two columns.
+      </li>
+    </ul>
+    <h3 id="centering-grid-items">Centering Grid Items</h3>
+    <ul>
+      <li>
+        Use the universal selector to center all items that are immediate
+        children of the grid container. We will accomplish this by making each
+        child element a flex container and centering the content.
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">width</span>: 100%;
+<span class="hljs-selector-tag">display</span>: <span class="hljs-selector-tag">flex</span>;
+<span class="hljs-selector-tag">text-align</span>: <span class="hljs-selector-tag">center</span>;
+<span class="hljs-selector-tag">flex-direction</span>: <span class="hljs-selector-tag">column</span>;
+<span class="hljs-selector-tag">justify-content</span>: <span class="hljs-selector-tag">center</span>;
+<span class="hljs-selector-tag">align-items</span>: <span class="hljs-selector-tag">center</span>;
+</code></pre>
+    <h3 id="coloring-and-fonts">Coloring and Fonts</h3>
+    <ul>
+      <li>
+        Create a selector to target all figcaption elements that are descendants
+        of the photo-gallery class selector. Set the following style rules:
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">margin-top</span>: 10<span class="hljs-selector-tag">px</span>;
+<span class="hljs-selector-tag">font-style</span>: <span class="hljs-selector-tag">italic</span>;
+<span class="hljs-selector-tag">color</span>: <span class="hljs-selector-id">#333</span>;
+</code></pre>
+    <ul>
+      <li>
+        Use the secondary-bg class to set a background color of #333 for the h1
+        and svg elements.
+      </li>
+      <li>
+        Use the svg-light-fill class to set a fill color of #fff for the svg
+        element. This class is already in place in the HTML.
+      </li>
+    </ul>
+    <h3 id="rounded-corners-and-max-height">Rounded Corners and Max Height</h3>
+    <ul>
+      <li>
+        Create a multi-selector rule for any h1, img, or svg that is a
+        descendent of the photo-gallery class selector. Set the following style
+        rules:
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">border-radius</span>: 10<span class="hljs-selector-tag">px</span>;
+<span class="hljs-selector-tag">max-height</span>: 225<span class="hljs-selector-tag">px</span>;
+</code></pre>
+    <ul>
+      <li>
+        Reminder: you can create a multi-selector rule by separating selectors
+        with commas.
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">selector1</span>,
+<span class="hljs-selector-tag">selector2</span> {
+  <span class="hljs-comment">/* styles here */</span>
+}
+</code></pre>
+  </body>
+</html>

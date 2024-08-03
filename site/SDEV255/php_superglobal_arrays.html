@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Super Global Arrays</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Super Global Arrays</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#php-super-global-arrays">PHP: Super Global Arrays</a>
+        <ul>
+          <li>
+            <a href="#use">Use</a>
+            <ul>
+              <li><a href="#server">SERVER</a></li>
+              <li><a href="#env">ENV</a></li>
+              <li><a href="#covered-elsewhere">Covered Elsewhere</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#avoid">Avoid</a>
+            <ul>
+              <li><a href="#request">REQUEST</a></li>
+              <li><a href="#globals">GLOBALS</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="php-super-global-arrays">PHP: Super Global Arrays</h1>
+    <p>
+      PHP provides a number of <strong>superglobal arrays</strong> that are
+      available in all scopes throughout a script.
+    </p>
+    <p>They are used just like any other associative array.</p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">echo</span> $_SERVER[<span class="hljs-string">'HTTP_HOST'</span>];
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <p>
+      We will address many of these as their own topics. This topic will
+      summarize the rest.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Array</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>$GLOBALS</code></td>
+          <td>References all variables available in global scope</td>
+        </tr>
+        <tr>
+          <td><code>$_COOKIE</code></td>
+          <td>HTTP Cookies</td>
+        </tr>
+        <tr>
+          <td><code>$_ENV</code></td>
+          <td>Environment variables</td>
+        </tr>
+        <tr>
+          <td><code>$_FILES</code></td>
+          <td>HTTP File Upload variables</td>
+        </tr>
+        <tr>
+          <td><code>$_GET</code></td>
+          <td>HTTP GET variables</td>
+        </tr>
+        <tr>
+          <td><code>$_POST</code></td>
+          <td>HTTP POST variables</td>
+        </tr>
+        <tr>
+          <td><code>$_REQUEST</code></td>
+          <td>
+            Combined values of <code>$_GET</code>, <code>$_POST</code>, and
+            <code>$_COOKIE</code>.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER</code></td>
+          <td>Server and execution environment information</td>
+        </tr>
+        <tr>
+          <td><code>$_SESSION</code></td>
+          <td>Session variables</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="use">Use</h2>
+    <h3 id="server">SERVER</h3>
+    <p>Some elements in the array:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>$_SERVER[&#39;HTTP_HOST&#39;]</code></td>
+          <td>
+            Contents of the Host: header from the current request, if there is
+            one.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;HTTP_REFERER&#39;]</code></td>
+          <td>
+            The address of the page (if any) which referred the user agent to
+            the current page.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;HTTP_USER_AGENT&#39;]</code></td>
+          <td>
+            Contents of the User-Agent: header from the current request, if
+            there is one.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;PHP_SELF&#39;]</code></td>
+          <td>
+            The filename of the currently executing script, relative to the
+            document root.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;QUERY_STRING&#39;]</code></td>
+          <td>The query string, if any, via which the page was accessed.</td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;REMOTE_ADDR&#39;]</code></td>
+          <td>
+            The IP address from which the user is viewing the current page.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;REQUEST_METHOD&#39;]</code></td>
+          <td>
+            Which request method was used to access the page; i.e.
+            &#39;GET&#39;, &#39;HEAD&#39;, &#39;POST&#39;, &#39;PUT&#39;.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;SCRIPT_FILENAME&#39;]</code></td>
+          <td>The absolute pathname of the currently executing script.</td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;SCRIPT_NAME&#39;]</code></td>
+          <td>
+            Contains the current script&#39;s path. This is useful for pages
+            which need to point to themselves.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;SERVER_NAME&#39;]</code></td>
+          <td>
+            The name of the server host under which the current script is
+            executing.
+          </td>
+        </tr>
+        <tr>
+          <td><code>$_SERVER[&#39;SERVER_PORT&#39;]</code></td>
+          <td>
+            The port on the server machine being used by the web server for
+            communication.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="env">ENV</h3>
+    <ul>
+      <li>
+        In production environment, environment variables are often set in
+        <strong>configuration files</strong>
+        <ul>
+          <li>
+            Apache
+            <ul>
+              <li><code>.htaccess</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Allows you to keep sensitive information separate from your application
+        code.
+      </li>
+    </ul>
+    <p>.htaccess file:</p>
+    <pre><code class="language-apache"><span class="hljs-attribute"><span class="hljs-nomarkup">SetEnv</span></span> DB_USER <span class="hljs-string">"username"</span>
+<span class="hljs-attribute"><span class="hljs-nomarkup">SetEnv</span></span> DB_PASS <span class="hljs-string">"password"</span>
+</code></pre>
+    <p>PHP file:</p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$databaseUser = $_ENV[<span class="hljs-string">'DB_USER'</span>];
+$databasePassword = $_ENV[<span class="hljs-string">'DB_PASS'</span>];
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <h3 id="covered-elsewhere">Covered Elsewhere</h3>
+    <ul>
+      <li><code>$_COOKIE</code></li>
+      <li><code>$_FILES</code></li>
+      <li><code>$_GET</code></li>
+      <li><code>$_POST</code></li>
+      <li><code>$_SESSION</code></li>
+    </ul>
+    <h2 id="avoid">Avoid</h2>
+    <p><em>Unless you have a good reason to use them.</em></p>
+    <h3 id="request">REQUEST</h3>
+    <ul>
+      <li>
+        <code>$_REQUEST</code> is a combination of the <code>$_GET</code>,
+        <code>$_POST</code>, and <code>$_COOKIE</code> variables.
+      </li>
+      <li>
+        Avoid using <code>$_REQUEST</code>; we should know where our data is
+        coming from.
+      </li>
+    </ul>
+    <h3 id="globals">GLOBALS</h3>
+    <ul>
+      <li>
+        Contains a reference to every variable which is currently available
+        within the global scope of the script.
+      </li>
+      <li>
+        Avoid using <code>$GLOBALS</code>; we should know where our data is
+        coming from.
+      </li>
+    </ul>
+  </body>
+</html>

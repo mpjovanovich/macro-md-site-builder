@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes - INFM 109 - M07</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">&nbsp;&gt;&nbsp;<a href="">INFM 109 - M07</a></h1>
+    <blockquote>
+      <p>
+        This, said Theuth, will make the Egyptians wiser and give them better
+        memories; it is a specific both for the memory and for the wit. Thamus
+        replied: O most ingenious Theuth, the parent or inventor of an art is
+        not always the best judge of the utility or inutility of his own
+        inventions to the users of them. And in this instance, you who are the
+        father of letters, from a paternal love of your own children have been
+        led to attribute to them a quality which they cannot have; for this
+        discovery of yours will create forgetfulness in the learners&#39; souls,
+        because they will not use their memories; they will trust to the
+        external written characters and not remember of themselves. The specific
+        which you have discovered is an aid not to memory, but to reminiscence,
+        and you give your disciples not truth, but only the semblance of truth;
+        they will be hearers of many things and will have learned nothing; they
+        will appear to be omniscient and will generally know nothing; they will
+        be tiresome company, having the show of wisdom without the reality.
+        <br /><span class="attr"
+          >--Socrates recounting the gift of letters offered by Ammon</span
+        >
+      </p>
+    </blockquote>
+    <iframe
+      class="center"
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/qTmPrVhdtks?si=8Z9CK1dP1vPdgcQv"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+
+    <h2 id="announcements">Announcements</h2>
+    <ul>
+      <li>Review pesentation psections / protocol</li>
+    </ul>
+    <h2 id="agenda">Agenda</h2>
+    <ul>
+      <li>
+        Prof saves face by running OCR demo
+        <ul>
+          <li>brief review of NN model release; train vs predict</li>
+        </ul>
+      </li>
+      <li>Lecture</li>
+      <li>Discussion</li>
+    </ul>
+    <h1 id="artificial-intelligence">Artificial Intelligence</h1>
+    <h2 id="types-of-ai">Types of AI</h2>
+    <h3 id="expert-systems">Expert Systems</h3>
+    <p>Simulate human intelligence...</p>
+    <ul>
+      <li>
+        Are a form of AI.
+        <ul>
+          <li><em>No active learning by machine</em>.</li>
+          <li><em>Rely upon predefined rules</em>.</li>
+        </ul>
+      </li>
+    </ul>
+    <figure>
+      <span
+        ><img
+          src="https://static.javatpoint.com/tutorial/ai/images/expert-systems-in-ai.png"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>
+        <strong
+          ><em
+            >Frequent firing of a neuron strengthens the synapse between
+            connected neurons.</em
+          ></strong
+        >
+        <ul>
+          <li>
+            Synaptic distance decreases; &quot;tighter&quot; connection along
+            circuit.
+          </li>
+          <li>Close synapses are more likely to fire together.</li>
+          <li>Aids in memory formation.</li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="artificial-neural-networks">Artificial Neural Networks</h4>
+    <ul>
+      <li>Inputs are called &quot;features&quot; or &quot;parameters&quot;</li>
+      <li>
+        Each layer behaves like a function, transforming the previous layer.
+      </li>
+      <li>
+        Complexity of function that can be learned depends on the architecture
+        that’s used.
+      </li>
+    </ul>
+    <h5 id="single-layer-perceptron">Single layer perceptron</h5>
+    <!-- https://towardsdatascience.com/everything-you-need-to-know-about-neural-networks-and-backpropagation-machine-learning-made-easy-e5285bc2be3a -->
+
+    <ul>
+      <li>
+        What can it compute?
+        <ul>
+          <li>
+            Linear functions - where output groupings (true or false) can be
+            separated by a line.
+          </li>
+          <li>E.g. AND - yes; XOR - no</li>
+        </ul>
+      </li>
+    </ul>
+    <figure>
+      <span
+        ><img
+          src="https://static.packt-cdn.com/products/9781788299879/graphics/2271a103-bcc0-4ea0-acca-0eb3e3c99fbd.png"
+          alt="Figure"
+          style="width: 90%; height: auto"
+      /></span>
+    </figure>
+    <h3 id="suppliers">Suppliers</h3>
+    <ul>
+      <li>
+        How do these elements increase or decrease bargaining power of org?
+        <ul>
+          <li>Current supply</li>
+          <li>Forecasted supply</li>
+          <li>Availability / scarcity of materials</li>
+          <li>Supplier / vendor &quot;lock in&quot;</li>
+        </ul>
+      </li>
+      <li>
+        Vertical expansion
+        <ul>
+          <li>Buying up suppliers (acquisitions)</li>
+          <li>Launch new company / division to supply</li>
+          <li>
+            Examples?
+            <ul>
+              <li>
+                Amazon - AWS
+                <ul>
+                  <li>
+                    Warehouses, Delivery, Banking, AWS
+                    <ul>
+                      <li>
+                        Servers, Circuitry, Cabling, Cooling and power, ...
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Tesla
+                <ul>
+                  <li>Battery, Solar, AI, Electronics, etc.</li>
+                  <li>
+                    <a
+                      href="https://tracxn.com/d/acquisitions/acquisitions-by-tesla/__z7iBA0j3piGy5SjdQFAYgeC06G3Q2ntcoN1vYCcRsVg"
+                      >Acquisitions by Tesla</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Case study:</p>
+
+    <p><strong>Tesla</strong></p>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/OhiqWTwz1uk?si=9TiZQ-dU6dTdwNnU"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+
+    <ul>
+      <li>
+        ~0:50 - Market-entry strategy (2008)
+        <ul>
+          <li>Didn&#39;t go for mass adoption product</li>
+          <li>Went for high-end, high-margin product: Roadster</li>
+        </ul>
+      </li>
+      <li>
+        ~4:15 Later scaling toward mass-market
+        <ul>
+          <li>Model S</li>
+          <li>Model X</li>
+          <li>Model 3...</li>
+        </ul>
+      </li>
+      <li>
+        ~2:00 - Direct distribution model
+        <ul>
+          <li>Manufacturing to customer; whole process is Tesla</li>
+          <li>
+            No dealerships; online sales and Tesla physical stores (like Apple
+            stores)
+          </li>
+        </ul>
+      </li>
+      <li>
+        Fits with overall Musk bootstrapping strategy
+        <ul>
+          <li>PayPal (2002) -&gt; Tesla (2003) -&gt; SpaceX (2002)</li>
+        </ul>
+      </li>
+    </ul>
+    <figure>
+      <span>
+        <img
+          src="https://thinkmaverick.com/wp-content/uploads/2018/05/4-2.png"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a
+          href="https://wwwkunlastree.blogspot.com/2017/07/elon-musk-net-worth-over-time.html"
+          >Prof source note: seems opinionated; I didn't have time to audit for
+          accuracy.</a
+        >
+      </figcaption>
+    </figure>
+
+    <ul>
+      <li>
+        Could most startups work with this high vertical integration model?
+        <ul>
+          <li>Takes a lot of capital...</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Case study:</p>
+
+    <p><strong>nVidia and GPU Market</strong></p>
+    <ul>
+      <li><p>Industries scrambling to create/employ AI plan</p></li>
+      <li><p>Huge demand, low supply</p></li>
+      <li><p>Rivalry / competitors in ramp up mode</p></li>
+      <li>
+        <p>Who profits?</p>
+        <ul>
+          <li>Are these profits tenable long term?</li>
+        </ul>
+      </li>
+      <li>
+        <p>Currently, there are linear profits for linear scaling in compute</p>
+      </li>
+      <li><p>Will there be a &quot;compute bust&quot;?</p></li>
+      <li>
+        <p>Responses to need for massive compute power...</p>
+        <ul>
+          <li>Efficient algorithms</li>
+          <li>Compression</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="substitutes">Substitutes</h3>
+    <ul>
+      <li>
+        Different product / service, but accomplishes same goal for consumer.
+      </li>
+      <li>How does this affect strategy of org?</li>
+      <li>
+        Examples?
+        <ul>
+          <li>Uber vs. taxi</li>
+          <li>Netflix vs. cable</li>
+          <li>e-books vs. paper books</li>
+          <li>...</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="competitors">Competitors</h3>
+    <ul>
+      <li>Competitors offering a product with little differentiation.</li>
+      <li>
+        Strategies to set my product apart?
+        <ul>
+          <li>Price</li>
+          <li>Quality</li>
+          <li>Service</li>
+          <li>Branding</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="potential-entrants">Potential Entrants</h3>
+    <ul>
+      <li>
+        <strong><em>Barriers to entry</em></strong> = factors that make it
+        difficult for new competitors to enter the market.
+        <ul>
+          <li>
+            Capital
+            <ul>
+              <li>Can&#39;t raise initial funding to start</li>
+            </ul>
+          </li>
+          <li>
+            Expertise
+            <ul>
+              <li>Can&#39;t afford to hire experts</li>
+            </ul>
+          </li>
+          <li>
+            Monopoly
+            <ul>
+              <li>Supply locked</li>
+              <li>Can&#39;t compete with prices</li>
+              <li>Can&#39;t compete with branding</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Case study:</p>
+
+    <p><strong>AI Software and Hardware Architechtures</strong></p>
+    <ul>
+      <li>Started off niche</li>
+      <li>
+        Odd position where &quot;products&quot; are not yet defined;
+        <ul>
+          <li>Exploritory investment</li>
+        </ul>
+      </li>
+      <li>Major tech leaders, e.g. Meta, now open sourcing how to do things</li>
+      <li>
+        How does this influence barrier to entry?
+        <ul>
+          <li>Startups?</li>
+          <li>Good or bad for innovation?</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="buyers">Buyers</h3>
+    <ul>
+      <li>
+        Who is my market?
+        <ul>
+          <li>Niche?</li>
+          <li>One size fits all (enterprise)?</li>
+        </ul>
+      </li>
+      <li>
+        How does this affect strategy?
+        <ul>
+          <li>How much to produce?</li>
+          <li>How much to charge?</li>
+        </ul>
+      </li>
+      <li>
+        Forecasting demand
+        <ul>
+          <li>How much risk am I taking?</li>
+          <li>
+            Flexibility
+            <ul>
+              <li>Can I scale up / down quickly?</li>
+              <li>Can I pivot quickly?</li>
+            </ul>
+          </li>
+          <li>
+            Reactive / cautious approach vs speculative approach?
+            <ul>
+              <li>Advantage to being first to market?</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        How is this affected by...
+        <ul>
+          <li>Novel product vs. existing product?</li>
+          <li>Startup vs. established company?</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="summarizing-swot-analysis">Summarizing: SWOT Analysis</h3>
+    <p>SWOT = Strengths, Weaknesses, Opportunities, Threats</p>
+    <figure>
+      <span>
+        <img src="images/table_12_1.jpg" style="" />
+      </span>
+      <figcaption>SWOT Analysis - Starbucks</figcaption>
+    </figure>
+
+    <h2 id="mission-vision-core-values">Mission, Vision, Core Values</h2>
+    <h3 id="mission">Mission</h3>
+    <ul>
+      <li>
+        <strong>Mission statement</strong> = What is the ultimate goal and
+        purpose of the organization?
+      </li>
+      <li>Concise, clear, and inspiring.</li>
+    </ul>
+    <figure>
+      <span>
+        <img
+          src="https://uploads-ssl.webflow.com/5de2db6d3719a1e2f3e4454c/5de41eb55f1762023c3c02e5_10-Best-Brand-Mission-Statement-1.png"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a href="https://www.ebaqdesign.com/blog/mission-statements"
+          >Mission Statements of Top Brands</a
+        >
+      </figcaption>
+    </figure>
+
+    <h3 id="vision">Vision</h3>
+    <ul>
+      <li>
+        <strong>Vision statement</strong> = What does the organization hope to
+        achieve?
+      </li>
+      <li>More to do with external goals than internal culture.</li>
+    </ul>
+    <figure>
+      <span>
+        <img
+          src="https://uploads-ssl.webflow.com/5de2db6d3719a1e2f3e4454c/5de41ea65f176270b43c026b_10-Best-Brand-Vision-Statement.png"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a href="https://www.ebaqdesign.com/blog/vision-statements"
+          >Vision Statements of Top Brands</a
+        >
+      </figcaption>
+    </figure>
+
+    <h3 id="core-values">Core Values</h3>
+    <ul>
+      <li>
+        <strong>Core values</strong> = What are the guiding principles of the
+        organization?
+      </li>
+      <li>More to do with internal culture than external goals.</li>
+      <li>Used to attract and retain employees.</li>
+    </ul>
+    <figure>
+      <span>
+        <img src="images/table_12_2.jpg" style="" />
+      </span>
+      <figcaption>
+        <a href=""></a>
+      </figcaption>
+    </figure>
+
+    <h2 id="goals-and-objectives">Goals and Objectives</h2>
+    <h3 id="smart-goals">SMART Goals</h3>
+    <p>
+      <strong><em>SMART</em></strong> = Specific, Measurable, Attainable,
+      Relevant, Time constrained
+    </p>
+    <ul>
+      <li>
+        Specific
+        <ul>
+          <li>Who, what, where, when, why, how?</li>
+        </ul>
+      </li>
+      <li>
+        Measurable
+        <ul>
+          <li>What is your metric to know you&#39;ve reached it?</li>
+        </ul>
+      </li>
+      <li>
+        Attainable
+        <ul>
+          <li>Is it realistic (feasible in business lingo)?</li>
+        </ul>
+      </li>
+      <li>
+        Relevant
+        <ul>
+          <li>Does it align with your mission, vision, and core values?</li>
+        </ul>
+      </li>
+      <li>
+        Time constrained
+        <ul>
+          <li>Have you set a specific deadline or milestones?</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="staying-current-on-innovation">Staying Current on Innovation</h2>
+    <ul>
+      <li>
+        <p>MS Build convention, Satya Nadella and others, Microsoft</p>
+        <ul>
+          <li>
+            <p>
+              <a href="https://news.microsoft.com/build-2023/"
+                >Microsoft Build 2023</a
+              >
+            </p>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/FaV0tIaWWEg?si=p7Z10SGF9KC5Tkmf"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </li>
+        </ul>
+      </li>
+      <li><p>Andrej Karpathy, Tesla / OpenAI</p></li>
+    </ul>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/bZQun8Y4L2A?si=0hnLcMHB6GZwOzgT"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+
+    <ul>
+      <li>Chamath Palihapitiya, Social Capital</li>
+    </ul>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/wgYZk9Mc804?si=7tO8iTZSJVg9WT4N"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+
+    <p>
+      <strong
+        ><em
+          >Find a medium and personality that&#39;s comfortable for you - stay
+          current!</em
+        ></strong
+      >
+    </p>
+  </body>
+</html>

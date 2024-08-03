@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV153 - M03</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV153/index.html"
+        >SDEV153</a
+      >&nbsp;&gt;&nbsp;<a href="">M03</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#css-part-ii">CSS Part II</a>
+        <ul>
+          <li><a href="#review-of-basics">Review of Basics</a></li>
+          <li><a href="#child-combinators">Child Combinators</a></li>
+          <li><a href="#descendant-combinators">Descendant Combinators</a></li>
+          <li>
+            <a href="#pseudo-classes">Pseudo-classes</a>
+            <ul>
+              <li><a href="#links">Links</a></li>
+              <li><a href="#other-pseudo-classes">Other Pseudo-classes</a></li>
+            </ul>
+          </li>
+          <li><a href="#pseudo-elements">Pseudo-elements</a></li>
+          <li><a href="#inheritance">Inheritance</a></li>
+          <li>
+            <a href="#specificity">Specificity</a>
+            <ul>
+              <li><a href="#the-algorithm">The Algorithm</a></li>
+              <li>
+                <a href="#typical-specificity-values"
+                  >Typical Specificity Values</a
+                >
+              </li>
+              <li>
+                <a href="#descendant-selector-specificity"
+                  >Descendant Selector Specificity</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="css-part-ii">CSS Part II</h1>
+    <h2 id="review-of-basics">Review of Basics</h2>
+    <ul>
+      <li>Element selectors</li>
+      <li>Class selectors</li>
+      <li>ID selectors</li>
+      <li>The cascade model</li>
+    </ul>
+    <h2 id="child-combinators">Child Combinators</h2>
+    <p>
+      Selects <em>only direct</em> children of a given selector that fit the
+      criteria.
+    </p>
+    <p><em>Example:</em></p>
+    <pre><code class="language-css"><span class="hljs-selector-tag">main</span> &gt; <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+</code></pre>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm a direct child of main.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm a grandchild of main.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm a grandchild of main.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+</code></pre>
+    <h2 id="descendant-combinators">Descendant Combinators</h2>
+    <p>
+      Selects <em>all ancestor</em> descendants of a given selector that fit the
+      criteria.
+    </p>
+    <p><em>Example:</em></p>
+    <pre><code class="language-css"><span class="hljs-selector-tag">main</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+</code></pre>
+    <p>Can be chained:</p>
+    <pre><code class="language-css"><span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-comment">/* rules */</span>
+}
+</code></pre>
+    <h2 id="pseudo-classes">Pseudo-classes</h2>
+    <p>
+      Predefined keyword added to a selector that specifies a special state of
+      the selected element(s).
+    </p>
+    <h3 id="links">Links</h3>
+    <pre><code class="language-css"><span class="hljs-comment">/* link with no href; also used to style all pseudo-classes*/</span>
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: orange;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2em</span>;
+}
+
+<span class="hljs-comment">/* unvisited link */</span>
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-comment">/* visited link */</span>
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
+
+<span class="hljs-comment">/* mouse over link */</span>
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: hotpink;
+}
+
+<span class="hljs-comment">/* selected link */</span>
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
+</code></pre>
+    <h3 id="other-pseudo-classes">Other Pseudo-classes</h3>
+    <p>Hover can be used for limited interactivity:</p>
+    <pre><code class="language-css"><span class="hljs-selector-tag">h1</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background-color</span>: yellow;
+}
+</code></pre>
+    <p>Focus is often used in forms:</p>
+    <pre><code class="language-css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:focus</span> {
+  <span class="hljs-attribute">outline</span>: <span class="hljs-number">4px</span> solid red;
+}
+</code></pre>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"myInput"</span>&gt;</span>My Input<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> /&gt;</span>
+</code></pre>
+    <p>The following are often used with forms, lists, and tables:</p>
+    <ul>
+      <li><code>:first-child</code></li>
+      <li><code>:last-child</code></li>
+      <li><code>:nth-child(n)</code></li>
+    </ul>
+    <h2 id="pseudo-elements">Pseudo-elements</h2>
+    <p>
+      Predefined keyword added to a selector that specifies a special part of
+      the selected element(s).
+    </p>
+    <ul>
+      <li><code>::first-line</code></li>
+      <li><code>::first-letter</code></li>
+      <li><code>::before</code></li>
+      <li><code>::after</code></li>
+    </ul>
+    <p><em>Example:</em></p>
+    <pre><code class="language-css"><span class="hljs-selector-class">.my-class</span><span class="hljs-selector-pseudo">::first-letter</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ff0000</span>;
+}
+
+<span class="hljs-selector-class">.my-class</span><span class="hljs-selector-pseudo">::first-line</span> {
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+}
+
+<span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.emoji-list</span> {
+  <span class="hljs-attribute">list-style-type</span>: none;
+}
+
+<span class="hljs-selector-class">.emoji-list</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">"😄"</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-comment">/* Technically this is a pseudo-class */</span>
+<span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.emoji-list</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(even)</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#eee</span>;
+}
+</code></pre>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"emoji-list"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Be happy<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Be more happy<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Be more more happy<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Be more more more happy<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"my-class"</span>&gt;</span>
+  Donec fermentum rutrum commodo. Fusce vitae pharetra mauris. Cras feugiat enim
+  nunc, quis accumsan justo egestas quis. Mauris vestibulum augue eget tellus
+  varius rhoncus. In in purus sed metus congue volutpat a ac libero. Nullam
+  semper, purus eget tempus venenatis, eros enim ullamcorper dui, id aliquet
+  purus purus in lacus. Aliquam in lacus magna. In ullamcorper neque pulvinar,
+  lacinia felis vel, luctus nibh. Praesent tristique dapibus libero, in pretium
+  purus.
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+    <h2 id="inheritance">Inheritance</h2>
+    <p>Some properties are inherited from parent elements.</p>
+    <p>
+      <a
+        href="https://web.dev/learn/css/inheritance#which_properties_are_inherited_by_default"
+        >Which Properties are Inherited by Default</a
+      >
+    </p>
+    <p><em>Example:</em></p>
+    <pre><code class="language-css"><span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
+<span class="hljs-selector-tag">span</span> {
+  <span class="hljs-attribute">color</span>: inherit; <span class="hljs-comment">/* The default value - let's change it... */</span>
+}
+</code></pre>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  We can change the color by targeting the element with a selector, such as this
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>span<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>.
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+    <h2 id="specificity">Specificity</h2>
+    <h3 id="the-algorithm">The Algorithm</h3>
+    <p>
+      A rule with greater <strong>specificity</strong> will take precedence over
+      a rule with lesser specificity.
+    </p>
+    <p>
+      <a href="https://www.w3.org/TR/2018/REC-selectors-3-20181106/#specificity"
+        >W3C Explanation</a
+      >
+    </p>
+    <p>
+      A selector&#39;s specificity can be represented by a three digit number in
+      the format:
+    </p>
+    <p><code>a b c</code></p>
+    <p>It is calculated as follows:</p>
+    <ul>
+      <li>Count the number of ID selectors in the selector (= a)</li>
+      <li>
+        Count the number of class selectors, attributes selectors, and
+        pseudo-classes in the selector (= b)
+      </li>
+      <li>
+        Count the number of type selectors and pseudo-elements in the selector
+        (= c)
+      </li>
+      <li>Ignore the universal selector</li>
+    </ul>
+    <h3 id="typical-specificity-values">Typical Specificity Values</h3>
+    <p>From most to least specific:</p>
+    <ul>
+      <li>Inline styles</li>
+      <li>ID selectors</li>
+      <li>Class selectors</li>
+      <li>Element selectors</li>
+      <li>Universal selectors</li>
+    </ul>
+    <p><em>Example:</em></p>
+    <pre><code class="language-css"><span class="hljs-selector-id">#myElement</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
+<span class="hljs-selector-class">.myClass</span> {
+  <span class="hljs-attribute">color</span>: orange;
+}
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: pink;
+}
+* {
+  <span class="hljs-attribute">color</span>: green;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">48px</span>;
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">font-family</span>: sans-serif;
+}
+</code></pre>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myElement"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"myClass"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color: red;"</span>&gt;</span>This text is ?????.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+    <h3 id="descendant-selector-specificity">
+      Descendant Selector Specificity
+    </h3>
+    <p>
+      Specificity of the selector is the sum of the specificities of the element
+      and all ancestor selectors.
+    </p>
+    <p><em>Example:</em></p>
+    <pre><code class="language-css"><span class="hljs-selector-tag">p</span> {
+  <span class="hljs-comment">/* zero id selectors */</span>
+  <span class="hljs-comment">/* zero class selectors */</span>
+  <span class="hljs-comment">/* one element selector: p */</span>
+  <span class="hljs-comment">/* 0, 0, 1 = 001 Specificity */</span>
+}
+
+<span class="hljs-selector-class">.container</span> {
+  <span class="hljs-comment">/* zero id selectors */</span>
+  <span class="hljs-comment">/* one class selector: container */</span>
+  <span class="hljs-comment">/* zero element selectors */</span>
+  <span class="hljs-comment">/* 0, 1, 0 = 010 Specificity */</span>
+}
+
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.flashy</span> {
+  <span class="hljs-comment">/* zero id selectors */</span>
+  <span class="hljs-comment">/* one class selector: flashy */</span>
+  <span class="hljs-comment">/* one element selector: p */</span>
+  <span class="hljs-comment">/* 0, 1, 1 = 011 Specificity */</span>
+}
+
+<span class="hljs-selector-class">.container</span> <span class="hljs-selector-tag">article</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-comment">/* zero id selectors */</span>
+  <span class="hljs-comment">/* one class selector: container */</span>
+  <span class="hljs-comment">/* two element selectors: article and p */</span>
+  <span class="hljs-comment">/* 0, 1, 2 = 012 Specificity */</span>
+}
+</code></pre>
+  </body>
+</html>

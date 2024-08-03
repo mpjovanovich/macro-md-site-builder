@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - The Render Tree</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">The Render Tree</a>
+    </h1>
+    <h1 id="the-render-tree">The Render Tree</h1>
+    <ul>
+      <li>
+        <a href="#the-render-tree">The Render Tree</a>
+        <ul>
+          <li>
+            <a href="#updating-the-render-tree">Updating the Render Tree</a>
+          </li>
+          <li><a href="#optimized-rendering">Optimized Rendering</a></li>
+          <li><a href="#state-hoisting">State Hoisting</a></li>
+        </ul>
+      </li>
+    </ul>
+    <p>Recall that in HTML we have a Document Object Model (DOM) tree.</p>
+    <ul>
+      <li>Hierarchical structure of elements</li>
+      <li>Elements are <strong>nodes</strong> in the tree.</li>
+    </ul>
+    <pre><code class="language-jsx">&lt;App&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">InspirationGenerator</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">FancyText</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Copyright</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">InspirationGenerator</span>&gt;</span></span>
+    &lt;FancyText /&gt;
+&lt;App&gt;
+</code></pre>
+    <p>The jsx above would render a tree like this:</p>
+    <figure>
+      <span
+        ><img
+          src="https://react.dev/_next/image?url=%2Fimages%2Fdocs%2Fdiagrams%2Frender_tree.dark.png&w=640&q=75"
+          alt="Figure"
+          style="width: 75%; height: auto"
+      /></span>
+    </figure>
+    <p>
+      React native uses the operating system&#39;s native rendering engine to
+      render the user interface.
+    </p>
+    <h2 id="updating-the-render-tree">Updating the Render Tree</h2>
+    <ul>
+      <li>
+        Render tree does not update automatically (as we saw with text input
+        example).
+      </li>
+      <li>
+        Changing <strong>state</strong> in a React component triggers a
+        re-render of the component.
+        <ul>
+          <li>Updating a text input</li>
+          <li>Changing output text</li>
+          <li>Hiding / showing elements</li>
+          <li>Changing styles</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="optimized-rendering">Optimized Rendering</h2>
+    <ul>
+      <li>React Native will attempt to optimize rendering.</li>
+      <li>
+        Only re-render:
+        <ul>
+          <li>Components with changed state</li>
+          <li>Child components of changed components</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/rendertreeoptimization"
+        >Snack: Render Tree Optimization</a
+      >
+    </p>
+    <h2 id="state-hoisting">State Hoisting</h2>
+    <p>Sometimes we need to share state between components.</p>
+    <p>
+      <strong>Lifting state up</strong> or <strong>state hoisting</strong> is
+      the process of moving state from a child component to a parent component.
+    </p>
+    <p>When to hoist state:</p>
+    <ul>
+      <li>
+        When a parent component needs to know about state changes in a child
+        component, e.g.
+      </li>
+      <li>
+        When a child component needs to know about state changes in a parent
+        component
+      </li>
+      <li>When child components need to share state</li>
+    </ul>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/statehoisting"
+        >Snack: State Hoisting</a
+      >
+    </p>
+  </body>
+</html>

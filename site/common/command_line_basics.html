@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes - Unix Basic Commands</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      &nbsp;&gt;&nbsp;<a href="">Unix Basic Commands</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#unix-basic-commands">Unix Basic Commands</a>
+        <ul>
+          <li>
+            <a href="#navigation">Navigation</a>
+            <ul>
+              <li>
+                <a href="#absolute-vs-relative-paths"
+                  >Absolute vs. Relative Paths</a
+                >
+                <ul>
+                  <li><a href="#absolute-paths">Absolute Paths</a></li>
+                  <li><a href="#relative-paths">Relative Paths</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#directory-traversal">Directory Traversal</a>
+                <ul>
+                  <li>
+                    <a href="#find-which-directory-you-are-in"
+                      >Find Which Directory You Are In</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#list-the-contents-of-a-directory"
+                      >List the Contents of a Directory</a
+                    >
+                  </li>
+                  <li><a href="#change-directory">Change Directory</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#file-manipulation">File Manipulation</a>
+            <ul>
+              <li><a href="#create-a-new-folder">Create a New Folder</a></li>
+              <li><a href="#create-a-new-file">Create a New File</a></li>
+              <li><a href="#copy-a-file">Copy a File</a></li>
+              <li><a href="#rename-a-file">Rename a File</a></li>
+              <li><a href="#move-a-file">Move a File</a></li>
+              <li><a href="#delete-a-file">Delete a File</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#what-should-i-be-able-to-do"
+              >What Should I Be Able to Do?</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="unix-basic-commands">Unix Basic Commands</h1>
+    <h2 id="navigation">Navigation</h2>
+    <h3 id="absolute-vs-relative-paths">Absolute vs. Relative Paths</h3>
+    <h4 id="absolute-paths">Absolute Paths</h4>
+    <ul>
+      <li>
+        The top-most directory is called the <strong>root directory</strong>.
+        <ul>
+          <li>On Windows, this is <code>C:\</code>.</li>
+          <li>On Mac and Linux, this is <code>/</code>.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Absolute paths start at the root directory.</p>
+    <p>Examples:</p>
+    <ul>
+      <li><code>C:\Users\John\Documents\test.txt</code></li>
+      <li><code>/home/john/Documents/test.txt</code></li>
+    </ul>
+    <h4 id="relative-paths">Relative Paths</h4>
+    <p>
+      Relative paths start at the current directory. This can be the working
+      directory from the terminal, or a path relative to the current file if
+      coding.
+    </p>
+    <p>Examples:</p>
+    <ul>
+      <li><code>Documents\test.txt</code></li>
+      <li><code>SomeFolder/OtherFolder/test.txt</code></li>
+    </ul>
+    <h3 id="directory-traversal">Directory Traversal</h3>
+    <h4 id="find-which-directory-you-are-in">
+      Find Which Directory You Are In
+    </h4>
+    <pre><code class="language-bash"><span class="hljs-built_in">pwd</span>
+</code></pre>
+    <h4 id="list-the-contents-of-a-directory">
+      List the Contents of a Directory
+    </h4>
+    <pre><code class="language-bash">ls                      <span class="hljs-comment"># List the current directory</span>
+ls -l                   <span class="hljs-comment"># List the current directory in long format</span>
+ls -a                   <span class="hljs-comment"># List the current directory, including hidden files</span>
+ls /home/john/Documents <span class="hljs-comment"># List the contents of a specific directory</span>
+</code></pre>
+    <h4 id="change-directory">Change Directory</h4>
+    <p>
+      <code>.</code> is the current directory. <code>..</code> is the parent
+      directory relative to the current directory.
+    </p>
+    <pre><code class="language-bash"><span class="hljs-built_in">cd</span> ..
+<span class="hljs-built_in">cd</span> ../images
+<span class="hljs-built_in">cd</span> /home/john/Documents
+</code></pre>
+    <h2 id="file-manipulation">File Manipulation</h2>
+    <h3 id="create-a-new-folder">Create a New Folder</h3>
+    <p>Will be created in the current directory ih this case.</p>
+    <pre><code class="language-bash">mkdir <span class="hljs-built_in">test</span>
+</code></pre>
+    <h3 id="create-a-new-file">Create a New File</h3>
+    <p>Will be created in the current directory ih this case.</p>
+    <pre><code class="language-bash">touch test.txt
+</code></pre>
+    <h3 id="copy-a-file">Copy a File</h3>
+    <p>
+      First argument is the source file, second argument is the destination
+      file.
+    </p>
+    <pre><code class="language-bash">cp test.txt test2.txt
+</code></pre>
+    <h3 id="rename-a-file">Rename a File</h3>
+    <p>First argument is the old name, second argument is the new name.</p>
+    <pre><code class="language-bash">mv test.txt test2.txt
+</code></pre>
+    <h3 id="move-a-file">Move a File</h3>
+    <p>
+      First argument is the source file, second argument is the destination
+      file.
+    </p>
+    <pre><code class="language-bash">mv test.txt ../test.txt
+</code></pre>
+    <h3 id="delete-a-file">Delete a File</h3>
+    <pre><code class="language-bash">rm test.txt
+</code></pre>
+    <h2 id="what-should-i-be-able-to-do-">What Should I Be Able to Do?</h2>
+    <ul>
+      <li>List the current directory.</li>
+      <li>List the contents of a directory.</li>
+      <li>Navigate the directory tree using relative and absolute paths.</li>
+      <li>Create a new folder.</li>
+      <li>Create a new file.</li>
+      <li>Copy a file.</li>
+      <li>Rename a file.</li>
+      <li>Move a file.</li>
+      <li>Delete a file.</li>
+    </ul>
+  </body>
+</html>

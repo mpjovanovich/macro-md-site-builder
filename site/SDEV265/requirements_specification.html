@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Requirements Specification</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Requirements Specification</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#requirements-sepecification">Requirements Sepecification</a>
+        <ul>
+          <li><a href="#user-requirements">User Requirements</a></li>
+          <li>
+            <a href="#system-requirements-functional-specifications"
+              >System Requirements (Functional Specifications)</a
+            >
+          </li>
+          <li><a href="#keywords">Keywords</a></li>
+          <li>
+            <a href="#natural-language-vs-structured-formats"
+              >Natural Language vs Structured Formats</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#functional-vs-non-functional-requirements-vs-business-rules"
+          >Functional vs Non-Functional Requirements (vs Business Rules)</a
+        >
+        <ul>
+          <li>
+            <a href="#functional-requirements">Functional Requirements</a>
+          </li>
+          <li>
+            <a href="#non-functional-requirements"
+              >Non-Functional Requirements</a
+            >
+            <ul>
+              <li><a href="#product-requirements">Product Requirements</a></li>
+              <li>
+                <a href="#organizational-requirements"
+                  >Organizational Requirements</a
+                >
+              </li>
+              <li>
+                <a href="#external-requirements">External Requirements</a>
+              </li>
+              <li>
+                <a href="#using-quantitative-metrics"
+                  >Using Quantitative Metrics</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#business-rules">Business Rules</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="requirements-sepecification">Requirements Sepecification</h1>
+    <p><em>Reference:</em></p>
+    <p>From readings...</p>
+    <ul>
+      <li>
+        <a
+          href="https://www.nasa.gov/reference/appendix-c-how-to-write-a-good-requirement/"
+          >NASA: How to Write a Good Requirement</a
+        >
+      </li>
+    </ul>
+    <h2 id="user-requirements">User Requirements</h2>
+    <ul>
+      <li>High-level</li>
+      <li>Abstract (relatively)</li>
+      <li>Typically for non-technical stakeholders and initial planning</li>
+    </ul>
+    <h2 id="system-requirements-functional-specifications-">
+      System Requirements (Functional Specifications)
+    </h2>
+    <ul>
+      <li>Detailed</li>
+      <li>Measurable</li>
+      <li>Formal language</li>
+    </ul>
+    <p><em>Example:</em></p>
+    <p>
+      <a
+        href="https://www.nasa.gov/reference/4-2-technical-requirements-definition/#hds-sidebar-nav-4"
+        >NASA: Example of Functional and Performance Requirements</a
+      >
+    </p>
+    <ul>
+      <li>
+        The TVC shall gimbal the engine a maximum of 9 degrees, ± 0.1 degree.
+      </li>
+      <li>
+        The TVC shall gimbal the engine at a maximum rate of 5 degrees/second ±
+        0.3 degrees/second.
+      </li>
+      <li>The TVC shall provide a force of 40,000 pounds, ± 500 pounds.</li>
+      <li>The TVC shall have a frequency response of 20 Hz, ± 0.1 Hz.</li>
+    </ul>
+    <h2 id="keywords">Keywords</h2>
+    <ul>
+      <li>
+        Often use keywords to specify constraints:
+        <ul>
+          <li><strong>shall</strong>: mandatory</li>
+          <li><strong>should</strong>: recommended</li>
+          <li><strong>may</strong>: optional</li>
+          <li><strong>will</strong>: facts or declarations</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="natural-language-vs-structured-formats">
+      Natural Language vs Structured Formats
+    </h2>
+    <p>
+      <strong>Natural Language</strong>: Simple, informal, and easy to
+      understand. Often used for initial requirements gathering. Must common way
+      to express requirements.
+    </p>
+    <ul>
+      <li>&quot;The system shall allow the user to log in.&quot;</li>
+      <li>
+        &quot;The system should display the user&#39;s name after login.&quot;
+      </li>
+      <li>&quot;The system may display a welcome message after login.&quot;</li>
+    </ul>
+    <p>
+      <strong>Structured</strong>: More formalized, with a defined structure and
+      syntax. Often used for more detailed requirements or speficic domains.
+    </p>
+    <ul>
+      <li>Follow a template.</li>
+      <li>Can be tabular (table format) or textual.</li>
+      <li>
+        <a
+          href="https://ntrs.nasa.gov/api/citations/20190029153/downloads/20190029153.pdf"
+          >NASA: GATEWAY SYSTEM REQUIREMENTS</a
+        >
+      </li>
+    </ul>
+    <h1 id="functional-vs-non-functional-requirements-vs-business-rules-">
+      Functional vs Non-Functional Requirements (vs Business Rules)
+    </h1>
+    <h2 id="functional-requirements">Functional Requirements</h2>
+    <p>
+      Describe what the system should do. Form the basis for use cases and test
+      cases.
+    </p>
+    <ul>
+      <li>
+        &quot;The system shall display a welcome message after login.&quot;
+      </li>
+      <li>&quot;The system shall show a logout button after login.&quot;</li>
+    </ul>
+    <h2 id="non-functional-requirements">Non-Functional Requirements</h2>
+    <figure>
+      <span
+        ><img
+          src="images/4.3_non_functional_requirements.jpg"
+          alt="Figure"
+          style="width: 90%; height: auto"
+      /></span>
+    </figure>
+    <p><em>Avoid:</em></p>
+    <ul>
+      <li>&quot;The system shall be fast.&quot;</li>
+      <li>&quot;The system shall be secure.&quot;</li>
+      <li>&quot;The system shall be reliable.&quot;</li>
+    </ul>
+    <p><em>Prefer:</em></p>
+    <ul>
+      <li>
+        &quot;The report shall be sent out prior to close of business, 5pm
+        EST.&quot;
+      </li>
+      <li>
+        &quot;The email shall be sent no later than 24 hours after receiving a
+        the request.&quot;
+      </li>
+      <li>&quot;The system shall be available 99.9% of the time.&quot;</li>
+      <li>
+        &quot;The system shall be able to handle 1000 concurrent users.&quot;
+      </li>
+    </ul>
+    <h2 id="business-rules">Business Rules</h2>
+    <p>Not the same as requirements, but similar.</p>
+    <p><em>Reference:</em></p>
+    <ul>
+      <li>
+        <a href="https://www.ibm.com/topics/business-rules"
+          >IBM: What are business rules?</a
+        >
+      </li>
+    </ul>
+    <p>
+      <strong>Business rules</strong> are constraints on the business that may
+      or may not affect the system.
+    </p>
+    <p>You may hear, &quot;The company has a business rule that [...]&quot;.</p>
+    <ul>
+      <li>
+        &quot;Transactions of over $10,000 must be audited by two persons.&quot;
+      </li>
+      <li>
+        &quot;Invoice totals must appear on the front page of the invoice.&quot;
+      </li>
+    </ul>
+  </body>
+</html>

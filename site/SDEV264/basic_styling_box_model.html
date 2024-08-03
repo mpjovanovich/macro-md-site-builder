@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - Basic Styling</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">Basic Styling</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#device-specific-rendering">Device Specific Rendering</a>
+      </li>
+      <li>
+        <a href="#basic-styling">Basic Styling</a>
+        <ul>
+          <li><a href="#inline-styles">Inline Styles</a></li>
+          <li><a href="#stylesheet-object">Stylesheet Object</a></li>
+          <li><a href="#inheritance">Inheritance</a></li>
+          <li>
+            <a href="#finding-list-of-supported-styles"
+              >Finding List of Supported Styles</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#the-box-model">The Box Model</a>
+        <ul>
+          <li><a href="#relevant-styles">Relevant Styles</a></li>
+          <li><a href="#rounded-corners">Rounded Corners</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="device-specific-rendering">Device Specific Rendering</h1>
+    <p>
+      You cannot know what the app will actually look like on a device until you
+      run it on that device.
+    </p>
+    <p>For large projects, no choice but to test on multiple devices.</p>
+    <p>
+      For snippet testing and proof of concepts, current best workflow (that I
+      know of):
+    </p>
+    <ul>
+      <li>
+        Create snippet on
+        <a href="https://snack.expo.dev">https://snack.expo.dev</a>
+      </li>
+      <li>Launch iPhone simulator</li>
+      <li>
+        Open Android emulator on local machine, login to expo, open project
+      </li>
+    </ul>
+    <h1 id="basic-styling">Basic Styling</h1>
+    <p>
+      <a href="https://reactnative.dev/docs/style">React Native: Styling</a>
+    </p>
+    <p>Styles in React are similar to CSS, but not exactly the same.</p>
+    <ul>
+      <li>
+        Uses a subset of CSS properties and values; not all CSS properties
+        supported.
+      </li>
+      <li>Styles are set using <code>style</code> attribute of components.</li>
+      <li>
+        Style attribute expects JSON object (<code>{...}</code> notation).
+      </li>
+      <li>Limited style inheritance.</li>
+    </ul>
+    <h2 id="inline-styles">Inline Styles</h2>
+    <p>
+      We can create a one-time-use object directly in the
+      <code>style</code> attribute.
+    </p>
+    <pre><code class="language-jsx">&lt;Text style={{ <span class="hljs-attr">color</span>: <span class="hljs-string">"red"</span>, <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span> }}&gt;Some text&lt;<span class="hljs-regexp">/Text&gt;</span>
+</code></pre>
+    <h2 id="stylesheet-object">Stylesheet Object</h2>
+    <p>
+      We can create a stylesheet object and reference it in the
+      <code>style</code> attribute.
+    </p>
+    <ul>
+      <li>More efficient for reusing styles.</li>
+      <li>Easier to maintain.</li>
+      <li>Better tooling support (e.g. linting and auto-completion).</li>
+    </ul>
+    <pre><code class="language-jsx"><span class="hljs-keyword">const</span> styles = StyleSheet.create({
+  <span class="hljs-attr">importantText</span>: {
+    <span class="hljs-attr">color</span>: <span class="hljs-string">"red"</span>,
+    <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span>,
+  },
+});
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.importantText}</span>&gt;</span>Some text<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span></span>;
+</code></pre>
+    <h2 id="inheritance">Inheritance</h2>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/styleinheritance"
+        >Snack: StyleInheritance</a
+      >
+    </p>
+    <p>Only some styles are inherited from parent to child components, e.g:</p>
+    <ul>
+      <li>color</li>
+      <li>
+        font and alignment attributes
+        <ul>
+          <li>fontSize</li>
+          <li>fontWeight</li>
+          <li>fontFamily</li>
+          <li>fontStyle</li>
+          <li>textAlign</li>
+          <li>justifyContent</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="finding-list-of-supported-styles">
+      Finding List of Supported Styles
+    </h2>
+    <p>
+      See the documentation, e.g.:
+      <a href="https://reactnative.dev/docs/view-style-props"
+        >React Native: View Style Props</a
+      >
+    </p>
+    <p>Left side menu has core components.</p>
+    <p>
+      Right side menu has properties that can be set for style (style props).
+    </p>
+    <h1 id="the-box-model">The Box Model</h1>
+    <p>From outermost to innermost:</p>
+    <p>Margin &gt; Border &gt; Padding &gt; Content</p>
+    <figure>
+      <span
+        ><img
+          src="https://www.simplilearn.com/ice9/free_resources_article_thumb/CSS-Box-Model.png"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <h2 id="relevant-styles">Relevant Styles</h2>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/simplebox"
+        >Snack: SimpleBox</a
+      >
+    </p>
+    <h2 id="rounded-corners">Rounded Corners</h2>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/simplebox-roundedcorners"
+        >Snack: SimpleBox-RoundedCorners</a
+      >
+    </p>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - HTTP Status Codes</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - HTTP Status Codes</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#http-status-codes">HTTP Status Codes</a>
+        <ul>
+          <li>
+            <a href="#common-status-codes-for-php"
+              >Common Status Codes for PHP:</a
+            >
+          </li>
+          <li>
+            <a href="#viewing-in-developer-tools">Viewing in Developer Tools</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#how-the-php-interpreter-handles-http-status-codes"
+          >How the PHP Interpreter Handles HTTP Status Codes</a
+        >
+        <ul>
+          <li>
+            <a href="#php-http_response_code-function"
+              >PHP http_response_code() Function</a
+            >
+            <ul>
+              <li><a href="#examples">Examples</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="http-status-codes">HTTP Status Codes</h1>
+    <ul>
+      <li>Sent by the server to the client in the response header.</li>
+      <li>Used to indicate the status of a request.</li>
+      <li>Default status code is 200 (OK).</li>
+      <li>
+        See
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+          >HTTP response status codes</a
+        >
+      </li>
+    </ul>
+    <h2 id="common-status-codes-for-php-">Common Status Codes for PHP:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>200</td>
+          <td>OK</td>
+        </tr>
+        <tr>
+          <td>301</td>
+          <td>Moved Permanently</td>
+        </tr>
+        <tr>
+          <td>307</td>
+          <td>Temporary Redirect</td>
+        </tr>
+        <tr>
+          <td>400</td>
+          <td>Bad Request</td>
+        </tr>
+        <tr>
+          <td>401</td>
+          <td>Unauthorized</td>
+        </tr>
+        <tr>
+          <td>403</td>
+          <td>Forbidden</td>
+        </tr>
+        <tr>
+          <td>404</td>
+          <td>Not Found</td>
+        </tr>
+        <tr>
+          <td>500</td>
+          <td>Internal Server Error</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="viewing-in-developer-tools">Viewing in Developer Tools</h2>
+    <ul>
+      <li>
+        In your browser, open Developer Tools (usually F12 or use the menu).
+      </li>
+      <li>Click on the Network tab.</li>
+    </ul>
+    <figure>
+      <span>
+        <img src="images/dev_tools_status_codes.png" style="" />
+      </span>
+      <figcaption>
+        <p>Dev Tools</p>
+      </figcaption>
+    </figure>
+
+    <h1 id="how-the-php-interpreter-handles-http-status-codes">
+      How the PHP Interpreter Handles HTTP Status Codes
+    </h1>
+    <ul>
+      <li>Default status code is 200.</li>
+      <li>Can be changed with the <code>header()</code> function.</li>
+      <li>Must be called before any output is sent to the client.</li>
+    </ul>
+    <h2 id="php-http_response_code-function">
+      PHP http_response_code() Function
+    </h2>
+    <ul>
+      <li>Can be used to get or set the status code.</li>
+    </ul>
+    <h3 id="examples">Examples</h3>
+    <p>
+      Redirect the user to a login page if they try to access a page that
+      requires authentication.
+    </p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// User tried to navigate to a page that requires authentication...</span>
+<span class="hljs-keyword">if</span>( !$user_is_authenticated ) {
+    http_response_code(<span class="hljs-number">301</span>);
+    header(<span class="hljs-string">'Location: '</span> . LOGIN_PAGE_URL);
+    <span class="hljs-keyword">exit</span>;
+}
+</code></pre>
+    <p>Custom 404 page.</p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// User tried to navigate to a page that doesn't exist...</span>
+<span class="hljs-keyword">if</span>( !$page_exists ) {
+    http_response_code(<span class="hljs-number">404</span>);
+    header(<span class="hljs-string">'Location: '</span> . <span class="hljs-number">404</span>_PAGE_URL);
+    <span class="hljs-keyword">exit</span>;
+}
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Release Testing</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Release Testing</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#release-testing">Release Testing</a>
+        <ul>
+          <li>
+            <a href="#requirements-based-testing">Requirements Based Testing</a>
+          </li>
+          <li><a href="#scenario-testing">Scenario Testing</a></li>
+          <li><a href="#performance-testing">Performance Testing</a></li>
+          <li><a href="#regression-testing">Regression Testing</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="release-testing">Release Testing</h1>
+    <ul>
+      <li>
+        Done when a version of the software is ready for release, prior to
+        turning over to users.
+      </li>
+      <li>Done by dedicated test team (not devs).</li>
+      <li>Well defined and formal protocols.</li>
+    </ul>
+    <h2 id="requirements-based-testing">Requirements Based Testing</h2>
+    <p>
+      Every requirement should have at least one test case. Establish minimal
+      coverage.
+    </p>
+    <p>E.g.:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Requirement</th>
+          <th>Test Case</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Transaction shall go to &quot;Pending&quot; state after user
+            approval
+          </td>
+          <td>
+            1. User approves transaction. 2. Verify transaction state is
+            &quot;Pending&quot;.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Pending transactions shall go to &quot;Released&quot; state after
+            3AM
+          </td>
+          <td>
+            1. Create transaction in Pending state. 2. Set system clock to 3AM.
+            4. Verify transaction state is &quot;Released&quot;.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Pending transactions shall go to &quot;Released&quot; state after
+            3AM
+          </td>
+          <td>
+            1. Creat transaction in non-Pending state. 2. Set system clock to
+            3AM. 3. Verify transaction state is not &quot;Released&quot;.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="scenario-testing">Scenario Testing</h2>
+    <ul>
+      <li>Test software as real user might for common use cases.</li>
+      <li>&quot;Walkthrough&quot; of some functionality.</li>
+      <li>
+        Expensive, but may be useful for
+        <ul>
+          <li>Completely new functionality</li>
+          <li>Big changes to existing functionality</li>
+          <li>Long sequences of operations; hard to test individually</li>
+          <li>
+            Complex interactions between components; hard to test individually
+          </li>
+          <li>High risk scenarios</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="performance-testing">Performance Testing</h2>
+    <p>
+      <strong>Stress testing / load testing:</strong> make demands on software
+      that are outside of normal operating conditions.
+    </p>
+    <p>Try to:</p>
+    <ul>
+      <li>make sure software doesn&#39;t break under abnormal load</li>
+      <li>reveal bottlenecks</li>
+    </ul>
+    <p>E.g.:</p>
+    <ul>
+      <li>Many users trying to do same thing at once</li>
+      <li>Many database calls</li>
+      <li>Many expensive computations</li>
+      <li>Abnormal data sizes; huge file comes in to process</li>
+    </ul>
+    <p>*May require dev team to assist with simulating abnormal conditions.</p>
+    <h2 id="regression-testing">Regression Testing</h2>
+    <ul>
+      <li>
+        After fixes, code refactoring, introducing new software components or
+        hardware, etc.
+      </li>
+      <li>Re-run related tests to make sure nothing else was broken.</li>
+      <li>May be done by test team or dev team.</li>
+      <li>May be done during development or release testing.</li>
+    </ul>
+  </body>
+</html>

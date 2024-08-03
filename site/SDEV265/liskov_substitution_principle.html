@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Listov Substitution Principle</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Listov Substitution Principle</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#liskov-substitution-principle"
+          >Liskov Substitution Principle</a
+        >
+        <ul>
+          <li><a href="#example-1">Example 1</a></li>
+          <li><a href="#example-2">Example 2</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="liskov-substitution-principle">Liskov Substitution Principle</h1>
+    <p>
+      &quot;Functions that use pointers or references to base classes must be
+      able to use objects of derived classes without knowing it.&quot;
+    </p>
+    <p>
+      In other words, a subclass should be able to replace its superclass
+      without breaking the program. We should not violate expectations about:
+    </p>
+    <ul>
+      <li>Return types</li>
+      <li>Exceptions</li>
+      <li>Preconditions</li>
+      <li>Postconditions</li>
+    </ul>
+    <h2 id="example-1">Example 1</h2>
+    <p>Poor class design: badly implemented method override</p>
+    <pre><code class="language-python"><span class="hljs-comment"># Superclass</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StampCollection</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, stamps)</span>:</span>
+        self.stamps = stamps
+
+    <span class="hljs-comment"># Return stamp if found, else return None</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find_stamp</span><span class="hljs-params">(self, stamp_name)</span>:</span>
+        <span class="hljs-keyword">for</span> stamp <span class="hljs-keyword">in</span> self.stamps:
+            <span class="hljs-keyword">if</span> stamp == stamp_name:
+                <span class="hljs-keyword">return</span> stamp
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+
+
+<span class="hljs-comment"># Subclass</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HolidayStampCollection</span><span class="hljs-params">(StampCollection)</span>:</span>
+    default_holiday_stamp = <span class="hljs-string">"Happy Holidays!"</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, stamps)</span>:</span>
+        super().__init__(stamps)
+
+    <span class="hljs-comment"># Bad:</span>
+    <span class="hljs-comment"># Return stamp if found, else return default holiday stamp</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find_stamp</span><span class="hljs-params">(self, stamp_name)</span>:</span>
+        <span class="hljs-keyword">for</span> stamp <span class="hljs-keyword">in</span> self.stamps:
+            <span class="hljs-keyword">if</span> stamp == stamp_name:
+                <span class="hljs-keyword">return</span> stamp
+        <span class="hljs-comment"># This breaks the Liskov Substitution Principle by violating the</span>
+        <span class="hljs-comment"># expectations of the superclass about what to do if the stamp is not</span>
+        <span class="hljs-comment"># found.</span>
+        <span class="hljs-keyword">return</span> self.default_holiday_stamp
+
+
+<span class="hljs-comment"># Our program</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_renamed_stamp</span><span class="hljs-params">(stamp_collection: StampCollection, stamp_name: str,
+                      new_stamp_name: str)</span>:</span>
+    stamp = stamp_collection.find_stamp(stamp_name)
+    <span class="hljs-comment"># We should raise an error if the stamp is not found</span>
+    <span class="hljs-keyword">if</span> stamp == <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"Stamp not found"</span>)
+    stamp = new_stamp_name
+    <span class="hljs-keyword">return</span> stamp
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    holiday_stamps = HolidayStampCollection([<span class="hljs-string">"Christmas"</span>, <span class="hljs-string">"New Year's"</span>, <span class="hljs-string">"Valentine's Day"</span>])
+    stamps = StampCollection([<span class="hljs-string">"Train"</span>, <span class="hljs-string">"Flag"</span>, <span class="hljs-string">"Nostalgic Child"</span>])
+
+    <span class="hljs-keyword">try</span>:
+        print(get_renamed_stamp(stamps, <span class="hljs-string">"Boat"</span>, <span class="hljs-string">"Ship"</span>))
+    <span class="hljs-keyword">except</span> ValueError <span class="hljs-keyword">as</span> e:
+        print(e)
+
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-comment"># We should have failed, but instead it acted as if it found "X-day" and renamed it to "Y-day"</span>
+        print(get_renamed_stamp(holiday_stamps, <span class="hljs-string">"X-day"</span>, <span class="hljs-string">"Y-day"</span>))
+    <span class="hljs-keyword">except</span> ValueError <span class="hljs-keyword">as</span> e:
+        print(e)
+
+main()
+</code></pre>
+    <p>How to fix?</p>
+    <ul>
+      <li>
+        Don&#39;t override the method in the subclass unless guaranteed to
+        behave the same as superclass.
+      </li>
+    </ul>
+    <h2 id="example-2">Example 2</h2>
+    <p>Poor class design: &quot;one size fits all&quot; base class</p>
+    <pre><code class="language-python"><span class="hljs-comment"># Superclass</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, balance: int)</span>:</span>
+        self.balance = balance
+
+    <span class="hljs-comment"># This doesn't make sense for all accounts, so it should not be here</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_reward_balance</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+
+<span class="hljs-comment"># Subclass</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SilverAccount</span><span class="hljs-params">(Account)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, balance: int, reward_points: int)</span>:</span>
+        super().__init__(balance)
+        self.reward_points = reward_points
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_reward_balance</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.balance * <span class="hljs-number">0.03</span>
+
+<span class="hljs-comment"># Subclass</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GoldAccount</span><span class="hljs-params">(Account)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, balance: int, reward_points: int)</span>:</span>
+        super().__init__(balance)
+        self.reward_points = reward_points
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_reward_balance</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.balance * <span class="hljs-number">0.05</span>
+
+<span class="hljs-comment"># Our Program</span>
+<span class="hljs-comment"># This function should be able to work with any Account object</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply_reward</span><span class="hljs-params">(account: Account)</span>:</span>
+    reward = account.get_reward_balance()
+    <span class="hljs-comment"># Will fail for basic_account - reward will be None</span>
+    account.balance = account.balance + reward
+    <span class="hljs-comment"># For debugging</span>
+    print(<span class="hljs-string">f"New balance: <span class="hljs-subst">{account.balance}</span>"</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    gold_account = GoldAccount(<span class="hljs-number">100</span>, <span class="hljs-number">50</span>)
+    silver_account = SilverAccount(<span class="hljs-number">100</span>, <span class="hljs-number">50</span>)
+    basic_account = Account(<span class="hljs-number">100</span>)
+
+    apply_reward(gold_account)
+    apply_reward(silver_account)
+    apply_reward(basic_account)
+
+main()
+</code></pre>
+    <p>How would we fix this?</p>
+    <ul>
+      <li>
+        We could move the <code>get_reward_balance</code> method to each of the
+        subclasses, or better yet...
+      </li>
+      <li>
+        Move the <code>get_reward_balance</code> method to a separate interface
+        or abstract base class.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-keyword">import</span> abc
+
+<span class="hljs-comment"># Python way to define interfaces</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RewardsAccount</span><span class="hljs-params">(abc.ABC)</span>:</span>
+<span class="hljs-meta">    @abc.abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_reward_balance</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SilverAccount</span><span class="hljs-params">(Account, RewardsAccount)</span>:</span>
+    <span class="hljs-comment"># ...</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply_reward</span><span class="hljs-params">(account: RewardsAccount)</span>:</span>
+    <span class="hljs-comment"># ...</span>
+</code></pre>
+  </body>
+</html>

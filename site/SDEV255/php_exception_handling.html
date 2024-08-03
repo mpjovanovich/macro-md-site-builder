@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Exception Handling</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Exception Handling</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#exception-handling">Exception Handling</a>
+        <ul>
+          <li>
+            <a href="#why-use-exception-handling"
+              >Why Use Exception Handling?</a
+            >
+          </li>
+          <li><a href="#how-it-works">How it Works</a></li>
+          <li>
+            <a href="#the-exception-object">The Exception Object</a>
+            <ul>
+              <li>
+                <a href="#properties-and-methods">Properties and Methods</a>
+              </li>
+              <li><a href="#exception-types">Exception Types</a></li>
+            </ul>
+          </li>
+          <li><a href="#exception-bubbling">Exception Bubbling</a></li>
+          <li>
+            <a href="#validation-vs-exception-handling"
+              >Validation vs Exception Handling</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="exception-handling">Exception Handling</h1>
+    <p>Used to handle errors that occur during execution of a script.</p>
+    <h2 id="why-use-exception-handling-">Why Use Exception Handling?</h2>
+    <p>Allows you to handle errors</p>
+    <ul>
+      <li>Gracefully</li>
+      <li>Consistently</li>
+      <li>In a controlled location</li>
+      <li>In a way that is appropriate for the situation.</li>
+    </ul>
+    <h2 id="how-it-works">How it Works</h2>
+    <ul>
+      <li>When an error occurs, an exception is <strong>thrown</strong>.</li>
+      <li>
+        If wrapped in a <strong>try</strong> block, the code will pass execution
+        to the <strong>catch</strong> block.
+      </li>
+      <li>If not, the script will terminate with an error.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-keyword">try</span> {
+  <span class="hljs-comment">// Code that may throw an exception</span>
+} <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+  <span class="hljs-comment">// Code to handle the exception if thrown</span>
+}
+<span class="hljs-keyword">finally</span> {
+  <span class="hljs-comment">// Optional: Will execute regardless of exception thrown or not</span>
+}
+</code></pre>
+    <ul>
+      <li>
+        The <strong>catch</strong> block will only execute if an exception is
+        thrown.
+      </li>
+      <li>
+        The <strong>finally</strong> block will always execute.
+        <ul>
+          <li>This is optional.</li>
+        </ul>
+      </li>
+      <li>
+        After the try / catch / finally block, execution will continue as
+        normal.
+      </li>
+    </ul>
+    <h2 id="the-exception-object">The Exception Object</h2>
+    <h3 id="properties-and-methods">Properties and Methods</h3>
+    <ul>
+      <li>
+        Information about the exception can be accessed through the exception
+        object.
+      </li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>getMessage()</td>
+          <td>Returns the exception message as a string</td>
+        </tr>
+        <tr>
+          <td>getCode()</td>
+          <td>Returns the exception code as an integer</td>
+        </tr>
+        <tr>
+          <td>getFile()</td>
+          <td>Returns the filename in which the exception was thrown</td>
+        </tr>
+        <tr>
+          <td>getLine()</td>
+          <td>Returns the line number on which the exception was thrown</td>
+        </tr>
+        <tr>
+          <td>getTrace()</td>
+          <td>Returns an array of the backtrace()</td>
+        </tr>
+        <tr>
+          <td>getTraceAsString()</td>
+          <td>Returns the backtrace() as a string</td>
+        </tr>
+      </tbody>
+    </table>
+    <pre><code class="language-php"><span class="hljs-keyword">try</span> {
+  <span class="hljs-comment">// Code that may throw an exception</span>
+} <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+  <span class="hljs-keyword">echo</span> $e-&gt;getMessage();
+}
+</code></pre>
+    <h3 id="exception-types">Exception Types</h3>
+    <ul>
+      <li>PHP has built-in exception types.</li>
+      <li>We can create custom exception types.</li>
+      <li>
+        We can use multiple catch blocks to handle different exception types for
+        greater specificity.
+      </li>
+      <li>
+        The base class <code>Exception</code> should be the last catch block.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Code that may throw an exception</span>
+} <span class="hljs-keyword">catch</span> (FileNotFoundException $e) {
+    <span class="hljs-comment">// Will only execute if the exception type is FileNotFoundException</span>
+} <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+    <span class="hljs-comment">// Will catch anything else that is thrown.</span>
+}
+</code></pre>
+    <h2 id="exception-bubbling">Exception Bubbling</h2>
+    <ul>
+      <li>
+        Uncaught exceptions will <strong>bubble up</strong> to the calling
+        function.
+      </li>
+      <li>
+        They will proceed through the <strong>stack</strong> until they are
+        caught or the script terminates.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">'I am an exception'</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">try</span> {
+    bar();
+  } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+    <span class="hljs-comment">// Will catch the exception thrown by bar()</span>
+    <span class="hljs-keyword">echo</span> $e-&gt;getMessage();
+  }
+}
+</code></pre>
+    <h2 id="validation-vs-exception-handling">
+      Validation vs Exception Handling
+    </h2>
+    <ul>
+      <li>
+        Validation is used to <strong>prevent</strong> errors.
+        <ul>
+          <li>Checking user input</li>
+          <li>Checking for file existence before opening.</li>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>
+        Exception handling is used to handle errors that occur
+        <strong>despite validation</strong>.
+        <ul>
+          <li>File is deleted while in use</li>
+          <li>Database connection is lost</li>
+          <li>Network timeout</li>
+          <li>Out of memory if reading a large file</li>
+          <li>...</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

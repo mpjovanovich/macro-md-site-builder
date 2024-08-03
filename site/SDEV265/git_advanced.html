@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Git Beyond the Basics</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Git Beyond the Basics</a>
+    </h1>
+    <ul>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#clone">Clone</a></li>
+      <li><a href="#fork">Fork</a></li>
+      <li><a href="#add">Add</a></li>
+      <li><a href="#commit">Commit</a></li>
+      <li><a href="#push">Push</a></li>
+      <li><a href="#pull">Pull</a></li>
+      <li><a href="#branch">Branch</a></li>
+      <li><a href="#merge">Merge</a></li>
+      <li><a href="#understanding-diffs">Understanding Diffs</a></li>
+      <li>
+        <a href="#resolving-merge-conflicts">Resolving Merge Conflicts</a>
+      </li>
+    </ul>
+    <h1 id="resources">Resources</h1>
+    <ul>
+      <li>
+        <p>
+          <a href="https://education.github.com/git-cheat-sheet-education.pdf"
+            >Git Cheat Sheet</a
+          >
+        </p>
+      </li>
+      <li>
+        <p><a href="https://git-scm.com/book/en/v2">Pro Git</a></p>
+      </li>
+    </ul>
+    <h1 id="clone">Clone</h1>
+    <ul>
+      <li>Creates a local copy of a remote repository.</li>
+      <li><code>git clone &lt;url&gt;</code></li>
+    </ul>
+    <h1 id="fork">Fork</h1>
+    <figure>
+      <span>
+        <img
+          src="https://cdn.ttgtmedia.com/rms/onlineimages/cdo-git_clone_vs_fork-f_desktop.png"
+          style=""
+        />
+      </span>
+    </figure>
+
+    <ul>
+      <li>Creates a local copy of a remote repository...</li>
+      <li>That is (mostly) independent of the original repository.</li>
+      <li>
+        Used to:
+        <ul>
+          <li>
+            Create a personal copy of a repository (e.g. an open source project)
+          </li>
+          <li>
+            Contribute to a project that you don&#39;t have write access to.
+          </li>
+        </ul>
+      </li>
+      <li>Best done through GitHub Web UI.</li>
+    </ul>
+    <h1 id="add">Add</h1>
+    <ul>
+      <li>
+        <strong>Add</strong> is used to either add a new file for tracking or
+        stage changes to an existing file.
+      </li>
+      <li>
+        A <code>.gitignore</code> file can be used to exclude files from being
+        tracked.
+      </li>
+    </ul>
+    <h1 id="commit">Commit</h1>
+    <ul>
+      <li>
+        A <strong>commit</strong> is a snapshot of the repository at a specific
+        point in time.
+      </li>
+      <li>
+        If you work on a team or multiple devices, pushes are how you share your
+        work.
+      </li>
+      <li>Commit message is required.</li>
+      <li>Commit message should be descriptive and concise.</li>
+      <li>Commit often - it&#39;s basically a save point.</li>
+      <li><code>git commit -m &quot;message&quot;</code></li>
+    </ul>
+    <p>
+      Commiting does not push your changes to the remote repository. They are
+      only <strong>staged</strong> for push.
+    </p>
+    <h1 id="push">Push</h1>
+    <ul>
+      <li>
+        <strong>Push</strong> is used to upload local repository content to a
+        remote repository (usually GitHub).
+      </li>
+      <li>Used to share your work with others or across devices.</li>
+      <li>Push often if the above applies to you.</li>
+      <li><code>git push</code></li>
+      <li><code>git push origin master</code></li>
+    </ul>
+    <h1 id="pull">Pull</h1>
+    <p><strong>PULL OFTEN WHEN WORKING ON A TEAM PROJECT!</strong></p>
+    <p><strong>ALWAYS PULL BEFORE YOU PUSH!</strong></p>
+    <h1 id="branch">Branch</h1>
+    <ul>
+      <li>A <strong>branch</strong> is a parallel version of a repository.</li>
+      <li>
+        Used to develop in isolation from <strong>master</strong> or
+        <strong>origin</strong> branch.
+        <ul>
+          <li>Bug fixes</li>
+          <li>Feature development</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>See Old Notes</em>:
+      <a
+        href="https://docs.google.com/document/d/1oBMa7d5uzV91AKu9DcJPpJFeu83DLWrOHPoj9rxUc6s/edit"
+        >Git Pointers</a
+      >
+    </p>
+    <h1 id="merge">Merge</h1>
+    <ul>
+      <li>
+        <strong>Merging</strong> takes the changes from one branch and applies
+        them into another.
+      </li>
+      <li>Feature branches are merged into the master branch when complete.</li>
+    </ul>
+    <p>
+      <em>See Old Notes</em>:
+      <a
+        href="https://docs.google.com/document/d/1oBMa7d5uzV91AKu9DcJPpJFeu83DLWrOHPoj9rxUc6s/edit"
+        >Git Pointers</a
+      >
+    </p>
+    <h1 id="understanding-diffs">Understanding Diffs</h1>
+    <ul>
+      <li>
+        A <strong>diff</strong> is a comparison between two files, or versions
+        of a file.
+      </li>
+      <li>
+        Several ways to do it:
+        <ul>
+          <li><code>git diff</code></li>
+          <li>GitHub Web UI</li>
+          <li>GitHub desktop client</li>
+          <li>3rd party tools</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <p>GitHub Web UI</p>
+    <ul>
+      <li>Add lines</li>
+      <li>Remove lines</li>
+      <li>Change lines</li>
+    </ul>
+    <h1 id="resolving-merge-conflicts">Resolving Merge Conflicts</h1>
+    <ul>
+      <li>
+        A <strong>merge conflict</strong> occurs when competing changes are made
+        to the same line of a file.
+      </li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <ul>
+      <li>Demo in VS code with Git Graph</li>
+      <li>Create and merge branch with no conflicts</li>
+      <li>Create and merge two branches with conflicts.</li>
+    </ul>
+  </body>
+</html>

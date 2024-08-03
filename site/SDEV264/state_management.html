@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - Basic State Management</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">Basic State Management</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#basic-state-management">Basic State Management</a>
+        <ul>
+          <li><a href="#data-binding">Data Binding</a></li>
+          <li><a href="#one-way-data-binding">One-way Data Binding</a></li>
+          <li><a href="#two-way-data-binding">Two-way Data Binding</a></li>
+          <li><a href="#state-hooks">State Hooks</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="basic-state-management">Basic State Management</h1>
+    <p>
+      <strong>State</strong> is the set of data that describes the application
+      at a point in time; like a snapshot.
+    </p>
+    <p>Examples of state:</p>
+    <ul>
+      <li>Current text in a text input</li>
+      <li>Current user that is logged in</li>
+      <li>Validity of a form field (maybe show a red border if invalid)</li>
+      <li>Whether a modal window is open or closed</li>
+    </ul>
+    <h2 id="data-binding">Data Binding</h2>
+    <p>
+      <strong>Data binding</strong> is the process of connecting data to a view.
+    </p>
+    <h2 id="one-way-data-binding">One-way Data Binding</h2>
+    <ul>
+      <li>The default behavior in React</li>
+      <li>Data flows from parent to child.</li>
+      <li>Child can read data, but not change (mutate) it.</li>
+    </ul>
+    <p>Example:</p>
+    <pre><code class="language-jsx"><span class="hljs-comment">// Imports not shown</span>
+
+<span class="hljs-comment">// The App component is the parent.</span>
+<span class="hljs-comment">// The TextInput component is the child.</span>
+<span class="hljs-comment">// TextInput cannot change the value of the text variable.</span>
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">let</span> text = <span class="hljs-string">'Hey.'</span>
+    &lt;TextInput value={text} /&gt;
+}
+</code></pre>
+    <h2 id="two-way-data-binding">Two-way Data Binding</h2>
+    <ul>
+      <li>Developer must implement</li>
+      <li>
+        Data flows in both directions: parent to child and child to parent
+      </li>
+      <li>Parent and child can change data</li>
+    </ul>
+    <h2 id="state-hooks">State Hooks</h2>
+    <p>
+      <strong>State hooks</strong> are used to create stateful components in
+      React.
+    </p>
+    <ul>
+      <li>Imported from the <code>react</code> library</li>
+      <li>
+        <code>useState</code> function returns an array with two elements:
+        <ul>
+          <li>A variable to hold the state</li>
+          <li>A function to update the state (a setter function)</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-jsx"><span class="hljs-comment">// Other imports not shown</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// By convention we cell the setter "set[VariableName]"</span>
+  <span class="hljs-keyword">const</span> [text, setText] = useState(<span class="hljs-string">"Hey."</span>);
+
+  <span class="hljs-comment">// Will be called when the "ChangeText" event is triggered</span>
+  <span class="hljs-keyword">const</span> handleChangeText = <span class="hljs-function">(<span class="hljs-params">text: string</span>) =&gt;</span> {
+    setText(text);
+  };
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextInput</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{text}</span> <span class="hljs-attr">onChangeText</span>=<span class="hljs-string">{handleChangeText}</span> /&gt;</span>;
+};</span>
+</code></pre>
+    <p><strong>Other Examples:</strong></p>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/two-way-data-binding"
+        >Snack: Two-way Data Binding</a
+      >
+    </p>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/state-playground"
+        >Snack: State Playground</a
+      >
+    </p>
+  </body>
+</html>

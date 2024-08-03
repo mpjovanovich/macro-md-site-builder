@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - Layouts and Alignment</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">Layouts and Alignment</a>
+    </h1>
+    <!-- [Layouts and Alignment](#layouts-and-alignment)
+  - [Safe Area](#safe-area)
+https://reactnavigation.org/docs/handling-safe-area
+  - [Flexbox](#flexbox)
+    - [Flex Direction](#flex-direction)
+    - [Justify Content](#justify-content)
+    - [Align Items](#align-items)
+    - [Flex Wrap](#flex-wrap)
+
+    - flexbox is the CONTAINER
+    - the things in it are FLEX ITEMS
+    - main axis vs cross axis
+    - relative widths (flex: 1, e.g. take up 1/4 of screen)...
+
+    - The outermost container of App.tsx _is a flexbox container_...
+    - That is why we can use `flex: 1` on the View component to make it take up the whole screen.
+
+    - To center actual text use textAlign and textAlignVertical (as opposed to justifyContent and alignItems)
+-->
+
+    <ul>
+      <li>
+        <a href="#layouts-and-alignment">Layouts and Alignment</a>
+        <ul>
+          <li>
+            <a href="#flexbox">Flexbox</a>
+            <ul>
+              <li><a href="#alignment">Alignment</a></li>
+              <li><a href="#demos">Demos</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="layouts-and-alignment">Layouts and Alignment</h1>
+    <h2 id="flexbox">Flexbox</h2>
+    <figure>
+      <span
+        ><img
+          src="https://res.cloudinary.com/practicaldev/image/fetch/s---3gDSFf1--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/fsln7je4ax7ft3er28hh.png"
+          alt="Figure"
+          style="width: 90%; height: auto"
+      /></span>
+    </figure>
+    <p>Flexbox comes from CSS. It describes a way of setting up a layout.</p>
+    <ul>
+      <li>The parent is the <strong>flex container</strong>.</li>
+      <li>The children are <strong>flex items</strong>.</li>
+    </ul>
+    <p>
+      In React Native, the View component is treated as a flex container. Child
+      items, e.g. Text, are flex items.
+    </p>
+    <p>
+      <strong>Main Axis</strong> is the direction in which the flex items are
+      laid out. The default is horizontal.
+    </p>
+    <p>
+      <strong>Cross Axis</strong> is the perpendicular direction to the main
+      axis.
+    </p>
+    <h3 id="alignment">Alignment</h3>
+    <p>For a flex container:</p>
+    <ul>
+      <li><code>justifyContent</code> aligns items along the main axis.</li>
+      <li><code>alignItems</code> aligns items along the cross axis.</li>
+    </ul>
+    <p>
+      See:
+      <a
+        href="https://www.w3schools.com/cssref/playdemo.php?filename=playcss_align-items"
+        >W3Schools: CSS align-items</a
+      >
+    </p>
+    <p>
+      See:
+      <a
+        href="https://www.w3schools.com/cssref/playdemo.php?filename=playcss_justify-content"
+        >W3Schools: CSS justify-content</a
+      >
+    </p>
+    <p>For a Text component:</p>
+    <ul>
+      <li><code>textAlign</code> aligns text along the main axis.</li>
+      <li><code>textAlignVertical</code> aligns text along the cross axis.</li>
+    </ul>
+    <h3 id="demos">Demos</h3>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/flexboxdemo"
+        >Snack: FlexboxDemo</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://snack.expo.dev/@mpjovanovich/flexboxdemo-flexitemrelativesize"
+        >Snack: FlexboxDemo-FlexItemRelativeSize</a
+      >
+    </p>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/alignmentdemo"
+        >Snack: AlignmentDemo</a
+      >
+    </p>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/nestedflexbox"
+        >Snack: NestedFlexbox</a
+      >
+    </p>
+  </body>
+</html>

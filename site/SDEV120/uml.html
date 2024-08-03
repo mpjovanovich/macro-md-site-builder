@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - UML</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">UML</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#unified-modeling-language-uml"
+          >Unified Modeling Language (UML)</a
+        >
+        <ul>
+          <li><a href="#background">Background</a></li>
+          <li><a href="#what-is-uml">What is UML?</a></li>
+          <li>
+            <a href="#do-we-really-need-to-know-all-this"
+              >Do We Really Need to Know All This?</a
+            >
+          </li>
+          <li>
+            <a href="#type-of-information-in-uml">Type of Information in UML</a>
+          </li>
+          <li><a href="#when-to-use-uml">When to Use UML</a></li>
+          <li>
+            <a href="#diagram-classifications">Diagram Classifications</a>
+            <ul>
+              <li><a href="#structural-diagrams">Structural Diagrams</a></li>
+              <li><a href="#behavioral-diagrams">Behavioral Diagrams</a></li>
+              <li>
+                <a href="#use-case-diagram">Use Case Diagram</a>
+                <ul>
+                  <li><a href="#description">Description</a></li>
+                  <li><a href="#key-components">Key components</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#class-diagram">Class Diagram</a>
+                <ul>
+                  <li><a href="#description-1">Description</a></li>
+                  <li><a href="#key-components-1">Key components</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#sequence-diagram">Sequence Diagram</a>
+                <ul>
+                  <li><a href="#description-2">Description</a></li>
+                  <li><a href="#key-components-2">Key components</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#state-diagram">State Diagram</a>
+                <ul>
+                  <li><a href="#description-3">Description</a></li>
+                  <li><a href="#key-components-3">Key components</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#activity-diagram">Activity Diagram</a>
+                <ul>
+                  <li><a href="#description-4">Description</a></li>
+                  <li><a href="#key-components-4">Key components</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#hybrids">Hybrids</a>
+                <ul>
+                  <li><a href="#swimlane-diagram">Swimlane Diagram</a></li>
+                  <li><a href="#custom">Custom</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <figure>
+      <span
+        ><img
+          src="images/uml_guys.png"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <h1 id="unified-modeling-language-uml-">Unified Modeling Language (UML)</h1>
+    <p>
+      Reference:
+      <a href="https://drawio-app.com/blog/uml-diagrams">UML Diagrams</a>
+    </p>
+    <h2 id="background">Background</h2>
+    <p>Prior to UML...</p>
+    <ul>
+      <li>Different notations and diagrams</li>
+      <li>Everyone confused</li>
+    </ul>
+    <p>Now, with UML...</p>
+    <ul>
+      <li>Created by Grady Booch, Ivar Jacobson, and James Rumbaugh in 1997</li>
+    </ul>
+    <h2 id="what-is-uml-">What is UML?</h2>
+    <p><em>Not</em> a programming language</p>
+    <ul>
+      <li>Set of diagrams and notations used to model software systems.</li>
+      <li>Universal, culture invariant, and so much fun!</li>
+    </ul>
+    <p>
+      <strong><em>Hooray standards!</em></strong>
+    </p>
+    <h2 id="do-we-really-need-to-know-all-this-">
+      Do We Really Need to Know All This?
+    </h2>
+    <p>
+      Per
+      <a href="https://developer.ibm.com/articles/an-introduction-to-uml/"
+        >IBM: An introduction to the Unified Modeling Language</a
+      >:
+    </p>
+    <blockquote>
+      <p>
+        The most useful, standard UML diagrams are: use-case diagram, class
+        diagram, sequence diagram, statechart diagram, activity diagram,
+        component diagram, and deployment diagram.
+      </p>
+    </blockquote>
+    <p>Different domains use some more than others.</p>
+    <h2 id="type-of-information-in-uml">Type of Information in UML</h2>
+    <p>Shows system defined at different scopes in varying levels of detail.</p>
+    <ul>
+      <li>Roles of people</li>
+      <li>Hardware components</li>
+      <li>Software components</li>
+      <li>Functionality</li>
+      <li>Data</li>
+      <li>Response to events</li>
+      <li>etc.</li>
+    </ul>
+    <h2 id="when-to-use-uml">When to Use UML</h2>
+    <ul>
+      <li>Planning new systems / functionality</li>
+      <li>Documenting existing systems</li>
+      <li>Training new team members</li>
+      <li>Communicating with stakeholders</li>
+    </ul>
+    <h2 id="diagram-classifications">Diagram Classifications</h2>
+    <figure>
+      <span
+        ><img
+          src="https://drawio-app.com/wp-content/uploads/2018/10/UMLdiagrams.png"
+          alt="Figure"
+          style="width: 70%; height: auto"
+      /></span>
+    </figure>
+    <h4 id="description">Description</h4>
+    <ul>
+      <li>
+        Represent functionality, actors, and how these relate to each other in
+        the context of a system.
+      </li>
+      <li>&quot;High level&quot; scope; not much detail.</li>
+      <li>Useful for planning new functionality.</li>
+      <li>Useful for communicating with stakeholders.</li>
+    </ul>
+    <h4 id="key-components">Key components</h4>
+    <ul>
+      <li>Actors</li>
+      <li>Use cases</li>
+      <li>
+        Relationships between actors and use cases
+        <ul>
+          <li>
+            *Optionally, relationships between use cases (includes / extends)
+          </li>
+        </ul>
+      </li>
+      <li>System boundaries</li>
+    </ul>
+    <h3 id="class-diagram">Class Diagram</h3>
+    <figure>
+      <span
+        ><img
+          src="https://drawio-app.com/wp-content/uploads/2018/01/Class-Diagram-Habit-Tracker-app.png"
+          alt="Figure"
+          style="width: 70%; height: auto"
+      /></span>
+    </figure>
+    <h4 id="description">Description</h4>
+    <ul>
+      <li>Shows how entities (classes) in a system relate to each other.</li>
+      <li>Classes contain self-describing attributes and methods.</li>
+      <li>
+        Connectors between classes show <strong>cardinality</strong>; how many
+        of one class can be related to another class.
+        <ul>
+          <li>
+            <a href="https://www.uml-diagrams.org/multiplicity.html"
+              >https://www.uml-diagrams.org/multiplicity.html</a
+            >
+          </li>
+          <li>Also... Crow&#39;s feet notation.</li>
+        </ul>
+      </li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Multiplicity</th>
+          <th align="left">Option</th>
+          <th align="left">Cardinality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">0..0</td>
+          <td align="left">0</td>
+          <td align="left">Collection must be empty</td>
+        </tr>
+        <tr>
+          <td align="left">0..1</td>
+          <td align="left"></td>
+          <td align="left">No instances or one instance</td>
+        </tr>
+        <tr>
+          <td align="left">1..1</td>
+          <td align="left">1</td>
+          <td align="left">Exactly one instance</td>
+        </tr>
+        <tr>
+          <td align="left">0..*</td>
+          <td align="left">*</td>
+          <td align="left">Zero or more instances</td>
+        </tr>
+        <tr>
+          <td align="left">1..*</td>
+          <td align="left"></td>
+          <td align="left">At least one instance</td>
+        </tr>
+        <tr>
+          <td align="left">5..5</td>
+          <td align="left">5</td>
+          <td align="left">Exactly 5 instances</td>
+        </tr>
+        <tr>
+          <td align="left">m..n</td>
+          <td align="left"></td>
+          <td align="left">At least m but no more than n instances</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>
+        Entities can be concrete or abstract. From above:
+        <ul>
+          <li>
+            Concrete examples:
+            <ul>
+              <li>Person</li>
+              <li>??? (what else?)</li>
+            </ul>
+          </li>
+          <li>
+            Abstract examples:
+            <ul>
+              <li>Comment</li>
+              <li>??? (what else?)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="key-components">Key components</h4>
+    <ul>
+      <li>Classes</li>
+      <li>Attributes</li>
+      <li>Methods</li>
+      <li>
+        Relationships between classes (cardinality)<br />
+        <span class="demo">walkthrough:</span> For dog walking service, how
+        would I show…
+      </li>
+      <li>Dog walker and client (person)?</li>
+      <li>Dogs that he/she is scheduled to walk?</li>
+      <li>Relationships?</li>
+      <li>Any other classes needed?</li>
+    </ul>
+    <h3 id="sequence-diagram">Sequence Diagram</h3>
+    <figure>
+      <span
+        ><img
+          src="https://drawio-app.com/wp-content/uploads/2018/02/drawio-sequence-checkin.png"
+          alt="Figure"
+          style="width: 70%; height: auto"
+      /></span>
+    </figure>
+    <h4 id="description">Description</h4>
+    <ul>
+      <li>
+        Shows interactions between objects in a system...
+        <ul>
+          <li>over time</li>
+          <li>for a specific use case</li>
+        </ul>
+      </li>
+    </ul>
+    <p>What has to happen before another thing happens? Who is involved?</p>
+    <h4 id="key-components">Key components</h4>
+    <ul>
+      <li>Actors</li>
+      <li>Lifelines</li>
+      <li>Messages</li>
+      <li>Activation boxes</li>
+    </ul>
+    <h3 id="state-diagram">State Diagram</h3>
+    <figure>
+      <span
+        ><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/1185px-Turnstile_state_machine_colored.svg.png"
+          alt="Figure"
+          style="width: 70%; height: auto"
+      /></span>
+    </figure>
+    <h4 id="description">Description</h4>
+    <p>Shows states of a system and how it transitions between them.</p>
+    <h4 id="key-components">Key components</h4>
+    <ul>
+      <li>States</li>
+      <li>Transitions</li>
+    </ul>
+    <p class="demo">Walkthrough:</p>
+
+    <p>
+      State diagram for a light with two switches - one at each end of a
+      hallway.
+    </p>
+    <ul>
+      <li>
+        Assume light is off with both switches in the off position (initial
+        state).
+      </li>
+    </ul>
+    <h3 id="activity-diagram">Activity Diagram</h3>
+    <figure>
+      <span
+        ><img
+          src="https://cdn-images.visual-paradigm.com/guide/uml/what-is-activity-diagram/04-activity-diagram-example-process-order.png"
+          alt="Figure"
+          style="width: 100%; height: auto"
+      /></span>
+    </figure>
+    <h4 id="description">Description</h4>
+    <ul>
+      <li>Models the flow of control from one activity to another.</li>
+      <li>Shows logic without implementation detail.</li>
+    </ul>
+    <h4 id="key-components">Key components</h4>
+    <ul>
+      <li>Activities</li>
+      <li>Transitions</li>
+      <li>Branching / merging</li>
+      <li>Forking / joining</li>
+    </ul>
+    <h3 id="hybrids">Hybrids</h3>
+    <h4 id="swimlane-diagram">Swimlane Diagram</h4>
+    <figure>
+      <span
+        ><img
+          src="https://img.officetimeline.com/website/Content/website/swimlane-diagram/swimlane-process-map-example.svg"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>Like an activity diagram... with swimlanes.</li>
+      <li>Swimlanes show boundaries between actors / roles in system.</li>
+    </ul>
+    <h4 id="custom">Custom</h4>
+    <p>
+      It’s useful to have a baseline knowledge of UML if you work with software
+      at all. Even rough sketches can save valuable communication time.
+    </p>
+    <p>Mix and match to suit your needs.</p>
+  </body>
+</html>

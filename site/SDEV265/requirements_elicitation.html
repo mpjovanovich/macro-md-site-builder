@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Requirements Elicitation</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Requirements Elicitation</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#requirements-elicitation">Requirements Elicitation</a>
+        <ul>
+          <li>
+            <a href="#techniques">Techniques</a>
+            <ul>
+              <li><a href="#interview">Interview</a></li>
+              <li><a href="#observe">Observe</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#challenges">Challenges</a>
+            <ul>
+              <li>
+                <a href="#stakeholder-communication"
+                  >Stakeholder Communication</a
+                >
+              </li>
+              <li>
+                <a href="#environmental-factors">Environmental Factors</a>
+              </li>
+              <li><a href="#domain-knowledge">Domain Knowledge</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="requirements-elicitation">Requirements Elicitation</h1>
+    <figure>
+      <span
+        ><img
+          src="images/4.6_requirements_spiral.jpg"
+          alt="Figure"
+          style="width: 70%; height: auto"
+      /></span>
+    </figure>
+    <p>Below processes are iterative and interleaved.</p>
+    <p>
+      <strong>Stakeholders</strong> = people who have a vested interest in the
+      system.
+    </p>
+    <ul>
+      <li>Business owners</li>
+      <li>Contractors</li>
+      <li>Third parties</li>
+      <li>Users</li>
+    </ul>
+    <h2 id="techniques">Techniques</h2>
+    <h3 id="interview">Interview</h3>
+    <ul>
+      <li>One-on-one</li>
+      <li>Group</li>
+    </ul>
+    <h3 id="observe">Observe</h3>
+    <p>
+      <strong>Ethnography</strong> - observe people in their natural
+      environment.
+    </p>
+    <p>
+      Try to find: &quot;Requirements derived from the way in which people
+      actually work, rather than from the way in which they say they work. In
+      practice, people never follow formal processes.&quot; (from book)
+    </p>
+    <p><em>How to observe:</em></p>
+    <ul>
+      <li>Shadowing</li>
+      <li>Embedded observation</li>
+      <li>Casual social interactions (e.g. dinners, coffee)</li>
+    </ul>
+    <p><em>Examples:</em></p>
+    <ul>
+      <li>
+        You observe that people are using a workaround to a feature that
+        doesn&#39;t exist, but it was not reported in requirements.
+      </li>
+      <li>
+        You observe that most people are working remotely, so a feature that
+        requires a physical presence is not worth much investment.
+      </li>
+    </ul>
+    <h2 id="challenges">Challenges</h2>
+    <p>Software engineers must tactfully:</p>
+    <ul>
+      <li>Present options along with limitations and consequences</li>
+      <li>Guide stakeholders toward a robust solution</li>
+    </ul>
+    <h3 id="stakeholder-communication">Stakeholder Communication</h3>
+    <ul>
+      <li><p>Inability to articulate needs</p></li>
+      <li>
+        <p>Competing needs.</p>
+        <ul>
+          <li>Different divisions</li>
+          <li>Different levels of management</li>
+          <li>
+            One party may prioritize a feature over another (e.g. end-user
+            quality of life improvements)
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Failure to understand hidden feasibility barriers.</p>
+        <ul>
+          <li>Hung up on a feature that&#39;s not feasible.</li>
+          <li>
+            Don&#39;t understand invisible <strong>technical debt</strong>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Incomplete information</p>
+        <ul>
+          <li>Only from one party / primary source</li>
+          <li>Only from one division</li>
+          <li>
+            Only from one level of management (not seeing how it works &quot;on
+            the ground&quot;)
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="environmental-factors">Environmental Factors</h3>
+    <ul>
+      <li>Cultural differences</li>
+      <li>Political differences within the organization</li>
+    </ul>
+    <h3 id="domain-knowledge">Domain Knowledge</h3>
+    <p>
+      <strong>Domain</strong> = the area of expertise that the software is being
+      developed for.
+    </p>
+    <p>
+      Incomplete knowledge of the domain by software engineers can lead to
+      misunderstood requirements.
+    </p>
+    <ul>
+      <li>Healthcare</li>
+      <li>Finance</li>
+      <li>Manufacturing</li>
+      <li>Education</li>
+    </ul>
+    <p>
+      <strong>Jargon</strong> = specialized language used by a particular group.
+    </p>
+    <ul>
+      <li>Acronyms</li>
+      <li>Specialized terms</li>
+    </ul>
+    <p class="demo">Case Study:</p>
+
+    <p>
+      <strong
+        >&quot;What the heck does this &#39;locked&#39; checkbox
+        mean?&quot;</strong
+      >
+    </p>
+    <p><em>Problem:</em></p>
+    <p>Energy industry, different terminology by region / company:</p>
+    <ul>
+      <li>Fixed vs locked load</li>
+    </ul>
+    <p><em>Scenario:</em></p>
+    <ol>
+      <li>
+        <p>Software developed for Business A, who says &quot;locked&quot;.</p>
+      </li>
+      <li>
+        <p>Software adapted for Business B, who says &quot;fixed&quot;.</p>
+      </li>
+      <li>
+        <p>
+          Software uses &quot;locked&quot; checkbox to indicate a purchased
+          energy - Business B does not check this box.
+        </p>
+      </li>
+      <li><p>Resource intensive report runs all day.</p></li>
+      <li>
+        <p>
+          Customer gets aggregate report saying they have $0 invested in energy
+          across all United States regions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Ambiguously labeled checkbox leads to costly development cleanup
+          effort (e.g. database schema changes, bad data cleanup, UI changes,
+          etc.)
+        </p>
+      </li>
+    </ol>
+    <p><em>Issues:</em></p>
+    <ul>
+      <li>
+        How go get requirements from multiple parties that use different
+        terminology?
+      </li>
+      <li>
+        How to sell same software to multiple parties that use different
+        terminology?
+      </li>
+      <li>
+        How to train and onboard engineers, analysts, and devs to understand the
+        domain?
+      </li>
+    </ul>
+  </body>
+</html>

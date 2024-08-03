@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - Client Side State Management</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">Client Side State Management</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#state-management">State Management</a>
+        <ul>
+          <li><a href="#http-cache">HTTP Cache</a></li>
+          <li>
+            <a href="#javascript-web-storage">JavaScript: Web Storage</a>
+            <ul>
+              <li><a href="#description">Description</a></li>
+              <li><a href="#use-cases">Use Cases</a></li>
+              <li><a href="#examples">Examples</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#cookies">Cookies</a>
+            <ul>
+              <li><a href="#description-1">Description</a></li>
+              <li><a href="#use-cases-1">Use Cases</a></li>
+              <li>
+                <a href="#why-the-bad-rap">Why the Bad Rap?</a>
+                <ul>
+                  <li><a href="#privacy-concerns">Privacy concerns</a></li>
+                  <li><a href="#security-concerns">Security Concerns</a></li>
+                  <li>
+                    <a href="#performance-concerns">Performance Concerns</a>
+                  </li>
+                  <li>
+                    <a href="#so-uh-should-i-accept-cookies"
+                      >So uh... Should I Accept Cookies?</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#examples-1">Examples</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <figure>
+      <span
+        ><img
+          src="https://opendoorsorganizing.com/wp-content/uploads/2020/08/Portfolio-Cover-Shot-Before-3.jpg"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+    <h1 id="state-management">State Management</h1>
+    <p>
+      <strong>State</strong> is the condition of a system / application at a
+      specific time.
+    </p>
+    <p><em>Dev tip:</em> 👌</p>
+    <ul>
+      <li>
+        <strong>Premature optimization</strong> is a common way to waste
+        development time. Do not attempt to optimize performance until you have
+        data to show that it is necessary.
+      </li>
+    </ul>
+    <h2 id="http-cache">HTTP Cache</h2>
+    <figure>
+      <span>
+        <img
+          src="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching/type-of-cache.png"
+          style=""
+        />
+      </span>
+    </figure>
+
+    <p>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching"
+        >HTTP Caching</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching"
+        >Google: Performance Best Practices</a
+      >
+    </p>
+    <blockquote>
+      <p>
+        All HTTP requests that the browser makes are first routed to the browser
+        cache to check whether there is a valid cached response that can be used
+        to fulfill the request. If there&#39;s a match, the response is read
+        from the cache, which eliminates both the network latency and the data
+        costs that the transfer incurs.
+      </p>
+    </blockquote>
+    <ul>
+      <li>Caching behavior is controlled by HTTP headers.</li>
+      <li>Usually defaults from web server are sufficient.</li>
+      <li>Not something that devs typically use directly.</li>
+    </ul>
+    <p><em>Dev tip:</em> 👌</p>
+    <ul>
+      <li>
+        Use the &quot;Disable cache&quot; option browser developer tools to see
+        how your site behaves without caching.
+      </li>
+      <li>
+        If page isn&#39;t updating when you make changes, try a hard refresh
+        (Ctrl + F5).
+      </li>
+    </ul>
+    <h2 id="javascript-web-storage">JavaScript: Web Storage</h2>
+    <p>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API"
+        >Web Storage API</a
+      >
+    </p>
+    <h3 id="description">Description</h3>
+    <p>
+      <strong>Purpose:</strong> Used for storing larger amounts of data (up to
+      5MB per origin) that is specific to the client and does not need to be
+      sent to the server.
+    </p>
+    <p><strong>Size:</strong> About 5MB of data per origin.</p>
+    <p>
+      <strong>Scope:</strong> Not sent to the server. Lower overhead for network
+      traffic.
+    </p>
+    <p><strong>Lifetime:</strong> Persists after browser is closed.</p>
+    <p><strong>Access:</strong> Accessible only client-side, via JavaScript.</p>
+    <p>
+      <strong>Security:</strong> Not vulnerable to XSS attacks - never sent in
+      web request so it cannot be intercepted.
+    </p>
+    <h3 id="use-cases">Use Cases</h3>
+    <ul>
+      <li>User preferences / personalization (more data than cookies)</li>
+      <li>Private data (that doesn&#39;t need to be sent to the server)</li>
+      <li>Cached data</li>
+      <li>Form data persistence</li>
+      <li>Offline web apps</li>
+    </ul>
+    <h3 id="examples">Examples</h3>
+    <p><em>Dev tip:</em> 👌</p>
+    <p>
+      You can use the &quot;Storage&quot; or &quot;Application&quot; tab in the
+      browser developer tools to view local storage.
+    </p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Set a value</span>
+localStorage.setItem(<span class="hljs-string">"username"</span>, <span class="hljs-string">"Jennifer Beebop"</span>);
+
+<span class="hljs-comment">// Get a value</span>
+<span class="hljs-keyword">let</span> username = localStorage.getItem(<span class="hljs-string">"username"</span>);
+<span class="hljs-built_in">console</span>.log(username);
+</code></pre>
+    <h2 id="cookies">Cookies</h2>
+    <figure>
+      <span>
+        <img
+          src="https://www.immaculatebaking.com/wp-content/uploads/2012/09/bigcookie.jpg"
+          style=""
+        />
+      </span>
+      <figcaption>World's Largest Cookie</figcaption>
+    </figure>
+
+    <p>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies"
+        >HTTP Cookies</a
+      >
+    </p>
+    <h3 id="description">Description</h3>
+    <p>
+      <strong>Purpose:</strong> Store small pieces of data that need to be sent
+      back to the server with subsequent requests.
+    </p>
+    <p><strong>Size:</strong> About 4KB of data per cookie.</p>
+    <p>
+      <strong>Scope:</strong> Sent to server, so available to back end / server
+      side of app.
+    </p>
+    <p>
+      <strong>Lifetime:</strong> Can have expiration date or be linked to
+      session, which expires when browser is closed.
+    </p>
+    <p>
+      <strong>Access:</strong> Can be accessed and set both server-side (in HTTP
+      headers) and client-side (via JavaScript).
+    </p>
+    <p>
+      <strong>Security:</strong> Can be vulnerable to cross-site scripting (XSS)
+      attacks if not properly secured.
+    </p>
+    <p>
+      <strong><em>Do not store sensitive data in cookies.</em></strong>
+    </p>
+    <h3 id="use-cases">Use Cases</h3>
+    <ul>
+      <li>Retaining user login for duration of session</li>
+      <li>User preferences / personalization</li>
+      <li>Shopping cart / temporary data</li>
+      <li>Analytics / tracking</li>
+      <li>Session management (we&#39;ll cover session below)</li>
+    </ul>
+    <h3 id="why-the-bad-rap-">Why the Bad Rap?</h3>
+    <h4 id="privacy-concerns">Privacy concerns</h4>
+    <ul>
+      <li>
+        Cross-site tracking: Building a profile of a user&#39;s browsing habits.
+      </li>
+      <li>
+        Sale of data: Data collected by cookies can be sold to third parties.
+      </li>
+    </ul>
+    <p>
+      <a
+        href="https://www.deptagency.com/insight/itp-2-1-why-you-wont-make-your-advertising-targets-but-will-finally-understand-how-cookies-work/"
+        >ITP 2.1: Why you won’t make your advertising targets, but will finally
+        understand how cookies work</a
+      >
+    </p>
+    <ul>
+      <li>Good explanation of how cookies are used.</li>
+    </ul>
+    <p>
+      <a
+        href="https://www.waste-creative.com/future-of-privacy-on-the-way-to-a-cookieless-world"
+        >The Future of Privacy on the way to a Cookieless World</a
+      >
+    </p>
+    <ul>
+      <li>See the timeline.</li>
+    </ul>
+    <h4 id="security-concerns">Security Concerns</h4>
+    <ul>
+      <li>
+        <p>
+          <a href="https://owasp.org/www-community/attacks/csrf"
+            >OWASP: Cross Site Request Forgery (CSRF)</a
+          >
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://brightsec.com/blog/cross-site-request-forgery-csrf/"
+            >BrightSec: CSRF</a
+          >
+        </p>
+      </li>
+    </ul>
+    <h4 id="performance-concerns">Performance Concerns</h4>
+    <ul>
+      <li>Overhead of sending cookies with every request.</li>
+    </ul>
+    <h4 id="so-uh-should-i-accept-cookies-">
+      So uh... Should I Accept Cookies?
+    </h4>
+    <p>
+      Historical cases for cookie abuse have mostly been addressed by modern
+      browsers and privacy laws.
+    </p>
+    <p>E.g: Domain and path restrictions, SameSite attribute</p>
+    <h3 id="examples">Examples</h3>
+    <p>
+      Can set a cookie on the server side with PHP (or other server-side
+      languages).
+    </p>
+    <p>Can set a cookie on the client side with JavaScript.</p>
+    <p><em>Dev tip:</em> 👌</p>
+    <ul>
+      <li>
+        <p>
+          You can use the &quot;Storage&quot; or &quot;Application&quot; tab in
+          the browser developer tools to view cookies.
+        </p>
+      </li>
+      <li>
+        <p>
+          You can use the <code>$_COOKIE</code> superglobal in PHP to access
+          cookies.
+        </p>
+      </li>
+    </ul>
+    <p><strong>Setting a cookie with PHP</strong></p>
+    <p>
+      <a href="https://www.php.net/manual/en/function.setcookie.php"
+        >php: setcookie</a
+      >
+    </p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// 3600s = 1 hour</span>
+<span class="hljs-comment">// '/' means the cookie is available in the entire website</span>
+setcookie(<span class="hljs-string">'username'</span>, <span class="hljs-string">'Bobby Beebop'</span>, time() + <span class="hljs-number">3600</span>, <span class="hljs-string">'/'</span>);
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <p><strong>Deleting a cookie with PHP</strong></p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// To delete - set the expiration date to a time in the past</span>
+setcookie(<span class="hljs-string">'username'</span>, <span class="hljs-string">'Bobby Beebop'</span>, time() - <span class="hljs-number">3600</span>, <span class="hljs-string">'/'</span>);
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Types of Data</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Types of Data</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#types-of-data">Types of Data</a>
+        <ul>
+          <li>
+            <a href="#structured-data">Structured Data</a>
+            <ul>
+              <li><a href="#advantages">Advantages:</a></li>
+              <li><a href="#disdvantages">Disdvantages:</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#unstructured-data">Unstructured Data</a>
+            <ul>
+              <li><a href="#advantages-1">Advantages:</a></li>
+              <li><a href="#disadvantages">Disadvantages:</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#semi-structured-data">Semi-Structured Data</a>
+            <ul>
+              <li><a href="#advantages-2">Advantages:</a></li>
+              <li><a href="#disadvantages-1">Disadvantages:</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#data-formats">Data Formats</a>
+        <ul>
+          <li><a href="#delimited">Delimited</a></li>
+          <li>
+            <a href="#xml-extensible-markup-language"
+              >XML (eXtensible Markup Language)</a
+            >
+          </li>
+          <li>
+            <a href="#json-javascript-object-notation"
+              >JSON (JavaScript Object Notation)</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="types-of-data">Types of Data</h2>
+    <h3 id="structured-data">Structured Data</h3>
+    <p>
+      <strong>Structured data</strong> is data that conforms to a standard
+      format.
+    </p>
+    <p>E.g.:</p>
+    <ul>
+      <li>Relations (tables)</li>
+      <li>XML</li>
+      <li>JSON</li>
+      <li>CSV</li>
+    </ul>
+    <p>Typically stored in a <strong>relational database</strong>.</p>
+    <h4 id="advantages-">Advantages:</h4>
+    <ul>
+      <li>Works well with SQL</li>
+      <li>Clear schema; expectations are known</li>
+      <li>
+        Integrity constraints can be enforced (prevent invalid data from
+        entering the system)
+      </li>
+      <li>Can be optimized for high performance</li>
+      <li>Meets transactional requirements well</li>
+    </ul>
+    <h4 id="disdvantages-">Disdvantages:</h4>
+    <ul>
+      <li>Not flexible</li>
+      <li>Not scalable</li>
+      <li>Not suitable for all types of data</li>
+    </ul>
+    <h3 id="unstructured-data">Unstructured Data</h3>
+    <p>
+      <strong>Unstructured data</strong> is data that does not conform to a
+      standard format.
+    </p>
+    <p>E.g.:</p>
+    <ul>
+      <li>Text files</li>
+      <li>Images</li>
+      <li>Videos</li>
+      <li>Audio</li>
+    </ul>
+    <p>
+      Typically stored in a <strong>NoSQL database</strong>; designed to handle
+      unstructured data.
+    </p>
+    <h4 id="advantages-">Advantages:</h4>
+    <ul>
+      <li>
+        Flexible. Typically this is raw data that can be transformed into
+        structured data if needed.
+      </li>
+    </ul>
+    <h4 id="disadvantages-">Disadvantages:</h4>
+    <ul>
+      <li>Not easily searchable.</li>
+    </ul>
+    <h3 id="semi-structured-data">Semi-Structured Data</h3>
+    <p>
+      <strong>Semi-structured data</strong> is data that has some structure, but
+      there is no formal schema.
+    </p>
+    <ul>
+      <li>
+        E.g.:
+        <ul>
+          <li>*XML</li>
+          <li>*JSON</li>
+          <li>*CSV</li>
+        </ul>
+      </li>
+    </ul>
+    <p>*When no schema is enforced</p>
+    <p>
+      Can be stored in a <strong>NoSQL database</strong> or a
+      <strong>relational database</strong>.
+    </p>
+    <h4 id="advantages-">Advantages:</h4>
+    <ul>
+      <li>More flexible than structured data</li>
+      <li>Can be queried</li>
+      <li>Can be indexed</li>
+    </ul>
+    <h4 id="disadvantages-">Disadvantages:</h4>
+    <ul>
+      <li>&quot;Jack of all trades, master of none&quot; plight.</li>
+    </ul>
+    <h2 id="data-formats">Data Formats</h2>
+    <h3 id="delimited">Delimited</h3>
+    <p>Fields are separated by a <strong>delimiter</strong> character.</p>
+    <ul>
+      <li>CSV (Comma Separated Values)</li>
+      <li>TSV (Tab Separated Values)</li>
+      <li>Pipe delimited</li>
+      <li>~ delimited</li>
+      <li>... you get the idea</li>
+    </ul>
+    <p>E.g.:</p>
+    <pre><code>id|first_name|last_name|email
+32|mike|jovanovich|mjovanovich@ivytech.edu
+</code></pre>
+    <p>Often used for data exchange. Example:</p>
+    <p>
+      <a
+        href="https://www.ercot.com/files/docs/2017/04/11/2017_I145-820_02_Examples_V40_W_bai_file_format.doc"
+        >ERCOT EDI 820: Data Exchange Format for Texas Utility Payments</a
+      >
+    </p>
+    <h3 id="xml-extensible-markup-language-">
+      XML (eXtensible Markup Language)
+    </h3>
+    <ul>
+      <li>Semi-structured.</li>
+      <li>Hierarchical - can have child entities and sets.</li>
+      <li>Self documenting.</li>
+      <li>Structure can be enforced (via XSD).</li>
+      <li>Made up of nodes and attributes.</li>
+      <li>
+        May have namespace qualifiers - provide some level of validation
+        (confirm data integrity).
+      </li>
+      <li>Used to be the main technology for web services. Not anymore.</li>
+      <li>Is an aging technology.</li>
+    </ul>
+    <p>E.g.:</p>
+    <pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">person</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>32<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">first_name</span>&gt;</span>mike<span class="hljs-tag">&lt;/<span class="hljs-name">first_name</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">last_name</span>&gt;</span>jovanovich<span class="hljs-tag">&lt;/<span class="hljs-name">last_name</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>mjovanovich@ivytech.edu<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">person</span>&gt;</span>
+</code></pre>
+    <h3 id="json-javascript-object-notation-">
+      JSON (JavaScript Object Notation)
+    </h3>
+    <p>*JavaScript is in the name, but it is now a ubiquitous data format.</p>
+    <ul>
+      <li>Semi-structured.</li>
+      <li>Hierarchical - can have child entities and sets.</li>
+      <li>Self documenting.</li>
+      <li>Primary technology underlying modern web services (APIs)</li>
+    </ul>
+    <p>E.g.:</p>
+    <pre><code class="language-json">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-number">32</span>,
+  <span class="hljs-attr">"first_name"</span>: <span class="hljs-string">"mike"</span>,
+  <span class="hljs-attr">"last_name"</span>: <span class="hljs-string">"jovanovich"</span>,
+  <span class="hljs-attr">"email"</span>: <span class="hljs-string">"mjovanovich@ivytech.edu"</span>
+}
+</code></pre>
+  </body>
+</html>

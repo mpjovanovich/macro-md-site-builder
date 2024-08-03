@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Software Engineering</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Software Engineering</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#software-engineering">Software Engineering</a>
+        <ul>
+          <li>
+            <a href="#why-is-software-engineering-important"
+              >Why is software engineering important?</a
+            >
+          </li>
+          <li><a href="#the-balancing-act">The Balancing Act</a></li>
+          <li>
+            <a href="#attributes-of-good-software"
+              >Attributes of Good Software</a
+            >
+          </li>
+          <li>
+            <a href="#fundamental-activities-of-software-engineering"
+              >Fundamental Activities of Software Engineering</a
+            >
+          </li>
+          <li>
+            <a href="#software-engineering-vs-software-development"
+              >Software Engineering vs Software Development</a
+            >
+          </li>
+          <li>
+            <a href="#ethical-considerations">Ethical Considerations</a>
+            <ul>
+              <li>
+                <a href="#dillemas">Dillemas</a>
+                <ul>
+                  <li>
+                    <a href="#case-1-the-abusive-boss"
+                      >Case 1: The Abusive Boss</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#case-2-the-negligent-coworker"
+                      >Case 2: The Negligent Coworker</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#case-3-the-unethical-project"
+                      >Case 3: The Unethical Project</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#issues">Issues</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="software-engineering">Software Engineering</h1>
+    <h2 id="why-is-software-engineering-important-">
+      Why is software engineering important?
+    </h2>
+    <ul>
+      <li>
+        Economies of nations and global businesses are dependent on software.
+      </li>
+      <li>Emerging technologies are dependent on software.</li>
+      <li>Software often represents the most valuable asset of a company.</li>
+      <li>
+        Propper engineering can:
+        <ul>
+          <li>Reduce costs</li>
+          <li>Reduce time to market</li>
+          <li>Reduce risk</li>
+          <li>Improve quality</li>
+          <li>Improve safety / security</li>
+          <li>Improve customer satisfaction</li>
+        </ul>
+      </li>
+      <li>
+        Ultimately more optimal than not doing it, even if up front costs are
+        higher. Consider inverse of above:
+        <ul>
+          <li>Increased costs</li>
+          <li>Increased time to market</li>
+          <li>Increased risk</li>
+          <li>Decreased quality</li>
+          <li>Decreased safety / security</li>
+          <li>Decreased customer satisfaction</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="the-balancing-act">The Balancing Act</h2>
+    <figure>
+      <span
+        ><img
+          src="https://imgs.xkcd.com/comics/focus_knob_2x.png"
+          alt="Figure"
+          style="width: 40%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>Overengineering= bad</li>
+      <li>Underengineering= bad</li>
+      <li>Middle... engineering.. = good</li>
+    </ul>
+    <h2 id="attributes-of-good-software">Attributes of Good Software</h2>
+    <ul>
+      <li>
+        Maintainable
+        <ul>
+          <li>Minimize effort to modify and fix</li>
+        </ul>
+      </li>
+      <li>
+        Dependable / Reliable
+        <ul>
+          <li>Minimize frequency and severity of failures</li>
+        </ul>
+      </li>
+      <li>
+        Efficient
+        <ul>
+          <li>Minimize use of resources</li>
+        </ul>
+      </li>
+      <li>
+        Acceptable / Usable
+        <ul>
+          <li>Minimize deviation from requirements.</li>
+          <li>Minimize demands on users</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="fundamental-activities-of-software-engineering">
+      Fundamental Activities of Software Engineering
+    </h2>
+    <ul>
+      <li>
+        Software specification
+        <ul>
+          <li>
+            Customers and engineers define software constraints on its
+            operation.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Software development
+        <ul>
+          <li>Software is designed and programmed.</li>
+        </ul>
+      </li>
+      <li>
+        Software validation
+        <ul>
+          <li>Software is checked to ensure that it meets requirements.</li>
+        </ul>
+      </li>
+      <li>
+        Software evolution
+        <ul>
+          <li>
+            Software is modified to reflect changing customer and market
+            requirements
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="software-engineering-vs-software-development">
+      Software Engineering vs Software Development
+    </h2>
+    <p>
+      <strong>Software Engineering</strong> is the application of a systematic,
+      disciplined, quantifiable approach to the development, operation, and
+      maintenance of software.
+    </p>
+    <p>
+      <strong>Software Development</strong> is the process of conceiving,
+      specifying, designing, programming, documenting, testing, and bug fixing
+      involved in creating and maintaining applications, frameworks, or other
+      software components.
+    </p>
+    <p>
+      In practice: Software developers must participate in software engineering
+      activties.
+    </p>
+    <ul>
+      <li>More limited in scope</li>
+      <li>How might devs do some of the things we&#39;ve talked about?</li>
+    </ul>
+    <p>Be aware of the differences and similarities when looking for jobs.</p>
+    <ul>
+      <li>
+        Responsibilities will give you a better idea of what you&#39;ll be
+        doing.
+      </li>
+      <li>
+        &quot;Engineering&quot; usually imples an engineering degree is
+        required.
+      </li>
+    </ul>
+    <h2 id="ethical-considerations">Ethical Considerations</h2>
+    <p>
+      <a href="https://ethics.acm.org/code-of-ethics/software-engineering-code/"
+        >ACM Code of Ethics</a
+      >
+    </p>
+    <p class="demo">Activity: Breakout discussions</p>
+
+    <ol>
+      <li>
+        Examine the following rationale for the ACM Code of Ethics and discuss
+        the following questions:
+      </li>
+    </ol>
+    <blockquote>
+      <p>
+        Because of their roles in developing software systems, software
+        engineers have significant opportunities to do good or cause harm, to
+        enable others to do good or cause harm, or to influence others to do
+        good or cause harm. To ensure, as much as possible, that their efforts
+        will be used for good, software engineers must commit themselves to
+        making software engineering a beneficial and respected profession.
+      </p>
+    </blockquote>
+    <ol start="2">
+      <li>
+        Divide the eight principles of the ACM Code of Ethics among your groups
+        and search for case studies and applications.
+      </li>
+    </ol>
+    <h3 id="dillemas">Dillemas</h3>
+    <figure>
+      <span
+        ><img
+          src="https://imgs.xkcd.com/comics/settling_2x.png"
+          alt="Figure"
+          style="width: 50%; height: auto"
+      /></span>
+    </figure>
+    <h4 id="case-1-the-abusive-boss">Case 1: The Abusive Boss</h4>
+    <p>Your boss is mildly abusive to you and your coworkers.</p>
+    <ul>
+      <li>
+        Considerations:
+        <ul>
+          <li>How abusive?</li>
+          <li>Nature of abuse?</li>
+          <li>Where do they fall in the hierarchy?</li>
+        </ul>
+      </li>
+      <li>
+        Options (will these work?):
+        <ul>
+          <li>Talk to them</li>
+          <li>Report it to HR</li>
+          <li>Report it to their supervisor</li>
+          <li>Bail. Life is short.</li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="case-2-the-negligent-coworker">Case 2: The Negligent Coworker</h4>
+    <p>
+      You know that your coworker didn&#39;t properly test a bug fix or piece of
+      functionality, but pushed it through to the final product anyway. Do you
+      report it?
+    </p>
+    <ul>
+      <li>
+        Considerations:
+        <ul>
+          <li>How critical is the bug?</li>
+          <li>Is it violating any laws?</li>
+        </ul>
+      </li>
+      <li>
+        Options:
+        <ul>
+          <li>Report it to your boss</li>
+          <li>Fix it yourself</li>
+          <li>Ignore it</li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="case-3-the-unethical-project">Case 3: The Unethical Project</h4>
+    <p>
+      You are asked to work on a project, and later find that it is being used
+      to dox (reveal) anonymous online identities based on voice recognition and
+      patterns of language. What do you do?
+    </p>
+    <ul>
+      <li>
+        Considerations:
+        <ul>
+          <li>
+            Who is your employer? Private company, e.g. news outlet? Government
+            agency?
+          </li>
+          <li>
+            Is it legal (it is case by case in US - legal if &quot;of public
+            interest&quot;)?
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="issues">Issues</h3>
+    <ul>
+      <li>
+        Confidentiality
+        <ul>
+          <li>
+            Engineers should respect the confidentiality of their employers or
+            clients irrespective of whether or not a formal confidentiality
+            agreement has been signed.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Competence
+        <ul>
+          <li>
+            Engineers should not misrepresent their level of competence. They
+            should not knowingly accept work which is outwith their competence.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Intellectual Property
+        <ul>
+          <li>
+            Engineers should be aware of local laws governing the use of
+            intellectual property such as patents, copyright, etc.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Computer Misuse
+        <ul>
+          <li>
+            Software engineers should not use their technical skills to misuse
+            other people’s computers. Computer misuse ranges from relatively
+            trivial (playing games on an employer’s machine) to extremely
+            serious (dissemination of viruses).
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

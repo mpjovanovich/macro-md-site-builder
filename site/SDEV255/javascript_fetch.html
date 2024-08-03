@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - JavaScript Fetch API</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">JavaScript Fetch API</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#javascript-fetch-api">JavaScript Fetch API</a>
+        <ul>
+          <li>
+            <a href="#advantages-over-full-page-reload"
+              >Advantages Over Full Page Reload:</a
+            >
+          </li>
+          <li><a href="#return-types">Return Types</a></li>
+          <li>
+            <a href="#typical-fetch-api-usage">Typical Fetch API Usage</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="javascript-fetch-api">JavaScript Fetch API</h1>
+    <p>
+      The <strong>Fetch API</strong> is way to make HTTP requests in JavaScript
+      using promises.
+    </p>
+    <ul>
+      <li>Send data to a server</li>
+      <li>Retrieve data from a server</li>
+    </ul>
+    <h2 id="advantages-over-full-page-reload-">
+      Advantages Over Full Page Reload:
+    </h2>
+    <ul>
+      <li>Lower network overhead due to smaller payload (data sent)</li>
+      <li>Can be used to update part of the DOM</li>
+      <li>
+        User doesn&#39;t see page reload so it feels like an
+        &quot;application&quot;
+      </li>
+      <li>
+        If no UI changes are needed, response can be processed in the background
+        (e.g. database update)
+      </li>
+    </ul>
+    <h2 id="return-types">Return Types</h2>
+    <p>
+      The fetch promise will resolve with a
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response"
+        >Response</a
+      >
+      object that represents an HTTP response. From there we must convert:
+    </p>
+    <ul>
+      <li>
+        <strong>text()</strong> - returns a promise that resolves with the
+        response as text
+      </li>
+      <li>
+        <strong>json()</strong> - returns a promise that resolves with the
+        response as JSON
+      </li>
+      <li>
+        <strong>blob()</strong> - returns a promise that resolves with the
+        response as a Blob (binary data)
+      </li>
+    </ul>
+    <h2 id="typical-fetch-api-usage">Typical Fetch API Usage</h2>
+    <p>Simple static webscrape:</p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Make a request to the url.</span>
+<span class="hljs-keyword">const</span> url = <span class="hljs-string">"https://mpjovanovich.github.io/course_notes/SDEV255/"</span>;
+fetch(url)
+  .then(<span class="hljs-function">(<span class="hljs-params">httpResponse</span>) =&gt;</span> {
+    <span class="hljs-comment">// "httpResponse" will be a "Response" object.</span>
+    <span class="hljs-comment">// Convert it to text with the "text" function.</span>
+    <span class="hljs-keyword">return</span> httpResponse.text();
+  })
+  <span class="hljs-comment">// The "text" function was async, so wait for it to finish.</span>
+  <span class="hljs-comment">// "pageText" is a string, so log it.</span>
+  .then(<span class="hljs-function">(<span class="hljs-params">pageText</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(pageText);
+  });
+</code></pre>
+    <p>Fetch some JSON:</p>
+    <p>... in our lab we will fetch JSON and update the page with it ...</p>
+  </body>
+</html>

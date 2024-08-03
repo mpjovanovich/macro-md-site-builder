@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Classes and Objects</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Classes and Objects</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#classes-and-objects">Classes and Objects</a>
+        <ul>
+          <li>
+            <a href="#review-of-oop">Review of OOP</a>
+            <ul>
+              <li>
+                <a href="#basics">Basics</a>
+                <ul>
+                  <li><a href="#example-classes">Example Classes</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#creating-a-class-in-php">Creating a Class in PHP</a>
+          </li>
+          <li>
+            <a href="#instantiating-an-object">Instantiating an Object</a>
+          </li>
+          <li>
+            <a href="#accessing-properties-and-methods"
+              >Accessing Properties and Methods</a
+            >
+            <ul>
+              <li>
+                <a href="#string-interpolation-with-objects"
+                  >String Interpolation with Objects</a
+                >
+              </li>
+              <li>
+                <a href="#the-this-keyword">The <code>$this</code> Keyword</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#constructors">Constructors</a></li>
+          <li>
+            <a href="#controlling-access">Controlling Access</a>
+            <ul>
+              <li><a href="#getters-and-setters">Getters and Setters</a></li>
+              <li><a href="#private-methods">Private Methods</a></li>
+            </ul>
+          </li>
+          <li><a href="#objects-as-properties">Objects as Properties</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="classes-and-objects">Classes and Objects</h1>
+    <p class="demo">Text Demos</p>
+
+    <ul>
+      <li>
+        <a href="http://localhost/phpbook/section_a/c04/"
+          >localhost/phpbook/section_a/c04/</a
+        >
+      </li>
+    </ul>
+    <h2 id="review-of-oop">Review of OOP</h2>
+    <h3 id="basics">Basics</h3>
+    <ul>
+      <li>
+        <strong>Object Oriented Programming (OOP)</strong> is a programming
+        paradigm where we model real-world objects
+      </li>
+      <li><strong>Classes</strong> are blueprints used to create objects.</li>
+      <li>
+        <strong>Objects</strong> are <strong>instances</strong> of a class.
+      </li>
+      <li><strong>Properties</strong> are variables inside a class.</li>
+      <li><strong>Methods</strong> are functions inside a class.</li>
+    </ul>
+    <h4 id="example-classes">Example Classes</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Object (Variable Name)</th>
+          <th>Properties</th>
+          <th>Methods</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Car</td>
+          <td>$myCar</td>
+          <td>{ $make, $model, $year }</td>
+          <td>$getMake(), $printYear()</td>
+        </tr>
+        <tr>
+          <td>Book</td>
+          <td>$myBook</td>
+          <td>{ $title, $author, $year }</td>
+          <td>$getTitle(), $getAuthor(), $getYear()</td>
+        </tr>
+        <tr>
+          <td>BankAccount</td>
+          <td>$myAccount</td>
+          <td>{ $balance }</td>
+          <td>$getBalance(), $deposit(), $withdraw()</td>
+        </tr>
+        <tr>
+          <td>Order</td>
+          <td>$myOrder</td>
+          <td>{ $items, $total }</td>
+          <td>$getItems(), $getTotal()</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="creating-a-class-in-php">Creating a Class in PHP</h2>
+    <ul>
+      <li>We use the <code>class</code> keyword to create a class.</li>
+      <li>Class names are PascalCase.</li>
+      <li>Properties and methods are camelCase.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>
+</span>{
+    <span class="hljs-comment">// Properties</span>
+    <span class="hljs-keyword">public</span> string $firstName;
+    <span class="hljs-keyword">public</span> string $lastName;
+
+    <span class="hljs-comment">// Methods</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> : <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;firstName . <span class="hljs-string">" "</span> . <span class="hljs-keyword">$this</span>-&gt;lastName;
+    }
+}
+</code></pre>
+    <h2 id="instantiating-an-object">Instantiating an Object</h2>
+    <ul>
+      <li>We use the <code>new</code> keyword to create an object.</li>
+    </ul>
+    <pre><code class="language-php">$person = <span class="hljs-keyword">new</span> Person();
+</code></pre>
+    <h2 id="accessing-properties-and-methods">
+      Accessing Properties and Methods
+    </h2>
+    <ul>
+      <li>
+        We use the <code>-&gt;</code> operator to access properties and methods.
+      </li>
+    </ul>
+    <pre><code class="language-php">$person = <span class="hljs-keyword">new</span> Person();
+$person-&gt;firstName = <span class="hljs-string">"Bobby"</span>;
+$person-&gt;lastName = <span class="hljs-string">"Beebop"</span>;
+<span class="hljs-keyword">echo</span> $person-&gt;getFullName(); <span class="hljs-comment">// Bobby Beebop</span>
+</code></pre>
+    <h3 id="string-interpolation-with-objects">
+      String Interpolation with Objects
+    </h3>
+    <ul>
+      <li>
+        We can use string interpolation to access properties and methods by
+        enclosing the expression in curly braces.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-keyword">echo</span> <span class="hljs-string">"Name: {$person-&gt;getFullName()}&lt;br&gt;"</span>;
+</code></pre>
+    <h3 id="the-this-keyword">The `$this` Keyword</h3>
+    <ul>
+      <li>The <code>$this</code> keyword refers to the current object.</li>
+      <li>We use it to access properties and methods inside the class.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-comment">// ... inside the Person class access properties first name and last name ...</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> : <span class="hljs-title">string</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;firstName . <span class="hljs-string">" "</span> . <span class="hljs-keyword">$this</span>-&gt;lastName;
+}
+</code></pre>
+    <h2 id="constructors">Constructors</h2>
+    <ul>
+      <li>
+        A <strong>constructor</strong> is a special method that is called when
+        an object is created.
+      </li>
+      <li>The constructor is used to initialize the object.</li>
+      <li>
+        In PHP, the constructor is always named <code>__construct()</code>.
+      </li>
+      <li>We can pass parameters to the constructor.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-comment">// ... In the person class</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(string $firstName, string $lastName)</span>
+</span>{
+    <span class="hljs-keyword">$this</span>-&gt;firstName = $firstName;
+    <span class="hljs-keyword">$this</span>-&gt;lastName = $lastName;
+}
+<span class="hljs-comment">// ...</span>
+</code></pre>
+    <h2 id="controlling-access">Controlling Access</h2>
+    <ul>
+      <li>
+        We can control access to properties and methods using
+        <strong>access modifiers</strong>.
+        <ul>
+          <li>Also called <strong>visibility modifiers</strong>.</li>
+        </ul>
+      </li>
+      <li>
+        Access modifiers are keywords that go before the property or method.
+      </li>
+      <li>
+        By default, properties and methods are <code>public</code> in PHP.
+      </li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Modifier</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>public</td>
+          <td>Accessible from anywhere.</td>
+        </tr>
+        <tr>
+          <td>protected</td>
+          <td>Accessible from within the class and any subclasses.</td>
+        </tr>
+        <tr>
+          <td>private</td>
+          <td>Accessible only from within the class.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      * We will not do much with inheritance in this class, so we won&#39;t see
+      protected much.
+    </p>
+    <h3 id="getters-and-setters">Getters and Setters</h3>
+    <ul>
+      <li>
+        We often use <strong>getter</strong> and <strong>setter</strong> methods
+        to control access to properties.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>
+</span>{
+    <span class="hljs-comment">// Properties</span>
+    <span class="hljs-keyword">private</span> int $age;
+
+    <span class="hljs-comment">// Constructor</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(string $age)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;age = $age;
+    }
+
+    <span class="hljs-comment">// Getter</span>
+    <span class="hljs-comment">// Any code can get the age.</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAge</span><span class="hljs-params">()</span> : <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;age;
+    }
+
+    <span class="hljs-comment">// Setter</span>
+    <span class="hljs-comment">// Outside code can't set the age directly.</span>
+    <span class="hljs-comment">// We want to keep it immutable after instantiation.</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAge</span><span class="hljs-params">()</span> : <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;age = $age;
+    }
+}
+</code></pre>
+    <h3 id="private-methods">Private Methods</h3>
+    <ul>
+      <li>
+        We might also have functions that are used internally by the class, but
+        not exposed to outside code.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>
+</span>{
+    <span class="hljs-comment">// Properties</span>
+    <span class="hljs-keyword">private</span> int $age;
+    <span class="hljs-keyword">private</span> bool $has_id;
+
+    <span class="hljs-comment">// ...</span>
+
+    <span class="hljs-comment">// Can be called outside the class.</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowAccess</span><span class="hljs-params">()</span> : <span class="hljs-title">bool</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;isAdult() &amp;&amp; <span class="hljs-keyword">$this</span>-&gt;has_id;
+    }
+
+    <span class="hljs-comment">// Internal functions</span>
+    <span class="hljs-comment">// Only used by the class.</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isAdult</span><span class="hljs-params">()</span> : <span class="hljs-title">bool</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;age &gt;= <span class="hljs-number">18</span>;
+    }
+}
+</code></pre>
+    <h2 id="objects-as-properties">Objects as Properties</h2>
+    <ul>
+      <li>We can use objects as properties of other objects.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>
+</span>{
+    <span class="hljs-comment">// Properties</span>
+    <span class="hljs-keyword">private</span> string $firstName;
+    <span class="hljs-keyword">private</span> string $lastName;
+    <span class="hljs-keyword">private</span> ?Person $father; <span class="hljs-comment">// ?means the property can be null</span>
+    <span class="hljs-keyword">private</span> ?Person $mother; <span class="hljs-comment">// This is referred to as a "nullable" type.</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">array</span> $children;
+
+    <span class="hljs-comment">// Constructor</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(string $firstName, string $lastName, ?Person $father, ?Person $mother)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;firstName = $firstName;
+        <span class="hljs-keyword">$this</span>-&gt;lastName = $lastName;
+        <span class="hljs-keyword">$this</span>-&gt;father = $father;
+        <span class="hljs-keyword">$this</span>-&gt;mother = $mother;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addChild</span><span class="hljs-params">(Person $child)</span>: <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;children[] = $child;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFullName</span><span class="hljs-params">()</span>: <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;firstName . <span class="hljs-string">" "</span> . <span class="hljs-keyword">$this</span>-&gt;lastName;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printInfo</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-comment">// Print my info</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;printFormattedInfo();
+
+        <span class="hljs-comment">// Print children</span>
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">$this</span>-&gt;children <span class="hljs-keyword">as</span> $child) {
+            <span class="hljs-keyword">echo</span> $child-&gt;printFormattedInfo();
+        }
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printFormattedInfo</span><span class="hljs-params">()</span>: <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-comment">// Father and mother might be null, so we have to check if  set before using.</span>
+        $father_name = <span class="hljs-keyword">$this</span>-&gt;father === <span class="hljs-keyword">null</span> ? <span class="hljs-string">""</span> : <span class="hljs-keyword">$this</span>-&gt;father-&gt;getFullName();
+        $mother_name = <span class="hljs-keyword">$this</span>-&gt;mother === <span class="hljs-keyword">null</span> ? <span class="hljs-string">""</span> : <span class="hljs-keyword">$this</span>-&gt;mother-&gt;getFullName();
+
+        $output = <span class="hljs-string">"&lt;p style=\"font-weight: bold;\"&gt;Person Info: {$this-&gt;getFullName()}&lt;/p&gt;"</span>;
+        $output .= <span class="hljs-string">"&lt;p&gt;Father: $father_name&lt;/p&gt;"</span>;
+        $output .= <span class="hljs-string">"&lt;p&gt;Mother: $mother_name&lt;/p&gt;"</span>;
+
+        <span class="hljs-keyword">return</span> $output;
+    }
+}
+
+<span class="hljs-comment">// Create the parents (they have no parents).</span>
+$father = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"John"</span>, <span class="hljs-string">"Doe"</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+$mother = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Jane"</span>, <span class="hljs-string">"Doe"</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+
+<span class="hljs-comment">// Create children and add them to the father.</span>
+$father.addChild( <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Bobby"</span>, <span class="hljs-string">"Beebop"</span>, $father, $mother) );
+$father.addChild( <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Beebop"</span>, $father, $mother) );
+$father.addChild( <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Jimmy"</span>, <span class="hljs-string">"Beebop"</span>, $father, $mother) );
+
+<span class="hljs-comment">// This will print the father and all of his children (recursively).</span>
+$father-&gt;printInfo();
+</code></pre>
+  </body>
+</html>

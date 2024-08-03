@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - First Class Functions</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">First Class Functions</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#first-class-functions">First Class Functions</a>
+        <ul>
+          <li>
+            <a href="#example-passing-a-function-as-an-argument"
+              >Example: Passing a function as an argument</a
+            >
+          </li>
+          <li>
+            <a href="#example-passing-a-function-that-takes-an-argument"
+              >Example: Passing a function that takes an argument</a
+            >
+          </li>
+          <li>
+            <a href="#example-using-arrow-functions"
+              >Example: Using arrow functions</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="first-class-functions">First Class Functions</h1>
+    <p>
+      The term <strong>first class functions</strong> refers to the ability to
+      treat functions as values. This means that you can pass functions as
+      arguments to other functions, return functions from other functions, and
+      assign functions to variables.
+    </p>
+    <h2 id="example-passing-a-function-as-an-argument">
+      Example: Passing a function as an argument
+    </h2>
+    <pre><code class="language-typescript"><span class="hljs-comment">// We don't call this directly. Instead, we pass it as an argument to callOtherFunction.</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printSomething</span>(<span class="hljs-params"></span>): <span class="hljs-title">void</span> </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I will be printed."</span>);
+}
+
+<span class="hljs-comment">// This function expects a function as an argument. It then calls that function.</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callOtherFunction</span>(<span class="hljs-params">outputFunc: () =&gt; <span class="hljs-built_in">void</span></span>): <span class="hljs-title">void</span> </span>{
+  outputFunc();
+}
+
+<span class="hljs-comment">// Now we call the outer function, passing the inner function as an argument.</span>
+<span class="hljs-comment">// Note that we do not use parentheses when passing the function as an argument,</span>
+<span class="hljs-comment">// because we are not calling it directly. We are just passing a reference to it.</span>
+callOtherFunction(printSomething);
+</code></pre>
+    <h2 id="example-passing-a-function-that-takes-an-argument">
+      Example: Passing a function that takes an argument
+    </h2>
+    <p>
+      This example does the same as above, but the function that is passed as an
+      argument now takes a string argument.
+    </p>
+    <p>
+      We then call the function twice, passing a different string each time.
+    </p>
+    <pre><code class="language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printSomething</span>(<span class="hljs-params">thingToPrint: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">void</span> </span>{
+  <span class="hljs-built_in">console</span>.log(thingToPrint);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callOtherFunction</span>(<span class="hljs-params">outputFunc: (<span class="hljs-built_in">string</span>) =&gt; <span class="hljs-built_in">void</span></span>): <span class="hljs-title">void</span> </span>{
+  <span class="hljs-keyword">let</span> message = <span class="hljs-string">"I will be printed."</span>;
+  outputFunc(message);
+  message = <span class="hljs-string">"I will be printed again."</span>;
+  outputFunc(message);
+}
+
+callOtherFunction(printSomething);
+</code></pre>
+    <h2 id="example-using-arrow-functions">Example: Using arrow functions</h2>
+    <p>
+      This example does the same as the above; we have just rewritten
+      <code>printSomething</code> and <code>callOtherFunction</code> using arrow
+      functions.
+    </p>
+    <pre><code class="language-typescript"><span class="hljs-keyword">const</span> printSomething = (thingToPrint: <span class="hljs-built_in">string</span>): <span class="hljs-function"><span class="hljs-params">void</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(thingToPrint);
+};
+
+<span class="hljs-keyword">const</span> callOtherFunction = <span class="hljs-function">(<span class="hljs-params">outputFunc: (<span class="hljs-params"><span class="hljs-built_in">string</span></span>) =&gt; <span class="hljs-built_in">void</span></span>): <span class="hljs-params">void</span> =&gt;</span> {
+  <span class="hljs-keyword">let</span> message = <span class="hljs-string">"I will be printed."</span>;
+  outputFunc(message);
+  message = <span class="hljs-string">"I will be printed again."</span>;
+  outputFunc(message);
+};
+
+callOtherFunction(printSomething);
+</code></pre>
+  </body>
+</html>

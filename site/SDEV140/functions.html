@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Functions and Modularity</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Functions and Modularity</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#functions">Functions</a>
+        <ul>
+          <li>
+            <a href="#overview-why-functions">Overview: Why Functions?</a>
+            <ul>
+              <li><a href="#code-reuse">Code Reuse</a></li>
+              <li><a href="#code-consistency">Code Consistency</a></li>
+              <li><a href="#code-organization">Code Organization</a></li>
+              <li><a href="#code-readability">Code Readability</a></li>
+              <li><a href="#code-testability">Code Testability</a></li>
+              <li>
+                <a href="#code-modularity--portability"
+                  >Code Modularity / Portability</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#function-definition">Function Definition</a></li>
+          <li>
+            <a href="#the-call-stack">The Call Stack</a>
+            <ul>
+              <li><a href="#stack-data-structure">Stack Data Structure</a></li>
+              <li><a href="#stack-frames">Stack Frames</a></li>
+              <li><a href="#call-stack">Call Stack</a></li>
+            </ul>
+          </li>
+          <li><a href="#function-composition">Function Composition</a></li>
+          <li><a href="#variable-scope">Variable Scope</a></li>
+          <li><a href="#named-arguments">Named Arguments</a></li>
+          <li><a href="#default-parameters">Default Parameters</a></li>
+          <li><a href="#type-annotations">Type Annotations</a></li>
+          <li>
+            <a href="#the-main-function">The <code>main</code> Function</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="functions">Functions</h1>
+    <h2 id="overview-why-functions-">Overview: Why Functions?</h2>
+    <h3 id="code-reuse">Code Reuse</h3>
+    <ul>
+      <li><strong>Don&#39;t Repeat Yourself</strong> (DRY) principle</li>
+    </ul>
+    <h3 id="code-consistency">Code Consistency</h3>
+    <ul>
+      <li>One version of a function for all callers.</li>
+    </ul>
+    <h3 id="code-organization">Code Organization</h3>
+    <ul>
+      <li>Break up large programs into smaller, more manageable pieces.</li>
+      <li>
+        <strong>Single responsibility principle</strong>: function should have a
+        single, well-defined responsibility / purpose.
+      </li>
+    </ul>
+    <h3 id="code-readability">Code Readability</h3>
+    <ul>
+      <li>Descriptive function names make code self-documenting.</li>
+      <li>Usually start with a verb, except for boolean checks.</li>
+    </ul>
+    <p><em>Example Function Names</em></p>
+    <p>User input:</p>
+    <ul>
+      <li><code>get_user_input()</code></li>
+      <li><code>get_user_input_as_int()</code></li>
+    </ul>
+    <p>Getters and setters:</p>
+    <ul>
+      <li><code>get_account_balance()</code></li>
+      <li><code>update_account_balance()</code></li>
+    </ul>
+    <p>Boolean checks:</p>
+    <ul>
+      <li><code>is_user_logged_in()</code></li>
+      <li><code>is_user_admin()</code></li>
+    </ul>
+    <p>Data processing:</p>
+    <ul>
+      <li><code>calculate_tax()</code></li>
+      <li><code>filter_items_by_user()</code></li>
+    </ul>
+    <h3 id="code-testability">Code Testability</h3>
+    <ul>
+      <li>Unit testing</li>
+    </ul>
+    <h3 id="code-modularity-portability">Code Modularity / Portability</h3>
+    <ul>
+      <li>Functions can be used by other parts of the same program.</li>
+      <li>Functions can be used by different programs.</li>
+    </ul>
+    <h2 id="function-definition">Function Definition</h2>
+    <p><em>Python</em></p>
+    <pre><code class="language-python"><span class="hljs-comment"># Function signature</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">function_name</span><span class="hljs-params">( parameter1, parameter2, ... )</span>:</span>
+    <span class="hljs-comment"># Function body</span>
+    <span class="hljs-keyword">return</span> value
+</code></pre>
+    <p><em>C# / Java</em></p>
+    <pre><code class="language-csharp"><span class="hljs-comment">// C# / Java style function signature</span>
+<span class="hljs-comment">// Return type is bool, accepts two int parameters</span>
+<span class="hljs-comment">// Uses curly braces for block of code instead of indentation</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">FunctionName</span>(<span class="hljs-params"> <span class="hljs-keyword">int</span> parameter1, <span class="hljs-keyword">int</span> parameter2 </span>)</span>
+{
+    <span class="hljs-comment">// Function body</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">value</span>;
+}
+</code></pre>
+    <p>A <strong>function signature</strong> consists of:</p>
+    <ul>
+      <li>The keyword <code>def</code></li>
+      <li>The function name</li>
+      <li>
+        A list of parameters in parentheses; zero to many parameters
+        <ul>
+          <li>Parameter name</li>
+          <li>Parameter data type (in typed languages)</li>
+        </ul>
+      </li>
+      <li>
+        A return type (in typed languages)
+        <ul>
+          <li>
+            If function does not return a (useful) value we do not need
+            <code>return</code> keyword.
+            <ul>
+              <li>We call this a <strong>void function</strong>.</li>
+              <li>
+                Since all functions must return a value, function returns
+                special value to signify &quot;no return value&quot;
+              </li>
+              <li>
+                <code>None</code>, <code>null</code>, <code>void</code>, etc.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      A <strong>function body</strong> is a block of code that is executed when
+      the function is called.
+    </p>
+    <ul>
+      <li>Must be indented.</li>
+      <li>One or more statements.</li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <p>m04_create_truth_table.py</p>
+    <h2 id="the-call-stack">The Call Stack</h2>
+    <h3 id="stack-data-structure">Stack Data Structure</h3>
+    <p>LIFO (last in, first out) data structure.</p>
+    <figure>
+      <span>
+        <img
+          src="https://miro.medium.com/v2/resize:fit:640/1*lb-0r80YYhcnoVcQ3HY-1g.gif"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a
+          href="https://medium.com/@todoroski97/data-structure-stack-17b80ed3bfa9"
+          >The Stack Data Structure</a
+        >
+      </figcaption>
+    </figure>
+
+    <h3 id="stack-frames">Stack Frames</h3>
+    <p>A stack frame:</p>
+    <ul>
+      <li>Represents the execution context of a single function call.</li>
+      <li>Contains all data relevant to the function call.</li>
+      <li>Exists only during the execution of a function call.</li>
+    </ul>
+    <h3 id="call-stack">Call Stack</h3>
+    <p>The call stack:</p>
+    <ul>
+      <li>Keeps track of the sequence of function calls in a program</li>
+      <li>Is composed of stack frames</li>
+      <li>Exists for the lifetime of a program</li>
+    </ul>
+    <p>
+      <strong>Stack overflow</strong> = when the call stack grows too large, and
+      the program runs out of memory.
+    </p>
+    <h2 id="function-composition">Function Composition</h2>
+    <ul>
+      <li>We can say that functions are <strong>composable</strong>.</li>
+      <li>
+        We can use the output of one function as the input to another function.
+      </li>
+      <li>We can use the output of a function as the input to itself.</li>
+    </ul>
+    <p>Two main ways that we see this:</p>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f</span><span class="hljs-params">( x )</span>:</span>
+    <span class="hljs-keyword">return</span> x + <span class="hljs-number">1</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">g</span><span class="hljs-params">( x )</span>:</span>
+    <span class="hljs-keyword">return</span> x * <span class="hljs-number">2</span>
+
+<span class="hljs-comment">## Composition</span>
+print( f( g( <span class="hljs-number">2</span> ) ) )
+</code></pre>
+    <p>Or, function chaining:</p>
+    <pre><code class="language-python">text = <span class="hljs-string">"   Hello, World!   "</span>
+result = text.strip().lower().replace(<span class="hljs-string">"world"</span>, <span class="hljs-string">"Python"</span>).capitalize()
+print(result)
+</code></pre>
+    <h2 id="variable-scope">Variable Scope</h2>
+    <p>
+      <strong>Variable scope</strong> = the part of a program where a variable
+      is visible.
+    </p>
+    <p>Typically two types:</p>
+    <ul>
+      <li><strong>Global scope</strong> = visible to entire program.</li>
+      <li><strong>Local scope</strong> = visible only within function.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Global scope</span>
+x = <span class="hljs-number">10</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_function</span><span class="hljs-params">()</span>:</span>
+    y = <span class="hljs-number">20</span>
+
+    <span class="hljs-comment">## In scope: x, y</span>
+    print(x, y)
+
+
+my_function()
+
+<span class="hljs-comment">## In scope: x</span>
+<span class="hljs-comment">## Out of scope: y</span>
+print(x) <span class="hljs-comment"># This works</span>
+print(y)  <span class="hljs-comment"># NameError: name 'y' is not defined</span>
+</code></pre>
+    <h2 id="named-arguments">Named Arguments</h2>
+    <p>
+      Up until now we have used <strong>positional arguments</strong> - the
+      order of arguments determines how they&#39;re &quot;plugged in&quot;.
+    </p>
+    <p>
+      We can also pass <strong>named arguments</strong> to a function by name.
+      Useful when function has many parameters.
+    </p>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greet</span><span class="hljs-params">( first_name, last_name )</span>:</span>
+    print(<span class="hljs-string">f"Hello, <span class="hljs-subst">{first_name}</span> <span class="hljs-subst">{last_name}</span>!"</span>)
+
+<span class="hljs-comment">## All of these are equivalent</span>
+greet( <span class="hljs-string">"Billy"</span>, <span class="hljs-string">"Billy"</span> )
+greet( first_name=<span class="hljs-string">"Billy"</span>, last_name=<span class="hljs-string">"Billy"</span> )
+greet( last_name=<span class="hljs-string">"Bornsen"</span>, first_name=<span class="hljs-string">"Billy"</span> )
+</code></pre>
+    <h2 id="default-parameters">Default Parameters</h2>
+    <p>We can provide default values for parameters.</p>
+    <p>
+      Useful when most of the time we want to use the same value in function
+      call.
+    </p>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greet</span><span class="hljs-params">( name=<span class="hljs-string">"Jumping Jennifer"</span> )</span>:</span>
+    print(<span class="hljs-string">f"Hello, <span class="hljs-subst">{name}</span>!"</span>)
+
+greet() <span class="hljs-comment"># prints "Hello, Jumping Jennifer!"</span>
+greet(<span class="hljs-string">"Dancing Denise"</span>) <span class="hljs-comment"># prints "Hello, Dancing Denise!"</span>
+</code></pre>
+    <p>
+      E.g.: the <code>print()</code> function has a default value for the
+      <code>end</code> parameter.
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment"># Default implementation: print("Hello", end="\n")</span>
+<span class="hljs-comment"># Let's change the default value of end to a space</span>
+print(<span class="hljs-string">"Hello"</span>, end=<span class="hljs-string">" "</span>)
+print(<span class="hljs-string">"Jumping Jennifer!"</span>)
+</code></pre>
+    <p>
+      If we have both default and non-default parameters, non-defaults must come
+      first.
+    </p>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greet</span><span class="hljs-params">( name=<span class="hljs-string">"Jumping Jennifer"</span>, greeting )</span>:</span>
+    print(<span class="hljs-string">f"<span class="hljs-subst">{greeting}</span>, <span class="hljs-subst">{name}</span>!"</span>)
+
+greet(<span class="hljs-string">"Hello"</span>) <span class="hljs-comment"># SyntaxError: non-default argument follows default argument</span>
+</code></pre>
+    <h2 id="type-annotations">Type Annotations</h2>
+    <p>
+      Python allows us to add type annotations to function parameters and return
+      values.
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment"># greet function takes two string parameters and returns None (void function)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greet</span><span class="hljs-params">( first_name: str, last_name: str )</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+    print(<span class="hljs-string">f"Hello, <span class="hljs-subst">{first_name}</span> <span class="hljs-subst">{last_name}</span>!"</span>)
+</code></pre>
+    <p>
+      Type annotations are not enforced by Python, but can be used by linters.
+    </p>
+    <p>
+      <strong>Linting</strong> = static analysis of code to find errors before
+      runtime.
+    </p>
+    <p>
+      VS Code, e.g., will provide warnings if you pass the wrong type to a
+      function if type hints are present.
+    </p>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greet</span><span class="hljs-params">( first_name: str, last_name: str )</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+    print(<span class="hljs-string">f"Hello, <span class="hljs-subst">{first_name}</span> <span class="hljs-subst">{last_name}</span>!"</span>)
+
+greet( <span class="hljs-string">"Billy"</span>, <span class="hljs-string">"Bornsen"</span> )
+greet( <span class="hljs-number">1</span>, <span class="hljs-number">2</span> ) <span class="hljs-comment"># No error, but linters will warn</span>
+</code></pre>
+    <h2 id="the-main-function">The `main` Function</h2>
+    <ul>
+      <li>
+        Historically, the <code>main</code> function is the entry point of a
+        program.
+      </li>
+      <li>
+        In Python, the <code>main</code> function is not required, but is a
+        common convention.
+      </li>
+      <li>
+        Handles the setup and execution of a program, e.g. get user input, call
+        other functions, etc.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    x = getUserInput()
+    y = doSomething(x)
+    print(y)
+    <span class="hljs-comment"># etc. etc.</span>
+
+main()
+</code></pre>
+  </body>
+</html>

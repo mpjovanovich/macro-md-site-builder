@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes - Example Markdown</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">&nbsp;&gt;&nbsp;<a href="">Example Markdown</a></h1>
+    <!-- This is called the "yaml frontmatter". Nothing can go before it. -->
+
+    <!-- base.html will add title from above as an h1 here.> -->
+
+    <!-- 
+    Use img HTML tag instead of markdown. Markdown isn't flexible enough - need to be able to resize images quickly.
+    Not sure why the transform is leaving original size bounding box, but can probably fix with CSS. 
+-->
+
+    <!-- The wrapper span is needed to allow the image to be resized... who knows why. -->
+    <!-- use "fig" snippet -->
+    <figure>
+      <span
+        ><img
+          src="https://img.freepik.com/premium-vector/vector-illustration-hand-drawn-realistic-sketch-pangolin-isolated-white-background_231873-577.jpg"
+          alt="Figure"
+          style="width: 35%; height: auto"
+      /></span>
+    </figure>
+    <!-- hr -->
+    <hr />
+    <!-- use "href" snippet -->
+    <p>
+      Link to VS code extension:
+      <a href="https://github.com/yzhang-gh/vscode-markdown"
+        >Markdown All in One</a
+      >
+    </p>
+    <p>We can manually add line breaks with a backslash, as in the below:</p>
+    <blockquote>
+      <p>
+        This is a block quote. <br />This is line two of the same block quote.
+        <br />--Some Author
+      </p>
+    </blockquote>
+    <h1 id="this-is-an-h1">This is an h1</h1>
+    <p>We can do code snippets with the following syntax:</p>
+    <pre><code class="language-python"><span class="hljs-comment">## Declare and initialize three integer variables.</span>
+a = <span class="hljs-number">0</span>
+x = <span class="hljs-number">1</span>
+print( <span class="hljs-string">f'The value of a is: <span class="hljs-subst">{a}</span>, and the value of x is: <span class="hljs-subst">{x}</span>'</span> )
+</code></pre>
+    <h2 id="this-is-an-h2">This is an h2</h2>
+    <p>Some text.</p>
+    <h3 id="this-is-an-h3">This is an h3</h3>
+    <p>Some more text</p>
+    <ul>
+      <li>
+        First level list Item A
+        <ul>
+          <li>
+            Second level list Item A
+            <ul>
+              <li>Third level list Item A</li>
+              <li>Third level list Item B</li>
+              <li>Third level list Item C</li>
+            </ul>
+          </li>
+          <li>Second level list Item B</li>
+        </ul>
+      </li>
+    </ul>
+    <ol>
+      <li>This is a numbered list.</li>
+      <li>This is a numbered list.</li>
+      <li>This is a numbered list.</li>
+    </ol>
+    <p><strong>This is just bold text.</strong></p>
+    <p><em>This is italicized text.</em></p>
+    <p><del>This is strikethrough text.</del></p>
+    <details>
+      <summary>What's a spoiler question?</summary>
+      <div>
+        <p>One that has a spoiler answer.</p>
+      </div>
+    </details>
+
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Table Head 1</th>
+          <th align="left">Table Head 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">Content 1</td>
+          <td align="left">Content 2</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Polymorphism</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Polymorphism</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#polymorphism">Polymorphism</a>
+        <ul>
+          <li><a href="#usage">Usage</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="polymorphism">Polymorphism</h1>
+    <p>
+      <strong>Polymorphism</strong>: Allows objects of different classes to be
+      treated as objects of a common superclass.
+    </p>
+    <p>
+      Functions can accept an interface or base class as a parameter type, and
+      accept any class that implements the interface or base class.
+    </p>
+    <h3 id="usage">Usage</h3>
+    <p><em>Example</em>:</p>
+    <p>*TypeScript programming language</p>
+    <pre><code class="language-typescript"><span class="hljs-keyword">interface</span> IDatabase {
+  connect(): <span class="hljs-built_in">void</span>;
+  disconnect(): <span class="hljs-built_in">void</span>;
+  execute_query(query: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span>;
+}
+</code></pre>
+    <ul>
+      <li>
+        Functions that use the interface:
+        <ul>
+          <li><code>fetch_setting(IDatabase db, string setting_name)</code></li>
+          <li>
+            <code
+              >validate_credentials(IDatabase db, string username, string
+              password)</code
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p><em>Example</em>:</p>
+    <p>*TypeScript programming language</p>
+    <pre><code class="language-typescript"><span class="hljs-keyword">interface</span> IFile {
+  open(): <span class="hljs-built_in">void</span>;
+  close(): <span class="hljs-built_in">void</span>;
+  read(): <span class="hljs-built_in">string</span>;
+  write(data: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span>;
+  <span class="hljs-keyword">delete</span>(): <span class="hljs-built_in">void</span>;
+}
+</code></pre>
+    <ul>
+      <li>
+        Functions that use the interface:
+        <ul>
+          <li><code>copy_file(IFile source, IFile destination)</code></li>
+          <li><code>move_file(IFile source, IFile destination)</code></li>
+          <li><code>delete_file(IFile file)</code></li>
+        </ul>
+      </li>
+    </ul>
+    <p><em>Example</em>:</p>
+    <p>*Python programming language</p>
+    <pre><code class="language-python"><span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABC, abstractmethod
+
+<span class="hljs-comment">## Abstract base class</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shape</span><span class="hljs-params">(ABC)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name)</span>:</span>
+        <span class="hljs-comment">## Protected attribute</span>
+        self._name = name
+
+    <span class="hljs-comment">## Concrete method</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_name</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._name
+
+    <span class="hljs-comment">## Abstract methods - must be implemented in derived classes</span>
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span><span class="hljs-params">(Shape)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, radius)</span>:</span>
+        <span class="hljs-comment">## Call parent class constructor</span>
+        <span class="hljs-comment">## super = 'Shape'</span>
+        super().__init__(name)
+
+        <span class="hljs-comment">## Private attributes</span>
+        self.__PI = <span class="hljs-number">3.14159</span>
+        self.__radius = radius
+
+    <span class="hljs-comment">## Override abstract methods</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.__PI * self.__radius ** <span class="hljs-number">2</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * self.__PI * self.__radius
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span><span class="hljs-params">(Shape)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, width, height)</span>:</span>
+        <span class="hljs-comment">## Call parent class constructor</span>
+        <span class="hljs-comment">## super = 'Shape'</span>
+        super().__init__(name)
+
+        <span class="hljs-comment">## Private attributes</span>
+        self.__width = width
+        self.__height = height
+
+    <span class="hljs-comment">## Override abstract methods</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.__width * self.__height
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * (self.__width + self.__height)
+</code></pre>
+    <pre><code class="language-python"><span class="hljs-comment">## Function that uses the Shape interface</span>
+<span class="hljs-comment">## Does not care if the object is a Circle or Rectangle</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_shape_info</span><span class="hljs-params">(shape: Shape)</span>:</span>
+    print(<span class="hljs-string">f"Name: <span class="hljs-subst">{shape.get_name()}</span>"</span>)
+    print(<span class="hljs-string">f"Area: <span class="hljs-subst">{shape.area()}</span>"</span>)
+    print(<span class="hljs-string">f"Perimeter: <span class="hljs-subst">{shape.perimeter()}</span>"</span>)
+
+c = Circle(<span class="hljs-string">"Circle"</span>, <span class="hljs-number">5</span>)
+r = Rectangle(<span class="hljs-string">"Rectangle"</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>)
+
+print_shape_info(c)
+print_shape_info(r)
+</code></pre>
+  </body>
+</html>

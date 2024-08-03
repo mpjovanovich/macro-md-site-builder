@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Interface Segregation Principle</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Interface Segregation Principle</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#interface-segregation-principle"
+          >Interface Segregation Principle</a
+        >
+        <ul>
+          <li><a href="#example">Example</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="interface-segregation-principle">
+      Interface Segregation Principle
+    </h1>
+    <p>
+      &quot;Clients should not be forced to depend upon interfaces that they do
+      not use.&quot;
+    </p>
+    <p>Clients = classes that use the interface.</p>
+    <p>
+      Keep interfaces lean - kind of like Single Responsibility Principle for
+      interfaces.
+    </p>
+    <h2 id="example">Example</h2>
+    <pre><code class="language-python"><span class="hljs-keyword">import</span> abc
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sendable</span><span class="hljs-params">(abc.ABC)</span>:</span>
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">email_document</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fax_document</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EStatement</span><span class="hljs-params">(Sendable)</span>:</span>
+    <span class="hljs-comment"># This makes sense here</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">email_document</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Do email things</span>
+        <span class="hljs-keyword">return</span>
+
+    <span class="hljs-comment"># This does not make sense for an e-statement, but we are forced to implement it</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fax_document</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">raise</span> NotImplementedError(<span class="hljs-string">'This document cannot be faxed.'</span>)
+</code></pre>
+    <p>How would we fix this?</p>
+    <ul>
+      <li>Split the interface into two separate interfaces</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Emailable</span><span class="hljs-params">(abc.ABC)</span>:</span>
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">email_document</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Faxable</span><span class="hljs-params">(abc.ABC)</span>:</span>
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fax_document</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-comment"># No need to implement the Faxable interface</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EStatement</span><span class="hljs-params">(Emailable)</span>:</span>
+    <span class="hljs-comment"># ...</span>
+</code></pre>
+  </body>
+</html>

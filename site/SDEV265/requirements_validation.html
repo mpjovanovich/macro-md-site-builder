@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Requirements Validation</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Requirements Validation</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#requirements-validation">Requirements Validation</a>
+        <ul>
+          <li><a href="#why-validate">Why validate?</a></li>
+          <li><a href="#how-is-it-done">How is it done?</a></li>
+          <li><a href="#agile-validation">Agile Validation</a></li>
+          <li>
+            <a href="#requirements-management">Requirements Management</a>
+            <ul>
+              <li><a href="#software-tooling">Software Tooling</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="requirements-validation">Requirements Validation</h1>
+    <p>
+      Check if finalized requirements are correct and complete according to
+      customer&#39;s needs.
+    </p>
+    <h2 id="why-validate-">Why validate?</h2>
+    <ul>
+      <li>
+        Requirements errors are more costly than bugs.
+        <ul>
+          <li>Proliferate / propagate through the system.</li>
+          <li>
+            E.g. incorrect term starts being used in a few reports, then
+            database, then UI...
+          </li>
+        </ul>
+      </li>
+      <li>Requirements may have changed since start.</li>
+      <li>Final check for understanding between client and developer.</li>
+    </ul>
+    <h2 id="how-is-it-done-">How is it done?</h2>
+    <ul>
+      <li><strong>Review</strong>: Peer review, walkthroughs, inspections.</li>
+      <li>
+        <strong>Prototyping</strong>: Give stakeholder limited functionality app
+        to test.
+      </li>
+      <li>
+        <strong>Test-cases</strong>: Writing test cases often turns up hidden
+        requirements.
+      </li>
+    </ul>
+    <h2 id="agile-validation">Agile Validation</h2>
+    <p>Since agile is in short iterations:</p>
+    <ul>
+      <li>Validation is done at the end of each iteration...</li>
+      <li>But is also relatively continuous</li>
+      <li>Changes are part of process; less costly to change requirements</li>
+    </ul>
+    <h2 id="requirements-management">Requirements Management</h2>
+    <ul>
+      <li>
+        <p>
+          <strong>Traceability</strong>: Requirements should be traceable to
+          source.
+        </p>
+        <ul>
+          <li>
+            E.g. &quot;This requirement came from [this stakeholder] and is
+            documented [here].&quot;
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Tracking</strong>: Requirements should be uniquely tracked and
+          managed.
+        </p>
+        <ul>
+          <li>Tracking identifier - number, version, date, title, etc.</li>
+          <li>Progress should be tracked referencing tracking identifier.</li>
+          <li>Spin off requirements should reference original requirements.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      Undocumented system changes inevitably happen due to unforeseen needs or
+      critical bugs, <strong>but should be documented afterwards</strong>.
+    </p>
+    <ul>
+      <li>Thorough incident reports</li>
+      <li>Reference related requirements</li>
+      <li>
+        If another developer can&#39;t understand why a change was made,
+        it&#39;s not documented well enough.
+      </li>
+    </ul>
+    <h3 id="software-tooling">Software Tooling</h3>
+    <ul>
+      <li>Version control</li>
+      <li>Issue tracking</li>
+      <li>Wiki</li>
+      <li>
+        <del>E-mail</del> (save all communications, but not a tracking tool)
+      </li>
+    </ul>
+  </body>
+</html>

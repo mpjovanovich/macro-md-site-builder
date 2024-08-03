@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Modular Design</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Modular Design</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#modular-design">Modular Design</a>
+        <ul>
+          <li>
+            <a href="#benefits-of-modular-design">Benefits of Modular Design</a>
+          </li>
+          <li>
+            <a href="#principles-of-modular-design"
+              >Principles of Modular Design</a
+            >
+            <ul>
+              <li><a href="#cohesion">Cohesion</a></li>
+              <li><a href="#coupling">Coupling</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#strategies-for-modular-design"
+              >Strategies for Modular Design</a
+            >
+            <ul>
+              <li><a href="#decomposition">Decomposition</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="modular-design">Modular Design</h1>
+    <p>
+      <strong>Modules</strong> are self-contained units that can be combined to
+      create a larger system. They can be reused in other systems, which can
+      save time and effort.
+    </p>
+    <ul>
+      <li>Services</li>
+      <li>Packages</li>
+    </ul>
+    <p>
+      <strong>Components</strong> are the building blocks of a module. They can
+      be classes, functions, or other modules.
+    </p>
+    <ul>
+      <li>Classes</li>
+      <li>Functions</li>
+    </ul>
+    <h2 id="benefits-of-modular-design">Benefits of Modular Design</h2>
+    <ul>
+      <li>
+        <strong>Reusability</strong>: Modules can be reused in other systems.
+        <ul>
+          <li>
+            Internally (within the same system); we have multiple applications
+            that use the same module.
+            <ul>
+              <li>Reporting module</li>
+              <li>Logging module</li>
+              <li>Data access module</li>
+              <li>UI component module</li>
+            </ul>
+          </li>
+          <li>
+            Externally (in other systems); we offer a module to other developers
+            as a library.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Flexibility</strong>: Modules can be combined in different ways
+        to create different systems.
+        <ul>
+          <li>&quot;Pick and choose&quot; architecture</li>
+          <li>Only include the modules you need (reduce bloat)</li>
+          <li>Client can choose which modules to purchase</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Maintainability</strong>: Modules can be updated and maintained
+        independently, possibly by different teams. Easier to track:
+        <ul>
+          <li>Bug fixes</li>
+          <li>Feature enhancements</li>
+          <li>Security patches</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Testability</strong>: Modules can be tested independently.
+      </li>
+      <li>
+        <strong>Security</strong>: Modules can be secured independently.
+        <ul>
+          <li>
+            Access control (who can use the module); e.g. devs working on UI
+            don&#39;t need access to the data access module.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="principles-of-modular-design">Principles of Modular Design</h2>
+    <h3 id="cohesion">Cohesion</h3>
+    <p>
+      <strong>Cohesion</strong> is the degree to which the elements of a module
+      belong together.
+    </p>
+    <p>Does it &quot;make sense&quot; for these elements to be together?</p>
+    <p>Aim for <em>high cohesion</em>.</p>
+    <h3 id="coupling">Coupling</h3>
+    <p>
+      <strong>Coupling</strong> is the degree to which the elements of a module
+      depend on another.
+    </p>
+    <ul>
+      <li>
+        <strong>Loose coupling</strong>: Modules are independent of each other.
+      </li>
+      <li>
+        <strong>Tight coupling</strong>: Modules are dependent on each other.
+      </li>
+    </ul>
+    <p>If a dependency changes, will it affect / break my module?</p>
+    <p>Aim for <em>loose coupling</em>.</p>
+    <p>Bad example:</p>
+    <pre><code class="language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, email, password)</span>:</span>
+        self.name = name
+        self.email = email
+        self.password = password
+
+    <span class="hljs-comment"># Do I belong here?</span>
+    <span class="hljs-comment"># Why not - cohesion or coupling issue?</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">send_confirmation_email</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Send confirmation email</span>
+        <span class="hljs-keyword">return</span>
+
+    <span class="hljs-comment"># What about me?</span>
+    <span class="hljs-comment"># Why not - cohesion or coupling issue?</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Login user</span>
+        <span class="hljs-keyword">return</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">save</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Should I be here?</span>
+        <span class="hljs-comment"># Why not - cohesion or coupling issue?</span>
+        db = Database()
+        db.open()
+        db.save(self)
+        <span class="hljs-keyword">return</span>
+</code></pre>
+    <p>Good example:</p>
+    <pre><code class="language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, email, password)</span>:</span>
+        self.name = name
+        self.email = email
+        self.password = password
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmailUtility</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">send_confirmation_email</span><span class="hljs-params">(self, user)</span>:</span>
+        <span class="hljs-comment"># Send confirmation email</span>
+        <span class="hljs-keyword">return</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Authenticate</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span><span class="hljs-params">(self, user)</span>:</span>
+        <span class="hljs-comment"># Login user</span>
+        <span class="hljs-keyword">return</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatabaseUtility</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_connection</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Create database connection</span>
+        <span class="hljs-keyword">return</span> connection
+</code></pre>
+    <h2 id="strategies-for-modular-design">Strategies for Modular Design</h2>
+    <p>
+      For existing systems, consider reviewing the current design. Refactor
+      where you find:
+    </p>
+    <ul>
+      <li>
+        Low cohesion
+        <ul>
+          <li>Classes with unrelated methods</li>
+          <li>Functions that do multiple things</li>
+        </ul>
+      </li>
+      <li>
+        Tight coupling
+        <ul>
+          <li>Classes that depend on each other</li>
+        </ul>
+      </li>
+      <li>Repeated code</li>
+    </ul>
+    <p>
+      For new systems, we&#39;d do our requirements analysis and attempt to
+      identify boundaries between modules.
+    </p>
+    <h3 id="decomposition">Decomposition</h3>
+    <p>
+      <strong>Modular decomposition</strong> is the process of breaking down a
+      complex system into smaller, more manageable modules.
+    </p>
+    <p>
+      <strong>Functional decomposition</strong> is the process of breaking down
+      a complex system into smaller, more manageable subproblems.
+    </p>
+    <p>These subproblems can inform the design of modules and components.</p>
+    <p class="demo">Case Study:</p>
+
+    <p><strong>Draw a House</strong></p>
+    <figure>
+      <span
+        ><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVobh4pk3683ngLad6LwokRt7rOCFVO96phfT6GfbDvjq8DR6ncdroBkbUYWEMrCibIoY&usqp=CAU"
+          alt="Figure"
+          style="width: 100%; height: auto"
+      /></span>
+    </figure>
+    <p>Reference:</p>
+    <figure>
+      <span
+        ><img
+          src="https://cis.temple.edu/~wangp/1057-PC/Figure/03-10.png"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <p>Our problem:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Subproblems</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Draw a house</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Draw a door</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Draw a point</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Draw a rectangle</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Draw a line</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Subproblems</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Draw a house</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Draw a window</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Draw a rectangle</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Draw a line</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

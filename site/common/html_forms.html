@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes - HTML Forms</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">&nbsp;&gt;&nbsp;<a href="">HTML Forms</a></h1>
+    <ul>
+      <li>
+        <a href="#html-forms">HTML Forms</a>
+        <ul>
+          <li><a href="#purpose">Purpose</a></li>
+          <li>
+            <a href="#form-attributes">Form Attributes</a>
+            <ul>
+              <li><a href="#action">Action</a></li>
+              <li><a href="#method">Method</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#user-centered-design">User Centered Design</a>
+            <ul>
+              <li><a href="#general-goals">General Goals</a></li>
+              <li><a href="#why-is-it-important">Why is it important?:</a></li>
+              <li><a href="#affordance">Affordance</a></li>
+              <li><a href="#signifiers">Signifiers</a></li>
+              <li><a href="#constraints">Constraints</a></li>
+              <li><a href="#mapping">Mapping</a></li>
+              <li><a href="#feedback">Feedback</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#child-elements">Child Elements</a>
+            <ul>
+              <li><a href="#fieldset-and-legend">Fieldset and Legend</a></li>
+              <li>
+                <a href="#label">Label</a>
+                <ul>
+                  <li><a href="#explicit-label">Explicit Label</a></li>
+                  <li><a href="#implicit-label">Implicit Label</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#input">Input</a>
+                <ul>
+                  <li><a href="#button-inputs">Button Inputs</a></li>
+                  <li>
+                    <a href="#multivalued-inputs">Multivalued Inputs</a>
+                    <ul>
+                      <li>
+                        <a href="#checkbox-selection">Checkbox Selection</a>
+                      </li>
+                      <li>
+                        <a href="#select-and-radio-button-selection"
+                          >Select and Radio Button Selection</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a href="#text-inputs">Text Inputs</a></li>
+                  <li>
+                    <a href="#date-and-time-inputs">Date and Time Inputs</a>
+                  </li>
+                  <li><a href="#numeric-inputs">Numeric Inputs</a></li>
+                  <li><a href="#other-inputs">Other Inputs</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#form-constraints">Form Constraints</a></li>
+          <li><a href="#autocomplete">Autocomplete</a></li>
+          <li>
+            <a href="#styling-forms">Styling Forms</a>
+            <ul>
+              <li>
+                <a href="#selecting-input-elements-by-type"
+                  >Selecting Input Elements by Type</a
+                >
+              </li>
+              <li>
+                <a href="#psuedo-classes">Psuedo-Classes</a>
+                <ul>
+                  <li><a href="#focus">Focus</a></li>
+                  <li>
+                    <a href="#invalid-vs-user-invalid"
+                      >Invalid vs User-invalid</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#summary-of-best-practices">Summary of Best Practices</a>
+          </li>
+          <li>
+            <a href="#demo---tying-it-all-together"
+              >Demo - Tying it All Together</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="html-forms">HTML Forms</h1>
+    <p>
+      <strong
+        >Prof put this in here to remind himself to do this later - separate
+        usability notes from form notes.</strong
+      >
+    </p>
+    <h2 id="purpose">Purpose</h2>
+    <ul>
+      <li>Used to collect user input.</li>
+      <li>
+        All input that is a child of a <code>&lt;form&gt;</code> element will be
+        submitted.
+      </li>
+      <li>A page may have multiple forms.</li>
+    </ul>
+    <h2 id="form-attributes">Form Attributes</h2>
+    <h3 id="action">Action</h3>
+    <ul>
+      <li>
+        The <code>action</code> attribute specifies where to send the form-data
+        on submit.
+      </li>
+      <li>
+        Data is sent to action page when the user clicks on the submit button.
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"action_page.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> First Name: <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"firstname"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"firstname"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Mouse"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Submit"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+    <h3 id="method">Method</h3>
+    <ul>
+      <li>
+        The <code>method</code> attribute specifies how to send form-data.
+      </li>
+      <li>Can be set to <code>GET</code> or <code>POST</code>.</li>
+    </ul>
+    <h2 id="user-centered-design">User Centered Design</h2>
+    <p>
+      Recommended reading:
+      <a
+        href="https://www.amazon.com/Design-Everyday-Things-Revised-Expanded/dp/0465050654"
+        >The Design of Everyday Things</a
+      >
+    </p>
+    <p>Abbreviated versions:</p>
+    <ul>
+      <li>
+        <a
+          href="https://medium.com/@sachinrekhi/don-normans-principles-of-interaction-design-51025a2c0f33"
+          >Don Norman’s Principles of Interaction Design</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://medium.com/@DEJIDOPE/summary-of-design-of-everyday-things-by-don-norman-f06f023fdc95"
+          >Summary of Design Of Everyday Things by Don Norman.</a
+        >
+      </li>
+    </ul>
+    <h3 id="general-goals">General Goals</h3>
+    <ul>
+      <li>
+        Make it easy for user to accomplish goals.
+        <ul>
+          <li>&quot;Least effort / least clicks.&quot;</li>
+        </ul>
+      </li>
+      <li>Make it as hard as possible for user to make a mistake.</li>
+    </ul>
+    <h3 id="why-is-it-important-">Why is it important?:</h3>
+    <p>
+      <a href="https://www.nngroup.com/articles/medical-usability/"
+        >Medical Usability: How to Kill Patients Through Bad Design</a
+      >
+    </p>
+    <ul>
+      <li>skim...</li>
+    </ul>
+    <h3 id="affordance">Affordance</h3>
+    <p>Describes the possible actions that an object can perform.</p>
+    <figure>
+      <span
+        ><img
+          src="images/push_pull_door.jpg"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>
+        &quot;Don&#39;t let the user make a mistake (via architectural
+        design).&quot;
+      </li>
+      <li>Button affords clicking.</li>
+      <li>Radio button affords single selection.</li>
+      <li>Disabled inputs do not afford interaction.</li>
+    </ul>
+    <h3 id="signifiers">Signifiers</h3>
+    <p>Signals that indicate how to interact with an object.</p>
+    <figure>
+      <span
+        ><img
+          src="https://hadermann.be/wp-content/uploads/2015/07/bad_vending_ui.jpg"
+          alt="Figure"
+          style="width: 50%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>&quot;Conform to user expectations.&quot;</li>
+      <li>Expect button looks rectangular.</li>
+      <li>Expect text input has cursor.</li>
+      <li>Expect disabled inputs grayed out.</li>
+    </ul>
+    <h3 id="constraints">Constraints</h3>
+    <p>Limitations on the possible actions.</p>
+    <figure>
+      <span
+        ><img
+          src="https://i.pinimg.com/736x/88/ba/35/88ba354a835d32cfbff6db9029e3cacb.jpg"
+          alt="Figure"
+          style="width: 50%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>
+        &quot;Don&#39;t let the user make a mistake (via enforced
+        validation).&quot;
+      </li>
+      <li>Text input has a maximum length.</li>
+      <li>Button is disabled until form is filled out.</li>
+    </ul>
+    <h3 id="mapping">Mapping</h3>
+    <p>Relationship between controls and their effects.</p>
+    <figure>
+      <span
+        ><img
+          src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*I2xA2Om8tZXki3g3CCxL_g.png"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>&quot;Don&#39;t make the user guess what will happen.&quot;</li>
+      <li>Label is next to the input.</li>
+      <li>Error message is next to the input.</li>
+      <li>Error takes user to the input with the error.</li>
+      <li>Slider control - indicates natural &quot;fullness&quot; of value.</li>
+    </ul>
+    <h3 id="feedback">Feedback</h3>
+    <p>Response to an action.</p>
+    <figure>
+      <span
+        ><img
+          src="https://www.mongodb.com/community/forums/uploads/default/optimized/3X/7/3/73a40e5fff34c1451c54b8bf244d307a5e9a8a1a_2_1035x436.png"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>&quot;Don&#39;t make the user guess what happened.&quot;</li>
+      <li>Hovering over a button changes the cursor.</li>
+      <li>Loading screens.</li>
+      <li>Submitted forms indicate success.</li>
+      <li>Errors are desciptive and helpful.</li>
+    </ul>
+    <h2 id="child-elements">Child Elements</h2>
+    <h3 id="fieldset-and-legend">Fieldset and Legend</h3>
+    <ul>
+      <li>
+        The <code>&lt;fieldset&gt;</code> element is used to group related data
+        in a form.
+      </li>
+      <li>
+        The <code>&lt;legend&gt;</code> element defines a caption for the
+        <code>&lt;fieldset&gt;</code> element.
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"action_page.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Personal Information:<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- form items here&gt; --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+    <h3 id="label">Label</h3>
+    <ul>
+      <li>
+        The <code>&lt;label&gt;</code> element defines a label for an
+        <code>&lt;input&gt;</code> element.
+      </li>
+      <li>Every form element should have a label.</li>
+    </ul>
+    <h4 id="explicit-label">Explicit Label</h4>
+    <ul>
+      <li>
+        The <code>for</code> attribute of the <code>&lt;label&gt;</code> element
+        should be equal to the <code>id</code> attribute of the
+        <code>&lt;input&gt;</code> element to bind them together.
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"firstname"</span>&gt;</span>First Name: <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"firstname"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"firstname"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Mouse"</span> /&gt;</span>
+</code></pre>
+    <h4 id="implicit-label">Implicit Label</h4>
+    <ul>
+      <li>
+        The <code>&lt;label&gt;</code> element can be wrapped around the
+        <code>&lt;input&gt;</code> element to bind them together.
+      </li>
+      <li>
+        If done this way:
+        <ul>
+          <li>The <code>for</code> attribute is not needed.</li>
+          <li>The hit area for the label is larger.</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>First Name: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"firstname"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Mouse"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre>
+    <h3 id="input">Input</h3>
+    <ul>
+      <li>
+        Reference
+        <a
+          href="http://localhost/phpbook/section_b/c06/collecting-form-data.php"
+          >Text: Collecting Form Data</a
+        >
+      </li>
+      <li>This tag is self-closing.</li>
+      <li>
+        The <code>type</code> attribute specifies the type of input element to
+        display.
+      </li>
+      <li>The <code>name</code> attribute is what is sent to the server.</li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"[type]"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"first-name"</span> <span class="hljs-attr">...</span> /&gt;</span>
+</code></pre>
+    <h4 id="button-inputs">Button Inputs</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>button</code></td>
+          <td>
+            Clickable button (mostly used with a JavaScript to activate a
+            script)
+          </td>
+        </tr>
+        <tr>
+          <td><code>image</code></td>
+          <td>Sets an image as the submit button</td>
+        </tr>
+        <tr>
+          <td><code>reset</code></td>
+          <td>Reset button</td>
+        </tr>
+        <tr>
+          <td><code>submit</code></td>
+          <td>Submit button</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="multivalued-inputs">Multivalued Inputs</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>checkbox</code></td>
+          <td>Checkbox</td>
+        </tr>
+        <tr>
+          <td><code>radio</code></td>
+          <td>Radio button</td>
+        </tr>
+        <tr>
+          <td><code>select</code></td>
+          <td>Drop-down list</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="checkbox-selection">Checkbox Selection</h5>
+    <ul>
+      <li>
+        The <code>value</code> attribute specifies the value to be sent to the
+        server.
+      </li>
+      <li>
+        The <code>checked</code> attribute specifies that the checkbox should be
+        pre-selected when the page loads.
+        <ul>
+          <li>
+            Can just write <code>checked</code> (no attribute value needed).
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"action_page.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vehicle1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"vehicle1"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Bike"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"vehicle1"</span>&gt;</span> I have a bike<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vehicle2"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"vehicle2"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Car"</span> <span class="hljs-attr">checked</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"vehicle2"</span>&gt;</span> I have a car<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Submit"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+    <h5 id="select-and-radio-button-selection">
+      Select and Radio Button Selection
+    </h5>
+    <ul>
+      <li>
+        The <code>value</code> attribute specifies the value to be sent to the
+        server.
+      </li>
+      <li>
+        The <code>selected</code> attribute specifies that an option should be
+        pre-selected when the page loads.
+        <ul>
+          <li>
+            Can just write <code>selected</code> (no attribute value needed).
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"action_page.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"attending"</span>&gt;</span>Attending:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"attending"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"attending"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"yes"</span> <span class="hljs-attr">selected</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"no"</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"maybe"</span> <span class="hljs-attr">selected</span>&gt;</span>Maybe<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Submit"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+    <h4 id="text-inputs">Text Inputs</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>email</code></td>
+          <td>Field for an e-mail address</td>
+        </tr>
+        <tr>
+          <td><code>file</code></td>
+          <td>
+            File-select field and a &quot;Browse...&quot; button (for file
+            uploads)
+          </td>
+        </tr>
+        <tr>
+          <td><code>password</code></td>
+          <td>Password field</td>
+        </tr>
+        <tr>
+          <td><code>search</code></td>
+          <td>Text field for entering a search string</td>
+        </tr>
+        <tr>
+          <td><code>tel</code></td>
+          <td>Field for entering a telephone number</td>
+        </tr>
+        <tr>
+          <td><code>text</code></td>
+          <td>Single-line text field (default width is 20 characters)</td>
+        </tr>
+        <tr>
+          <td><code>textarea</code></td>
+          <td>Multi-line text input control</td>
+        </tr>
+        <tr>
+          <td><code>url</code></td>
+          <td>Field for entering a URL</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="date-and-time-inputs">Date and Time Inputs</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>date</code></td>
+          <td>Date control for entering a date (year, month, and day)</td>
+        </tr>
+        <tr>
+          <td><code>datetime</code></td>
+          <td>
+            Date and time control (year, month, day, hour, minute, second, and
+            fraction of a second (no time zone)
+          </td>
+        </tr>
+        <tr>
+          <td><code>datetime-local</code></td>
+          <td>
+            Date and time control (year, month, day, hour, minute, second, and
+            fraction of a second (no time zone)
+          </td>
+        </tr>
+        <tr>
+          <td><code>month</code></td>
+          <td>Month and year control (no time zone)</td>
+        </tr>
+        <tr>
+          <td><code>time</code></td>
+          <td>Control for entering a time (no time zone)</td>
+        </tr>
+        <tr>
+          <td><code>week</code></td>
+          <td>Week and year control (no time zone)</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="numeric-inputs">Numeric Inputs</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>number</code></td>
+          <td>Field for entering a number</td>
+        </tr>
+        <tr>
+          <td><code>range</code></td>
+          <td>Slider control</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="other-inputs">Other Inputs</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>color</code></td>
+          <td>Color picker</td>
+        </tr>
+        <tr>
+          <td><code>hidden</code></td>
+          <td>Hidden input field</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="form-constraints">Form Constraints</h2>
+    <ul>
+      <li>Constraints may be specified using attributes.</li>
+      <li>
+        If a constraint is violated, the browser will prevent the form from
+        being submitted.
+      </li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Constraint</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>required</code></td>
+          <td>
+            Specifies that the input field is required (must be filled out)
+          </td>
+        </tr>
+        <tr>
+          <td><code>pattern</code></td>
+          <td>
+            Specifies a regular expression against which to validate the value
+            of the
+          </td>
+        </tr>
+        <tr>
+          <td><code>minlength</code></td>
+          <td>
+            Specifies the minimum number of characters allowed in an input field
+          </td>
+        </tr>
+        <tr>
+          <td><code>maxlength</code></td>
+          <td>
+            Specifies the maximum number of characters allowed in an input field
+          </td>
+        </tr>
+        <tr>
+          <td><code>min</code></td>
+          <td>
+            Specifies the minimum value for an input field with
+            type=&quot;number&quot; or type=&quot;range&quot;
+          </td>
+        </tr>
+        <tr>
+          <td><code>max</code></td>
+          <td>
+            Specifies the maximum value for an input field with
+            type=&quot;number&quot; or type=&quot;range&quot;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="autocomplete">Autocomplete</h2>
+    <ul>
+      <li>
+        If <code>autocomplete</code> is set to on, the browser will
+        automatically complete values based on the user&#39;s previous input.
+      </li>
+      <li>Can be set at the form or input level.</li>
+    </ul>
+    <h2 id="styling-forms">Styling Forms</h2>
+    <h3 id="selecting-input-elements-by-type">
+      Selecting Input Elements by Type
+    </h3>
+    <ul>
+      <li>
+        The <code>type</code> attribute can be used to select all inputs of a
+        certain type.
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="radio"]</span> {
+  <span class="hljs-comment">/* styles here */</span>
+}
+</code></pre>
+    <h3 id="psuedo-classes">Psuedo-Classes</h3>
+    <h4 id="focus">Focus</h4>
+    <ul>
+      <li>
+        The <code>:focus</code> pseudo-class is applied when the user clicks on
+        an input element.
+      </li>
+      <li>Can be used to style the element when it is in focus.</li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:focus</span>,
+<span class="hljs-selector-tag">select</span><span class="hljs-selector-pseudo">:focus</span>,
+<span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">:focus</span> {
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid black;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#fff</span>;
+}
+</code></pre>
+    <h4 id="invalid-vs-user-invalid">Invalid vs User-invalid</h4>
+    <ul>
+      <li>Validity is determined by constraint attributes.</li>
+      <li>
+        <code>:invalid</code> applied when the user has provided invalid input.
+        <ul>
+          <li>Will show elements as invalid on page load.</li>
+        </ul>
+      </li>
+      <li>
+        <code>:user-invalid</code> applied when the user has provided invalid
+        input.
+        <ul>
+          <li>Will not show elements as invalid on page load.</li>
+          <li>Not yet supported by all browsers.</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:user-invalid</span> {
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid red;
+}
+</code></pre>
+    <h2 id="summary-of-best-practices">Summary of Best Practices</h2>
+    <ul>
+      <li>
+        Use a <code>&lt;label&gt;</code> for every <code>&lt;input&gt;</code>.
+      </li>
+      <li>
+        Use a <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> to
+        group related data.
+      </li>
+      <li>Required fields should be marked as such.</li>
+      <li>
+        Use the <code>placeholder</code> attribute to provide an example of the
+        expected input where helpful.
+      </li>
+      <li>Forms should contain only a single column.</li>
+      <li>
+        Labels should go above the input.
+        <ul>
+          <li>
+            <a
+              href="https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php"
+              >Label Placement in Forms</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>Buttons should use a cursor pointer.</li>
+      <li>Don&#39;t rely on color alone to indicate required fields.</li>
+    </ul>
+    <p><strong>Use the dang product yourself!</strong></p>
+    <p><strong>Get at least one other person to look at it!</strong></p>
+    <h2 id="demo-tying-it-all-together">Demo - Tying it All Together</h2>
+    <p
+      class="codepen"
+      data-height="300"
+      data-default-tab="html,result"
+      data-slug-hash="eYxQrwE"
+      data-user="Mike-Jovanovich"
+      style="
+        height: 300px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid;
+        margin: 1em 0;
+        padding: 1em;
+      "
+    >
+      <span
+        >See the Pen
+        <a href="https://codepen.io/Mike-Jovanovich/pen/eYxQrwE">
+          Fun With Forms</a
+        >
+        by Mike Jovanovich (<a href="https://codepen.io/Mike-Jovanovich"
+          >@Mike-Jovanovich</a
+        >) on <a href="https://codepen.io">CodePen</a>.</span
+      >
+    </p>
+    <script
+      async
+      src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+    ></script>
+    ```
+  </body>
+</html>

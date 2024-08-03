@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Decisions and Loops</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Decisions and Loops</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#decisions">Decisions</a>
+        <ul>
+          <li><a href="#if-statement">If Statement</a></li>
+          <li><a href="#ternary-operator">Ternary Operator</a></li>
+          <li>
+            <a href="#null-coalescing-operator">Null Coalescing Operator</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#loops">Loops</a>
+        <ul>
+          <li><a href="#while-loop">While Loop</a></li>
+          <li><a href="#for-loop">For Loop</a></li>
+          <li><a href="#foreach-loop">Foreach Loop</a></li>
+          <li><a href="#indexed-arrays">Indexed Arrays</a></li>
+          <li><a href="#associative-arrays">Associative Arrays</a></li>
+          <li><a href="#looping-in-html">Looping in HTML</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="decisions">Decisions</h1>
+    <h2 id="if-statement">If Statement</h2>
+    <pre><code class="language-php">$age = <span class="hljs-number">42</span>;
+<span class="hljs-keyword">if</span> ($age &gt;= <span class="hljs-number">18</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"You are an adult."</span>;
+}
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ($age &gt;= <span class="hljs-number">13</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"You are a teenager."</span>;
+}
+<span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"You are a child."</span>;
+}
+</code></pre>
+    <h2 id="ternary-operator">Ternary Operator</h2>
+    <pre><code class="language-php">$age = <span class="hljs-number">42</span>;
+<span class="hljs-keyword">echo</span> ($age &gt;= <span class="hljs-number">18</span>) ? <span class="hljs-string">"You are an adult."</span> : <span class="hljs-string">"You are a child."</span>;
+</code></pre>
+    <h2 id="null-coalescing-operator">Null Coalescing Operator</h2>
+    <p>
+      <em
+        ><em
+          >We will see more of this later. For now, just know that it
+          exists.</em
+        ></em
+      >
+    </p>
+    <pre><code class="language-php">$age = <span class="hljs-number">42</span>;
+<span class="hljs-keyword">echo</span> $age ?? <span class="hljs-string">"Unknown"</span>;
+</code></pre>
+    <h1 id="loops">Loops</h1>
+    <h2 id="while-loop">While Loop</h2>
+    <pre><code class="language-php">$i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> ($i &lt; <span class="hljs-number">10</span>) {
+    <span class="hljs-keyword">echo</span> $i;
+    $i++;
+}
+</code></pre>
+    <h2 id="for-loop">For Loop</h2>
+    <pre><code class="language-php"><span class="hljs-keyword">for</span> ($i = <span class="hljs-number">0</span>; $i &lt; <span class="hljs-number">10</span>; $i++) {
+    <span class="hljs-keyword">echo</span> $i;
+}
+</code></pre>
+    <h2 id="foreach-loop">Foreach Loop</h2>
+    <h2 id="indexed-arrays">Indexed Arrays</h2>
+    <pre><code class="language-php">$names = [<span class="hljs-string">"Bobby"</span>, <span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Jimmy"</span>];
+<span class="hljs-keyword">foreach</span> ($names <span class="hljs-keyword">as</span> $name) {
+    <span class="hljs-keyword">echo</span> $name;
+}
+</code></pre>
+    <h2 id="associative-arrays">Associative Arrays</h2>
+    <pre><code class="language-php">$person = [
+    <span class="hljs-string">"firstName"</span> =&gt; <span class="hljs-string">"Bobby"</span>,
+    <span class="hljs-string">"lastName"</span> =&gt; <span class="hljs-string">"Beebop"</span>,
+    <span class="hljs-string">"age"</span> =&gt; <span class="hljs-number">42</span>
+];
+<span class="hljs-keyword">foreach</span> ($person <span class="hljs-keyword">as</span> $key =&gt; $value) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"$key: $value"</span>;
+}
+</code></pre>
+    <h2 id="looping-in-html">Looping in HTML</h2>
+    <ul>
+      <li>We can use loops to generate HTML in a couple of ways.</li>
+    </ul>
+    <ol>
+      <li>Use echo to print HTML.</li>
+    </ol>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$names = [<span class="hljs-string">"Bobby"</span>, <span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Jimmy"</span>];
+<span class="hljs-meta">?&gt;</span>
+
+&lt;ul&gt;
+    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-keyword">foreach</span> ($names <span class="hljs-keyword">as</span> $name) {
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;"</span> . $name . <span class="hljs-string">"&lt;/li&gt;"</span>;
+        }
+    <span class="hljs-meta">?&gt;</span>
+&lt;/ul&gt;
+</code></pre>
+    <ol start="2">
+      <li>Alternative syntax</li>
+    </ol>
+    <ul>
+      <li><code>for</code> <code>:</code> and <code>endfor</code></li>
+      <li><code>foreach</code> <code>:</code> and <code>endforeach</code>.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$names = [<span class="hljs-string">"Bobby"</span>, <span class="hljs-string">"Sally"</span>, <span class="hljs-string">"Jimmy"</span>];
+<span class="hljs-meta">?&gt;</span>
+
+&lt;ul&gt;
+    <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> ($names <span class="hljs-keyword">as</span> $name) : <span class="hljs-meta">?&gt;</span>
+        &lt;li&gt;<span class="hljs-meta">&lt;?</span>= $name <span class="hljs-meta">?&gt;</span>&lt;/li&gt;
+    <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">endforeach</span>; <span class="hljs-meta">?&gt;</span>
+&lt;/ul&gt;
+</code></pre>
+  </body>
+</html>

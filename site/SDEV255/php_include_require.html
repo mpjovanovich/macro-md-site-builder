@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Include and Require</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Include and Require</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#include-and-require-statements"
+          >Include and Require Statements</a
+        >
+        <ul>
+          <li>
+            <a href="#include">Include</a>
+            <ul>
+              <li><a href="#example">Example</a></li>
+            </ul>
+          </li>
+          <li><a href="#require">Require</a></li>
+          <li>
+            <a href="#include-vs-require---which-to-use"
+              >Include vs Require - Which to Use?</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#include_once-and-require_once-statements"
+          >Include_once and Require_once Statements</a
+        >
+        <ul>
+          <li><a href="#example-1">Example</a></li>
+          <li>
+            <a href="#regular-vs-once---which-to-use"
+              >Regular vs Once - Which to Use?</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#absolute-relative-and-root-relative-paths"
+          >Absolute, Relative, and Root-Relative Paths</a
+        >
+        <ul>
+          <li><a href="#relative-path">Relative Path</a></li>
+          <li><a href="#absolute-path">Absolute Path</a></li>
+          <li><a href="#root-relative-path">Root-Relative Path</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#typical-uses">Typical Uses</a>
+        <ul>
+          <li>
+            <a href="#repeated-front-end-html-components"
+              >Repeated Front End HTML Components</a
+            >
+          </li>
+          <li>
+            <a href="#repeated-back-end-components"
+              >Repeated Back End Components</a
+            >
+            <ul>
+              <li>
+                <a href="#configuring-global-constants"
+                  >Configuring Global Constants</a
+                >
+              </li>
+              <li><a href="#functions">Functions</a></li>
+              <li><a href="#classes">Classes</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#php-project-structure">PHP Project Structure</a></li>
+      <li>
+        <a href="#friendly-output-for-debugging"
+          >Friendly Output for Debugging</a
+        >
+      </li>
+    </ul>
+    <h1 id="include-and-require-statements">Include and Require Statements</h1>
+    <p>
+      Used to drop in the contents of another file exactly where the
+      include/require statement is.
+    </p>
+    <h2 id="include">Include</h2>
+    <ul>
+      <li>Drops in the included file and continues execution.</li>
+      <li>
+        If the file is not found, a warning is issued and execution continues.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-keyword">include</span> <span class="hljs-string">'header.php'</span>;
+</code></pre>
+    <h3 id="example">Example</h3>
+    <p><em>header.php</em></p>
+    <pre><code class="language-php">&lt;h1&gt;I am the header&lt;/h1&gt;
+</code></pre>
+    <p><em>index.php</em></p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">include</span> <span class="hljs-string">'header.php'</span>;
+<span class="hljs-meta">?&gt;</span>
+&lt;p&gt;I<span class="hljs-string">'m some content&lt;/p&gt;</span>
+</code></pre>
+    <p><em>output</em></p>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>I am the header<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm some content<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+    <h2 id="require">Require</h2>
+    <ul>
+      <li>Drops in the included file and continues execution.</li>
+      <li>
+        If the file is not found, a fatal error is issued and execution stops.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-keyword">require</span> <span class="hljs-string">'header.php'</span>;
+</code></pre>
+    <h2 id="include-vs-require-which-to-use-">
+      Include vs Require - Which to Use?
+    </h2>
+    <ul>
+      <li>
+        Use include only if you have a reason to continue execution if the file
+        is not found.
+      </li>
+      <li>Otherwise, use require.</li>
+    </ul>
+    <h1 id="include_once-and-require_once-statements">
+      Include_once and Require_once Statements
+    </h1>
+    <ul>
+      <li>Only includes the file once if is included multiple times.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-keyword">include_once</span> <span class="hljs-string">'header.php'</span>;
+</code></pre>
+    <pre><code class="language-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'header.php'</span>;
+</code></pre>
+    <h2 id="example">Example</h2>
+    <p><em>header.php</em></p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+&lt;h1&gt;I am the header&lt;/h1&gt;
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <p><em>index.php</em></p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">include_once</span> <span class="hljs-string">'header.php'</span>;
+<span class="hljs-keyword">include_once</span> <span class="hljs-string">'header.php'</span>;
+<span class="hljs-keyword">include_once</span> <span class="hljs-string">'header.php'</span>;
+<span class="hljs-meta">?&gt;</span>
+&lt;p&gt;I<span class="hljs-string">'m some content&lt;/p&gt;</span>
+</code></pre>
+    <p><em>output</em></p>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>I am the header<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm some content<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+    <h2 id="regular-vs-once-which-to-use-">Regular vs Once - Which to Use?</h2>
+    <ul>
+      <li>
+        Slower than include and require, but only on a scale of milliseconds.
+      </li>
+      <li>Prefer these versions unless you have a reason not to.</li>
+    </ul>
+    <h1 id="absolute-relative-and-root-relative-paths">
+      Absolute, Relative, and Root-Relative Paths
+    </h1>
+    <p>For small projects relative paths are fine.</p>
+    <p>For larger projects, typically use absolute or root-relative paths.</p>
+    <p><strong>Directory Traversal</strong></p>
+    <ul>
+      <li><code>/</code> is the root directory</li>
+      <li><code>..</code> moves up one directory</li>
+    </ul>
+    <p><em>Example</em></p>
+    <ul>
+      <li>
+        <code>../includes/header.php</code> moves up one directory and then into
+        the includes directory.
+      </li>
+    </ul>
+    <h2 id="relative-path">Relative Path</h2>
+    <p><strong>Relative Path</strong> is the path from the current file.</p>
+    <ul>
+      <li><code>header.php</code></li>
+      <li><code>includes/header.php</code></li>
+      <li><code>../includes/header.php</code></li>
+    </ul>
+    <h2 id="absolute-path">Absolute Path</h2>
+    <p>
+      <strong>Absolute Path</strong> is the full path from the root of the file
+      system.
+    </p>
+    <ul>
+      <li><code>/var/www/html/includes/header.php</code></li>
+      <li><code>C:\xampp\htdocs\my_lab\includes\header.php</code></li>
+    </ul>
+    <h2 id="root-relative-path">Root-Relative Path</h2>
+    <p>
+      <strong>Root-Relative Path</strong> is the path from the root of the web
+      server.
+    </p>
+    <ul>
+      <li><code>/includes/header.php</code></li>
+      <li><code>/my_lab/includes/header.php</code></li>
+      <li><code>/../config.php</code></li>
+    </ul>
+    <h1 id="typical-uses">Typical Uses</h1>
+    <h2 id="repeated-front-end-html-components">
+      Repeated Front End HTML Components
+    </h2>
+    <ul>
+      <li>Header</li>
+      <li>Footer</li>
+      <li>Navigation</li>
+      <li>etc.</li>
+    </ul>
+    <h2 id="repeated-back-end-components">Repeated Back End Components</h2>
+    <h3 id="configuring-global-constants">Configuring Global Constants</h3>
+    <ul>
+      <li>File paths</li>
+    </ul>
+    <pre><code class="language-php">define(<span class="hljs-string">'SITE_ROOT'</span>, <span class="hljs-keyword">__DIR__</span>);
+define(<span class="hljs-string">'INCLUDES_PATH'</span>, SITE_ROOT . <span class="hljs-string">'includes/'</span>);
+</code></pre>
+    <ul>
+      <li>Database connection information</li>
+    </ul>
+    <pre><code class="language-php">define(<span class="hljs-string">'DB_HOST'</span>, <span class="hljs-string">'localhost'</span>);
+define(<span class="hljs-string">'DB_USER'</span>, <span class="hljs-string">'root'</span>);
+</code></pre>
+    <ul>
+      <li>Debugging information</li>
+    </ul>
+    <pre><code class="language-php">define(<span class="hljs-string">'DEBUG'</span>, <span class="hljs-keyword">true</span>);
+</code></pre>
+    <ul>
+      <li>Application settings</li>
+    </ul>
+    <pre><code class="language-php">define(<span class="hljs-string">'APP_NAME'</span>, <span class="hljs-string">'My Application'</span>);
+</code></pre>
+    <h3 id="functions">Functions</h3>
+    <ul>
+      <li>
+        Utility functions
+        <ul>
+          <li>Date formatting</li>
+          <li>String manipulation</li>
+          <li>Sanatization</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="classes">Classes</h3>
+    <ul>
+      <li>
+        Business logic classes
+        <ul>
+          <li>User</li>
+          <li>Product</li>
+        </ul>
+      </li>
+      <li>
+        Utility classes
+        <ul>
+          <li>Database connection</li>
+          <li>File upload</li>
+          <li>Email</li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="php-project-structure">PHP Project Structure</h1>
+    <p>
+      Project structure is a matter of preference, but here is a common
+      structure. This is a simplified version of the structure used in the [PHP
+      Project Template](
+    </p>
+    <ul>
+      <li>
+        root
+        <ul>
+          <li>config.php</li>
+          <li>
+            includes
+            <ul>
+              <li>functions.php</li>
+              <li>classes.php</li>
+            </ul>
+          </li>
+          <li>
+            public
+            <ul>
+              <li>index.php</li>
+              <li>about.php</li>
+              <li>contact.php</li>
+            </ul>
+          </li>
+          <li>
+            templates
+            <ul>
+              <li>header.php</li>
+              <li>footer.php</li>
+              <li>nav.php</li>
+            </ul>
+          </li>
+          <li>
+            assets
+            <ul>
+              <li>css</li>
+              <li>js</li>
+              <li>images</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="friendly-output-for-debugging">Friendly Output for Debugging</h1>
+    <ul>
+      <li>
+        Functions like <code>print_r()</code>, <code>var_export()</code> and
+        <code>var_dump()</code> are great for debugging.
+      </li>
+      <li>
+        It can be helpful to wrap them in a function cleans up the output:
+      </li>
+      <li>
+        You can put this in a <code>functions.php</code> file and include it in
+        your scripts.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pretty_dump</span><span class="hljs-params">(mixed $var, string $name = <span class="hljs-string">''</span>)</span>: <span class="hljs-title">void</span>
+</span>{
+    $short_type_names = [
+        <span class="hljs-string">'boolean'</span> =&gt; <span class="hljs-string">'bool'</span>,
+        <span class="hljs-string">'integer'</span> =&gt; <span class="hljs-string">'int'</span>,
+        <span class="hljs-string">'double'</span> =&gt; <span class="hljs-string">'float'</span>,
+        <span class="hljs-string">'string'</span> =&gt; <span class="hljs-string">'str'</span>,
+    ];
+
+    <span class="hljs-comment">// Style CSS to your liking</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'
+&lt;pre style="
+        background-color:#f5f5f5;
+        color:#333;
+        line-height:1.2;
+        font-size:14px;
+        padding:10px;
+        margin:10px;
+        border-radius:5px;
+        border:1px solid #ddd;
+        min-width:600px;
+        max-width:960px;
+        width:fit-content;
+        overflow:auto;
+        box-sizing:border-box;
+    "&gt;'</span>;
+    <span class="hljs-keyword">if</span> ($name) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Name: &lt;strong&gt;$name&lt;/strong&gt;&lt;br &gt;"</span>;
+    }
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Type: &lt;strong&gt;"</span> . gettype($var) . (is_array($var) ? <span class="hljs-string">'('</span> . count($var) . <span class="hljs-string">')'</span> : <span class="hljs-string">''</span>)  . <span class="hljs-string">"&lt;/strong&gt;&lt;br &gt;"</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">".................................&lt;br &gt;"</span>;
+    <span class="hljs-keyword">if</span> (is_array($var)) {
+        <span class="hljs-keyword">foreach</span> ($var <span class="hljs-keyword">as</span> $k =&gt; $v) {
+            <span class="hljs-keyword">if</span> (is_array($v)) {
+                <span class="hljs-keyword">echo</span> str_pad($k, <span class="hljs-number">30</span>) . <span class="hljs-string">" =&gt; "</span>;
+                pretty_dump($v);
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">// Use short type names</span>
+                $type = $short_type_names[gettype($v)] ?? gettype($v);
+
+                <span class="hljs-comment">// If boolean value, show true/false instead of 1/0</span>
+                $v = $type === <span class="hljs-string">'bool'</span> ? ($v ? <span class="hljs-string">'true'</span> : <span class="hljs-string">'false'</span>) : $v;
+
+                <span class="hljs-comment">// If string value, show it in quotes</span>
+                $v = $type === <span class="hljs-string">'str'</span> ? <span class="hljs-string">"'$v'"</span> : $v;
+
+                <span class="hljs-keyword">echo</span> str_pad($k, <span class="hljs-number">30</span>) . <span class="hljs-string">' =&gt; '</span> . $type . <span class="hljs-string">' '</span> . $v . <span class="hljs-string">"\n"</span>;
+            }
+        }
+    } <span class="hljs-keyword">else</span> {
+        print_r($var);
+    }
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;/pre&gt;'</span>;
+}
+
+<span class="hljs-comment">// Usage:</span>
+pretty_dump($_SERVER, <span class="hljs-string">'$_SERVER'</span>);
+</code></pre>
+  </body>
+</html>

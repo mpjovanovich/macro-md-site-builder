@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Software Communication Patterns</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Software Communication Patterns</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#software-communication-patterns"
+          >Software Communication Patterns</a
+        >
+        <ul>
+          <li>
+            <a href="#types-of-communication">Types of Communication</a>
+            <ul>
+              <li>
+                <a href="#inter-thread-communication-itc"
+                  >Inter-Thread Communication (ITC)</a
+                >
+              </li>
+              <li>
+                <a href="#inter-process-communication-ipc"
+                  >Inter-Process Communication (IPC)</a
+                >
+              </li>
+              <li>
+                <a href="#inter-service-communication-isc"
+                  >Inter-Service Communication (ISC)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#communication-patterns">Communication Patterns</a>
+            <ul>
+              <li><a href="#request-response">Request-Response</a></li>
+              <li><a href="#broadcast">Broadcast</a></li>
+              <li>
+                <a href="#publish-subscribe">Publish-Subscribe</a>
+                <ul>
+                  <li><a href="#push">Push</a></li>
+                  <li><a href="#pull">Pull</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="software-communication-patterns">
+      Software Communication Patterns
+    </h1>
+    <p>
+      <strong>Software Communication Patterns</strong> are design patterns that
+      describe how software components communicate with each other.
+    </p>
+    <h2 id="types-of-communication">Types of Communication</h2>
+    <h3 id="inter-thread-communication-itc-">
+      Inter-Thread Communication (ITC)
+    </h3>
+    <p>Usually managed by the operating system.</p>
+    <ul>
+      <li>
+        <strong>Synchronization</strong>: Ensuring that threads do not interfere
+        with each other.
+      </li>
+      <li>
+        <strong>Locks</strong>: Ensuring that only one thread can access a
+        resource at a time.
+      </li>
+    </ul>
+    <h3 id="inter-process-communication-ipc-">
+      Inter-Process Communication (IPC)
+    </h3>
+    <p>May be managed by the OS, middleware, or the application itself.</p>
+    <p>
+      <strong>Middleware</strong>: Software that connects different software
+      components.
+    </p>
+    <ul>
+      <li>
+        <strong>Message Passing</strong>: Sending messages between processes.
+      </li>
+      <li>
+        <strong>Shared Memory</strong>: Allowing processes to access the same
+        memory.
+      </li>
+      <li><strong>Sockets</strong>: Sending data over a network.</li>
+      <li>
+        <strong>Pipes</strong>: Sending data between processes on the same
+        machine.
+      </li>
+    </ul>
+    <h3 id="inter-service-communication-isc-">
+      Inter-Service Communication (ISC)
+    </h3>
+    <p>Communication between services in a distributed system.</p>
+    <ul>
+      <li>
+        <strong>RESTful APIs</strong>: Sending data via HTTP requests.
+        <ul>
+          <li>Unidirectional: Client sends a request to the server.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>WebSockets</strong>: Real-time communication between services.
+        <ul>
+          <li>
+            Bidirectional: Client and server can send messages to each other.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <hr />
+    <p class="demo">Demo:</p>
+
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_solutions/blob/main/SDEV264/ClassMessenger/app.html"
+        >Chat application with RESTful calls and WebSockets</a
+      >
+    </p>
+    <p><strong>To Test:</strong></p>
+    <ol>
+      <li>Start the server.</li>
+      <li>Expose the server via ngrok.</li>
+      <li>Students download the html file.</li>
+      <li>Students edit file, plugging in ngrok URL their Username.</li>
+      <li>Students open the html file in a browser and chat.</li>
+    </ol>
+    <hr />
+    <h2 id="communication-patterns">Communication Patterns</h2>
+    <h3 id="request-response">Request-Response</h3>
+    <p>Client sends a request to the server and waits for a response.</p>
+    <ul>
+      <li>Syncronous communication.</li>
+      <li>Foundation of the HTTP protocol.</li>
+    </ul>
+    <h3 id="broadcast">Broadcast</h3>
+    <p>Server sends messages to all clients.</p>
+    <ul>
+      <li>E.g. streaming video, channel driven chat.</li>
+    </ul>
+    <h3 id="publish-subscribe">Publish-Subscribe</h3>
+    <p>
+      Event-driven architecture. Clients subscribe to topics and receive
+      messages when they are published.
+    </p>
+    <ul>
+      <li>E.g. JavaScript event listeners, push notifications.</li>
+    </ul>
+    <p>May be implemented as either:</p>
+    <h4 id="push">Push</h4>
+    <p>
+      Server pushes messages to clients. Clients actively listen for messages.
+    </p>
+    <p><em>Pros</em>:</p>
+    <ul>
+      <li>Real-time communication.</li>
+      <li>Less latency.</li>
+    </ul>
+    <p><em>Cons</em>:</p>
+    <ul>
+      <li>More resources (server must maintain connections).</li>
+      <li>More complexity.</li>
+    </ul>
+    <h4 id="pull">Pull</h4>
+    <p>
+      Clients pull messages from the server. Periodically check for new
+      messages.
+    </p>
+    <p><em>Pros</em>:</p>
+    <ul>
+      <li>Less resources (server only sends messages when requested).</li>
+      <li>Simple.</li>
+    </ul>
+    <p><em>Cons</em>:</p>
+    <ul>
+      <li>More latency (messages not be immediately available)</li>
+    </ul>
+    <hr />
+    <p class="demo">Demo:</p>
+
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/tree/main/SDEV265_System_Software_Analysis_Project/distributed_demo/scrambler.html"
+        >Calc Service Load Balancing</a
+      >
+    </p>
+    <p>Client (Web App)</p>
+    <p>API Gateway (Routes to Services)</p>
+    <p>Multiple Calc Services</p>
+    <p><strong>To Test:</strong></p>
+    <ol>
+      <li>Run API Gateway and single instance of calc service.</li>
+      <li>Expose API endpoint via ngrok.</li>
+      <li>Have students all submit their name at once via html form.</li>
+      <li>Boot up multiple instances of calc service.</li>
+      <li>Restart API Gateway to route to multiple instances.</li>
+      <li>Have students all submit their name at once via html form.</li>
+      <li>
+        Note the source of the response - from different instances of the calc
+        service.
+      </li>
+    </ol>
+    <hr />
+  </body>
+</html>

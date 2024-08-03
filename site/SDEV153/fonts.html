@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - Fonts</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">Fonts</a>
+    </h1>
+    <h1 id="fonts">Fonts</h1>
+    <h2 id="font-families">Font Families</h2>
+    <p>
+      CSS <code>font-family</code> is used to define the name(s) of fonts to be
+      used on the website.
+    </p>
+    <h3 id="defaults">Defaults</h3>
+    <ul>
+      <li>A font must exists on the user&#39;s device in order to be used.</li>
+      <li>
+        Browser will use &quot;User Agent Stylesheet&quot; if no CSS rule set.
+      </li>
+      <li>
+        Multiple fonts may be listed for font-family using a
+        <strong>font stack</strong>.
+        <ul>
+          <li>Goes through list left to right until font is found.</li>
+          <li>
+            Traditionally use
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals#web_safe_fonts"
+              >Web Safe Fonts</a
+            >
+            to ensure availability.
+          </li>
+          <li>
+            <pre><code class="language-css"><span class="hljs-selector-tag">font-family</span>: <span class="hljs-selector-tag">Helvetica</span>, "<span class="hljs-selector-tag">Trebuchet</span> <span class="hljs-selector-tag">MS</span>", <span class="hljs-selector-tag">Verdana</span>, <span class="hljs-selector-tag">sans-serif</span>;
+</code></pre>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="serif">Serif</h4>
+    <ul>
+      <li>Serif fonts have small strokes at the edges of letters.</li>
+      <li>&quot;Curly&quot; letters.</li>
+      <li>
+        Font-family value of <code>serif</code> signifies that the device should
+        use the system-defined default serif font.
+      </li>
+    </ul>
+    <h4 id="sans-serif">Sans-Serif</h4>
+    <ul>
+      <li>Sans-serif fonts have no strokes at the edges of letters.</li>
+      <li>Sans = &quot;without&quot;</li>
+      <li>&quot;Block&quot; letters.</li>
+      <li>
+        Font-family value of <code>sans-serif</code> signifies that the device
+        should use the system-defined default serif font.
+      </li>
+    </ul>
+    <h2 id="web-fonts">Web Fonts</h2>
+    <ul>
+      <li>
+        Fonts may be loaded from the web server or an external url using
+        <code>@font-face</code>.
+      </li>
+      <li>Specified font file(s) are downloaded:</li>
+    </ul>
+    <pre><code class="language-css">@<span class="hljs-keyword">font-face</span> {
+  <span class="hljs-attribute">font-family</span>: Roboto;
+  <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"/fonts/roboto-regular.woff2"</span>);
+}
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-family</span>: Roboto, sans-serif;
+}
+</code></pre>
+    <h3 id="import-vs-link">Import vs Link</h3>
+    <h4 id="-import">@import</h4>
+    <ul>
+      <li>Goes in CSS file.</li>
+      <li>Must be at beginning of file.</li>
+      <li>
+        Imported stylesheet; browser fetches with web request after initial
+        stylesheet is loaded.
+      </li>
+    </ul>
+    <h4 id="-link-">`<link />`</h4>
+    <ul>
+      <li>Goes in <code>&lt;head&gt;</code> of HTML.</li>
+      <li>Fetched with web request as part of initial page load.</li>
+      <li>Recommended</li>
+    </ul>
+    <h3 id="local-vs-web-hosted">Local vs Web Hosted</h3>
+    <h4 id="local-fonts">Local Fonts</h4>
+    <ul>
+      <li>url points to file file that developer has uploaded to site.</li>
+    </ul>
+    <h4 id="online-font-service">Online Font Service</h4>
+    <ul>
+      <li>Font hosting services store saved copies of fonts for download.</li>
+      <li>
+        Fonts may be cached already from other website visits (e.g. Roboto),
+        saving another download.
+        <ul>
+          <li>
+            E.g.:
+            <a href="https://fonts.google.com/">https://fonts.google.com/</a>
+            <ul>
+              <li>
+                <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preconnect"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preconnect"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.gstatic.com"</span> <span class="hljs-attr">crossorigin</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span>
+  <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com/css2?family=Nunito&amp;display=swap"</span>
+  <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>
+/&gt;</span>
+</code></pre>
+              </li>
+              <li>
+                First two <code>preconnect</code> lines are not necessary, but
+                help optimize delivery from google.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Fonts may then be used with <code>font-family</code> in CSS.
+            <ul>
+              <li>
+                <pre><code class="language-css"><span class="hljs-selector-tag">font-family</span>: "<span class="hljs-selector-tag">Nunito</span>", <span class="hljs-selector-tag">sans-serif</span>;
+</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            User may see fallback font initially; once font is downloaded it
+            will &quot;swap&quot; in b/c of the <code>display=swap</code> query
+            on the stylesheet fetch.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>Demo: try popping open the URL that google fonts returns:</p>
+    <p>
+      <a href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+        >https://fonts.googleapis.com/css2?family=Nunito&amp;display=swap</a
+      >
+    </p>
+    <h5 id="font-weight-considerations">Font Weight Considerations</h5>
+    <ul>
+      <li>
+        If different font weights are needed in the site, they must all be
+        requested:
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span>
+  <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>
+  <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;display=swap"</span>
+/&gt;</span>
+</code></pre>
+    <ul>
+      <li>
+        Variable weight fonts effectively take the place of using multiple font
+        versions, but may not be available.
+      </li>
+    </ul>
+    <h1 id="icons-via-hosted-service">Icons via Hosted Service</h1>
+    <p>Just like fonts, icons can be loaded from a web hosted service.</p>
+    <h2 id="sources">Sources</h2>
+    <ul>
+      <li>
+        <a href="https://fontawesome.com/search?m=free&o=r"
+          >Font Awesome Icons</a
+        >
+      </li>
+      <li>
+        <a href="https://fonts.google.com/icons">Google Material Icons</a>
+      </li>
+    </ul>
+    <h2 id="example">Example</h2>
+    <p>
+      <a href="https://fontawesome.com/icons/headphones?f=classic&s=solid"
+        >Headphones Icon...</a
+      >
+    </p>
+    <p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="16"
+        width="16"
+        viewBox="0 0 512 512"
+      >
+        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+        <path
+          d="M256 80C149.9 80 62.4 159.4 49.6 262c9.4-3.8 19.6-6 30.4-6c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48c-44.2 0-80-35.8-80-80V384 336 288C0 146.6 114.6 32 256 32s256 114.6 256 256v48 48 16c0 44.2-35.8 80-80 80c-26.5 0-48-21.5-48-48V304c0-26.5 21.5-48 48-48c10.8 0 21 2.1 30.4 6C449.6 159.4 362.1 80 256 80z"
+        />
+      </svg>
+    </p>
+    <h3 id="via-svg">Via SVG</h3>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span>
+  <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span>
+  <span class="hljs-attr">height</span>=<span class="hljs-string">"16"</span>
+  <span class="hljs-attr">width</span>=<span class="hljs-string">"16"</span>
+  <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 512 512"</span>
+&gt;</span>
+  <span class="hljs-comment">&lt;!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">path</span>
+    <span class="hljs-attr">d</span>=<span class="hljs-string">"M256 80C149.9 80 62.4 159.4 49.6 262c9.4-3.8 19.6-6 30.4-6c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48c-44.2 0-80-35.8-80-80V384 336 288C0 146.6 114.6 32 256 32s256 114.6 256 256v48 48 16c0 44.2-35.8 80-80 80c-26.5 0-48-21.5-48-48V304c0-26.5 21.5-48 48-48c10.8 0 21 2.1 30.4 6C449.6 159.4 362.1 80 256 80z"</span>
+  /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+</code></pre>
+    <h3 id="via-font">Via Font</h3>
+    <p>Font families can be used to serve icons.</p>
+    <p>
+      Demo:
+      <a href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        >https://fonts.googleapis.com/icon?family=Material+Icons</a
+      >
+    </p>
+    <h4 id="font-awesome">Font Awesome</h4>
+    <ul>
+      <li>
+        Use latest CDN link to fetch stylesheet:
+        <ul>
+          <li>
+            <a href="https://cdnjs.com/libraries/font-awesome"
+              >https://cdnjs.com/libraries/font-awesome</a
+            >
+          </li>
+          <li>Pick smallest file that has needed icons</li>
+          <li>Set CSS class for style</li>
+          <li>Set CSS class for icon name</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- ... -&gt;
+&lt;i class="fa-solid fa-headphones"&gt;&lt;/i&gt;</span>
+</code></pre>
+    <h4 id="google-materials">Google Materials</h4>
+    <ul>
+      <li>Fetch stylesheet</li>
+      <li>Set CSS class for style</li>
+      <li>Put icon name in HTML element</li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"</span> /&gt;</span>
+<span class="hljs-comment">&lt;!-- ... -&gt;
+&lt;i class="material-symbols-outlined"&gt;key&lt;/i&gt;</span>
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Ternary If, Null Coalescing</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Ternary If, Null Coalescing</a>
+    </h1>
+    <ul>
+      <li><a href="#ternary-if">Ternary If</a></li>
+      <li><a href="#null-coalescing">Null Coalescing</a></li>
+      <li><a href="#comparison-of-techniques">Comparison of Techniques</a></li>
+    </ul>
+    <h1 id="ternary-if">Ternary If</h1>
+    <ul>
+      <li><strong>Ternary</strong> = 3 parts</li>
+      <li>A shorthand for simple if / else statements.</li>
+      <li>Used to assign a value to a variable based on a condition.</li>
+    </ul>
+    <pre><code class="language-php">$var = (condition) ? value_if_true : value_if_false;
+</code></pre>
+    <p>This is the same as:</p>
+    <pre><code class="language-php"><span class="hljs-keyword">if</span> (condition) {
+    $var = value_if_true;
+} <span class="hljs-keyword">else</span> {
+    $var = value_if_false;
+}
+</code></pre>
+    <p class="demo">Examples</p>
+
+    <pre><code class="language-php">$x = <span class="hljs-number">4</span>;
+$even = (x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) ? <span class="hljs-string">'true'</span> : <span class="hljs-string">'false'</span>;
+<span class="hljs-keyword">echo</span> $even; <span class="hljs-comment">// true</span>
+</code></pre>
+    <pre><code class="language-php">$x = <span class="hljs-number">5</span>;
+$even = (x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) ? <span class="hljs-string">'true'</span> : <span class="hljs-string">'false'</span>;
+<span class="hljs-keyword">echo</span> $even; <span class="hljs-comment">// false</span>
+</code></pre>
+    <pre><code class="language-php"><span class="hljs-comment">// Skip the variable assignment and just echo the result</span>
+$x = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">echo</span> (x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) ? <span class="hljs-string">'true'</span> : <span class="hljs-string">'false'</span>; <span class="hljs-comment">// false</span>
+</code></pre>
+    <h1 id="null-coalescing">Null Coalescing</h1>
+    <ul>
+      <li>Used to assign a value to a variable if it is not null.</li>
+      <li>If variable is null the value after the ?? is assigned.</li>
+      <li>
+        Useful when getting values from a form or database that may or may not
+        be present.
+      </li>
+    </ul>
+    <p class="demo">Examples</p>
+
+    <pre><code class="language-php">$userVar = <span class="hljs-keyword">null</span>;
+$userVar = $userVar ?? <span class="hljs-string">'default'</span>;
+<span class="hljs-keyword">echo</span> $userVar; <span class="hljs-comment">// default</span>
+</code></pre>
+    <pre><code class="language-php">$userVar = <span class="hljs-string">'some value'</span>;
+$userVar = $userVar ?? <span class="hljs-string">'default'</span>;
+<span class="hljs-keyword">echo</span> $userVar; <span class="hljs-comment">// some value</span>
+</code></pre>
+    <h1 id="comparison-of-techniques">Comparison of Techniques</h1>
+    <p>Basic If:</p>
+    <pre><code class="language-php">$userVar = <span class="hljs-keyword">null</span>;
+<span class="hljs-keyword">if</span> ($userVar === <span class="hljs-keyword">null</span>) {
+    $userVar = <span class="hljs-string">'default'</span>;
+}
+</code></pre>
+    <p>Ternary If:</p>
+    <pre><code class="language-php">$userVar = <span class="hljs-keyword">null</span>;
+$userVar = ($userVar === <span class="hljs-keyword">null</span>) ? <span class="hljs-string">'default'</span> : $userVar;
+</code></pre>
+    <p>Null Coalescing:</p>
+    <pre><code class="language-php">$userVar = <span class="hljs-keyword">null</span>;
+$userVar = $userVar ?? <span class="hljs-string">'default'</span>;
+</code></pre>
+  </body>
+</html>

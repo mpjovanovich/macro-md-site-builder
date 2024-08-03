@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV153 - CSS Responsive Design</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV153/index.html"
+        >SDEV153</a
+      >&nbsp;&gt;&nbsp;<a href="">CSS Responsive Design</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#responsive-design">Responsive Design</a>
+        <ul>
+          <li>
+            <a href="#key-concepts-of-responsive-design"
+              >Key Concepts of Responsive Design</a
+            >
+            <ul>
+              <li>
+                <a href="#fluid-grids">Fluid Grids</a>
+                <ul>
+                  <li>
+                    <a href="#a-responsive-grid-demo">A Responsive Grid Demo</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#fluid-media">Fluid Media</a>
+                <ul>
+                  <li><a href="#max-width">max-width</a></li>
+                  <li><a href="#srcset">srcset</a></li>
+                  <li>
+                    <a href="#a-responsive-media-demo"
+                      >A Responsive Media Demo</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#media-queries">Media Queries</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#media-queries-1">Media Queries</a>
+            <ul>
+              <li><a href="#the-viewport">The Viewport</a></li>
+              <li><a href="#syntax">Syntax</a></li>
+              <li>
+                <a href="#width-and-height">Width and Height</a>
+                <ul>
+                  <li><a href="#breakpoints">Breakpoints</a></li>
+                </ul>
+              </li>
+              <li><a href="#orientation">Orientation</a></li>
+              <li>
+                <a href="#combining-media-queries">Combining Media Queries</a>
+              </li>
+              <li>
+                <a href="#a-media-query-based-responsive-layout-demo"
+                  >A Media-Query Based Responsive Layout Demo</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#testing-responsive-design">Testing Responsive Design</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="responsive-design">Responsive Design</h1>
+    <p>
+      <strong>Responsive design</strong> is a design approach that creates
+      dynamic changes to the appearance of a website, depending on the screen
+      size and orientation of the device being used to view it.
+    </p>
+    <h2 id="key-concepts-of-responsive-design">
+      Key Concepts of Responsive Design
+    </h2>
+    <h3 id="fluid-grids">Fluid Grids</h3>
+    <ul>
+      <li>
+        A <strong>fluid grid</strong> is a grid system that uses relative units
+        to define column widths.
+      </li>
+      <li>
+        12-column grid is a common layout.
+        <ul>
+          <li>
+            <a
+              href="https://www.webfx.com/blog/web-design/the-960-grid-system-made-easy/"
+              >The 960 Grid System Made Easy</a
+            >
+          </li>
+          <li>
+            We don&#39;t have to use their framework since we&#39;re pro devs
+            now 😎
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="a-responsive-grid-demo">A Responsive Grid Demo</h4>
+    <p class="demo">Exercise:</p>
+
+    <p>Pick apart the rules here...</p>
+    <p
+      class="codepen"
+      data-height="300"
+      data-default-tab="html,result"
+      data-slug-hash="abXaBrd"
+      data-user="Mike-Jovanovich"
+      style="
+        height: 300px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid;
+        margin: 1em 0;
+        padding: 1em;
+      "
+    >
+      <span
+        >See the Pen
+        <a href="https://codepen.io/Mike-Jovanovich/pen/abXaBrd">
+          Responsive Grid - News Page</a
+        >
+        by Mike Jovanovich (<a href="https://codepen.io/Mike-Jovanovich"
+          >@Mike-Jovanovich</a
+        >) on <a href="https://codepen.io">CodePen</a>.</span
+      >
+    </p>
+    <script
+      async
+      src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+    ></script>
+
+    <h3 id="fluid-media">Fluid Media</h3>
+    <ul>
+      <li>
+        <strong>Fluid media</strong> is media (images, videos, etc.) that uses
+        relative units to define its size.
+      </li>
+    </ul>
+    <h4 id="max-width">max-width</h4>
+    <p>
+      <em
+        >Note: I gave you bad info earlier - you do not have to set the html
+        height and width attributes for an image.</em
+      >
+    </p>
+    <ul>
+      <li>
+        Using CSS for specifying image dimensions rather than specifying fixed
+        dimensions in HTML allows the image to be responsive.
+      </li>
+      <li>
+        Use <code>max-width: 100%</code> to make media (e.g. images) responsive.
+        <ul>
+          <li>Media will shrink to fit the container.</li>
+          <li>Media will not grow larger than its original size.</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: auto; <span class="hljs-comment">/* Maintain aspect ratio */</span>
+}
+</code></pre>
+    <h4 id="srcset">srcset</h4>
+    <ul>
+      <li>
+        The <code>srcset</code> attribute is used to provide multiple image
+        sources for different screen sizes.
+        <ul>
+          <li>List of image sources separated by commas.</li>
+          <li>
+            Each image source is followed by a space and a descriptor that
+            specifies the image&#39;s width.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+  <span class="hljs-attr">src</span>=<span class="hljs-string">"small.jpg"</span>
+  <span class="hljs-attr">srcset</span>=<span class="hljs-string">"medium.jpg 1000w, large.jpg 2000w"</span>
+  <span class="hljs-attr">alt</span>=<span class="hljs-string">"A picture of a tiger"</span>
+/&gt;</span>
+</code></pre>
+    <h4 id="a-responsive-media-demo">A Responsive Media Demo</h4>
+    <p>TODO: responsive media demo</p>
+    <h3 id="media-queries">Media Queries</h3>
+    <ul>
+      <li>
+        <strong>Media queries</strong> allows CSS rules to be applied only in
+        certain situations.
+      </li>
+      <li>We will treat this topic below.</li>
+    </ul>
+    <h2 id="media-queries">Media Queries</h2>
+    <h3 id="the-viewport">The Viewport</h3>
+    <ul>
+      <li>
+        The <strong>viewport</strong> is the user&#39;s visible area of a web
+        page.
+      </li>
+      <li>
+        The meta tag <code>&lt;meta name=&quot;viewport&quot;&gt;</code> allows
+        the developer to control the viewport.
+      </li>
+      <li>The following attributes are commonly used:</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>width</td>
+          <td>The width of the viewport.</td>
+        </tr>
+        <tr>
+          <td>height</td>
+          <td>The height of the viewport.</td>
+        </tr>
+        <tr>
+          <td>initial-scale</td>
+          <td>
+            The initial zoom level when the page is first loaded by the browser.
+          </td>
+        </tr>
+        <tr>
+          <td>user-scalable</td>
+          <td>Whether the user can zoom in or out.</td>
+        </tr>
+      </tbody>
+    </table>
+    <pre><code class="language-html"><span class="hljs-comment">&lt;!-- Recommended settings --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span> /&gt;</span>
+</code></pre>
+    <h3 id="syntax">Syntax</h3>
+    <pre><code class="language-css">@<span class="hljs-keyword">media</span> type and (feature);
+</code></pre>
+    <h3 id="width-and-height">Width and Height</h3>
+    <p>Feature:</p>
+    <ul>
+      <li>
+        <code>min-width</code> - apply styles if viewport is wider than
+        specified width.
+      </li>
+      <li>
+        <code>max-width</code> - apply styles if viewport is narrower than
+        specified width.
+      </li>
+      <li>
+        <code>min-height</code> - apply styles if viewport is taller than
+        specified height.
+      </li>
+      <li>
+        <code>max-height</code> - apply styles if viewport is shorter than
+        specified height.
+      </li>
+    </ul>
+    <pre><code class="language-css"><span class="hljs-comment">/* Default styles */</span>
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-comment">/* Will be applied when viewport &gt; 400px  and &lt; 800px */</span>
+  <span class="hljs-attribute">background-color</span>: orange;
+}
+
+@<span class="hljs-keyword">media</span> screen and (max-width: <span class="hljs-number">400px</span>) {
+  <span class="hljs-comment">/* Styles for viewports narrower than 400 pixels. */</span>
+}
+
+<span class="hljs-comment">/* Styles for viewports wider than 800 pixels. */</span>
+@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">800px</span>) {
+  <span class="hljs-comment">/* Styles for viewports wider than 800 pixels. */</span>
+}
+</code></pre>
+    <h4 id="breakpoints">Breakpoints</h4>
+    <ul>
+      <li>
+        A <strong>breakpoint</strong> is a point at which the layout of a web
+        page changes.
+      </li>
+      <li>Breakpoints are defined by the developer.</li>
+      <li>
+        Common breakpoints are based on common device screen sizes.
+        <ul>
+          <li>320px - smartphones</li>
+          <li>768px - tablets</li>
+          <li>1024px - laptops</li>
+          <li>1200px - desktops</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="orientation">Orientation</h3>
+    <p>Feature:</p>
+    <ul>
+      <li><code>orientation: portrait</code></li>
+      <li><code>orientation: landscape</code></li>
+    </ul>
+    <pre><code class="language-css">@<span class="hljs-keyword">media</span> screen and (orientation: portrait) {
+  <span class="hljs-comment">/* Apply these styles if the device is in portrait orientation */</span>
+}
+</code></pre>
+    <h3 id="combining-media-queries">Combining Media Queries</h3>
+    <ul>
+      <li>Multiple media queries can be combined using <code>and</code>.</li>
+    </ul>
+    <pre><code class="language-css">@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">400px</span>) and (max-width: <span class="hljs-number">600px</span>) {
+  <span class="hljs-comment">/* Apply these styles if viewport between 400px and 600px */</span>
+  <span class="hljs-comment">/* Apply these styles if: 
+    The viewport width is 400px or larger
+        AND
+    The viewport width is 600px or smaller
+  */</span>
+}
+</code></pre>
+    <ul>
+      <li>
+        Multiple media queries can be combined using <code>,</code> to apply the
+        rules if any of the conditions are met.
+      </li>
+    </ul>
+    <pre><code class="language-css">@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">600px</span>), (orientation: landscape) {
+  <span class="hljs-comment">/* Apply these styles if: 
+    The viewport width is 600px or smaller
+        OR 
+    The device is in landscape orientation 
+   */</span>
+}
+</code></pre>
+    <h3 id="a-media-query-based-responsive-layout-demo">
+      A Media-Query Based Responsive Layout Demo
+    </h3>
+    <p>TODO: DEMO</p>
+    <h2 id="testing-responsive-design">Testing Responsive Design</h2>
+    <p>Use browser developer tools to test responsive design.</p>
+    <ul>
+      <li>&quot;Responsive Design Mode&quot; in Firefox.</li>
+    </ul>
+    <figure>
+      <span
+        ><img
+          src="./images/dev_tools_responsive_design_firefox.png"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>&quot;Device Toolbar&quot; in Chrome.</li>
+    </ul>
+    <figure>
+      <span
+        ><img
+          src="./images/dev_tools_responsive_design_chrome.png"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+  </body>
+</html>

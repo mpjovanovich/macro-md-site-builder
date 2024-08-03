@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV153 - M02</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV153/index.html"
+        >SDEV153</a
+      >&nbsp;&gt;&nbsp;<a href="">M02</a>
+    </h1>
+    <figure>
+      <span> .... </span>
+    </figure>
+
+    <ul>
+      <li>
+        <a href="#planning-a-website">Planning a Website</a>
+        <ul>
+          <li>
+            <a href="#rhetoric">Rhetoric</a>
+            <ul>
+              <li><a href="#purpose">Purpose</a></li>
+              <li><a href="#audience">Audience</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#early-iterations">Early Iterations</a>
+            <ul>
+              <li><a href="#wireframes">Wireframes</a></li>
+              <li><a href="#mockups">Mockups</a></li>
+              <li><a href="#prototypes">Prototypes</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#elements-of-an-effective-website"
+          >Elements of an Effective Website</a
+        >
+        <ul>
+          <li>
+            <a href="#organization">Organization</a>
+            <ul>
+              <li><a href="#hierarchical">Hierarchical</a></li>
+              <li><a href="#sequential">Sequential</a></li>
+              <li>
+                <a href="#single-page-applications">Single Page Applications</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#visual-design">Visual Design</a>
+            <ul>
+              <li>
+                <a href="#types-of-pages">Types of Pages</a>
+                <ul>
+                  <li><a href="#landing-pages">Landing Pages</a></li>
+                  <li><a href="#content-pages">Content Pages</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#color">Color</a>
+                <ul>
+                  <li>
+                    <a href="#color-theory-and-palette-selection"
+                      >Color Theory and Palette Selection</a
+                    >
+                  </li>
+                  <li><a href="#css-color">CSS Color</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#usability-principles-for-web"
+              >Usability Principles for Web</a
+            >
+            <ul>
+              <li><a href="#least-cognitive-load">Least Cognitive Load</a></li>
+              <li>
+                <a href="#responsive-design--mobile-first"
+                  >Responsive Design / Mobile First</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#accessibility">Accessibility</a></li>
+        </ul>
+      </li>
+      <li><a href="#snippet-testing">Snippet Testing</a></li>
+      <li>
+        <a href="#intro-to-css">Intro to CSS</a>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#anatomy-of-a-css-rule">Anatomy of a CSS Rule</a></li>
+          <li><a href="#inline-styles">Inline Styles</a></li>
+          <li><a href="#internal-styles">Internal Styles</a></li>
+          <li><a href="#external-styles">External Styles</a></li>
+          <li>
+            <a href="#html-id-and-class-attributes"
+              >HTML id and class Attributes</a
+            >
+          </li>
+          <li>
+            <a href="#useful-css-links">Useful CSS Links</a>
+            <ul>
+              <li><a href="#properties">Properties</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="anouncements">Anouncements</h2>
+    <p>...</p>
+    <h2 id="agenda">Agenda</h2>
+    <ul>
+      <li>Lecture</li>
+      <li>Lab</li>
+    </ul>
+    <h1 id="planning-a-website">Planning a Website</h1>
+    <p>Plan first, build second!</p>
+    <h2 id="rhetoric">Rhetoric</h2>
+    <h3 id="purpose">Purpose</h3>
+    <p>What is this website meant to do?</p>
+    <ul>
+      <li>Inform</li>
+      <li>Persuade</li>
+      <li>Entertain</li>
+      <li>Art</li>
+      <li>Sell</li>
+      <li>...</li>
+    </ul>
+    <p>Usually best not to mix and match.</p>
+    <h3 id="audience">Audience</h3>
+    <p>Who is going to be using this website?</p>
+    <p class="demo">Case Study:</p>
+
+    <p><strong>Consumer Cellular</strong></p>
+    <p>
+      <a href="https://www.consumercellular.com/"
+        >https://www.consumercellular.com/</a
+      >
+    </p>
+    <p>Who are we targeting?</p>
+    <ul>
+      <li>Big font</li>
+      <li>Old guy in suit</li>
+      <li>Site design reminiscent of 90’s AOL era</li>
+      <li>Pixelated favicon</li>
+      <li>AARP ads</li>
+      <li>inconsistent color palettes</li>
+    </ul>
+    <p class="demo">Case Study:</p>
+
+    <p><strong>T-Mobile</strong></p>
+    <p><a href="https://www.t-mobile.com/">https://www.t-mobile.com/</a></p>
+    <p>Who are we targeting?</p>
+    <ul>
+      <li>Pink</li>
+      <li>“Flat” design follows current trends</li>
+      <li>
+        Use of modern javascript libraries for site functionality (menus,
+        galleries, etc.)
+      </li>
+    </ul>
+    <h2 id="early-iterations">Early Iterations</h2>
+    <ul>
+      <li>Help to organize thoughts.</li>
+      <li>Can serve as deliverables to clients for feedback.</li>
+      <li>Can prevent costly changes late in development.</li>
+    </ul>
+    <h3 id="wireframes">Wireframes</h3>
+    <p>Rough sketches of the layout of a page.</p>
+    <ul>
+      <li>Can be done with pen and paper, or with software.</li>
+      <li>Show layout, placement of elements, etc.</li>
+      <li>Rough sketch for the developer.</li>
+    </ul>
+    <p>Some online tools:</p>
+    <ul>
+      <li><a href="https://wireframe.cc/">https://wireframe.cc/</a></li>
+      <li><a href="https://www.figma.com/">https://www.figma.com/</a></li>
+      <li><a href="https://www.mockflow.com/">https://www.mockflow.com/</a></li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <p>
+      To start: I recommend
+      <a href="https://wireframe.cc/">https://wireframe.cc/</a> b/c of freeness
+      and simplicity.
+    </p>
+    <h3 id="mockups">Mockups</h3>
+    <p>More detailed representations of the final product.</p>
+    <ul>
+      <li>Can be done with combination of Photoshop, Illustrator, etc.</li>
+      <li>Show color schemes, fonts, etc.</li>
+      <li>Client feedback.</li>
+    </ul>
+    <p>
+      <em>Lorem Ipsum</em> is a placeholder text used to fill space in a mockup.
+    </p>
+    <ul>
+      <li><a href="https://loremipsum.io/">https://loremipsum.io/</a></li>
+    </ul>
+    <p><em>Examples</em></p>
+    <figure>
+      <span>
+        <img
+          src="https://cdn.dribbble.com/users/139593/screenshots/4551291/attachments/1029693/gather-home-desktop.jpg?resize=700x525&vertical=center"
+          style=""
+        />
+      </span>
+    </figure>
+
+    <figure>
+      <span>
+        <img
+          src="https://nationalgriefawarenessday.com/wp-content/uploads/2018/01/website-mockup-template-website-mockup-template-900x636.jpg"
+          style=""
+        />
+      </span>
+    </figure>
+
+    <h3 id="prototypes">Prototypes</h3>
+    <p>Incorporate interactivity into mockups / wireframes.</p>
+    <p>
+      Nowadays, often as easy as making several mockups; especially w/ modern JS
+      and CSS frameworks (e.g. Bootstrap, React, etc.)
+    </p>
+    <ul>
+      <li>Usability testing</li>
+      <li>User feedback</li>
+    </ul>
+    <h1 id="elements-of-an-effective-website">
+      Elements of an Effective Website
+    </h1>
+    <h2 id="organization">Organization</h2>
+    <h3 id="hierarchical">Hierarchical</h3>
+    <ul>
+      <li>Most common</li>
+      <li>Tree structure</li>
+    </ul>
+    <p><em>Examples:</em></p>
+    <ul>
+      <li>
+        <a href="https://en.wikipedia.org/wiki/Wikipedia"
+          >https://en.wikipedia.org/wiki/Wikipedia</a
+        >
+      </li>
+    </ul>
+    <h3 id="sequential">Sequential</h3>
+    <ul>
+      <li>Linear</li>
+      <li>Like a book</li>
+      <li>Good for tutorials, wizards, etc.</li>
+    </ul>
+    <p><em>Examples:</em></p>
+    <ul>
+      <li>
+        <a href="https://www.w3schools.com/html/default.asp"
+          >https://www.w3schools.com/html/default.asp</a
+        >
+      </li>
+    </ul>
+    <h3 id="single-page-applications">Single Page Applications</h3>
+    <ul>
+      <li>All content on one page</li>
+      <li>Good for mobile devices</li>
+      <li>Stress on the <em>application</em> part: Not beginner friendly</li>
+    </ul>
+    <p><em>Examples:</em></p>
+    <ul>
+      <li><a href="https://www.airbnb.com/">https://www.airbnb.com/</a></li>
+      <li><a href="https://www.netflix.com/">https://www.netflix.com/</a></li>
+    </ul>
+    <h2 id="visual-design">Visual Design</h2>
+    <p><strong>UI = User Interface</strong></p>
+    <p><strong>UX = User Experience</strong></p>
+    <ul>
+      <li>UI = how it looks</li>
+      <li>UX = how it works</li>
+    </ul>
+    <p>Does my design...</p>
+    <ul>
+      <li>Form a consistent theme?</li>
+      <li>Aid in navigation?</li>
+      <li>Aid utility/function of site?</li>
+      <li>Identify relative importance of elements?</li>
+    </ul>
+    <h3 id="types-of-pages">Types of Pages</h3>
+    <h4 id="landing-pages">Landing Pages</h4>
+    <ul>
+      <li>Nontraditional structure is okay.</li>
+    </ul>
+    <h4 id="content-pages">Content Pages</h4>
+    <ul>
+      <li>Consider using classic F or Z patterns.</li>
+      <li>
+        <a
+          href="https://lineindesign.medium.com/be-a-designer-who-can-also-help-with-writing-copy-2f4ea02a5646"
+          >Visual Hierarchy, Gutenberg Diagram, F &amp; Z Pattern</a
+        >
+      </li>
+    </ul>
+    <h3 id="color">Color</h3>
+    <h4 id="color-theory-and-palette-selection">
+      Color Theory and Palette Selection
+    </h4>
+    <ul>
+      <li>Image or logo can be starter for color palette.</li>
+      <li>
+        Color wheel can be helpful.
+        <ul>
+          <li><a href="https://coolors.co/">https://coolors.co/</a></li>
+          <li>
+            <a href="https://color.adobe.com/create/color-wheel"
+              >https://color.adobe.com/create/color-wheel</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="css-color">CSS Color</h4>
+    <ul>
+      <li>
+        <p>Colors are typically defined by name or HEX code:</p>
+        <ul>
+          <li>
+            <a href="https://www.w3schools.com/cssref/css_colors_legal.asp"
+              >https://www.w3schools.com/cssref/css_colors_legal.asp</a
+            >
+          </li>
+          <li>
+            <a href="https://www.w3schools.com/cssref/css_colors.asp"
+              >https://www.w3schools.com/cssref/css_colors.asp</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          HEX code represents a color in RGB (red, green, blue) format:
+          <strong>#RRGGBB</strong>
+        </p>
+        <ul>
+          <li>
+            Each pair of characters represents a value from 00 to FF (0 to 255
+            in decimal).
+          </li>
+          <li>0 = no color</li>
+          <li>FF = full color</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="usability-principles-for-web">Usability Principles for Web</h2>
+    <h3 id="least-cognitive-load">Least Cognitive Load</h3>
+    <ul>
+      <li>Minimize the amount of thinking the user has to do.</li>
+      <li>
+        E.g.: Better to use recognized icon than something too clever.
+        <ul>
+          <li>
+            <a href="https://www.nngroup.com/articles/icon-usability/"
+              >https://www.nngroup.com/articles/icon-usability/</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="responsive-design-mobile-first">
+      Responsive Design / Mobile First
+    </h3>
+    <ul>
+      <li>Design for mobile first, then scale up.</li>
+      <li>Use media queries to adjust layout for different screen sizes.</li>
+      <li>Use min/max-width to set breakpoints for layout.</li>
+      <li>More to come...</li>
+    </ul>
+    <h2 id="accessibility">Accessibility</h2>
+    <p>More to come... for now:</p>
+    <ul>
+      <li>Use semantic HTML</li>
+      <li>Use alt text for images</li>
+      <li>Use descriptive titles for pages</li>
+      <li>Avoid low contrast foreground/background colors</li>
+    </ul>
+    <h1 id="snippet-testing">Snippet Testing</h1>
+    <p>For quick one-off tests, use online code editors to test snippets:</p>
+    <ul>
+      <li><a href="https://codepen.io/">https://codepen.io/</a></li>
+    </ul>
+    <h1 id="intro-to-css">Intro to CSS</h1>
+    <h2 id="overview">Overview</h2>
+    <p><strong>CSS = Cascading Style Sheets</strong></p>
+    <p>We use CSS to style HTML.</p>
+    <ul>
+      <li>
+        CSS is a <em>cascading</em> language.
+        <ul>
+          <li>Styles can be inherited from parent elements.</li>
+          <li>Styles can be overridden by child elements.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="anatomy-of-a-css-rule">Anatomy of a CSS Rule</h2>
+    <figure>
+      <span>
+        <img src="https://www.w3schools.com/css/img_selector.gif" style="" />
+      </span>
+      <figcaption>
+        <a href="https://www.w3schools.com/css/css_syntax.asp"
+          >W3 Schools: CSS Syntax</a
+        >
+      </figcaption>
+    </figure>
+
+    <pre><code class="language-css"><span class="hljs-comment">/* Here's another example. */</span>
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+</code></pre>
+    <h2 id="inline-styles">Inline Styles</h2>
+    <p><strong>Highest specificity</strong></p>
+    <p>Can apply a <code>style</code> attribute to any HTML element:</p>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color: red;"</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+    <p>Multiple rules are separated by semicolons.</p>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color: red; font-size: 24px;"</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+    <h2 id="internal-styles">Internal Styles</h2>
+    <p><strong>Medium specificity</strong></p>
+    <p>
+      Can create a style block in the <code>&lt;head&gt;</code> of an HTML
+      document:
+    </p>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+    <span class="hljs-selector-tag">h1</span> {
+      <span class="hljs-attribute">color</span>: blue;
+    }
+    <span class="hljs-selector-tag">p</span> {
+      <span class="hljs-attribute">color</span>: red;
+    }
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</code></pre>
+    <h2 id="external-styles">External Styles</h2>
+    <p><strong>Lowest specificity</strong></p>
+    <p>Can create a separate CSS file and link it to an HTML document:</p>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"styles.css"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</code></pre>
+    <h2 id="html-id-and-class-attributes">HTML id and class Attributes</h2>
+    <ul>
+      <li>id = unique identifier; use # prefix for CSS selector</li>
+      <li>class = group identifier; use . prefix for CSS selector</li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"salads"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"foodMenu"</span>&gt;</span>Salads<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sandwiches"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"foodMenu"</span>&gt;</span>Sandwiches<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre>
+    <pre><code class="language-css"><span class="hljs-selector-class">.foodMenu</span> {
+  <span class="hljs-attribute">font-weight</span>: regular;
+}
+<span class="hljs-selector-id">#salads</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
+<span class="hljs-selector-id">#sandwiches</span> {
+  <span class="hljs-attribute">color</span>: brown;
+}
+</code></pre>
+    <h2 id="useful-css-links">Useful CSS Links</h2>
+    <h3 id="properties">Properties</h3>
+    <ul>
+      <li>
+        <a href="https://www.w3schools.com/cssref/default.asp"
+          >https://www.w3schools.com/cssref/default.asp</a
+        >
+      </li>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference"
+          >https://developer.mozilla.org/en-US/docs/Web/CSS/Reference</a
+        >
+      </li>
+    </ul>
+  </body>
+</html>

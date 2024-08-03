@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - File I/O</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">File I/O</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#file-io">File I/O</a>
+        <ul>
+          <li><a href="#what-is-a-file">What is a file?</a></li>
+          <li><a href="#loading-a-file">Loading a File</a></li>
+          <li><a href="#saving-a-file">Saving a File</a></li>
+          <li><a href="#file-access-modes">File Access Modes</a></li>
+          <li>
+            <a href="#checking-for-file-existence"
+              >Checking for file Existence</a
+            >
+          </li>
+          <li>
+            <a href="#file-io-functions-in-python"
+              >File I/O Functions in Python</a
+            >
+          </li>
+          <li><a href="#context-managers">Context Managers</a></li>
+          <li>
+            <a href="#reading-line-by-line-vs-entire-file"
+              >Reading: Line by Line vs Entire File</a
+            >
+            <ul>
+              <li><a href="#whole-file">Whole File</a></li>
+              <li><a href="#line-by-line">Line by Line</a></li>
+            </ul>
+          </li>
+          <li><a href="#writing">Writing</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="file-i-o">File I/O</h1>
+    <p><strong>I/O</strong> = Input/Output</p>
+    <p><strong>File I/O</strong> = reading from and writing to files.</p>
+    <h2 id="what-is-a-file-">What is a file?</h2>
+    <p>A file is a collection of data. It can be stored:</p>
+    <ul>
+      <li>
+        On <strong>disk</strong> (e.g., hard drive, USB drive)
+        <ul>
+          <li>Permanent storage</li>
+          <li>
+            Usually only updated periodically or at the end of a transaction
+          </li>
+        </ul>
+      </li>
+      <li>
+        In <strong>memory</strong> (e.g., RAM)
+        <ul>
+          <li>Temporary storage</li>
+          <li>Updated frequently, whenever the data in the file changes</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="loading-a-file">Loading a File</h2>
+    <p>
+      <strong>Loading</strong> a file means copying the file&#39;s contents from
+      disk to memory.
+    </p>
+    <ul>
+      <li>
+        Files cannot be manipulated directly on disk; must be loaded first.
+      </li>
+    </ul>
+    <h2 id="saving-a-file">Saving a File</h2>
+    <p>
+      <strong>Saving</strong> a file means copying the file&#39;s contents from
+      memory to disk.
+    </p>
+    <ul>
+      <li>
+        First update the contents in memory, then save the updated contents to
+        disk.
+      </li>
+    </ul>
+    <h2 id="file-access-modes">File Access Modes</h2>
+    <p>
+      When opening a file, you must specify the <strong>access mode</strong>:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Mode</th>
+          <th>Description</th>
+          <th>If file doesn&#39;t exist</th>
+          <th>If file exists</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>r</code></td>
+          <td>Read-only</td>
+          <td>Raises an error</td>
+          <td>Opens file for read</td>
+        </tr>
+        <tr>
+          <td><code>w</code></td>
+          <td>Write-only</td>
+          <td>Creates a new file</td>
+          <td>Overwrites existing file</td>
+        </tr>
+        <tr>
+          <td><code>a</code></td>
+          <td>Append</td>
+          <td>Creates a new file</td>
+          <td>Appends to existing file</td>
+        </tr>
+        <tr>
+          <td><code>r+</code></td>
+          <td>Read/write</td>
+          <td>Raises an error</td>
+          <td>Opens file for read/write</td>
+        </tr>
+        <tr>
+          <td><code>w+</code></td>
+          <td>Read/write</td>
+          <td>Creates a new file</td>
+          <td>Overwrites existing file</td>
+        </tr>
+        <tr>
+          <td><code>a+</code></td>
+          <td>Read/write</td>
+          <td>Creates a new file</td>
+          <td>Appends to existing file</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="checking-for-file-existence">Checking for file Existence</h2>
+    <p>We can also check if a file exists using the <code>os</code> module:</p>
+    <pre><code class="language-python"><span class="hljs-keyword">import</span> os
+
+some_file = <span class="hljs-string">"file.txt"</span>
+
+<span class="hljs-keyword">if</span> os.path.exists(some_file):
+    print(<span class="hljs-string">"File exists"</span>)
+<span class="hljs-keyword">else</span>:
+    print(<span class="hljs-string">"File does not exist"</span>)
+</code></pre>
+    <h2 id="file-i-o-functions-in-python">File I/O Functions in Python</h2>
+    <p>Several Python functions useful for file I/O:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>*<code>open()</code></td>
+          <td>Opens a file for reading or writing</td>
+        </tr>
+        <tr>
+          <td>*<code>read()</code></td>
+          <td>Reads the entire file into a string</td>
+        </tr>
+        <tr>
+          <td><code>readline()</code></td>
+          <td>Reads a single line from the file</td>
+        </tr>
+        <tr>
+          <td>*<code>readlines()</code></td>
+          <td>Reads all lines from the file into a list</td>
+        </tr>
+        <tr>
+          <td>*<code>write()</code></td>
+          <td>Writes a string to the file</td>
+        </tr>
+        <tr>
+          <td><code>writelines()</code></td>
+          <td>Writes a list of strings to the file</td>
+        </tr>
+        <tr>
+          <td><code>close()</code></td>
+          <td>Closes the file</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>*In my experience these are the most commonly used</p>
+    <h2 id="context-managers">Context Managers</h2>
+    <p>
+      A <strong>context manager</strong> is a construct that helps to properly
+      allocate and release resources properly.
+    </p>
+    <p>
+      Used when you need to &quot;check out&quot; a resource, use it, then
+      release it.
+    </p>
+    <ul>
+      <li>Not specific to Python; many languages have similar constructs.</li>
+      <li>
+        Not specific to file I/O, also:
+        <ul>
+          <li>Network connections</li>
+          <li>Database connections</li>
+          <li>Threads</li>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>Keyword is usually <code>with</code>.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-keyword">with</span> open(<span class="hljs-string">"file.txt"</span>, <span class="hljs-string">"r"</span>) <span class="hljs-keyword">as</span> file:
+    data = file.read()
+    print(data)
+</code></pre>
+    <p>This is equivalent to:</p>
+    <pre><code class="language-python">file = open(<span class="hljs-string">"file.txt"</span>, <span class="hljs-string">"r"</span>)
+data = file.read()
+print(data)
+file.close()
+</code></pre>
+    <p>
+      Context managers are preferred because they will automatically clean up
+      if:
+    </p>
+    <ul>
+      <li>An exception occurs</li>
+      <li>The program closes unexpectedly</li>
+    </ul>
+    <h2 id="reading-line-by-line-vs-entire-file">
+      Reading: Line by Line vs Entire File
+    </h2>
+    <p>
+      When reading a file, you can read the entire file at once or read it line
+      by line.
+    </p>
+    <h3 id="whole-file">Whole File</h3>
+    <p>File contents will be copied to memory all at once.</p>
+    <p>Use only when you need to whole file in memory. E.g.:</p>
+    <ul>
+      <li>Searching and replacing text</li>
+      <li>Counting words</li>
+      <li>...</li>
+    </ul>
+    <p>Not practical for very large files; too much memory usage.</p>
+    <h3 id="line-by-line">Line by Line</h3>
+    <p>Only one line is copied to memory at a given time.</p>
+    <p>Prefer this method unless otherwise needed or very small file.</p>
+    <p>E.g., reading a log file line by line.</p>
+    <pre><code class="language-python"><span class="hljs-comment">## File will be closed automatically when the block is exited,</span>
+<span class="hljs-comment">## So no need to call close.</span>
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">"file.txt"</span>, <span class="hljs-string">"r"</span>) <span class="hljs-keyword">as</span> file:
+    <span class="hljs-comment">## Pythonese way of reading a file line by line;</span>
+    <span class="hljs-comment">## No need to call readline() in a loop.</span>
+    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file:
+        print(line)
+</code></pre>
+    <h2 id="writing">Writing</h2>
+    <p>Writing to a file is similar to reading:</p>
+    <pre><code class="language-python"><span class="hljs-keyword">with</span> open(<span class="hljs-string">"file.txt"</span>, <span class="hljs-string">"w"</span>) <span class="hljs-keyword">as</span> file:
+    <span class="hljs-comment"># Note the newline character!</span>
+    file.write(<span class="hljs-string">"First line\n"</span>)
+    file.write(<span class="hljs-string">"Secondline"</span>)
+</code></pre>
+    <ul>
+      <li>
+        Don&#39;t forget the newline character (<code>\n</code>) at the end of a
+        write() call if you want a new line.
+      </li>
+    </ul>
+  </body>
+</html>

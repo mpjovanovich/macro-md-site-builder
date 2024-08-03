@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - AsyncStorage</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">AsyncStorage</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#asyncstorage">AsyncStorage</a>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#common-use-cases">Common Use Cases</a></li>
+          <li><a href="#installing-the-package">Installing the package</a></li>
+          <li><a href="#functions">Functions</a></li>
+          <li><a href="#demo">Demo</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="asyncstorage">AsyncStorage</h1>
+    <p>
+      Documentation:
+      <a href="https://reactnative.dev/docs/asyncstorage">AsyncStorage</a>
+    </p>
+    <h2 id="features">Features</h2>
+    <ul>
+      <li>Simple key-value storage</li>
+      <li>Local to device (saved on the phone)</li>
+      <li>Asynchronous</li>
+      <li>Unencrypted</li>
+      <li>Persistent (data remains after app is closed)</li>
+    </ul>
+    <h2 id="common-use-cases">Common Use Cases</h2>
+    <ul>
+      <li>
+        Session storage (login tokens, session data, etc.)
+        <ul>
+          <li>Login tokens</li>
+          <li>Session data</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+      <li>
+        User settings and preferences
+        <ul>
+          <li>Theme</li>
+          <li>Language</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+      <li>
+        Offline data storage
+        <ul>
+          <li>Persistent application data (data &quot;saved&quot; by user)</li>
+          <li>Local store for sync with server; user can work if offline</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="installing-the-package">Installing the package</h2>
+    <pre><code class="language-bash">npm install @react-native-async-storage/async-storage
+</code></pre>
+    <h2 id="functions">Functions</h2>
+    <pre><code class="language-jsx"><span class="hljs-keyword">import</span> AsyncStorage <span class="hljs-keyword">from</span> <span class="hljs-string">"@react-native-async-storage/async-storage"</span>;
+
+<span class="hljs-comment">// Save data</span>
+<span class="hljs-keyword">const</span> storeData = <span class="hljs-keyword">async</span> (key, value) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> AsyncStorage.setItem(key, value);
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-built_in">console</span>.log(e);
+  }
+};
+
+<span class="hljs-comment">// Retrieve data</span>
+<span class="hljs-keyword">const</span> getData = <span class="hljs-keyword">async</span> (key) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> value = <span class="hljs-keyword">await</span> AsyncStorage.getItem(key);
+    <span class="hljs-keyword">if</span> (value) {
+      <span class="hljs-built_in">console</span>.log(value);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Key not found"</span>);
+    }
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-built_in">console</span>.log(e);
+  }
+};
+
+<span class="hljs-comment">// Remove data</span>
+<span class="hljs-keyword">const</span> removeData = <span class="hljs-keyword">async</span> (key) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> AsyncStorage.removeItem(key);
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-built_in">console</span>.log(e);
+  }
+};
+
+<span class="hljs-comment">// Clear all data</span>
+<span class="hljs-keyword">const</span> clearAllData = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> AsyncStorage.clear();
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-built_in">console</span>.log(e);
+  }
+};
+</code></pre>
+    <h2 id="demo">Demo</h2>
+    <p>Do some basics using console.log to warm up...</p>
+    <p>
+      <a href="https://snack.expo.dev/@mpjovanovich/asyncstorage"
+        >Snack: AsyncStorage</a
+      >
+    </p>
+  </body>
+</html>

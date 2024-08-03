@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - GET</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - GET</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#get">GET</a>
+        <ul>
+          <li>
+            <a href="#query-strings">Query Strings</a>
+            <ul>
+              <li>
+                <a href="#parts-of-a-query-string">Parts of a Query String</a>
+              </li>
+              <li>
+                <a href="#sources-of-get-request">Sources of GET Request</a>
+              </li>
+              <li><a href="#form-with-get-method">Form with GET Method</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#php-get-array">PHP GET Array</a>
+            <ul>
+              <li><a href="#missing-parameters">Missing Parameters</a></li>
+              <li>
+                <a href="#patterns-for-checking-parameter-set"
+                  >Patterns for Checking Parameter Set</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#get-examples">GET Examples</a>
+            <ul>
+              <li><a href="#self-linking-page">Self-linking Page</a></li>
+              <li><a href="#maintaining-state">Maintaining State</a></li>
+              <li><a href="#calculator-program">Calculator Program</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#passing-an-array-via-get">Passing an Array via GET</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="get">GET</h1>
+    <p>A GET request is used to request data from a specified resource.</p>
+    <h2 id="query-strings">Query Strings</h2>
+    <p>Parameters may be passed in the URL of a GET request.</p>
+    <p>
+      A URL may contain data that is passed to the server via a
+      <strong>query string</strong>.
+    </p>
+    <h3 id="parts-of-a-query-string">Parts of a Query String</h3>
+    <figure>
+      <span>
+        <img
+          src="https://lh4.googleusercontent.com/bzNgNITcGMxVszuieKXJSF7Lswjw64bI7yuOvzQIyiedIzTqURKndIZkBL6OJXZcn3mQDMinzqM939F7ATVxr70XqyJVoG8EC9KOuwndGjpc_S0howFdJXKsXkrIwB2UF2ezFSFV"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a href=""></a>
+      </figcaption>
+    </figure>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Part of Query String</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>?</code></td>
+          <td>start of query string</td>
+        </tr>
+        <tr>
+          <td><code>=</code></td>
+          <td>separator between name and value</td>
+        </tr>
+        <tr>
+          <td><code>&amp;</code></td>
+          <td>separator between parameters (if more than one)</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="sources-of-get-request">Sources of GET Request</h3>
+    <ul>
+      <li>A link on a web page</li>
+      <li>A form submitted with the <code>GET</code> method</li>
+      <li>A program / API</li>
+      <li>A user typing in a URL (a reason to always validate)</li>
+    </ul>
+    <h3 id="form-with-get-method">Form with GET Method</h3>
+    <p>
+      If data comes from an HTML form, the <code>name</code> attribute of input
+      is used as the key in the <code>$_GET</code> array.
+    </p>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"test.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"GET"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"name"</span>&gt;</span>Name:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"name"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"age"</span>&gt;</span>Age:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"age"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"age"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Submit"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+    <p>
+      Result URL:
+      <code>http://localhost:8080/test.php?name=John&amp;age=42</code>
+    </p>
+    <h2 id="php-get-array">PHP GET Array</h2>
+    <p>
+      PHP automatically creates an associative array called
+      <code>$_GET</code> that contains the query string parameters.
+    </p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// http://localhost:8080/test.php?name=John&amp;age=42</span>
+<span class="hljs-keyword">echo</span> $_GET[<span class="hljs-string">'name'</span>]; <span class="hljs-comment">// John</span>
+<span class="hljs-keyword">echo</span> $_GET[<span class="hljs-string">'age'</span>]; <span class="hljs-comment">// 42</span>
+</code></pre>
+    <h3 id="missing-parameters">Missing Parameters</h3>
+    <p>If a parameter is missing, PHP will throw an error.</p>
+    <p>Use the <code>isset()</code> function to check if a parameter is set.</p>
+    <pre><code class="language-php"><span class="hljs-comment">// http://localhost:8080/test.php?name=John&amp;age=42</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">'age'</span>])) {
+  <span class="hljs-keyword">echo</span> $_GET[<span class="hljs-string">'age'</span>];
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">'Age is not set.'</span>;
+}
+</code></pre>
+    <h3 id="patterns-for-checking-parameter-set">
+      Patterns for Checking Parameter Set
+    </h3>
+    <p>Ternary if:</p>
+    <pre><code class="language-php">$age = <span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">'age'</span>]) ? $_GET[<span class="hljs-string">'age'</span>] : <span class="hljs-string">''</span>;
+</code></pre>
+    <p>Null coalescing:</p>
+    <pre><code class="language-php">$age = $_GET[<span class="hljs-string">'age'</span>] ?? <span class="hljs-string">''</span>;
+</code></pre>
+    <h2 id="get-examples">GET Examples</h2>
+    <p>
+      In these examples we use <code>$_SERVER[&#39;PHP_SELF&#39;]</code> to set
+      the form action to the current page.
+    </p>
+    <h3 id="self-linking-page">Self-linking Page</h3>
+    <p>We can include anchor tags in the page that link to the page itself.</p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Check if the color parameter is set in the query string</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">'color'</span>])) {
+    $color = $_GET[<span class="hljs-string">'color'</span>];
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;style&gt;body { background-color: '</span> . $color . <span class="hljs-string">'; }&lt;/style&gt;'</span>;
+}
+<span class="hljs-meta">?&gt;</span>
+&lt;!-- Some basic styles --&gt;
+&lt;style&gt;
+    a {
+        padding: <span class="hljs-number">10</span>px <span class="hljs-number">20</span>px;
+        margin: <span class="hljs-number">10</span>px;
+        color: white;
+        text-decoration: none;
+        border-radius: <span class="hljs-number">5</span>px;
+    }
+&lt;/style&gt;
+&lt;!-- The links --&gt;
+&lt;a href=<span class="hljs-string">"?color=red"</span> style=<span class="hljs-string">"background-color: red;"</span>&gt;Red&lt;/a&gt;
+&lt;a href=<span class="hljs-string">"?color=green"</span> style=<span class="hljs-string">"background-color: green;"</span>&gt;Green&lt;/a&gt;
+&lt;a href=<span class="hljs-string">"?color=blue"</span> style=<span class="hljs-string">"background-color: blue;"</span>&gt;Blue&lt;/a&gt;
+</code></pre>
+    <h3 id="maintaining-state">Maintaining State</h3>
+    <p>
+      If a user submits a form, the form should be redisplayed with the
+      user&#39;s input (rather than a &quot;new&quot; blank form).
+    </p>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$remembered = $_GET[<span class="hljs-string">'remembered'</span>] ?? <span class="hljs-string">''</span>;
+<span class="hljs-meta">?&gt;</span>
+&lt;form action=<span class="hljs-string">"&lt;?= $_SERVER['PHP_SELF'] ?&gt;"</span> method=<span class="hljs-string">"GET"</span>&gt;
+    &lt;label <span class="hljs-keyword">for</span>=<span class="hljs-string">"remembered"</span>&gt;Remember me please:&lt;/label&gt;
+    &lt;input type=<span class="hljs-string">"text"</span> name=<span class="hljs-string">"remembered"</span> id=<span class="hljs-string">"remembered"</span> value=<span class="hljs-string">"&lt;?= $remembered ?&gt;"</span> /&gt;
+    &lt;input type=<span class="hljs-string">"submit"</span> value=<span class="hljs-string">"Submit"</span> /&gt;
+&lt;/form&gt;
+</code></pre>
+    <h3 id="calculator-program">Calculator Program</h3>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$first = $_GET[<span class="hljs-string">'first'</span>] ?? <span class="hljs-string">''</span>;
+$second = $_GET[<span class="hljs-string">'second'</span>] ?? <span class="hljs-string">''</span>;
+$operator = $_GET[<span class="hljs-string">'operator'</span>] ?? <span class="hljs-string">''</span>;
+$result = <span class="hljs-string">''</span>;
+$errorMessage = <span class="hljs-string">''</span>;
+
+<span class="hljs-comment">// Ideally we would do more validation on the input prior...</span>
+<span class="hljs-keyword">if</span> ($operator) {
+    <span class="hljs-keyword">if</span> ($operator == <span class="hljs-string">'+'</span>) {
+        $result = $first + $second;
+    } <span class="hljs-keyword">elseif</span> ($operator == <span class="hljs-string">'-'</span>) {
+        $result = $first - $second;
+    } <span class="hljs-keyword">elseif</span> ($operator == <span class="hljs-string">'*'</span>) {
+        $result = $first * $second;
+    } <span class="hljs-keyword">elseif</span> ($operator == <span class="hljs-string">'/'</span>) {
+        $result = $first / $second;
+    } <span class="hljs-keyword">else</span> {
+        $errorMessage = <span class="hljs-string">'Invalid operator.'</span>;
+    }
+}
+
+<span class="hljs-comment">/* ************************************************************ *
+* ADVANCED CONCEPT: match
+* Will have same result as if statements above
+/* ************************************************************ */</span>
+<span class="hljs-comment">// if ($operator) {</span>
+<span class="hljs-comment">//     $result = match ($operator) {</span>
+<span class="hljs-comment">//         '+' =&gt; $first + $second,</span>
+<span class="hljs-comment">//         '-' =&gt; $first - $second,</span>
+<span class="hljs-comment">//         '*' =&gt; $first * $second,</span>
+<span class="hljs-comment">//         '/' =&gt; $first / $second,</span>
+<span class="hljs-comment">//         default =&gt; $errorMessage = 'Invalid operator.',</span>
+<span class="hljs-comment">//     };</span>
+<span class="hljs-comment">// }};</span>
+<span class="hljs-comment">/* ************************************************************ */</span>
+<span class="hljs-meta">?&gt;</span>
+
+&lt;!-- Make it look decent --&gt;
+&lt;style&gt;
+    label {
+        display: inline-block;
+        margin-bottom: <span class="hljs-number">10</span>px;
+        width: <span class="hljs-number">200</span>px;
+    }
+
+    .error {
+        color: red;
+        font-weight: bold;
+    }
+&lt;/style&gt;
+
+&lt;!-- HTML --&gt;
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">if</span> ($errorMessage) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;p class=\"error\"&gt;$errorMessage&lt;/p&gt;"</span>;
+}
+<span class="hljs-meta">?&gt;</span>
+&lt;h1&gt;Result: <span class="hljs-meta">&lt;?</span>= $result; <span class="hljs-meta">?&gt;</span>&lt;/h1&gt;
+&lt;form method=<span class="hljs-string">"GET"</span> action=<span class="hljs-string">"&lt;?= $_SERVER['PHP_SELF'] ?&gt;"</span>&gt;
+    &lt;label <span class="hljs-keyword">for</span>=<span class="hljs-string">"first"</span>&gt;First Number:&lt;/label&gt;
+    &lt;input type=<span class="hljs-string">"text"</span> name=<span class="hljs-string">"first"</span> id=<span class="hljs-string">"first"</span> value=<span class="hljs-string">"&lt;?= $first ?&gt;"</span> /&gt;&lt;br /&gt;
+    &lt;label <span class="hljs-keyword">for</span>=<span class="hljs-string">"operator"</span>&gt;Operator:&lt;/label&gt;
+    &lt;input type=<span class="hljs-string">"text"</span> name=<span class="hljs-string">"operator"</span> id=<span class="hljs-string">"operator"</span> value=<span class="hljs-string">"&lt;?= $operator ?&gt;"</span> /&gt;&lt;br /&gt;
+    &lt;label <span class="hljs-keyword">for</span>=<span class="hljs-string">"second"</span>&gt;Second Number:&lt;/label&gt;
+    &lt;input type=<span class="hljs-string">"text"</span> name=<span class="hljs-string">"second"</span> id=<span class="hljs-string">"second"</span> value=<span class="hljs-string">"&lt;?= $second ?&gt;"</span> /&gt;&lt;br /&gt;
+    &lt;input type=<span class="hljs-string">"submit"</span> name=<span class="hljs-string">"calculate"</span> value=<span class="hljs-string">"Calculate"</span> /&gt;
+&lt;/form&gt;
+</code></pre>
+    <h2 id="passing-an-array-via-get">Passing an Array via GET</h2>
+    <ul>
+      <li>
+        Arrays can be passed via GET by using the <code>[]</code> notation in
+        the name attribute.
+      </li>
+      <li>
+        In the example below, the <code>$_GET[&#39;stuff&#39;]</code> array will
+        contain the values of any checked boxes.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$stuff = $_GET[<span class="hljs-string">'stuff'</span>] ?? [];
+print_r($stuff);
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">""</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"GET"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"stuff[]"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"item1"</span> /&gt;</span>Item 1<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>
+  &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"stuff[]"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"item2"</span> /&gt;</span>Item 2<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>
+  &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"stuff[]"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"item3"</span> /&gt;</span>Item 3<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>
+  &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Submit"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+  </body>
+</html>

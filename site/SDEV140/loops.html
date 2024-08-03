@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Loops</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Loops</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#loops">Loops</a>
+        <ul>
+          <li><a href="#why-loops">Why Loops?</a></li>
+          <li><a href="#pseudocode">Pseudocode</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#definite-loops">Definite Loops</a>
+        <ul>
+          <li>
+            <a href="#for-loops"><code>for</code> Loops</a>
+            <ul>
+              <li><a href="#the-range-function">The range() Function</a></li>
+              <li><a href="#c-style-syntax">&quot;C style&quot; Syntax</a></li>
+              <li><a href="#changing-the-step">Changing the Step</a></li>
+              <li><a href="#off-by-one-errors">Off by One Errors</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#indefinite-loops">Indefinite Loops</a>
+        <ul>
+          <li>
+            <a href="#while-loops"><code>while</code> Loops</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#nested-loops">Nested Loops</a></li>
+      <li>
+        <a href="#controlled-loops-with-break-and-continue"
+          >Controlled Loops with &quot;break&quot; and &quot;continue&quot;</a
+        >
+        <ul>
+          <li><a href="#break">Break</a></li>
+          <li><a href="#continue">Continue</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="loops">Loops</h1>
+    <h2 id="why-loops-">Why Loops?</h2>
+    <figure>
+      <span
+        ><img
+          src="https://timmousk.com/wp-content/uploads/2022/03/2-6.jpg"
+          alt="Figure"
+          style="width: 70%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>
+        Loops are commonly used to:
+        <ul>
+          <li>repeat a block of code</li>
+          <li>iterate over a collection of data</li>
+        </ul>
+      </li>
+      <li>
+        Loops can run zero to infinite times depending on the condition and
+        inputs.
+      </li>
+      <li><strong>Iteration</strong> = one execution of the loop body.</li>
+    </ul>
+    <h2 id="pseudocode">Pseudocode</h2>
+    <pre><code>while some_condition == True:
+    # loop body
+</code></pre>
+    <pre><code>for some_start_value to some_end_value:
+    # loop body
+</code></pre>
+    <pre><code>for each item in some_collection:
+    # loop body
+</code></pre>
+    <h1 id="definite-loops">Definite Loops</h1>
+    <p>Used when we know in advance how many times we want to iterate.</p>
+    <h2 id="-for-loops">`for` Loops</h2>
+    <p>Used when we know exactly how many times the loop should run.</p>
+    <ul>
+      <li>Initialize loop control variable.</li>
+      <li>Test loop control variable.</li>
+      <li>Alter loop control variable.</li>
+      <li>Test until the entry condition is false.</li>
+    </ul>
+    <p>
+      Python doesn&#39;t have a traditional <code>for</code> loop; most
+      languages do.
+    </p>
+    <h3 id="the-range-function">The range() Function</h3>
+    <pre><code class="language-python"><span class="hljs-comment">## There are three "overloads" for the range function, so we can</span>
+<span class="hljs-comment">## Write a python loop in different ways. These are all the same:</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span> ):
+      <span class="hljs-comment">## do some work ten times</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">0</span>, <span class="hljs-number">10</span> ):
+      <span class="hljs-comment">## do some work ten times</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">10</span> ):
+    <span class="hljs-comment">## do some work ten times</span>
+</code></pre>
+    <ul>
+      <li>Range returns a list of numbers.</li>
+      <li>We can then iterate over the list.</li>
+      <li>
+        The i is optional.
+        <ul>
+          <li>
+            <pre><code class="language-python"><span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range( <span class="hljs-number">10</span> ):
+    <span class="hljs-comment">## do some work ten times</span>
+</code></pre>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Demos:</p>
+
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/harmonic_series_loop.py"
+        >Harmonic Series</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/print_multiples.py"
+        >Print Multiples</a
+      >
+    </p>
+    <h3 id="-c-style-syntax">"C style" Syntax</h3>
+    <p>
+      Many languages use &quot;C style&quot; syntax for loops, as shown below.
+    </p>
+    <p>
+      For this reason I require that you call the range function shown above
+      with all three arguments.
+    </p>
+    <pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">/////////////////////////////////////////</span>
+    <span class="hljs-comment">// Prints numbers 0-9</span>
+    <span class="hljs-comment">/////////////////////////////////////////</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+        <span class="hljs-comment">// A print statement in C</span>
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, i);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+    <h3 id="changing-the-step">Changing the Step</h3>
+    <ul>
+      <li>
+        The <strong>counter</strong> does not have to increment / decrement by
+        one.
+      </li>
+      <li>We can change the <strong>step size</strong>.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">10</span>, <span class="hljs-number">101</span>, <span class="hljs-number">10</span> ):
+    <span class="hljs-comment">## do some work using the numbers 10, 20, ..., 100</span>
+</code></pre>
+    <h3 id="off-by-one-errors">Off by One Errors</h3>
+    <ul>
+      <li>Be mindful of the inclusiveness of the range function.</li>
+      <li>
+        <strong>Start inclusive</strong> and <strong>end exclusive</strong>.
+      </li>
+      <li>[start, end)</li>
+      <li>
+        When using while, also be mindful of &lt; vs &lt;= and &gt; vs &gt;=.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment">## Prints 0-9</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span> ):
+    print( i )
+</code></pre>
+    <pre><code class="language-python"><span class="hljs-comment">## Prints 0-9</span>
+i = <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> i &lt; <span class="hljs-number">10</span>:
+    print( i )
+    i += <span class="hljs-number">1</span>
+</code></pre>
+    <h1 id="indefinite-loops">Indefinite Loops</h1>
+    <p>Used when we don&#39;t know how many times the loop should run.</p>
+    <h2 id="-while-loops">`while` Loops</h2>
+    <pre><code class="language-python"><span class="hljs-keyword">while</span> some_condition == <span class="hljs-literal">True</span>:
+    <span class="hljs-comment">## do some work</span>
+</code></pre>
+    <p class="demo">Demos:</p>
+
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/calculate_exponents.py"
+        >Calculate Exponents</a
+      >
+    </p>
+    <h1 id="nested-loops">Nested Loops</h1>
+    <ul>
+      <li>A <strong>nested loop</strong> is a loop inside another loop.</li>
+      <li>
+        The inner loop is executed completely for each iteration of the outer
+        loop.
+      </li>
+      <li>The loop body is offset by indenting the code block for the body</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment">## Outer loop</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">10</span> ):
+    <span class="hljs-comment">## Inner loop</span>
+    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range( <span class="hljs-number">10</span> ):
+        print( i, j )
+</code></pre>
+    <ul>
+      <li>We don&#39;t have to use i and j, but it&#39;s a convention</li>
+    </ul>
+    <p class="demo">Walkthrough:</p>
+
+    <p>What is the output of this program?</p>
+    <pre><code class="language-python"><span class="hljs-comment"># OUTER LOOP</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span> ):
+    <span class="hljs-comment"># This statement is in the outer loop</span>
+    print( <span class="hljs-string">"Outer loop started: "</span> + str(i) )
+
+    <span class="hljs-comment"># INNER LOOP</span>
+    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range( <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span> ):
+        <span class="hljs-comment"># This statement is part of the inner loop</span>
+        print( <span class="hljs-string">"Inner loop started: "</span> + str(j) )
+        <span class="hljs-comment"># Do some work...</span>
+        print( <span class="hljs-string">"Inner loop complete: "</span> + str(j) )
+
+    <span class="hljs-comment"># We can have more code in the outer loop after the</span>
+    <span class="hljs-comment"># inner loop has finished.</span>
+    print( <span class="hljs-string">"Outer loop complete: "</span> + str(i) )
+</code></pre>
+    <p>Tracking variables:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Outer, i</th>
+          <th>Inner, j</th>
+          <th>x</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="demo">Walkthrough:</p>
+
+    <p>What is the output of this program?</p>
+    <pre><code class="language-python">x = <span class="hljs-number">0</span>
+
+<span class="hljs-comment"># OUTER LOOP</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span> ):
+    x += i
+    print( <span class="hljs-string">f"i = <span class="hljs-subst">{i}</span>, j = --, x = <span class="hljs-subst">{x}</span>"</span> )
+
+    <span class="hljs-comment"># INNER LOOP</span>
+    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range( <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span> ):
+        x += j
+        print( <span class="hljs-string">f"i = <span class="hljs-subst">{i}</span>, j = <span class="hljs-subst">{j}</span>, x = <span class="hljs-subst">{x}</span>"</span> )
+</code></pre>
+    <h1 id="controlled-loops-with-break-and-continue-">
+      Controlled Loops with "break" and "continue"
+    </h1>
+    <h2 id="break">Break</h2>
+    <p>
+      We can &quot;short-circuit&quot; a loop using the
+      <code>break</code> statement.
+    </p>
+    <p>
+      This will immediately exit the loop, much like a
+      <code>return</code> statement exits a function.
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment">## Will only print 0-4</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">10</span> ):
+    <span class="hljs-keyword">if</span> i == <span class="hljs-number">5</span>:
+        <span class="hljs-keyword">break</span>
+    print( i )
+</code></pre>
+    <p>Example scenario:</p>
+    <ul>
+      <li>
+        Searching for a value in a list. Once you&#39;ve found the value, you
+        don&#39;t need to keep searching. We will cover this when we do arrays.
+      </li>
+    </ul>
+    <h2 id="continue">Continue</h2>
+    <p>
+      We can skip the rest of the loop body but not break out of the whole loop
+      using the <code>continue</code> statement.
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment">## Will skip 5</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( <span class="hljs-number">10</span> ):
+    <span class="hljs-keyword">if</span> i == <span class="hljs-number">5</span>:
+        <span class="hljs-keyword">continue</span>
+    print( i )
+</code></pre>
+    <p>Example scenario:</p>
+    <ul>
+      <li>
+        Loop through a course roster and print all students except those who
+        have withdrawn. You&#39;d use a <code>continue</code> statement to skip
+        the withdrawn students.
+      </li>
+    </ul>
+    <p class="demo">Demos:</p>
+
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/name_sentinal.py"
+        >Name Sentinal</a
+      >
+    </p>
+  </body>
+</html>

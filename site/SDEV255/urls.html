@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - URLs</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">URLs</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#understanding-url">Understanding URL</a>
+        <ul>
+          <li><a href="#protocol">Protocol</a></li>
+          <li><a href="#domain-name">Domain Name</a></li>
+          <li><a href="#localhost">Localhost</a></li>
+          <li><a href="#port">Port</a></li>
+          <li><a href="#default-ports">Default ports:</a></li>
+          <li><a href="#path">Path</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="understanding-url">Understanding URL</h1>
+    <figure>
+      <span>
+        <img
+          src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*O2QB8zBNMs7SN44AhGdPrg.png"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a
+          href="https://medium.com/@joseph.pyram/9-parts-of-a-url-that-you-should-know-89fea8e11713"
+          >9 Parts of a URL You Should Know</a
+        >
+      </figcaption>
+    </figure>
+
+    <ul>
+      <li>A URL is a <strong>Uniform Resource Locator</strong>.</li>
+    </ul>
+    <h2 id="protocol">Protocol</h2>
+    <ul>
+      <li>
+        The protocol tells the browser how to communicate with the server.
+      </li>
+      <li>
+        HTTP = <strong>HyperText Transfer Protocol</strong>
+        <ul>
+          <li>The protocol used to transfer web pages.</li>
+        </ul>
+      </li>
+      <li>
+        HTTPS = <strong>HyperText Transfer Protocol Secure</strong>
+        <ul>
+          <li>Uses SSL/TLS to encrypt the connection.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="domain-name">Domain Name</h2>
+    <ul>
+      <li>
+        An <strong>IP address</strong> is a unique identifier for a computer on
+        a network.
+        <ul>
+          <li>IP addresses are for computers and nerds.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>DNS (Domain Name System)</strong> is a service that translates
+        hostnames to IP addresses.
+        <ul>
+          <li>Domain names are for humans.</li>
+          <li>It&#39;s just a lookup table.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="localhost">Localhost</h2>
+    <ul>
+      <li>
+        <strong>localhost</strong> is a special hostname that refers to the
+        local machine.
+      </li>
+      <li>We can ping the localhost to get the IP address.</li>
+    </ul>
+    <pre><code class="language-bash">$ ping localhost
+</code></pre>
+    <h2 id="port">Port</h2>
+    <ul>
+      <li>Ports are used to identify which program should receive the data.</li>
+      <li>A program is said to be &#39;listening&#39; on a port.</li>
+    </ul>
+    <h2 id="default-ports-">Default ports:</h2>
+    <p>
+      If no port is specified, the browser will use the default port for the
+      protocol.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Protocol</th>
+          <th>Port</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HTTP</td>
+          <td>80</td>
+        </tr>
+        <tr>
+          <td>HTTPS</td>
+          <td>443</td>
+        </tr>
+        <tr>
+          <td>MariaDB</td>
+          <td>3306</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="path">Path</h2>
+    <ul>
+      <li>The path is the location of the resource on the server.</li>
+      <li>
+        The <strong>root</strong> of our web server is the
+        <em>htdocs</em> folder.
+      </li>
+      <li>
+        For this class:
+        <ul>
+          <li>
+            <strong
+              ><a href="http://localhost:80/SDEV255/"
+                >http://localhost:80/SDEV255/</a
+              ></strong
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

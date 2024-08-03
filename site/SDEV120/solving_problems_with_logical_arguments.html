@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Solving Problems with Logical Arguments</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Solving Problems with Logical Arguments</a>
+    </h1>
+    <h1 id="solving-problems-with-logical-arguments">
+      Solving Problems with Logical Arguments
+    </h1>
+    <h2 id="implication-truth-table-reminder-">
+      Implication Truth Table (reminder):
+    </h2>
+    <table>
+      <thead>
+        <tr>
+          <th>p</th>
+          <th>q</th>
+          <th>p → q</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T</td>
+          <td>T</td>
+          <td>T</td>
+        </tr>
+        <tr>
+          <td>T</td>
+          <td>F</td>
+          <td>F</td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>T</td>
+          <td>T</td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>F</td>
+          <td>T</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="contrapositive">Contrapositive</h2>
+    <p>
+      We form the contrapositive of a proposition by negating both the
+      antecedent and the consequent, and then switching them.
+    </p>
+    <p>The contrapositive of <code>p → q</code> is <code>¬q → ¬p</code>.</p>
+    <p>
+      The contrapositive of a proposition is logically equivalent to the
+      original proposition.
+    </p>
+    <h2 id="inverse">Inverse</h2>
+    <p>
+      We form the inverse of a proposition by negating both the antecedent and
+      the consequent.
+    </p>
+    <p>The inverse of <code>p → q</code> is <code>¬p → ¬q</code>.</p>
+    <h3 id="fallacy">Fallacy</h3>
+    <p>
+      A common logical fallacy is to assume that the inverse of a proposition is
+      true.
+    </p>
+    <p>Example:</p>
+    <ul>
+      <li>If it is raining, then the ground is wet.</li>
+      <li>It is not raining, so the ground is not wet.</li>
+    </ul>
+    <p>Nope! Could be dew, a sprinkler, etc.</p>
+    <h2 id="converse">Converse</h2>
+    <p>
+      We form the converse of a proposition by switching the antecedent and the
+      consequent.
+    </p>
+    <p>The converse of <code>p → q</code> is <code>q → p</code>.</p>
+    <h3 id="fallacy">Fallacy</h3>
+    <p>
+      A common logical fallacy is to assume that the converse of a proposition
+      is true.
+    </p>
+    <p>Example:</p>
+    <ul>
+      <li>If it is raining, then the ground is wet.</li>
+      <li>The ground is wet, so it must be raining.</li>
+    </ul>
+    <p>Don&#39;t think so!</p>
+    <h2 id="translating-verbal-statements">Translating Verbal Statements</h2>
+    <p>
+      Translate the following verbal statements into logical arguments, and
+      construct truth tables for each:
+    </p>
+    <ul>
+      <li>If the moon is made of cheese, then I will eat it.</li>
+      <li>If I eat the moon, then I will not be hungry.</li>
+      <li>If an animal is a kangaroo, then it is a mammal.</li>
+      <li>If kangaroos are reptiles, then they lay eggs.</li>
+      <li>If I finish my work and chores, then I can go to the zoo.</li>
+      <li>
+        If I do not finish my work and chores, then I cannot go to the zoo.
+      </li>
+      <li>
+        If I am over 18 or I have parental consent, then I can get a tattoo.
+      </li>
+      <li>
+        If it&#39;s (either) raining and I have an umbrella, or it&#39;s sunny,
+        then I&#39;ll go for a walk.
+      </li>
+    </ul>
+    <h2 id="group-exercise">Group Exercise</h2>
+    <p>Break into groups and work on the following problem:</p>
+    <p>
+      <a href="https://brilliant.org/problems/the-boxes"
+        >https://brilliant.org/problems/the-boxes</a
+      >
+    </p>
+  </body>
+</html>

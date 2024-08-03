@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Abstraction</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Abstraction</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#abstraction">Abstraction</a>
+        <ul>
+          <li>
+            <a href="#interfaces">Interfaces</a>
+            <ul>
+              <li><a href="#usage">Usage</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#abstract-classes-and-methods"
+              >Abstract Classes and Methods</a
+            >
+            <ul>
+              <li><a href="#usage-1">Usage</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="abstraction">Abstraction</h1>
+    <p>Primary purposes of <strong>abstraction</strong> are to:</p>
+    <ul>
+      <li>Hide the complexity of the system from the user.</li>
+      <li>Segregate interfaces from implementation.</li>
+    </ul>
+    <h2 id="interfaces">Interfaces</h2>
+    <p>
+      <strong>Interface</strong>: The set of public methods and properties that
+      a class provides.
+    </p>
+    <p>
+      <strong>Implementation</strong>: The actual code that performs the
+      operations.
+    </p>
+    <p>
+      An interface defines a <strong>contract</strong> between the class and the
+      outside world. The class promises to provide the methods and properties
+      defined in the interface.
+    </p>
+    <p>We may speak of interface as:</p>
+    <ul>
+      <li>
+        General sense: The set of methods and properties that a class provides.
+      </li>
+      <li>
+        Specific sense: A language construct that defines a contract between the
+        class and the outside world (keyword <code>Interface</code>).
+      </li>
+    </ul>
+    <h3 id="usage">Usage</h3>
+    <p>A class may implement zero to many interfaces.</p>
+    <p>
+      <strong>A note on Python</strong>: Python does not have a built-in
+      <code>Interface</code> keyword. Instead, we use abstract classes and
+      methods (discussed below) to define interfaces.
+    </p>
+    <p><em>Example</em>:</p>
+    <p>*TypeScript programming language</p>
+    <p>Interface</p>
+    <pre><code class="language-typescript"><span class="hljs-keyword">interface</span> IDatabase {
+  connect(): <span class="hljs-built_in">void</span>;
+  disconnect(): <span class="hljs-built_in">void</span>;
+  execute_query(query: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span>;
+}
+</code></pre>
+    <p>Implementation</p>
+    <pre><code class="language-typescript"><span class="hljs-keyword">class</span> MySQLDatabase <span class="hljs-keyword">implements</span> IDatabase {
+  connect(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Connect to MySQL database</span>
+  }
+
+  disconnect(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Disconnect from MySQL database</span>
+  }
+
+  execute_query(query: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Execute query on MySQL database</span>
+  }
+}
+</code></pre>
+    <h2 id="abstract-classes-and-methods">Abstract Classes and Methods</h2>
+    <p><strong>Abstract</strong>: Cannot be directly instantiated or used.</p>
+    <p><strong>Concrete</strong>: Can be directly instantiated or used.</p>
+    <ul>
+      <li>
+        <p>Abstract base classes</p>
+        <ul>
+          <li>Are only used as a base class for other classes.</li>
+          <li>May contain abstract methods or properties.</li>
+          <li>May contain concrete methods or properties.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Abstract methods</p>
+        <ul>
+          <li>May only by defined in an abstract class.</li>
+          <li>
+            <em
+              >Must be implemented in a derived class by overriding them in the
+              derived class.</em
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="usage">Usage</h3>
+    <p>
+      A class may (usually) inherit from one and only one abstract base class.
+    </p>
+    <pre><code class="language-python"><span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABC, abstractmethod
+
+<span class="hljs-comment">## Abstract base class</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shape</span><span class="hljs-params">(ABC)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name)</span>:</span>
+        self._name = name
+
+    <span class="hljs-comment">## Concrete method</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_name</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">f"Name: <span class="hljs-subst">{self._name}</span>"</span>)
+
+    <span class="hljs-comment">## Abstract methods - must be implemented in derived classes</span>
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span><span class="hljs-params">(Shape)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, radius)</span>:</span>
+        <span class="hljs-comment">## Call parent class constructor</span>
+        <span class="hljs-comment">## super = 'Shape'</span>
+        super().__init__(name)
+
+        <span class="hljs-comment">## Private attributes</span>
+        self.__PI = <span class="hljs-number">3.14159</span>
+        self.__radius = radius
+
+    <span class="hljs-comment">## Override abstract methods</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.__PI * self.__radius ** <span class="hljs-number">2</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * self.__PI * self.__radius
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span><span class="hljs-params">(Shape)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, width, height)</span>:</span>
+        <span class="hljs-comment">## Call parent class constructor</span>
+        <span class="hljs-comment">## super = 'Shape'</span>
+        super().__init__(name)
+
+        <span class="hljs-comment">## Private attributes</span>
+        self.__width = width
+        self.__height = height
+
+    <span class="hljs-comment">## Override abstract methods</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">area</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.__width * self.__height
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">perimeter</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * (self.__width + self.__height)
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Numbering Systems for Computing</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Numbering Systems for Computing</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#numbering-systems">Numbering Systems</a>
+        <ul>
+          <li>
+            <a href="#everyday-numbering-systems">Everyday Numbering Systems</a>
+            <ul>
+              <li><a href="#base-10">Base 10</a></li>
+              <li><a href="#base-12-and-24">Base 12 and 24</a></li>
+              <li><a href="#base-60">Base 60</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#computing-numbering-systems"
+              >Computing Numbering Systems</a
+            >
+            <ul>
+              <li>
+                <a href="#binary">Binary</a>
+                <ul>
+                  <li><a href="#why-is-it-used">Why is it Used?</a></li>
+                  <li>
+                    <a href="#examples">Examples</a>
+                    <ul>
+                      <li><a href="#digital-signals">Digital Signals</a></li>
+                      <li><a href="#computation">Computation</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#metric-system-for-binary"
+                      >Metric System for Binary</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#hexadecimal">Hexadecimal</a>
+                <ul>
+                  <li><a href="#why-is-it-used-1">Why is it Used?</a></li>
+                  <li>
+                    <a href="#examples-1">Examples</a>
+                    <ul>
+                      <li><a href="#memory-addresses">Memory Addresses</a></li>
+                      <li><a href="#colors">Colors</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#converting-between-bases">Converting Between Bases</a>
+            <ul>
+              <li>
+                <a href="#positional-notation">Positional Notation</a>
+                <ul>
+                  <li>
+                    <a href="#binary--hex-to-decimal"
+                      >Binary / Hex to Decimal</a
+                    >
+                    <ul>
+                      <li><a href="#example-1">Example 1</a></li>
+                      <li><a href="#example-2">Example 2</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#example-3">Example 3</a></li>
+                  <li><a href="#example-4">Example 4</a></li>
+                  <li><a href="#example-5">Example 5</a></li>
+                  <li>
+                    <a href="#decimal-to-binary--hex"
+                      >Decimal to Binary / Hex</a
+                    >
+                    <ul>
+                      <li>
+                        <a href="#long-division-refresher"
+                          >Long Division Refresher</a
+                        >
+                      </li>
+                      <li><a href="#example-1-1">Example 1</a></li>
+                      <li><a href="#example-2-1">Example 2</a></li>
+                      <li><a href="#example-3-1">Example 3</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#binary-to-hex-and-reverse"
+                      >Binary to Hex (and Reverse)</a
+                    >
+                    <ul>
+                      <li><a href="#example-1-2">Example 1</a></li>
+                      <li><a href="#example-2-2">Example 2</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#binary-arithmetic-and-encodings"
+              >Binary Arithmetic and Encodings</a
+            >
+            <ul>
+              <li>
+                <a href="#binary-addition">Binary Addition</a>
+                <ul>
+                  <li><a href="#example-1-3">Example 1</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#complement-encoding">Complement Encoding</a>
+                <ul>
+                  <li><a href="#why-use-it">Why Use It?</a></li>
+                  <li>
+                    <a href="#ones-complement-encoding"
+                      >One&#39;s Complement Encoding</a
+                    >
+                    <ul>
+                      <li><a href="#example-1-4">Example 1</a></li>
+                      <li><a href="#example-2-3">Example 2</a></li>
+                      <li><a href="#example-3-2">Example 3</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#twos-complement-encoding"
+                      >Two&#39;s Complement Encoding</a
+                    >
+                    <ul>
+                      <li><a href="#example-1-5">Example 1</a></li>
+                      <li><a href="#example-2-4">Example 2</a></li>
+                      <li><a href="#example-3-3">Example 3</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="numbering-systems">Numbering Systems</h1>
+    <p>We can use any number of symbols to represent the same numeric value.</p>
+    <p>Example: write the number “ten” in base 1 through 10</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Base</th>
+          <th align="left">Symbols</th>
+          <th align="right">Representation 10<sub>(10)</sub></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">1</td>
+          <td align="left">{ 1 }</td>
+          <td align="right">1111111111</td>
+        </tr>
+        <tr>
+          <td align="left">2</td>
+          <td align="left">{ 0, 1 }</td>
+          <td align="right">1010</td>
+        </tr>
+        <tr>
+          <td align="left">3</td>
+          <td align="left">{ 0, 1, 2 }</td>
+          <td align="right">101</td>
+        </tr>
+        <tr>
+          <td align="left">4</td>
+          <td align="left">{ 0, 1, 2, 3 }</td>
+          <td align="right">22</td>
+        </tr>
+        <tr>
+          <td align="left">5</td>
+          <td align="left">{ 0, 1, 2, 3, 4 }</td>
+          <td align="right">20</td>
+        </tr>
+        <tr>
+          <td align="left">6</td>
+          <td align="left">{ 0, 1, 2, 3, 4, 5 }</td>
+          <td align="right">14</td>
+        </tr>
+        <tr>
+          <td align="left">7</td>
+          <td align="left">{ 0, 1, 2, 3, 4, 5, 6 }</td>
+          <td align="right">13</td>
+        </tr>
+        <tr>
+          <td align="left">8</td>
+          <td align="left">{ 0, 1, 2, 3, 4, 5, 6, 7 }</td>
+          <td align="right">12</td>
+        </tr>
+        <tr>
+          <td align="left">9</td>
+          <td align="left">{ 0, 1, 2, 3, 4, 5, 6, 7, 8 }</td>
+          <td align="right">11</td>
+        </tr>
+        <tr>
+          <td align="left">10</td>
+          <td align="left">{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }</td>
+          <td align="right">10</td>
+        </tr>
+        <tr>
+          <td align="left">...</td>
+          <td align="left">...</td>
+          <td align="right">...</td>
+        </tr>
+        <tr>
+          <td align="left">16</td>
+          <td align="left">
+            { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F }
+          </td>
+          <td align="right">A</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="everyday-numbering-systems">Everyday Numbering Systems</h2>
+    <h3 id="base-10">Base 10</h3>
+    <ul>
+      <li>Our &quot;counting&quot; numbering system.</li>
+      <li>Probably evolved from counting on fingers.</li>
+    </ul>
+    <h3 id="base-12-and-24">Base 12 and 24</h3>
+    <ul>
+      <li>
+        Used for time
+        <ul>
+          <li>12 hours in half day</li>
+          <li>24 hours in day</li>
+        </ul>
+      </li>
+      <li>
+        Theory of why?
+        <ul>
+          <li>
+            Twelve bones on non-thumb fingers that can be counted with the
+            thumb.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="base-60">Base 60</h3>
+    <ul>
+      <li>
+        Used for time
+        <ul>
+          <li>60 seconds in minute</li>
+          <li>60 minutes in hour</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="computing-numbering-systems">Computing Numbering Systems</h2>
+    <h3 id="binary">Binary</h3>
+    <p>
+      <strong><em>Base 2</em></strong>
+    </p>
+    <p>{ 0, 1 }</p>
+    <h4 id="why-is-it-used-">Why is it Used?</h4>
+    <ul>
+      <li>
+        Digital signal can be in one of two states:
+        <ul>
+          <li>
+            <strong><em>Off = 0</em></strong>
+          </li>
+          <li>
+            <strong><em>On = 1</em></strong>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="examples">Examples</h4>
+    <h5 id="digital-signals">Digital Signals</h5>
+    <figure>
+      <span
+        ><img
+          src="https://www.electronicshub.org/wp-content/uploads/2019/03/Analog-Circuits-and-Digital-Circuits-Digital-Signals.jpg"
+          alt="Figure"
+          style="width: 30%; height: auto"
+      /></span>
+    </figure>
+    <p class="demo">Walkthrough:</p>
+
+    <p>117 / 5</p>
+    <h5 id="example-1">Example 1</h5>
+    <p>Convert the decimal number to binary: (12)<sub>10</sub></p>
+    <table>
+      <thead>
+        <tr>
+          <th align="center">Division</th>
+          <th align="center">Quotient</th>
+          <th align="center">Remainder</th>
+          <th align="center">Binary Digit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center">12 / 2</td>
+          <td align="center">6</td>
+          <td align="center">0</td>
+          <td align="center">0</td>
+        </tr>
+        <tr>
+          <td align="center">6 / 2</td>
+          <td align="center">3</td>
+          <td align="center">0</td>
+          <td align="center">0</td>
+        </tr>
+        <tr>
+          <td align="center">3 / 2</td>
+          <td align="center">1</td>
+          <td align="center">1</td>
+          <td align="center">1</td>
+        </tr>
+        <tr>
+          <td align="center">1 / 2</td>
+          <td align="center">0</td>
+          <td align="center">1</td>
+          <td align="center">1</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Answer:
+      <strong
+        ><em>(1100)<sub>2</sub></em></strong
+      >
+    </p>
+    <h5 id="example-2">Example 2</h5>
+    <p>Convert the decimal number to binary: (21)<sub>10</sub></p>
+    <table>
+      <thead>
+        <tr>
+          <th align="center">Division</th>
+          <th align="center">Quotient</th>
+          <th align="center">Remainder</th>
+          <th align="center">Binary Digit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center">21 / 2</td>
+          <td align="center">10</td>
+          <td align="center">1</td>
+          <td align="center">1</td>
+        </tr>
+        <tr>
+          <td align="center">10 / 2</td>
+          <td align="center">5</td>
+          <td align="center">0</td>
+          <td align="center">0</td>
+        </tr>
+        <tr>
+          <td align="center">5 / 2</td>
+          <td align="center">2</td>
+          <td align="center">1</td>
+          <td align="center">1</td>
+        </tr>
+        <tr>
+          <td align="center">2 / 2</td>
+          <td align="center">1</td>
+          <td align="center">0</td>
+          <td align="center">0</td>
+        </tr>
+        <tr>
+          <td align="center">1 / 2</td>
+          <td align="center">0</td>
+          <td align="center">1</td>
+          <td align="center">1</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Answer:
+      <strong
+        ><em>(10101)<sub>2</sub></em></strong
+      >
+    </p>
+    <h5 id="example-3">Example 3</h5>
+    <p>Convert the decimal number to hex: (37)<sub>10</sub></p>
+    <table>
+      <thead>
+        <tr>
+          <th align="center">Division</th>
+          <th align="center">Quotient</th>
+          <th align="center">Remainder</th>
+          <th align="center">Hex Digit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center">37/16</td>
+          <td align="center">2</td>
+          <td align="center">5</td>
+          <td align="center">5</td>
+        </tr>
+        <tr>
+          <td align="center">2/16</td>
+          <td align="center">0</td>
+          <td align="center">2</td>
+          <td align="center">2</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Answer: (25)<sub>16</sub> = <strong>0x25</strong></p>
+    <h4 id="binary-to-hex-and-reverse-">Binary to Hex (and Reverse)</h4>
+    <p>Hex offers a nice, compact way to represent binary numbers.</p>
+    <ul>
+      <li>
+        Break binary number into groups of 4 bits (called a
+        <strong>nibble</strong>).
+        <ul>
+          <li>
+            Each nibble is guaranteed to be a number from 0-15; 0-F in hex.
+          </li>
+        </ul>
+      </li>
+      <li>Convert each nibble to hex.</li>
+      <li>Concatenate the results - put them back together.</li>
+    </ul>
+    <figure>
+      <span>
+        <img src="images/binary_to_hex.png" style="" />
+      </span>
+      <figcaption>Binary to Hex</figcaption>
+    </figure>
+
+    <p class="demo">Demo:</p>
+
+    <p>Which hex digits can we represent with four bits?</p>
+    <ul>
+      <li><a href="https://logic.ly/demo/">logic.ly</a></li>
+    </ul>
+    <figure>
+      <span>
+        <img src="images/hex_bit_switch.png" style="" />
+      </span>
+      <figcaption>Four bits to hex.</figcaption>
+    </figure>
+
+    <h5 id="example-1">Example 1</h5>
+    <details>
+      <summary>Convert binary to hex: (10100010)<sub>2</sub></summary>
+      <div>
+        <ul>
+          <li>
+            <span style="font-weight: bold; color: lightblue"
+              >(1010)<sub>2</sub></span
+            >
+            <span style="font-weight: bold; color: orange"
+              >(0010)<sub>2</sub></span
+            >
+          </li>
+          <li>
+            <span style="font-weight: bold; color: lightblue"
+              >(10)<sub>10</sub></span
+            >
+            <span style="font-weight: bold; color: orange"
+              >(2)<sub>10</sub></span
+            >
+          </li>
+          <li>
+            <span style="font-weight: bold; color: lightblue"
+              >(A)<sub>16</sub></span
+            >
+            <span style="font-weight: bold; color: orange"
+              >(2)<sub>16</sub></span
+            >
+          </li>
+          <li><span style="font-weight: bold">0xA2</span></li>
+        </ul>
+      </div>
+    </details>
+
+    <h5 id="example-2">Example 2</h5>
+    <details>
+      <summary>Convert hex to binary: 0xF0FF</summary>
+      <div>
+        <ul>
+          <li>
+            <span style="font-weight: bold; color: lightblue"
+              >(F)<sub>16</sub></span
+            >&nbsp;
+            <span style="font-weight: bold; color: orange"
+              >(0)<sub>16</sub></span
+            >&nbsp; (F)<sub>16</sub>&nbsp; (F)<sub>16</sub>
+          </li>
+          <li>
+            <span style="font-weight: bold; color: lightblue"
+              >(15)<sub>10</sub></span
+            >&nbsp;
+            <span style="font-weight: bold; color: orange"
+              >(0)<sub>10</sub></span
+            >&nbsp; (15)<sub>10</sub>&nbsp; (15)<sub>10</sub>
+          </li>
+          <li>
+            <span style="font-weight: bold; color: lightblue"
+              >(1111)<sub>2</sub></span
+            >&nbsp;
+            <span style="font-weight: bold; color: orange"
+              >(0000)<sub>2</sub></span
+            >&nbsp; (1111)<sub>2</sub>&nbsp; (1111)<sub>2</sub>
+          </li>
+          <li><span style="font-weight: bold">1111000011111111</span></li>
+        </ul>
+      </div>
+    </details>
+
+    <h2 id="binary-arithmetic-and-encodings">
+      Binary Arithmetic and Encodings
+    </h2>
+    <h3 id="binary-addition">Binary Addition</h3>
+    <p>
+      Same as decimal addition except - When carrying numbers into the next
+      column we represent them in binary form.
+    </p>
+    <p>
+      When adding a column you can either have (depending on remainder and row
+      values):
+    </p>
+    <ul>
+      <li>zero = 0</li>
+      <li>one = 1</li>
+      <li>two = 10</li>
+      <li>three = 11</li>
+    </ul>
+    <h5 id="example-1">Example 1</h5>
+    <p>Calculate 0111<sub>2</sub> + 1110<sub>2</sub>.</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="right">1</th>
+          <th align="right">1</th>
+          <th align="right">1</th>
+          <th align="right"></th>
+          <th align="right"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="right"></td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+        </tr>
+        <tr>
+          <td align="right">+</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+          <td align="right">0</td>
+        </tr>
+        <tr>
+          <td align="right"><strong>1</strong></td>
+          <td align="right"><strong>0</strong></td>
+          <td align="right"><strong>1</strong></td>
+          <td align="right"><strong>0</strong></td>
+          <td align="right"><strong>1</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>Does this tie out if we calc in decimal?...</li>
+    </ul>
+    <!-- ### Bitwise Operations -->
+
+    <!-- #### Bitmasking -->
+
+    <!-- #### Bitshifting -->
+
+    <h3 id="complement-encoding">Complement Encoding</h3>
+    <figure>
+      <span>
+        <img
+          src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/binary-bin7.gif"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a
+          href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html"
+          >Positive Signed Binary Number</a
+        >
+      </figcaption>
+    </figure>
+
+    <figure>
+      <span>
+        <img
+          src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/binary-bin8.gif"
+          style=""
+        />
+      </span>
+      <figcaption>
+        <a
+          href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html"
+          >Negative Signed Binary Number</a
+        >
+      </figcaption>
+    </figure>
+
+    <p>
+      <strong><em>Complement</em></strong> = negation
+    </p>
+    <p>
+      <strong><em>Most significant bit (MSB)</em></strong> = digit with the
+      greatest value.
+    </p>
+    <p>
+      <strong><em>Big-endian</em></strong> = MSB on left
+    </p>
+    <p>
+      <strong><em>Little-endian</em></strong> = MSB on right
+    </p>
+    <h4 id="why-use-it-">Why Use It?</h4>
+    <ul>
+      <li>
+        Easy to implement in hardware.
+        <ul>
+          <li>Binary adder</li>
+        </ul>
+      </li>
+      <li>Easy to add and subtract.</li>
+    </ul>
+    <h4 id="one-s-complement-encoding">One's Complement Encoding</h4>
+    <ul>
+      <li>Used in early computers.</li>
+      <li>Positive numbers do not change.</li>
+      <li>Negative numbers are represented by flipping all bits.</li>
+      <li>
+        Make sure to represent in correct number of bits (4, 8, 16, 32, 64,
+        etc.)
+      </li>
+    </ul>
+    <p>Subtraction:</p>
+    <ul>
+      <li>Take one&#39;s complement of second number.</li>
+      <li>Add two numbers.</li>
+      <li>Discard any carry over from MSB.</li>
+      <li>Add 1 to result.</li>
+    </ul>
+    <h5 id="example-1">Example 1</h5>
+    <p>Find the one&#39;s complement of 01001110.</p>
+    <ul>
+      <li>Answer: 10110001</li>
+    </ul>
+    <h5 id="example-2">Example 2</h5>
+    <p>
+      Find 7<sub>10</sub> - 4<sub>10</sub> using one’s complement subtraction.
+    </p>
+    <ul>
+      <li>7<sub>10</sub> = 0111<sub>2</sub></li>
+      <li>4<sub>10</sub> = 0100<sub>2</sub></li>
+      <li>
+        One’s complement of 4<sub>10</sub> = -4<sub>10</sub> = 1011<sub>2</sub>
+      </li>
+      <li>0111<sub>2</sub> + 1011<sub>2</sub> = 1 0010<sub>2</sub></li>
+      <li>Ignore overflow bit: <del>1</del> 0010<sub>2</sub></li>
+      <li>Add one: 0010<sub>2</sub> + 1 = 0011<sub>2</sub></li>
+    </ul>
+    <h5 id="example-3">Example 3</h5>
+    <p class="demo">Walkthrough:</p>
+
+    <p>
+      Find 1111<sub>2</sub> - 0110<sub>2</sub> using one’s complement
+      subtraction.
+    </p>
+    <h4 id="two-s-complement-encoding">Two's Complement Encoding</h4>
+    <ul>
+      <li>Used in modern computers.</li>
+      <li>Positive numbers do not change.</li>
+      <li>
+        Negative numbers are represented by flipping all bits and adding 1.
+      </li>
+      <li>
+        Make sure to represent in correct number of bits (4, 8, 16, 32, 64,
+        etc.)
+      </li>
+    </ul>
+    <p>Subtraction:</p>
+    <ul>
+      <li>Take two&#39;s complement of second number.</li>
+      <li>Add two numbers.</li>
+      <li>
+        <em>Don’t need the extra step at the end to add one.</em>
+        <ul>
+          <li>
+            If there is carry over from MSB, discard it. Result is positive.
+          </li>
+          <li>
+            If there is no carry over from MSB, take two&#39;s complement of
+            result. Result is negative.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h5 id="example-1">Example 1</h5>
+    <p>Find the two&#39;s complement of 01001110.</p>
+    <ul>
+      <li>One&#39;s complement: 10110001</li>
+      <li>Add 1: 10110001 + 1 = 10110010</li>
+      <li>Answer: 10110010</li>
+    </ul>
+    <h5 id="example-2">Example 2</h5>
+    <p>
+      Find 7<sub>10</sub> - 4<sub>10</sub> using two’s complement subtraction.
+    </p>
+    <ul>
+      <li>7<sub>10</sub> = 0111<sub>2</sub></li>
+      <li>4<sub>10</sub> = 0100<sub>2</sub></li>
+      <li>
+        Two’s complement of 4<sub>10</sub> = -4<sub>10</sub> + 1 = 1011<sub
+          >2</sub
+        >
+        + 1 = 1100<sub>2</sub>
+      </li>
+      <li>0111<sub>2</sub> + 1100<sub>2</sub> = 1 0011<sub>2</sub></li>
+      <li>Ignore overflow bit: <del>1</del> 0011<sub>2</sub></li>
+    </ul>
+    <h5 id="example-3">Example 3</h5>
+    <p>
+      Find 4<sub>10</sub> - 7<sub>10</sub> using two’s complement subtraction.
+    </p>
+    <ul>
+      <li>4<sub>10</sub> = 0100<sub>2</sub></li>
+      <li>7<sub>10</sub> = 0111<sub>2</sub></li>
+      <li>
+        Two’s complement of 7<sub>10</sub> = -7<sub>10</sub> + 1 = 1000<sub
+          >2</sub
+        >
+        + 1 = 1001<sub>2</sub>
+      </li>
+      <li>0100<sub>2</sub> + 1001<sub>2</sub> = 1101<sub>2</sub></li>
+      <li>
+        No overflow bit, so result is negative. We need to take the two&#39;s
+        complement of the result.
+        <ul>
+          <li>
+            Two&#39;s complement of 1101<sub>2</sub> = 0010<sub>2</sub> + 1 =
+            0011<sub>2</sub>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

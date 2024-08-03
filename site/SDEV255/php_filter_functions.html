@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Filter Functions</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Filter Functions</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#php-filter-functions">PHP Filter Functions</a>
+        <ul>
+          <li><a href="#validate-filters">Validate Filters</a></li>
+          <li><a href="#sanitize-filters">Sanitize Filters</a></li>
+          <li>
+            <a href="#filtering-a-single-value">Filtering a Single Value</a>
+          </li>
+          <li>
+            <a href="#sanitizing-a-single-value">Sanitizing a Single Value</a>
+          </li>
+          <li>
+            <a href="#filter-flags-and-options">Filter Flags and Options</a>
+          </li>
+          <li>
+            <a href="#filtering-a-single-value-with-options"
+              >Filtering a Single Value with Options</a
+            >
+          </li>
+          <li>
+            <a href="#filtering-multiple-values">Filtering Multiple Values</a>
+          </li>
+          <li>
+            <a href="#demos---complete-form-validation-with-filters"
+              >Demos - Complete Form Validation with Filters</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="php-filter-functions">PHP Filter Functions</h1>
+    <p>PHP has built-in functions for validating and sanitizing user input.</p>
+    <h3 id="validate-filters">Validate Filters</h3>
+    <p>Validate filters are used to validate input.</p>
+    <p>
+      See
+      <a href="https://www.php.net/manual/en/filter.filters.validate.php"
+        >PHP: Validate filters</a
+      >
+    </p>
+    <h3 id="sanitize-filters">Sanitize Filters</h3>
+    <p>Sanitize filters are used to remove unwanted characters.</p>
+    <p>
+      See
+      <a href="https://www.php.net/manual/en/filter.filters.sanitize.php"
+        >PHP: Sanitize filters</a
+      >
+    </p>
+    <h3 id="filtering-a-single-value">Filtering a Single Value</h3>
+    <pre><code class="language-php"><span class="hljs-comment">// Will return false if value is not valid</span>
+$email = filter_input(INPUT_POST, <span class="hljs-string">'email'</span>, FILTER_VALIDATE_EMAIL);
+</code></pre>
+    <h3 id="sanitizing-a-single-value">Sanitizing a Single Value</h3>
+    <pre><code class="language-php"><span class="hljs-comment">// Same effect as htmlspecialchars() with ENT_QUOTES flag</span>
+$filtered = filter_input(INPUT_POST, <span class="hljs-string">'val'</span>, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+</code></pre>
+    <h3 id="filter-flags-and-options">Filter Flags and Options</h3>
+    <ul>
+      <li>
+        Filter flags and options are used to specify how the filter should
+        behave.
+      </li>
+      <li>
+        Flags are predefined constants that can be combined using the bitwise OR
+        operator <code>|</code>.
+      </li>
+      <li>
+        Options are key/value pairs that are passed in an associative array.
+      </li>
+      <li>
+        See
+        <a href="https://www.php.net/manual/en/filter.filters.flags.php"
+          >PHP: Filter Flags</a
+        >
+      </li>
+    </ul>
+    <h3 id="filtering-a-single-value-with-options">
+      Filtering a Single Value with Options
+    </h3>
+    <pre><code class="language-php"><span class="hljs-comment">// Build options array</span>
+$settings[<span class="hljs-string">'flags'</span>]                = FILTER_FLAG_ALLOW_HEX;       <span class="hljs-comment">// Allow hex flag</span>
+$settings[<span class="hljs-string">'options'</span>][<span class="hljs-string">'default'</span>]   = <span class="hljs-number">0</span>;                           <span class="hljs-comment">// Default value</span>
+$settings[<span class="hljs-string">'options'</span>][<span class="hljs-string">'min_range'</span>] = <span class="hljs-number">0</span>;                           <span class="hljs-comment">// Min number option</span>
+$settings[<span class="hljs-string">'options'</span>][<span class="hljs-string">'max_range'</span>] = <span class="hljs-number">255</span>;                         <span class="hljs-comment">// Max number option</span>
+
+<span class="hljs-comment">// Will return false if value is not between 0 and 255</span>
+$number = filter_input(INPUT_POST, <span class="hljs-string">'number'</span>, FILTER_VALIDATE_INT, $settings);
+</code></pre>
+    <h3 id="filtering-multiple-values">Filtering Multiple Values</h3>
+    <ul>
+      <li>
+        We often want to filter multiple values at once, as in the case of a
+        form submission.
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"process.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"age"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"terms"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+    <pre><code class="language-php"><span class="hljs-comment">// Build filters array</span>
+$filters[<span class="hljs-string">'email'</span>]                       = FILTER_VALIDATE_EMAIL;   <span class="hljs-comment">// Email filter</span>
+$filters[<span class="hljs-string">'age'</span>][<span class="hljs-string">'filter'</span>]               = FILTER_VALIDATE_INT;     <span class="hljs-comment">// Integer filter</span>
+$filters[<span class="hljs-string">'age'</span>][<span class="hljs-string">'options'</span>][<span class="hljs-string">'min_range'</span>] = <span class="hljs-number">16</span>;                      <span class="hljs-comment">// Min age</span>
+$filters[<span class="hljs-string">'terms'</span>]                       = FILTER_VALIDATE_BOOLEAN; <span class="hljs-comment">// Boolean filter</span>
+
+$form = filter_input_array(INPUT_POST, $filters);                  <span class="hljs-comment">// Apply filters</span>
+var_dump($form);                                                   <span class="hljs-comment">// Display results</span>
+</code></pre>
+    <h3 id="demos-complete-form-validation-with-filters">
+      Demos - Complete Form Validation with Filters
+    </h3>
+    <p>Replaced with lab...</p>
+    <p class="demo">Walkthrough</p>
+
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV255_Web_Application_Development/form_filters_demo/form_filters_demo.php"
+        >Complete Form Validation</a
+      >
+    </p>
+  </body>
+</html>

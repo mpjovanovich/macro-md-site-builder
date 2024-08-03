@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Event Driven Programming</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Event Driven Programming</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#event-driven-programming">Event Driven Programming</a>
+        <ul>
+          <li>
+            <a href="#the-producer-consumer-pattern"
+              >The Producer Consumer Pattern</a
+            >
+          </li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#event-loop">Event Loop</a></li>
+          <li><a href="#gui-development">GUI Development</a></li>
+          <li><a href="#javascript-examples">JavaScript Examples</a></li>
+          <li>
+            <a href="#writing-an-event-loop-in-python"
+              >Writing an Event Loop in Python</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="event-driven-programming">Event Driven Programming</h1>
+    <h2 id="the-producer-consumer-pattern">The Producer Consumer Pattern</h2>
+    <p>
+      The <strong>producer-consumer pattern</strong> is used when two parts of a
+      system need to communicate.
+    </p>
+    <p>
+      They communicate via a <strong>queue</strong> or <strong>buffer</strong>:
+    </p>
+    <figure>
+      <span
+        ><img
+          src="https://iximiuz.com/nodejs-writable-streams-distilled/kdpv.gif"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li><strong>Producer</strong>: Generates data</li>
+      <li><strong>Consumer</strong>: Consumes data</li>
+    </ul>
+    <h2 id="events">Events</h2>
+    <p>
+      The <strong>event driven programming</strong> paradigm is based on the
+      producer-consumer pattern.
+    </p>
+    <ul>
+      <li>
+        <strong>Event</strong>: Something that happens
+        <ul>
+          <li>Clicking a button</li>
+          <li>Moving the mouse</li>
+          <li>Pressing a key</li>
+          <li>Loading a page</li>
+          <li>Closing a window</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Event Queue</strong>: List of events that have happened
+        <ul>
+          <li>Events are added to the queue as they happen</li>
+          <li>Events are removed from the queue as they are processed</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Event Listener</strong>: Function that waits for an event to
+        happen
+        <ul>
+          <li>The &quot;glue&quot; between the event and the event handler</li>
+          <li>
+            If we are listening we are <strong>subscribed</strong> to the event
+          </li>
+          <li>
+            If we are not listening we are <strong>unsubscribed</strong> to the
+            event
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Event Handler</strong>: Function that runs in response to an
+        event
+        <ul>
+          <li>Usually a dedicated function in code</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="event-loop">Event Loop</h2>
+    <p>
+      The <strong>event loop</strong> is a loop that runs through the entire
+      lifetime of a program.
+    </p>
+    <p>The process goes like this:</p>
+    <ol>
+      <li>
+        Some event happens and drops an entry into the
+        <strong>event queue</strong>.
+      </li>
+      <li>Event loop checks the event queue and picks off the event.</li>
+      <li>Event loop checks for a registered event handler function.</li>
+      <li>If a handler is found, the handler function is called.</li>
+      <li>Repeat... forever... until the program is closed.</li>
+    </ol>
+    <h2 id="gui-development">GUI Development</h2>
+    <p>
+      Event driven programming is a common paradigm in GUI development, where we
+      need to respond to user input.
+    </p>
+    <ul>
+      <li>
+        <strong>CLI</strong>: Command Line Interface
+        <ul>
+          <li>Text entered into a terminal (what we&#39;ve been doing)</li>
+        </ul>
+      </li>
+      <li>
+        <strong>GUI</strong>: Graphical User Interface
+        <ul>
+          <li>Windows, images, icons, buttons, etc.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="javascript-examples">JavaScript Examples</h2>
+    <p>
+      The web browser has an event loop running that listens for events like:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>click</code></td>
+          <td>User clicks on an element</td>
+        </tr>
+        <tr>
+          <td><code>mouseover</code></td>
+          <td>User moves the mouse over an element</td>
+        </tr>
+        <tr>
+          <td><code>mouseout</code></td>
+          <td>User moves the mouse off an element</td>
+        </tr>
+        <tr>
+          <td><code>focus</code></td>
+          <td>User focuses on an element</td>
+        </tr>
+        <tr>
+          <td><code>keydown</code></td>
+          <td>User presses a key</td>
+        </tr>
+        <tr>
+          <td><code>load</code></td>
+          <td>Page has finished loading</td>
+        </tr>
+        <tr>
+          <td><code>close</code></td>
+          <td>Window is closed</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      In JavaScript, we can add event listeners to elements in the DOM (Document
+      Object Model) to listen for these events.
+    </p>
+    <p><em>mouseover</em></p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Get the header element for this section</span>
+<span class="hljs-keyword">const</span> h2Examples = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"javascript-examples"</span>);
+
+<span class="hljs-comment">// When the mouse is over the header, change text to all caps</span>
+h2Examples.addEventListener(<span class="hljs-string">"mouseover"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+  e.target.innerText = e.target.innerText.toUpperCase();
+});
+
+<span class="hljs-comment">// When the mouse leaves the header, change text to all lowercase</span>
+h2Examples.addEventListener(<span class="hljs-string">"mouseout"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+  e.target.innerText = <span class="hljs-string">"JavaScript Examples"</span>;
+});
+</code></pre>
+    <p><em>click:</em></p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Get all h2 elements on the page</span>
+<span class="hljs-keyword">const</span> h2Elements = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"h2"</span>);
+
+<span class="hljs-comment">// Loop through all h2 elements and add an event listener</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; h2Elements.length; i++) {
+  h2Elements[i].addEventListener(<span class="hljs-string">"click"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-comment">// e.target is the element that was clicked</span>
+    <span class="hljs-comment">// print the text of the element that was clicked</span>
+    alert(e.target.innerText);
+  });
+}
+</code></pre>
+    <h2 id="writing-an-event-loop-in-python">
+      Writing an Event Loop in Python
+    </h2>
+    <p>
+      We can simulate an event loop in Python using a <code>while</code> loop
+      and a list of events. We will:
+    </p>
+    <ul>
+      <li>
+        Create a dictionary of events and functions to handle those events
+      </li>
+      <li>
+        Create a loop that continually listens for events and calls the
+        appropriate event handler
+      </li>
+      <li>
+        (Normally this loop would be running in the background for the full time
+        the program is running)
+      </li>
+    </ul>
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV140_Intro_Software_Development/python_event_loop_noargs.py"
+        >Python Event Loop</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV140_Intro_Software_Development/python_event_loop_args.py"
+        >Python Event Loop with Arguments</a
+      >
+    </p>
+  </body>
+</html>

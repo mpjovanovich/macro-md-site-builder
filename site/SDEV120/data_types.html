@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Variables, Constants, Data Types</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Variables, Constants, Data Types</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#variables">Variables</a>
+        <ul>
+          <li><a href="#declaring-variables">Declaring Variables</a></li>
+          <li><a href="#naming-variables">Naming Variables</a></li>
+        </ul>
+      </li>
+      <li><a href="#constants">Constants</a></li>
+      <li>
+        <a href="#data-types">Data Types</a>
+        <ul>
+          <li>
+            <a href="#checking-data-type-in-python"
+              >Checking Data Type in Python</a
+            >
+          </li>
+          <li><a href="#numeric-data-types">Numeric Data Types</a></li>
+          <li><a href="#text-data-types">Text Data Types</a></li>
+          <li><a href="#boolean-data-types">Boolean Data Types</a></li>
+          <li><a href="#compound-data-types">Compound Data Types</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="variables">Variables</h1>
+    <figure>
+      <span>
+        <img
+          src="https://imgs.xkcd.com/comics/code_quality_2_2x.png"
+          style=""
+        />
+      </span>
+    </figure>
+
+    <ul>
+      <li>
+        A <strong>variable</strong> is a named storage location in a
+        computer&#39;s memory.
+      </li>
+      <li>Variable name is used to reference its value.</li>
+      <li>Used to store data that can be changed.</li>
+    </ul>
+    <h2 id="declaring-variables">Declaring Variables</h2>
+    <ul>
+      <li>
+        <strong>Declaration</strong> is the process of creating a variable.
+      </li>
+      <li>
+        <strong>Initialization</strong> is the process of assigning a value to a
+        variable.
+      </li>
+      <li>
+        <strong>Assignment</strong> is the process of changing the value of a
+        variable.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Variable is declared and initialized (assigned a value)</span>
+<span class="hljs-comment"># In python this will always be done in one step</span>
+x = <span class="hljs-number">5</span>
+
+<span class="hljs-comment"># Variable is reassigned a new value</span>
+x = <span class="hljs-number">10</span>
+</code></pre>
+    <h2 id="naming-variables">Naming Variables</h2>
+    <p>Always use descriptive names for variables.</p>
+    <ul>
+      <li>Must start with a letter or underscore</li>
+      <li>Can contain letters, numbers, and underscores</li>
+      <li>Cannot contain spaces or special characters</li>
+    </ul>
+    <p><em>Good:</em></p>
+    <pre><code class="language-python"><span class="hljs-comment"># Peers will thank you when they read your code.</span>
+student_name = <span class="hljs-string">"Dave Duncan"</span>
+minimum_age_requirement = <span class="hljs-number">21</span>
+software_dept_course_prefix = <span class="hljs-string">"SDEV"</span>
+</code></pre>
+    <p><em>Bad:</em></p>
+    <pre><code class="language-python"><span class="hljs-comment"># Please don't abrev...</span>
+nm = <span class="hljs-string">"Dave Duncan"</span>
+m_age = <span class="hljs-number">21</span>
+sdc = <span class="hljs-string">"SDEV"</span>
+</code></pre>
+    <h1 id="constants">Constants</h1>
+    <ul>
+      <li>Same as a variable, but its value cannot / should not be changed.</li>
+      <li>Use capital letters and underscores to name by convention.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Constant is declared and initialized</span>
+PI = <span class="hljs-number">3.14159</span>
+TAX_RATE = <span class="hljs-number">0.07</span>
+BILLING_CODE = <span class="hljs-string">"A123"</span>
+</code></pre>
+    <h1 id="data-types">Data Types</h1>
+    <ul>
+      <li>
+        A <strong>data type</strong> tells the compiler or interpreter what type
+        of data a variable / constant is allowed and intended to hold.
+      </li>
+      <li>
+        Lets the computer know how to store and handle the data at a low level.
+      </li>
+    </ul>
+    <h2 id="checking-data-type-in-python">Checking Data Type in Python</h2>
+    <pre><code class="language-python">x = <span class="hljs-number">5</span>
+print(type(x))  <span class="hljs-comment"># &lt;class 'int'&gt;</span>
+
+name = <span class="hljs-string">"Dave Duncan"</span>
+print(type(name))  <span class="hljs-comment"># &lt;class 'str'&gt;</span>
+</code></pre>
+    <h2 id="numeric-data-types">Numeric Data Types</h2>
+    <ul>
+      <li>
+        <strong>Integer</strong> (int) - whole numbers
+        <ul>
+          <li>-11</li>
+          <li>0</li>
+          <li>42</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Floating Point</strong> (float) - numbers with a decimal point
+        <ul>
+          <li>3.14</li>
+          <li>0.0</li>
+          <li>-1.333333333</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="text-data-types">Text Data Types</h2>
+    <p>Use single or double quotes to create a string.</p>
+    <ul>
+      <li>
+        <strong>Character</strong> (char) - single letter, number, or symbol
+        <ul>
+          <li>&#39;a&#39;</li>
+          <li>&#39;Z&#39;</li>
+          <li>&#39;7&#39;</li>
+          <li>&#39;!&#39;</li>
+        </ul>
+      </li>
+      <li>
+        <strong>String</strong> (str) - sequence of characters
+        <ul>
+          <li>&quot;Hello, World!&quot;</li>
+          <li>&quot;SDEV120&quot;</li>
+          <li>
+            &quot;123&quot; (note: this is a string, not an integer b/c of the
+            quotes)
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="boolean-data-types">Boolean Data Types</h2>
+    <ul>
+      <li><strong>Boolean</strong> (bool) - True or False</li>
+      <li>Capitalize the first letter in Python</li>
+      <li>Often start with &quot;is&quot;</li>
+    </ul>
+    <p>
+      Best to use positive names for boolean variables to avoid double
+      negatives.
+    </p>
+    <p><em>Good:</em></p>
+    <pre><code class="language-python">is_remote_student = <span class="hljs-literal">True</span>
+is_admin = <span class="hljs-literal">False</span>
+has_positive_balance = <span class="hljs-literal">True</span>
+</code></pre>
+    <p><em>Bad:</em></p>
+    <pre><code class="language-python">not_remote_student = <span class="hljs-literal">False</span>
+not_admin = <span class="hljs-literal">True</span>
+has_negative_balance = <span class="hljs-literal">False</span>
+</code></pre>
+    <h2 id="compound-data-types">Compound Data Types</h2>
+    <ul>
+      <li>
+        Many other data types are built from these basic types.
+        <ul>
+          <li>Date and Time</li>
+          <li>Lists</li>
+          <li>Dictionaries</li>
+          <li>Tuples</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

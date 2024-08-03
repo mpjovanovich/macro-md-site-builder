@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV265 - Distributed Systems</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV265/index.html"
+        >SDEV265</a
+      >&nbsp;&gt;&nbsp;<a href="">Distributed Systems</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#distributed-systems">Distributed Systems</a>
+        <ul>
+          <li>
+            <a href="#physical-vs-logical-separation"
+              >Physical vs Logical Separation</a
+            >
+          </li>
+          <li>
+            <a href="#advantages-of-distributed-systems"
+              >Advantages of Distributed Systems</a
+            >
+          </li>
+          <li>
+            <a href="#challenges-of-distributed-systems"
+              >Challenges of Distributed Systems</a
+            >
+          </li>
+          <li>
+            <a href="#case-study-building-a-distributed-application"
+              >Case Study: Building a Distributed Application</a
+            >
+          </li>
+          <li><a href="#case-study-hadoop">Case Study: Hadoop</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="distributed-systems">Distributed Systems</h1>
+    <p>
+      A <strong>distributed system</strong> is a collection of independent
+      computers that appear to the user as a single coherent system.
+    </p>
+    <p><strong>Node</strong>: A single computer in a distributed system.</p>
+    <p>Components of a distributed system may include:</p>
+    <ul>
+      <li>Web browsers</li>
+      <li>Desktop applications</li>
+      <li>Load balancers</li>
+      <li>Firewalls</li>
+      <li>File servers</li>
+      <li>Web application servers (basic application logic)</li>
+      <li>Specialzed services</li>
+      <li>Databases</li>
+      <li>Storage area networks / network-attached storage</li>
+      <li>Backup systems</li>
+      <li>Monitoring systems</li>
+      <li>Security systems</li>
+      <li>...</li>
+    </ul>
+    <h2 id="physical-vs-logical-separation">Physical vs Logical Separation</h2>
+    <p>
+      <strong>Physical Components</strong>: The actual hardware that makes up
+      the system.
+    </p>
+    <p>
+      <strong>Logical Components</strong>: The software that runs on the
+      hardware.
+    </p>
+    <p>
+      There is not a one-to-one relationship between physical and logical
+      components.
+    </p>
+    <p>Single node may be running:</p>
+    <ul>
+      <li>One or more web servers</li>
+      <li>One or more services</li>
+      <li>One or more database instances</li>
+      <li>...</li>
+    </ul>
+    <p>
+      What might be seen as the &quot;web application&quot; to the user is
+      actually a collection of services running on different nodes.
+    </p>
+    <h2 id="advantages-of-distributed-systems">
+      Advantages of Distributed Systems
+    </h2>
+    <ul>
+      <li>
+        <strong>Scalability</strong>
+        <ul>
+          <li>Can add/remove nodes to upscale or downscale as needed.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Performance</strong>
+        <ul>
+          <li>
+            Load Balancing: Distributing requests across multiple nodes for
+            higher throughput.
+          </li>
+          <li>
+            Caching: Storing frequently accessed data in memory for faster
+            access.
+          </li>
+          <li>
+            Parallel Processing: Not limited to the resources of a single node.
+          </li>
+          <li>
+            Geographic Distribution: Can have nodes in different locations.
+            Closer to a node = faster response time.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Cost-Effectiveness</strong>
+        <ul>
+          <li>Can rent or purchase nodes as needed.</li>
+          <li>Not locked into a single vendor.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Security</strong>
+        <ul>
+          <li>Can isolate sensitive data or services.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Fault Tolerance</strong>
+        <ul>
+          <li>Redundancy: Can have multiple copies of data or services.</li>
+          <li>If one node fails, the system can continue to operate.</li>
+          <li>If one location fails, the system can continue to operate.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="challenges-of-distributed-systems">
+      Challenges of Distributed Systems
+    </h2>
+    <ul>
+      <li>
+        <strong>Latency</strong>
+        <ul>
+          <li>
+            The time it takes for a message to travel from one node to another.
+          </li>
+          <li>Network latency can be unpredictable.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Reliability</strong>
+        <ul>
+          <li>
+            The ability of a system to continue operating in the face of
+            failure.
+          </li>
+          <li>Hardware failure, service crashes, network outages, etc.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Consistency</strong>
+        <ul>
+          <li>
+            The ability of a system to deliver messages in the correct order.
+          </li>
+          <li>
+            Multiple nodes may have different versions of shared data.
+            <ul>
+              <li>
+                What happens if there is a database replication failure? (stale
+                data)
+              </li>
+              <li>
+                What happens if two nodes try to update the same data at the
+                same time? (race condition)
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Security</strong>
+        <ul>
+          <li>More attack vectors.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Transaction Management</strong>
+        <ul>
+          <li>
+            How to ensure that a transaction is completed successfully across
+            multiple nodes, e.g.
+            <ul>
+              <li>Transfer money from one account to another.</li>
+              <li>Update a user&#39;s profile.</li>
+              <li>...</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="case-study-building-a-distributed-application">
+      Case Study: Building a Distributed Application
+    </h2>
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV265_System_Software_Analysis_Project/distributed_architecture_exercise.drawio"
+        >How to Distrubute Our System?</a
+      >
+    </p>
+    <h2 id="case-study-hadoop">Case Study: Hadoop</h2>
+    <p>...</p>
+  </body>
+</html>

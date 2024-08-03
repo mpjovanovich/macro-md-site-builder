@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - JavaScript - Events</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">JavaScript - Events</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#events">Events</a>
+        <ul>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#common-events">Common Events</a></li>
+          <li>
+            <a href="#listening-for-events">Listening for Events</a>
+            <ul>
+              <li>
+                <a href="#inline-event-handlers">Inline Event Handlers</a>
+              </li>
+              <li>
+                <a href="#property-event-handlers">Property Event Handlers</a>
+              </li>
+              <li>
+                <a href="#addeventlistener-method">AddEventListener Method</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#setting-the-event-handler-function"
+              >Setting the Event Handler Function</a
+            >
+            <ul>
+              <li><a href="#named-functions">Named Functions</a></li>
+              <li><a href="#anonymous-functions">Anonymous Functions</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#domcontentloaded---waiting-for-the-document-to-load"
+              >DOMContentLoaded - Waiting for the Document to Load</a
+            >
+          </li>
+          <li><a href="#the-event-object">The Event Object</a></li>
+          <li><a href="#event-bubbling">Event Bubbling</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="events">Events</h1>
+    <h2 id="intro">Intro</h2>
+    <ul>
+      <li>
+        Events are actions that happen in the browser that can be detected by
+        JavaScript.
+      </li>
+      <li>Events can be used to trigger functions.</li>
+      <li>Events can be attached to elements in the DOM.</li>
+    </ul>
+    <h2 id="common-events">Common Events</h2>
+    <ul>
+      <li>
+        DOMContentLoaded: Fired when the DOM is fully loaded and ready to be
+        manipulated.
+      </li>
+      <li>
+        Unload: Fired when a page is about to be unloaded (e.g., when navigating
+        to a different page).
+      </li>
+      <li>Load: Fired when a resource (e.g., an image) finishes loading.</li>
+      <li>Focus: Triggered when an element receives focus.</li>
+      <li>Blur: Fired when an element loses focus.</li>
+      <li>Click: Fired when an element is clicked.</li>
+      <li>
+        Contextmenu: Fired when the context menu (right-click menu) is
+        requested.
+      </li>
+      <li>Mouseover: Triggered when the mouse pointer enters an element.</li>
+      <li>Mouseout: Fired when the mouse pointer leaves an element.</li>
+      <li>
+        Mouseenter: Similar to mouseover, but doesn&#39;t bubble and doesn&#39;t
+        trigger when entering child elements.
+      </li>
+      <li>
+        Mouseleave: Similar to mouseout, but doesn&#39;t bubble and doesn&#39;t
+        trigger when leaving child elements.
+      </li>
+      <li>Change: Triggered when the value of an input element changes.</li>
+      <li>
+        Input: Fired when an input element&#39;s value changes. Works for
+        various form elements, including text inputs and textareas.
+      </li>
+      <li>Keydown: Fired when a key is pressed down.</li>
+      <li>Keyup: Triggered when a key is released.</li>
+      <li>Keypress: Fired when a key is pressed.</li>
+      <li>Resize: Triggered when the window or an element is resized.</li>
+      <li>Submit: Fired when a form is submitted.</li>
+    </ul>
+    <h2 id="listening-for-events">Listening for Events</h2>
+    <p>
+      An <strong>event listener</strong> or <strong>event handler</strong> (same
+      thing) is a function that is triggered when a specific event happens.
+    </p>
+    <p>
+      A dome node may <strong>register</strong> an event listener, which is then
+      <strong>subscribed</strong> to that event.
+    </p>
+    <h3 id="inline-event-handlers">Inline Event Handlers</h3>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"alert('CLICK!')"</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+    <h3 id="property-event-handlers">Property Event Handlers</h3>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> myButton = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myButton"</span>);
+myButton.onclick = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  alert(<span class="hljs-string">"CLICK!"</span>);
+};
+</code></pre>
+    <h3 id="addeventlistener-method">AddEventListener Method</h3>
+    <p>This is the preferred way to add event listeners.</p>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> myButton = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myButton"</span>);
+myButton.addEventListener(<span class="hljs-string">"click"</span>, () =&gt; {
+  alert(<span class="hljs-string">"CLICK!"</span>);
+});
+</code></pre>
+    <h2 id="setting-the-event-handler-function">
+      Setting the Event Handler Function
+    </h2>
+    <p>
+      We have a couple of options for setting the event handler function. Both
+      work fine.
+    </p>
+    <h3 id="named-functions">Named Functions</h3>
+    <ul>
+      <li>Predefined function that is called when the event happens.</li>
+      <li>Useful for when the function is used in multiple places.</li>
+    </ul>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> myButton = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myButton"</span>);
+myButton.addEventListener(<span class="hljs-string">"click"</span>, handleClick);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleClick</span>(<span class="hljs-params"></span>) </span>{
+  alert(<span class="hljs-string">"CLICK!"</span>);
+}
+</code></pre>
+    <h3 id="anonymous-functions">Anonymous Functions</h3>
+    <ul>
+      <li>Function that is defined when the event happens.</li>
+      <li>Useful for when the function is only used in one place.</li>
+      <li>Typically uses <strong>arrow function</strong> syntax.</li>
+    </ul>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> myButton = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myButton"</span>);
+myButton.addEventListener(<span class="hljs-string">"click"</span>, () =&gt; {
+  alert(<span class="hljs-string">"CLICK!"</span>);
+});
+</code></pre>
+    <p>Arrow functions are a shorthand way of defining functions:</p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Regular function:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleClick</span>(<span class="hljs-params"></span>) </span>{
+  alert(<span class="hljs-string">"CLICK!"</span>);
+}
+
+<span class="hljs-comment">// Arrow function:</span>
+() =&gt; {
+  alert(<span class="hljs-string">"CLICK!"</span>);
+};
+
+<span class="hljs-comment">// Regular function with parameters:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleClick</span>(<span class="hljs-params">message</span>) </span>{
+  alert(message);
+}
+
+<span class="hljs-comment">// Arrow function with parameters:</span>
+(message) =&gt; {
+  alert(message);
+};
+</code></pre>
+    <h2 id="domcontentloaded-waiting-for-the-document-to-load">
+      DOMContentLoaded - Waiting for the Document to Load
+    </h2>
+    <ul>
+      <li>
+        JavaScript code may execute before the DOM is fully loaded (all HTML
+        elements are in place).
+      </li>
+      <li>
+        If you try to access an element that doesn&#39;t exist, you&#39;ll get
+        an error.
+      </li>
+      <li>
+        This includes adding event listeners to elements that don&#39;t exist
+        yet.
+      </li>
+      <li>
+        The <strong>DOMContentLoaded</strong> event is fired when the DOM is
+        fully loaded and ready to be manipulated.
+      </li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Apple<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Orange<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Cherry<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Try removing the DOMContentLoaded event listener and see what happens.</span>
+<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"DOMContentLoaded"</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> colorMapping = {
+    <span class="hljs-attr">apple</span>: <span class="hljs-string">"green"</span>,
+    <span class="hljs-attr">cherry</span>: <span class="hljs-string">"red"</span>,
+    <span class="hljs-attr">orange</span>: <span class="hljs-string">"orange"</span>,
+  };
+  <span class="hljs-keyword">const</span> listItems = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"li"</span>);
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; listItems.length; i++) {
+    <span class="hljs-keyword">const</span> current_text = listItems[i].textContent.toLowerCase();
+    <span class="hljs-keyword">if</span> (colorMapping.hasOwnProperty(current_text)) {
+      listItems[i].style.color = colorMapping[current_text];
+    }
+  }
+});
+</code></pre>
+    <h2 id="the-event-object">The Event Object</h2>
+    <ul>
+      <li>
+        When an event happens, the browser creates an
+        <strong>event object</strong>.
+      </li>
+      <li>The event object contains information about the event.</li>
+      <li>
+        The event object is often named <code>e</code> or <code>event</code> by
+        convention.
+      </li>
+      <li>
+        We can use the <code>e.target</code> property to get the element that
+        triggered the event.
+      </li>
+    </ul>
+    <pre><code class="language-javascript"><span class="hljs-keyword">const</span> myButton1 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myButton1"</span>);
+<span class="hljs-keyword">const</span> myButton2 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myButton2"</span>);
+myButton1.addEventListener(<span class="hljs-string">"click"</span>, printTarget);
+myButton2.addEventListener(<span class="hljs-string">"click"</span>, printTarget);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printTarget</span>(<span class="hljs-params">e</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(e.target);
+}
+</code></pre>
+    <h2 id="event-bubbling">Event Bubbling</h2>
+    <ul>
+      <li>
+        When an event happens on an element, it first runs the handlers on it,
+        then on its parent, then all the way up on other ancestors.
+      </li>
+      <li>This is called <strong>event bubbling</strong>.</li>
+    </ul>
+    <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>The Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Apple<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Orange<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Cherry<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+    <pre><code class="language-javascript"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"DOMContentLoaded"</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> body = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"body"</span>);
+
+  body.addEventListener(<span class="hljs-string">"click"</span>, (event) =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Element clicked: "</span> + event.target.tagName);
+  });
+});
+</code></pre>
+    <p>
+      In this example the event bubbles up from the child elements (of body) to
+      the body element itself. The event handler on the body then runs.
+    </p>
+  </body>
+</html>

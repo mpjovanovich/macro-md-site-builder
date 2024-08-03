@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - String Manipulation</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">String Manipulation</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#string-manipulation">String Manipulation</a>
+        <ul>
+          <li>
+            <a href="#concatenation">Concatenation</a>
+            <ul>
+              <li>
+                <a href="#the--operator">The <code>+</code> Operator</a>
+              </li>
+              <li>
+                <a href="#concantenation-with-other-data-types"
+                  >Concantenation with Other Data Types</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#string-interpolation">String Interpolation</a></li>
+          <li>
+            <a href="#formatting-output">Formatting Output</a>
+            <ul>
+              <li><a href="#number-formatting">Number Formatting</a></li>
+              <li><a href="#width-and-padding">Width and Padding</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="string-manipulation">String Manipulation</h1>
+    <h2 id="concatenation">Concatenation</h2>
+    <p>
+      <strong>Concatenation</strong> is the process of combining two or more
+      strings into a single string.
+    </p>
+    <h3 id="the-operator">The `+` Operator</h3>
+    <p>
+      In Python, you can use the <code>+</code> operator to concatenate strings.
+    </p>
+    <pre><code class="language-python">first_name = <span class="hljs-string">"Billy"</span>
+last_name = <span class="hljs-string">"Bornsen"</span>
+output = <span class="hljs-string">"My name is "</span> + first_name + <span class="hljs-string">" "</span> + last_name + <span class="hljs-string">"."</span>
+print(output)
+</code></pre>
+    <p>
+      We can also rewrite the above without the temporary variable
+      <code>output</code>:
+    </p>
+    <pre><code class="language-python">first_name = <span class="hljs-string">"Billy"</span>
+last_name = <span class="hljs-string">"Bornsen"</span>
+print(<span class="hljs-string">"My name is "</span> + first_name + <span class="hljs-string">" "</span> + last_name + <span class="hljs-string">"."</span>)
+</code></pre>
+    <h3 id="concantenation-with-other-data-types">
+      Concantenation with Other Data Types
+    </h3>
+    <p>
+      If we use a data type that is not a string, it must be converted to a
+      string before concatenation.
+    </p>
+    <pre><code class="language-python">age = <span class="hljs-number">21</span>
+output = <span class="hljs-string">"I am "</span> + str(age) + <span class="hljs-string">" years old."</span>
+print(output)
+</code></pre>
+    <h2 id="string-interpolation">String Interpolation</h2>
+    <p>
+      <strong>String interpolation</strong> allows us to embed expressions
+      within string literals. These expressions can then use any variables that
+      are available.
+    </p>
+    <p>
+      Python uses <strong>f-strings</strong> for string interpolation. To use an
+      f-string:
+    </p>
+    <ul>
+      <li>prefix the string with <code>f</code></li>
+      <li>use curly braces <code>{}</code> to embed expressions</li>
+    </ul>
+    <pre><code class="language-python">first_name = <span class="hljs-string">"Billy"</span>
+last_name = <span class="hljs-string">"Bornsen"</span>
+print(<span class="hljs-string">f"My name is <span class="hljs-subst">{first_name}</span> <span class="hljs-subst">{last_name}</span>."</span>)
+</code></pre>
+    <p>
+      We don&#39;t need to convert other data types to strings when using
+      f-strings:
+    </p>
+    <pre><code class="language-python">age = <span class="hljs-number">21</span>
+print(<span class="hljs-string">f"I am <span class="hljs-subst">{age}</span> years old."</span>)
+</code></pre>
+    <h2 id="formatting-output">Formatting Output</h2>
+    <p>We can include format specifiers with f-strings to format output.</p>
+    <ul>
+      <li>
+        The format specifier is placed after a colon <code>:</code> following
+        the variable to be formatted.
+      </li>
+      <li>The format specifier can include precision, width, and padding.</li>
+    </ul>
+    <h3 id="number-formatting">Number Formatting</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Format Specifier</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>:f</code></td>
+          <td>Floating point</td>
+        </tr>
+        <tr>
+          <td><code>:,</code></td>
+          <td>Use comma separators</td>
+        </tr>
+      </tbody>
+    </table>
+    <pre><code class="language-python">x = <span class="hljs-number">119042.123456</span>
+
+<span class="hljs-comment"># Round to 2 decimal places</span>
+print(<span class="hljs-string">f"The value of x is <span class="hljs-subst">{x:<span class="hljs-number">.2</span>f}</span>"</span>)
+
+<span class="hljs-comment"># Round to 0 decimal places</span>
+print(<span class="hljs-string">f"The value of x is <span class="hljs-subst">{x:<span class="hljs-number">.0</span>f}</span>"</span>)
+
+<span class="hljs-comment"># Use comma as thousands separator</span>
+print(<span class="hljs-string">f"The value of x is <span class="hljs-subst">{x:,}</span>"</span>)
+
+<span class="hljs-comment"># Use comma as thousands separator and round to 2 decimal places</span>
+<span class="hljs-comment"># (useful for currency)</span>
+print(<span class="hljs-string">f"The value of x is <span class="hljs-subst">{x:,<span class="hljs-number">.2</span>f}</span>"</span>)
+</code></pre>
+    <h3 id="width-and-padding">Width and Padding</h3>
+    <p>Below are some examples of width and padding format specifiers.</p>
+    <ul>
+      <li>Any character may be used when padding a string.</li>
+      <li>The padding character is placed after the colon <code>:</code></li>
+      <li>If no padding character is specified, spaces are used.</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Format Specifier</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>:n</code></td>
+          <td>Use <code>n</code> spaces</td>
+        </tr>
+        <tr>
+          <td><code>:0n</code></td>
+          <td>Use <code>n</code> zeros</td>
+        </tr>
+        <tr>
+          <td><code>:&lt;n</code></td>
+          <td>Left align</td>
+        </tr>
+        <tr>
+          <td><code>:&gt;n</code></td>
+          <td>Right align</td>
+        </tr>
+        <tr>
+          <td><code>:^n</code></td>
+          <td>Center align</td>
+        </tr>
+        <tr>
+          <td><code>:0&lt;n</code></td>
+          <td>Left align, pad with <code>0</code></td>
+        </tr>
+        <tr>
+          <td><code>:x&lt;n</code></td>
+          <td>Left align, pad with <code>x</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Pad a Number With Zeroes</strong></p>
+    <pre><code class="language-python"><span class="hljs-comment"># Pad each module with zeroes to width of two</span>
+current_module = <span class="hljs-number">1</span>
+print(<span class="hljs-string">f"Module <span class="hljs-subst">{current_module:<span class="hljs-number">02</span>}</span>"</span>)
+
+current_module = <span class="hljs-number">2</span>
+print(<span class="hljs-string">f"Module <span class="hljs-subst">{current_module:<span class="hljs-number">02</span>}</span>"</span>)
+
+<span class="hljs-comment"># ... assuming we print through module 10 ...</span>
+current_module = <span class="hljs-number">10</span>
+print(<span class="hljs-string">f"Module <span class="hljs-subst">{current_module:<span class="hljs-number">02</span>}</span>"</span>)
+</code></pre>
+    <p><strong>Tabular Layout:</strong></p>
+    <pre><code class="language-python"><span class="hljs-comment"># Format the following two records with two columns of width 10 and 3:</span>
+person1 = <span class="hljs-string">"Billy"</span>
+age1 = <span class="hljs-number">21</span>
+
+person2 = <span class="hljs-string">"Jen"</span>
+age2 = <span class="hljs-number">22</span>
+
+person3 = <span class="hljs-string">"Carlos"</span>
+age3 = <span class="hljs-number">19</span>
+
+<span class="hljs-comment"># Center align both title columns</span>
+print(<span class="hljs-string">f"<span class="hljs-subst">{<span class="hljs-string">'Name'</span>:^<span class="hljs-number">10</span>}</span> <span class="hljs-subst">{<span class="hljs-string">'Age'</span>:^<span class="hljs-number">3</span>}</span>"</span>)
+
+<span class="hljs-comment"># Pad each column with underscores</span>
+print(<span class="hljs-string">f"<span class="hljs-subst">{<span class="hljs-string">''</span>:_^<span class="hljs-number">10</span>}</span> <span class="hljs-subst">{<span class="hljs-string">''</span>:_^<span class="hljs-number">3</span>}</span>"</span>)
+
+<span class="hljs-comment"># Right align both columns</span>
+print(<span class="hljs-string">f"<span class="hljs-subst">{person1:&gt;<span class="hljs-number">10</span>}</span> <span class="hljs-subst">{age1:&gt;<span class="hljs-number">3</span>}</span>"</span>)
+print(<span class="hljs-string">f"<span class="hljs-subst">{person2:&gt;<span class="hljs-number">10</span>}</span> <span class="hljs-subst">{age2:&gt;<span class="hljs-number">3</span>}</span>"</span>)
+print(<span class="hljs-string">f"<span class="hljs-subst">{person3:&gt;<span class="hljs-number">10</span>}</span> <span class="hljs-subst">{age3:&gt;<span class="hljs-number">3</span>}</span>"</span>)
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Dictionaries</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Dictionaries</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#dictionaries">Dictionaries</a>
+        <ul>
+          <li><a href="#creating-a-dictionary">Creating a Dictionary</a></li>
+          <li>
+            <a href="#common-uses-for-dictionaries"
+              >Common Uses for Dictionaries</a
+            >
+          </li>
+          <li><a href="#dictionary-keys">Dictionary Keys</a></li>
+          <li><a href="#accessing-values">Accessing Values</a></li>
+          <li><a href="#modifying-values">Modifying Values</a></li>
+          <li>
+            <a href="#adding-new-key-value-pairs">Adding new Key-Value Pairs</a>
+          </li>
+          <li>
+            <a href="#removing-key-value-pairs">Removing Key-Value Pairs</a>
+          </li>
+          <li>
+            <a href="#checking-if-a-key-exists">Checking if a Key Exists</a>
+          </li>
+          <li>
+            <a href="#iterating-through-a-dictionary"
+              >Iterating Through a Dictionary</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="dictionaries">Dictionaries</h1>
+    <p>
+      A dictionary is a collection of key-value pairs. Dictionaries are also
+      known as
+    </p>
+    <ul>
+      <li><strong>Maps</strong></li>
+      <li><strong>Hashmaps</strong></li>
+      <li><strong>Associative arrays</strong></li>
+    </ul>
+    <h2 id="creating-a-dictionary">Creating a Dictionary</h2>
+    <ul>
+      <li>
+        You can create a dictionary using curly braces <code>{}</code> and
+        separating key-value pairs with colons <code>:</code>
+      </li>
+      <li>Keys and values can be any data type.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># String / string</span>
+my_dict = {
+    <span class="hljs-string">"key1"</span>: <span class="hljs-string">"value1"</span>,
+    <span class="hljs-string">"key2"</span>: <span class="hljs-string">"value2"</span>,
+}
+
+<span class="hljs-comment"># Int / int</span>
+my_dict2 = {
+    <span class="hljs-number">1</span> : <span class="hljs-number">31</span>,
+    <span class="hljs-number">2</span> : <span class="hljs-number">29</span>,
+    <span class="hljs-number">3</span> : <span class="hljs-number">31</span>,
+    <span class="hljs-number">12</span> : <span class="hljs-number">31</span>,
+}
+
+<span class="hljs-comment"># String / int</span>
+my_dict3 = {
+    <span class="hljs-string">"January"</span>: <span class="hljs-number">31</span>,
+    <span class="hljs-string">"February"</span>: <span class="hljs-number">29</span>,
+    <span class="hljs-string">"March"</span>: <span class="hljs-number">31</span>,
+    <span class="hljs-string">"December"</span>: <span class="hljs-number">31</span>,
+}
+</code></pre>
+    <h2 id="common-uses-for-dictionaries">Common Uses for Dictionaries</h2>
+    <ul>
+      <li>Storing a set of items that are related to each other</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Storing a set of items that are related to each other -</span>
+<span class="hljs-comment"># creating a lookup table.</span>
+prices = {
+    <span class="hljs-string">"apple"</span>: <span class="hljs-number">.75</span>,
+    <span class="hljs-string">"orange"</span>: <span class="hljs-number">.25</span>,
+    <span class="hljs-string">"banana"</span>: <span class="hljs-number">.99</span>,
+}
+</code></pre>
+    <ul>
+      <li>Storing a set of items that are related to a single item</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Storing a set of items that are related to a single item -</span>
+<span class="hljs-comment"># creating a simple "object" with properties.</span>
+person = {
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"John"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">25</span>,
+    <span class="hljs-string">"city"</span>: <span class="hljs-string">"New York"</span>,
+}
+</code></pre>
+    <h2 id="dictionary-keys">Dictionary Keys</h2>
+    <p>
+      Dictionary keys must be unique. If you try to create a dictionary with
+      duplicate keys, the last key-value pair will overwrite the previous one:
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment"># Duplicate keys</span>
+my_dict = {
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"John"</span>,
+    <span class="hljs-string">"age"</span>: <span class="hljs-number">25</span>,
+    <span class="hljs-string">"city"</span>: <span class="hljs-string">"New York"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Jane"</span>
+}
+print(my_dict)
+<span class="hljs-comment"># Output: {"name": "Jane", "age": 25, "city": "New York"}</span>
+</code></pre>
+    <h2 id="accessing-values">Accessing Values</h2>
+    <p>
+      You can access the values in a dictionary using the keys. Use square
+      brackets <code>[]</code> and provide the key to retrieve the associated
+      value:
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment"># Accessing Values</span>
+print(my_dict[<span class="hljs-string">"name"</span>])  <span class="hljs-comment"># Output: John</span>
+print(my_dict[<span class="hljs-string">"age"</span>])   <span class="hljs-comment"># Output: 25</span>
+</code></pre>
+    <h2 id="modifying-values">Modifying Values</h2>
+    <p>You can modify the values associated with a key:</p>
+    <pre><code class="language-python"><span class="hljs-comment"># Modifying values</span>
+my_dict[<span class="hljs-string">"age"</span>] = <span class="hljs-number">26</span>
+print(my_dict[<span class="hljs-string">"age"</span>])   <span class="hljs-comment"># Output: 26</span>
+</code></pre>
+    <h2 id="adding-new-key-value-pairs">Adding new Key-Value Pairs</h2>
+    <p>You can add new key-value pairs to a dictionary:</p>
+    <pre><code class="language-python"><span class="hljs-comment"># Adding a new key-value pair</span>
+my_dict[<span class="hljs-string">"gender"</span>] = <span class="hljs-string">"Male"</span>
+print(my_dict)
+<span class="hljs-comment"># Output: {"name": "John", "age": 26, "city": "New York", "gender": "Male"}</span>
+</code></pre>
+    <h2 id="removing-key-value-pairs">Removing Key-Value Pairs</h2>
+    <p>
+      You can remove a key-value pair from a dictionary using the
+      <code>del</code> keyword:
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment"># Removing a key-value pair</span>
+<span class="hljs-keyword">del</span> my_dict[<span class="hljs-string">"city"</span>]
+print(my_dict)
+<span class="hljs-comment"># Output: {"name": "John", "age": 26, "gender": "Male"}</span>
+</code></pre>
+    <h2 id="checking-if-a-key-exists">Checking if a Key Exists</h2>
+    <p>You can check if a key exists in a dictionary using the in keyword:</p>
+    <pre><code class="language-python"><span class="hljs-comment"># Checking if a key exists</span>
+<span class="hljs-keyword">if</span> <span class="hljs-string">"name"</span> <span class="hljs-keyword">in</span> my_dict:
+    print(<span class="hljs-string">'found'</span>)
+</code></pre>
+    <h2 id="iterating-through-a-dictionary">Iterating Through a Dictionary</h2>
+    <p>
+      You can iterate through the keys, values, or key-value pairs of a
+      dictionary:
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment"># Iterating through keys</span>
+<span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> my_dict:
+    print(key)
+
+<span class="hljs-comment"># Iterating through values</span>
+<span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> my_dict.values():
+    print(value)
+
+<span class="hljs-comment"># Iterating through key-value pairs</span>
+<span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> my_dict.items():
+    print(key, value)
+</code></pre>
+  </body>
+</html>

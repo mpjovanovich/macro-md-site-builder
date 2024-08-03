@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - PHP - Functions</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">PHP - Functions</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#functions">Functions</a>
+        <ul>
+          <li><a href="#strict-types">Strict Types</a></li>
+          <li><a href="#parts-of-a-function">Parts of a Function</a></li>
+          <li><a href="#basic-syntax">Basic syntax</a></li>
+          <li><a href="#variable-scope">Variable Scope</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="functions">Functions</h1>
+    <h2 id="strict-types">Strict Types</h2>
+    <ul>
+      <li>
+        We should enable <strong>strict types</strong> to make PHP behave more
+        like a strongly typed language.
+      </li>
+      <li>
+        Makes sure that the data types of parameters and return values are
+        enforced.
+      </li>
+      <li>Must be the first line of the file.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">declare</span>(strict_types=<span class="hljs-number">1</span>);
+<span class="hljs-comment">// ... your code ...</span>
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <h2 id="parts-of-a-function">Parts of a Function</h2>
+    <ul>
+      <li>
+        Identifier
+        <ul>
+          <li>The name of the function</li>
+        </ul>
+      </li>
+      <li>
+        Parameters
+        <ul>
+          <li>Zero or more variables passed to the function</li>
+          <li>
+            Each parameter has a data type (optionally enforced with strict
+            types)
+          </li>
+        </ul>
+      </li>
+      <li>
+        Return value
+        <ul>
+          <li>The value the function returns</li>
+          <li>Has a data type.</li>
+          <li>
+            May be void (no return value). Don&#39;t need a return statement if
+            so.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="basic-syntax">Basic syntax</h2>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">functionName</span><span class="hljs-params">(datatype $param1, datatype $param2, ...)</span> : <span class="hljs-title">return_datatype</span>
+</span>{
+    <span class="hljs-comment">// function body</span>
+    <span class="hljs-keyword">return</span> $value;
+}
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <h2 id="variable-scope">Variable Scope</h2>
+    <ul>
+      <li>
+        Variables declared inside a function are <strong>local</strong> to that
+        function.
+      </li>
+      <li>They do not exist outside the function.</li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span><span class="hljs-params">()</span> : <span class="hljs-title">void</span>
+</span>{
+    $localVariable = <span class="hljs-string">"I'm local!"</span>;
+    <span class="hljs-keyword">echo</span> $localVariable;
+}
+myFunction();
+<span class="hljs-keyword">echo</span> $localVariable; <span class="hljs-comment">// Error!</span>
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <ul>
+      <li>
+        Variables declared outside a function are <strong>global</strong>.
+      </li>
+      <li>
+        They can be accessed inside a function, but can only be modified with
+        the <code>global</code> keyword.
+      </li>
+    </ul>
+    <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+$globalVariable = <span class="hljs-number">1</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span><span class="hljs-params">()</span> : <span class="hljs-title">void</span>
+</span>{
+     <span class="hljs-comment">// Required to modify...</span>
+    <span class="hljs-keyword">global</span> $globalVariable;
+
+    $globalVariable += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">echo</span> $globalVariable;
+}
+myFunction();
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+    <ul>
+      <li>Global variables have very specific uses.</li>
+      <li>Generally, you should prefer passing parameters to functions.</li>
+    </ul>
+  </body>
+</html>

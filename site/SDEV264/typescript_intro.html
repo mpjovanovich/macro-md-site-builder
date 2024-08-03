@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV264 - Intro to TypeScript</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV264/index.html"
+        >SDEV264</a
+      >&nbsp;&gt;&nbsp;<a href="">Intro to TypeScript</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#typescript">TypeScript</a>
+        <ul>
+          <li>
+            <a href="#why-might-i-uses-over-plain-js"
+              >Why might I uses over plain JS?</a
+            >
+          </li>
+          <li>
+            <a href="#any-reason-to-still-use-js-then"
+              >Any Reason to still use JS then?</a
+            >
+          </li>
+          <li>
+            <a href="#syntax">Syntax</a>
+            <ul>
+              <li><a href="#type-annotations">Type Annotations</a></li>
+              <li><a href="#functions">Functions</a></li>
+            </ul>
+          </li>
+          <li><a href="#typescript-compiler">TypeScript Compiler</a></li>
+          <li><a href="#example-app">Example App</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="typescript">TypeScript</h1>
+    <ul>
+      <li>TypeScript is a <strong>superset</strong> of JavaScript</li>
+      <li>Adds <strong>static typing</strong> to the language.</li>
+    </ul>
+    <h2 id="why-might-i-uses-over-plain-js-">
+      Why might I uses over plain JS?
+    </h2>
+    <ul>
+      <li>Can check for errors at compile time (before running the code)</li>
+      <li>Better tooling support</li>
+      <li>Easier to read and understand code</li>
+      <li>Easier to maintain code</li>
+      <li>Easier to refactor code</li>
+      <li>Easier to write tests</li>
+    </ul>
+    <h2 id="any-reason-to-still-use-js-then-">
+      Any Reason to still use JS then?
+    </h2>
+    <p>Yes, there are still reasons to use JavaScript:</p>
+    <ul>
+      <li>Fast to write.</li>
+      <li>Easy to learn, get started.</li>
+      <li>Great for small projects.</li>
+    </ul>
+    <h2 id="syntax">Syntax</h2>
+    <h3 id="type-annotations">Type Annotations</h3>
+    <pre><code class="language-typescript"><span class="hljs-keyword">let</span> message: <span class="hljs-built_in">string</span> = <span class="hljs-string">"Oh hello there!"</span>;
+<span class="hljs-keyword">let</span> count: <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> isTrue: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+</code></pre>
+    <p>
+      // The transpiler will still infer types if you don&#39;t specify them,
+      but you // cannot change the type of a variable after it has been
+      declared.
+    </p>
+    <pre><code class="language-typescript"><span class="hljs-keyword">let</span> message = <span class="hljs-string">"Oh hello there!"</span>;
+<span class="hljs-keyword">let</span> count = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> isTrue = <span class="hljs-literal">true</span>;
+</code></pre>
+    <h3 id="functions">Functions</h3>
+    <pre><code class="language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span> </span>{
+  <span class="hljs-keyword">return</span> x + y;
+}
+</code></pre>
+    <h2 id="typescript-compiler">TypeScript Compiler</h2>
+    <ul>
+      <li>The TypeScript compiler is called <code>tsc</code>.</li>
+      <li>It compiles TypeScript code to JavaScript code.</li>
+      <li>It can be installed with npm.</li>
+    </ul>
+    <pre><code class="language-bash">npm install -g typescript
+</code></pre>
+    <p>To compile a file:</p>
+    <pre><code class="language-bash">tsc myFile.ts
+</code></pre>
+    <h2 id="example-app">Example App</h2>
+    <pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>TS_Demo<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"app.js"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>TS Demo<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm p1!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm p2!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm p3!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm p4!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm p5!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"btnClick"</span>&gt;</span>Click me!<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+    <pre><code class="language-typescript"><span class="hljs-keyword">let</span> cur_color: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">const</span> colors: <span class="hljs-built_in">string</span>[] = [
+  <span class="hljs-string">"red"</span>,
+  <span class="hljs-string">"green"</span>,
+  <span class="hljs-string">"blue"</span>,
+  <span class="hljs-string">"orange"</span>,
+  <span class="hljs-string">"purple"</span>,
+  <span class="hljs-string">"teal"</span>,
+  <span class="hljs-string">"pink"</span>,
+];
+
+<span class="hljs-comment">// Whenever the button is clicked, do this function...</span>
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"btnClick"</span>)?.addEventListener(<span class="hljs-string">"click"</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// Get all of the paragraph elements, and for each one...</span>
+  <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">"p"</span>).forEach(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> {
+    <span class="hljs-comment">// Change the color of the text to the next color in the array</span>
+    p.style.color = colors[cur_color];
+
+    <span class="hljs-comment">// Increment the color index, and if it's at the end of the array, reset it to 0</span>
+    cur_color = (cur_color + <span class="hljs-number">1</span>) % colors.length;
+  });
+});
+</code></pre>
+  </body>
+</html>

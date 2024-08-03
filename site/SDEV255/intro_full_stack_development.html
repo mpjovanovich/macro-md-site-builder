@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV255 - Intro to Full Stack Development</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV255/index.html"
+        >SDEV255</a
+      >&nbsp;&gt;&nbsp;<a href="">Intro to Full Stack Development</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#intro-to-full-stack-development"
+          >Intro to Full Stack Development</a
+        >
+        <ul>
+          <li>
+            <a href="#the-client-server-model">The Client-Server Model</a>
+          </li>
+          <li>
+            <a href="#request--response-cycle">Request / Response Cycle</a>
+            <ul>
+              <li>
+                <a href="#front-end-vs-back-end">Front-end vs. Back-end</a>
+              </li>
+              <li>
+                <a href="#hardware-components-and-tiered-architectures"
+                  >Hardware Components and Tiered Architectures</a
+                >
+              </li>
+              <li>
+                <a href="#web-design-vs-web-development"
+                  >Web Design vs. Web Development</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#development-environments">Development Environments</a>
+        <ul>
+          <li>
+            <a href="#local-development-environment"
+              >Local Development Environment</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#technology-stack">Technology Stack</a>
+        <ul>
+          <li>
+            <a href="#the-xampp-stack">The XAMPP Stack</a>
+            <ul>
+              <li><a href="#web-browser">Web Browser</a></li>
+              <li><a href="#javascript">JavaScript</a></li>
+              <li><a href="#apache">Apache</a></li>
+              <li><a href="#php">PHP</a></li>
+              <li><a href="#mariadb">MariaDB</a></li>
+              <li><a href="#sql">SQL</a></li>
+              <li><a href="#summary-of-the-stack">Summary of the Stack</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="intro-to-full-stack-development">
+      Intro to Full Stack Development
+    </h1>
+    <p>A <strong>web application</strong> is a program that:</p>
+    <ul>
+      <li>Runs on a web server</li>
+      <li>May be accessed through a web browser, mobile app, desktop app</li>
+      <li>
+        Can have multiple instances (copies of the app) running at the same time
+      </li>
+      <li>May be accessed by multiple users at the same time</li>
+    </ul>
+    <h2 id="the-client-server-model">The Client-Server Model</h2>
+    <figure>
+      <span
+        ><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Client-server-model.svg/1200px-Client-server-model.svg.png"
+          alt="Figure"
+          style="width: 20%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>
+        JavaScript is (clasically) a <strong>client-side</strong> programming
+        language.
+      </li>
+      <li>Client side code runs in the browser.</li>
+      <li>Does not make a round trip to the server to run code.</li>
+    </ul>
+    <h3 id="apache">Apache</h3>
+    <figure class="left">
+      <span>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREo476xT8nc-rNy8Ov3FDHElDBcCL5PReEsiEmBPyxEnhJC1ij-kUrvmTmr1KuY_5M324&usqp=CAU"
+          style=""
+        />
+      </span>
+    </figure>
+
+    <ul>
+      <li>Apache is a <strong>web server</strong>.</li>
+      <li>
+        A web server is a program that listens for requests from clients and
+        sends responses.
+      </li>
+    </ul>
+    <h3 id="php">PHP</h3>
+    <figure class="left">
+      <span>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/800px-PHP-logo.svg.png"
+          style="width: 30%"
+        />
+      </span>
+    </figure>
+
+    <p>PHP = <strong>PHP: Hypertext Preprocessor</strong></p>
+    <ul>
+      <li>PHP is a <strong>server-side</strong> programming language.</li>
+      <li>
+        The program that runs PHP is called the
+        <strong>PHP interpreter</strong>.
+      </li>
+      <li>The PHP interpreter runs on a web server.</li>
+    </ul>
+    <h3 id="mariadb">MariaDB</h3>
+    <ul>
+      <li>MariaDB is a <strong>database server</strong>.</li>
+      <li>
+        Just like a web server, but fetches data from DB instead of files.
+      </li>
+      <li>
+        Predecessor to MySQL.
+        <ul>
+          <li>MySQL is owned by Oracle.</li>
+          <li>MariaDB is open source.</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="sql">SQL</h3>
+    <p>SQL = <strong>Structured Query Language</strong></p>
+    <ul>
+      <li>
+        SQL is a <strong>language</strong> for interacting with databases.
+      </li>
+      <li>
+        SQL is used to create, read, update, and delete data in a database.
+      </li>
+      <li>
+        SQL is not a database or a database database server; SQL interacts with
+        a database server.
+      </li>
+    </ul>
+    <h3 id="summary-of-the-stack">Summary of the Stack</h3>
+    <p>XAMPP:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>What is it?</th>
+          <th>Where does it run?</th>
+          <th>Client or Server?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Browser</td>
+          <td>A program</td>
+          <td>Operating system</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>JavaScript</td>
+          <td>A language</td>
+          <td>Browser</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>Apache (web server)</td>
+          <td>A program</td>
+          <td>Operating system</td>
+          <td>Server</td>
+        </tr>
+        <tr>
+          <td>PHP Interpreter</td>
+          <td>A program</td>
+          <td>Web server</td>
+          <td>Server</td>
+        </tr>
+        <tr>
+          <td>PHP</td>
+          <td>A language</td>
+          <td>PHP Interpreter</td>
+          <td>Server</td>
+        </tr>
+        <tr>
+          <td>MariaDB (database server)</td>
+          <td>A program</td>
+          <td>Operating system</td>
+          <td>Server</td>
+        </tr>
+        <tr>
+          <td>SQL</td>
+          <td>A language</td>
+          <td>Database server</td>
+          <td>Server</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="demo">Review:</p>
+
+    <ul>
+      <li>
+        What comprises the &quot;application&quot; the developer writes relative
+        to the stack, vs. what&#39;s the infrastructure that&#39;s just chosen?
+      </li>
+    </ul>
+  </body>
+</html>

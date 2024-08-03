@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Functions and Modularity</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Functions and Modularity</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#functions">Functions</a>
+        <ul>
+          <li>
+            <a href="#overview-why-functions">Overview: Why Functions?</a>
+            <ul>
+              <li><a href="#code-reuse">Code Reuse</a></li>
+              <li><a href="#code-consistency">Code Consistency</a></li>
+              <li><a href="#code-organization">Code Organization</a></li>
+              <li><a href="#code-readability">Code Readability</a></li>
+              <li><a href="#code-testability">Code Testability</a></li>
+              <li><a href="#code-portability">Code Portability</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#anatomy-of-a-function">Anatomy of a Function</a>
+            <ul>
+              <li>
+                <a href="#python-functions">Python Functions</a>
+                <ul>
+                  <li>
+                    <a href="#calling-functions-and-returning-results"
+                      >Calling Functions and Returning Results</a
+                    >
+                  </li>
+                  <li><a href="#parameter-naming">Parameter Naming</a></li>
+                  <li><a href="#void-functions">Void Functions</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#the-main-function">The <code>main</code> Function</a>
+          </li>
+          <li>
+            <a href="#variable-scope">Variable Scope</a>
+            <ul>
+              <li><a href="#local-scope">Local Scope</a></li>
+              <li><a href="#enclosing-scope">Enclosing Scope</a></li>
+              <li><a href="#global-scope">Global Scope</a></li>
+            </ul>
+          </li>
+          <li><a href="#value-passing">Value Passing</a></li>
+          <li>
+            <a href="#the-call-stack">The Call Stack</a>
+            <ul>
+              <li><a href="#stack-data-structure">Stack Data Structure</a></li>
+              <li><a href="#stack-frames">Stack Frames</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="functions">Functions</h1>
+    <p>
+      A <strong>function</strong> is a block of code that is grouped together to
+      perform a specific task.
+    </p>
+    <h2 id="overview-why-functions-">Overview: Why Functions?</h2>
+    <h3 id="code-reuse">Code Reuse</h3>
+    <ul>
+      <li><strong>Don&#39;t Repeat Yourself</strong> (DRY) principle</li>
+      <li>
+        Can call a function multiple times instead of copying and pasting code.
+      </li>
+    </ul>
+    <h3 id="code-consistency">Code Consistency</h3>
+    <ul>
+      <li>One version of a function for all callers.</li>
+      <li>Can use the same function in different parts of a program.</li>
+    </ul>
+    <h3 id="code-organization">Code Organization</h3>
+    <ul>
+      <li>Break up large programs into smaller, more manageable pieces.</li>
+      <li>
+        <strong>Single responsibility principle</strong>: function should have a
+        single, well-defined purpose.
+      </li>
+    </ul>
+    <h3 id="code-readability">Code Readability</h3>
+    <ul>
+      <li>Descriptive function names make code self-documenting.</li>
+      <li>Usually start with a verb, except for boolean checks.</li>
+    </ul>
+    <p><em>Example Function Names</em></p>
+    <p>User input:</p>
+    <ul>
+      <li><code>get_user_input()</code></li>
+      <li><code>get_user_input_as_int()</code></li>
+    </ul>
+    <p>Getters and setters:</p>
+    <ul>
+      <li><code>get_account_balance()</code></li>
+      <li><code>update_account_balance()</code></li>
+    </ul>
+    <p>Boolean checks:</p>
+    <ul>
+      <li><code>is_user_logged_in()</code></li>
+      <li><code>is_user_admin()</code></li>
+    </ul>
+    <p>Data processing:</p>
+    <ul>
+      <li><code>calculate_tax()</code></li>
+      <li><code>filter_items_by_user()</code></li>
+    </ul>
+    <h3 id="code-testability">Code Testability</h3>
+    <ul>
+      <li>
+        Functions can be automated to checked against expected results (<strong
+          >unit testing</strong
+        >).
+      </li>
+      <li>Keeps large programs from becoming unmanageable.</li>
+    </ul>
+    <h3 id="code-portability">Code Portability</h3>
+    <ul>
+      <li>Functions can be used by other parts of the same program.</li>
+      <li>Functions can be used by different programs.</li>
+    </ul>
+    <h2 id="anatomy-of-a-function">Anatomy of a Function</h2>
+    <p>All functions have the following components:</p>
+    <ul>
+      <li><strong>Identifier</strong>: The name of the function.</li>
+      <li>
+        <strong>Parameters</strong>: Input values that the function uses to
+        perform its task.
+      </li>
+      <li><strong>Return value</strong>: The output of the function.</li>
+    </ul>
+    <h3 id="python-functions">Python Functions</h3>
+    <ul>
+      <li>Keyword <code>def</code> is used to define a function.</li>
+      <li>Function body is indented.</li>
+      <li>
+        <code>return</code> keyword is used to return a value if a return value
+        is needed.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">function_name</span><span class="hljs-params">(parameter1, parameter2, ...)</span>:</span>
+    <span class="hljs-comment"># Function body</span>
+    <span class="hljs-comment"># ...</span>
+    <span class="hljs-keyword">return</span> value
+</code></pre>
+    <h4 id="calling-functions-and-returning-results">
+      Calling Functions and Returning Results
+    </h4>
+    <p>
+      When we <strong>define</strong> a function in code, it doesn&#39;t
+      actually run.
+    </p>
+    <p>We <strong>call</strong> the function to make it run.</p>
+    <p>
+      If parameters are specified, these are passed in as
+      <strong>arguments</strong>.
+    </p>
+    <p>
+      The result of a function is returned using the
+      <code>return</code> keyword.
+    </p>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_one</span><span class="hljs-params">(x)</span>:</span>
+    result = x + <span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> result
+
+<span class="hljs-comment"># We can capture the result of the function in a variable</span>
+result = add_one(<span class="hljs-number">5</span>)
+</code></pre>
+    <p>
+      We can exit a function early by using the <code>return</code> keyword.
+    </p>
+    <h4 id="parameter-naming">Parameter Naming</h4>
+    <p>
+      The names of the parameters and the names of the arguments do not have to
+      match.
+    </p>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add</span><span class="hljs-params">(x, y)</span>:</span>
+    <span class="hljs-keyword">return</span> x + y
+
+first = <span class="hljs-number">5</span>
+second = <span class="hljs-number">10</span>
+result = add(first, second)
+</code></pre>
+    <h4 id="void-functions">Void Functions</h4>
+    <ul>
+      <li>
+        Functions that do not return a (useful) value are called
+        <strong>void functions</strong>.
+      </li>
+      <li>Do not need a <code>return</code> statement.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_stuff</span><span class="hljs-params">()</span>:</span>
+    print(<span class="hljs-string">"stuff"</span>)
+</code></pre>
+    <h2 id="the-main-function">The `main` Function</h2>
+    <p>
+      Historically, the entry point of a program is the
+      <code>main</code> function. Many languages require a
+      <code>main</code> function to be defined.
+    </p>
+    <p>
+      In Python, the entry point is the first line of the program that is not
+      indented. You don&#39;t have to define a <code>main</code> function.
+    </p>
+    <p>
+      You might see this done because it allows you to use the code from one
+      file in another file.
+    </p>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    print(<span class="hljs-string">"The main program logic goes in here..."</span>)
+    <span class="hljs-comment"># ... rest of program here ...</span>
+
+<span class="hljs-comment"># &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; This is the entry point of the program &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    main()
+</code></pre>
+    <h2 id="variable-scope">Variable Scope</h2>
+    <p>Because of execution context, variables can have different scopes.</p>
+    <p>In Python, there are three levels of variable scope:</p>
+    <ol>
+      <li><strong>Local</strong>: Inside a function</li>
+      <li><strong>Enclosing</strong>: Inside a nested function</li>
+      <li><strong>Global</strong>: Outside of all functions</li>
+    </ol>
+    <h3 id="local-scope">Local Scope</h3>
+    <ul>
+      <li>Variables defined inside a function are local to that function.</li>
+      <li>Cannot be accessed outside of the function.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_function</span><span class="hljs-params">()</span>:</span>
+    x = <span class="hljs-number">10</span>
+    print(x)
+
+my_function()
+print(x)  <span class="hljs-comment"># NameError: name 'x' is not defined</span>
+</code></pre>
+    <h3 id="enclosing-scope">Enclosing Scope</h3>
+    <p>
+      <em
+        >Best practice: pass any needed variables as arguments - don&#39;t do
+        this.</em
+      >
+    </p>
+    <ul>
+      <li>
+        Variables defined in an enclosing function are accessible to nested
+        functions.
+      </li>
+      <li>Be wary of naming conflicts.</li>
+      <li>
+        Changing the value of a variable in a nested scope will not change it in
+        the enclosing scope.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">outer_function</span><span class="hljs-params">()</span>:</span>
+    x = <span class="hljs-number">10</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner_function</span><span class="hljs-params">()</span>:</span>
+        print(x) <span class="hljs-comment"># This will grab the x from the enclosing scope</span>
+
+    inner_function() <span class="hljs-comment"># This works - will print 10</span>
+</code></pre>
+    <h3 id="global-scope">Global Scope</h3>
+    <p>
+      <em
+        >Best practice: pass any needed variables as arguments - don&#39;t do
+        this.</em
+      >
+    </p>
+    <ul>
+      <li>Variables defined outside of all functions are global.</li>
+      <li>Similar to enclosing scope, but at the top level of the program.</li>
+    </ul>
+    <pre><code class="language-python">x = <span class="hljs-number">10</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_function</span><span class="hljs-params">()</span>:</span>
+    print(x)
+</code></pre>
+    <h2 id="value-passing">Value Passing</h2>
+    <p>
+      When you pass a variable to a function, you are passing the value of the
+      variable, not the variable itself.
+    </p>
+    <h2 id="the-call-stack">The Call Stack</h2>
+    <p>
+      Functions can call other functions, which can call other functions, and so
+      on.
+    </p>
+    <p>This creates a <strong>call stack</strong>.</p>
+    <ul>
+      <li>Keeps track of the sequence of function calls in a program</li>
+      <li>Is composed of stack frames</li>
+      <li>Exists for the lifetime of a program</li>
+    </ul>
+    <h3 id="stack-data-structure">Stack Data Structure</h3>
+    <p>LIFO (last in, first out) data structure.</p>
+    <p>
+      Like stacking blocks on top of each other and picking the top one off when
+      you need it.
+    </p>
+    <h3 id="stack-frames">Stack Frames</h3>
+    <p>A stack frame:</p>
+    <ul>
+      <li>Represents the execution context of a single function call.</li>
+      <li>Contains all data relevant to the function call.</li>
+      <li>Exists only during the execution of a function call.</li>
+    </ul>
+    <p>These are the &quot;blocks&quot; in our stack analogy.</p>
+    <figure>
+      <span>
+        <img
+          src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3mlXuUDqSmA3tciwlaxUUg.gif"
+          style=""
+        />
+      </span>
+    </figure>
+
+    <p>
+      A <strong>stack overflow</strong> is when the call stack grows too large,
+      and the program runs out of memory.
+    </p>
+    <pre><code class="language-python"><span class="hljs-comment">## Let's crash the program</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">overflow_stack</span><span class="hljs-params">(x)</span>:</span>
+    print(x)
+    overflow_stack(x + <span class="hljs-number">1</span>)
+
+overflow_stack(<span class="hljs-number">1</span>)
+</code></pre>
+  </body>
+</html>

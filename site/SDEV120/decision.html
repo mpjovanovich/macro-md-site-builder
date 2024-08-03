@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV120 - Selection</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV120/index.html"
+        >SDEV120</a
+      >&nbsp;&gt;&nbsp;<a href="">Selection</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#decision">Decision</a>
+        <ul>
+          <li>
+            <a href="#single-alternative">Single Alternative</a>
+            <ul>
+              <li>
+                <a href="#example-algorithm">Example Algorithm</a>
+                <ul>
+                  <li><a href="#pseudocode">Pseudocode</a></li>
+                  <li><a href="#flowchart">Flowchart</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#python-if-statement"
+                  >Python <code>if</code> Statement</a
+                >
+                <ul>
+                  <li><a href="#demo-programs">Demo Programs</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#dual-alternative">Dual Alternative</a>
+            <ul>
+              <li>
+                <a href="#example-algorithm-1">Example Algorithm</a>
+                <ul>
+                  <li><a href="#pseudocode-1">Pseudocode</a></li>
+                  <li><a href="#flowchart-1">Flowchart</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#python-if-else-statement"
+                  >Python <code>if, else</code> Statement</a
+                >
+                <ul>
+                  <li><a href="#demo-programs-1">Demo Programs</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#fallthrough-decisions">Fallthrough Decisions</a>
+            <ul>
+              <li>
+                <a href="#example-algorithm-2">Example Algorithm</a>
+                <ul>
+                  <li><a href="#pseudocode-2">Pseudocode</a></li>
+                  <li><a href="#flowchart-2">Flowchart</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#python-if-elif-else-statement"
+                  >Python <code>if, elif, else</code> Statement</a
+                >
+                <ul>
+                  <li><a href="#demo-programs-2">Demo Programs</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#nested-decision-structures">Nested Decision Structures</a>
+            <ul>
+              <li><a href="#pseudocode-3">Pseudocode</a></li>
+              <li><a href="#flowchart-3">Flowchart</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="decision">Decision</h1>
+    <p>
+      <strong>Selection</strong> is the process of taking an action based on a
+      condition.
+    </p>
+    <p>
+      This decision must resolve to a <strong>boolean</strong> value, which is
+      either <code>true</code> or <code>false</code>.
+    </p>
+    <p>
+      In other words, it must use an <strong>boolean expression</strong> to make
+      the decision.
+    </p>
+    <h2 id="single-alternative">Single Alternative</h2>
+    <p>
+      A <strong>single alternative decision structure</strong> yields control to
+      a process only if some boolean expression is true.
+    </p>
+    <p>
+      <img
+        src="images/single_alternative.png"
+        alt="Single Alternative Decision"
+      />
+    </p>
+    <h3 id="example-algorithm">Example Algorithm</h3>
+    <p>Charge Customer for Item - v1</p>
+    <h4 id="pseudocode">Pseudocode</h4>
+    <pre><code class="language-plaintext">BEGIN
+    Begin point of sales transaction
+    Scan all items
+
+    IF customer is a rewards member:
+        Apply discount
+    END IF
+
+    Complete point of sales transaction
+END
+</code></pre>
+    <h4 id="flowchart">Flowchart</h4>
+    <p>...</p>
+    <h3 id="python-if-statement">Python `if` Statement</h3>
+    <p>
+      Anything inside the code block (indented at the if’s level) will be
+      evaluated only if the “if” expression evaluates to true.
+    </p>
+    <p>
+      The expression for the if statement can be arbitrarily complex - the only
+      constraint is that it must evaluate to True or False.
+    </p>
+    <pre><code class="language-python"><span class="hljs-keyword">if</span> x:
+    <span class="hljs-comment"># do something</span>
+</code></pre>
+    <p>Examples:</p>
+    <pre><code class="language-python"><span class="hljs-keyword">if</span> x:
+<span class="hljs-keyword">if</span> x == <span class="hljs-literal">True</span>:
+<span class="hljs-keyword">if</span> has_account == <span class="hljs-literal">False</span>:
+<span class="hljs-keyword">if</span> a &gt; b:
+<span class="hljs-keyword">if</span> is_admin <span class="hljs-keyword">and</span> current_page == <span class="hljs-string">'User Management'</span>:
+<span class="hljs-keyword">if</span> is_admin == <span class="hljs-literal">False</span> <span class="hljs-keyword">or</span> user_logged_in == <span class="hljs-literal">False</span>:
+</code></pre>
+    <h4 id="demo-programs">Demo Programs</h4>
+    <p>... rename and link ...</p>
+    <p>Number is even (single dec. st.)</p>
+    <h2 id="dual-alternative">Dual Alternative</h2>
+    <p>
+      A <strong>dual alternative decision structure</strong> yields control to
+      one of two processes based on the truthfulness of a given boolean
+      condition.
+    </p>
+    <p>
+      <img src="images/dual_alternative.png" alt="Dual Alternative Decision" />
+    </p>
+    <p>
+      Dual alternative example: Open communication channel with landing
+      aircraft.
+    </p>
+    <ul>
+      <li>
+        “Runway is clear?”
+        <ul>
+          <li>True - Direct aircraft to land.</li>
+          <li>False - Send aircraft to hold pattern.</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="example-algorithm">Example Algorithm</h3>
+    <p>Charge Customer for Item - v2</p>
+    <h4 id="pseudocode">Pseudocode</h4>
+    <pre><code class="language-plaintext">BEGIN
+    Begin point of sales transaction
+    Scan all items
+
+    IF customer is a rewards member:
+        Apply discount
+
+    Get payment method
+
+    IF payment method is credit card:
+        Swipe card
+    ELSE
+        Take cash
+    END IF
+
+    End point of sales transaction
+END
+</code></pre>
+    <h4 id="flowchart">Flowchart</h4>
+    <p>...</p>
+    <h3 id="python-if-else-statement">Python `if, else` Statement</h3>
+    <pre><code class="language-python"><span class="hljs-keyword">if</span> x:
+    <span class="hljs-comment"># do something</span>
+<span class="hljs-keyword">else</span>:
+    <span class="hljs-comment"># do something else</span>
+</code></pre>
+    <h4 id="demo-programs">Demo Programs</h4>
+    <p>... flowchart ...</p>
+    <p>... rename and link ...</p>
+    <p>Number is even/odd (dual dec. st.)</p>
+    <h2 id="fallthrough-decisions">Fallthrough Decisions</h2>
+    <p>
+      We can chain together arbitrary amounts of decisions to represent
+      “fallback logic” - if, else if, else if, … else.
+    </p>
+    <p>We do not always need a final “else”.</p>
+    <p><img src="images/grading_program.png" alt="Fallthrough Decision" /></p>
+    <p>What happens if we don&#39;t use else if here?</p>
+    <h3 id="example-algorithm">Example Algorithm</h3>
+    <p>Charge Customer for Item - v3</p>
+    <h4 id="pseudocode">Pseudocode</h4>
+    <pre><code class="language-plaintext">BEGIN
+    Begin point of sales transaction
+    Scan all items
+
+    IF customer is a rewards member:
+        Apply discount
+
+    Get payment method
+
+    IF payment method is credit card:
+        Swipe card
+    ELSE IF payment method is cash:
+        Take cash
+    ELSE
+        Deny payment
+        Shelve items for restocking
+    END IF
+
+    End point of sales transaction
+END
+</code></pre>
+    <h4 id="flowchart">Flowchart</h4>
+    <p>...</p>
+    <h3 id="python-if-elif-else-statement">
+      Python `if, elif, else` Statement
+    </h3>
+    <pre><code class="language-python"><span class="hljs-keyword">if</span> x:
+    <span class="hljs-comment"># do something</span>
+<span class="hljs-keyword">elif</span> y:
+    <span class="hljs-comment"># do something else</span>
+<span class="hljs-keyword">else</span>:
+    <span class="hljs-comment"># do something else</span>
+</code></pre>
+    <h4 id="demo-programs">Demo Programs</h4>
+    <p>
+      <a
+        href="https://github.com/mpjovanovich/ivy_tech/blob/main/SDEV120_Computing_Logic/grade_calc_if_elif_else.py"
+        >Percent to Grade Program</a
+      >
+    </p>
+    <h2 id="nested-decision-structures">Nested Decision Structures</h2>
+    <p><em>Example Algorithm: Charge Customer for Item</em></p>
+    <h3 id="pseudocode">Pseudocode</h3>
+    <pre><code class="language-plaintext">BEGIN
+    Begin point of sales transaction
+    Scan all items
+
+    IF customer is a rewards member:
+        Apply discount
+
+    Get payment method
+
+    IF payment method is credit card:
+        Swipe card
+    ELSE IF payment method is cash:
+        Take cash
+        If cash is greater than total:
+            Give change
+    END IF
+
+    End point of sales transaction
+END
+</code></pre>
+    <h3 id="flowchart">Flowchart</h3>
+    <p>...</p>
+    <p>...</p>
+    <p>
+      We can put decision structures into the flow of execution from another
+      decision. These are called nested decisions.
+    </p>
+    <p>
+      <em>Note:</em> We don’t want to duplicate decision logic if possible.
+      Often times we can extract a decision that would otherwise be nested.
+    </p>
+    <p class="demo">Demo:</p>
+
+    <p>Program: What to wear based on temperature.</p>
+    <ul>
+      <li>
+        possible outcomes:
+        <ul>
+          <li>snowing, not snowing - temp &lt;= 32</li>
+          <li>raining, not raining - temp &gt; 32</li>
+          <li>cold, coat - temp &lt; 45</li>
+          <li>mild, jacket - temp &lt; 70</li>
+        </ul>
+      </li>
+      <li>
+        e.g. outcome statements
+        <ul>
+          <li>It is rainy and warm. You need a jacket and umbrella.</li>
+          <li>It is clear and mild. You need a jacket.</li>
+          <li>It is snowy and cold. You need a coat.</li>
+        </ul>
+      </li>
+      <li>
+        Which variables are inputs?
+        <ul>
+          <li>temperature</li>
+          <li>precipitation</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <p>Write program to figure out if letter is capital</p>
+    <ul>
+      <li>
+        Hint: look at ASCII / Unicode -
+        <a href="https://www.ascii-code.com/">https://www.ascii-code.com/</a>
+      </li>
+      <li>Hint: Python uses ord() and int() functions</li>
+      <li>m02_letter_is_capital_v1.py</li>
+    </ul>
+  </body>
+</html>

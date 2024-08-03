@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDEV140 - Object Oriented Programming</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">
+      <a href="https://mpjovanovich.github.io/course-notes/SDEV140/index.html"
+        >SDEV140</a
+      >&nbsp;&gt;&nbsp;<a href="">Object Oriented Programming</a>
+    </h1>
+    <ul>
+      <li>
+        <a href="#object-oriented-programming">Object Oriented Programming</a>
+        <ul>
+          <li>
+            <a href="#basics">Basics</a>
+            <ul>
+              <li><a href="#example-classes">Example Classes</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#creating-a-class-in-python">Creating a Class in Python</a>
+            <ul>
+              <li>
+                <a href="#pythonic-guidelines---class-names"
+                  >Pythonic Guidelines - Class Names</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#instantiating-an-object">Instantiating an Object</a>
+          </li>
+          <li>
+            <a href="#accessing-properties-and-methods"
+              >Accessing Properties and Methods</a
+            >
+            <ul>
+              <li>
+                <a href="#the-self-keyword">The <code>self</code> Keyword</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#constructors">Constructors</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="object-oriented-programming">Object Oriented Programming</h1>
+    <h2 id="basics">Basics</h2>
+    <ul>
+      <li>
+        <strong>Object Oriented Programming (OOP)</strong> is a programming
+        paradigm where we model real-world objects
+      </li>
+      <li><strong>Classes</strong> are blueprints used to create objects.</li>
+      <li>
+        <strong>Objects</strong> are <strong>instances</strong> of a class.
+      </li>
+      <li><strong>Methods</strong> are functions inside a class.</li>
+      <li><strong>Properties</strong> are variables inside a class.</li>
+      <li>
+        <strong>State</strong> is the current collective value of an
+        object&#39;s properties.
+      </li>
+    </ul>
+    <h3 id="example-classes">Example Classes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Object (Variable Name)</th>
+          <th>Properties</th>
+          <th>Methods</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Car</td>
+          <td>myCar</td>
+          <td>{ make, model, year }</td>
+          <td>getMake(), printYear()</td>
+        </tr>
+        <tr>
+          <td>Book</td>
+          <td>myBook</td>
+          <td>{ title, author, year }</td>
+          <td>getTitle(), getAuthor(), getYear()</td>
+        </tr>
+        <tr>
+          <td>BankAccount</td>
+          <td>myAccount</td>
+          <td>{ balance }</td>
+          <td>getBalance(), deposit(), withdraw()</td>
+        </tr>
+        <tr>
+          <td>Order</td>
+          <td>myOrder</td>
+          <td>{ items, total }</td>
+          <td>getItems(), getTotal()</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="creating-a-class-in-python">Creating a Class in Python</h2>
+    <ul>
+      <li>We use the <code>class</code> keyword to create a class.</li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Define the Person class</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+    <span class="hljs-comment"># Properties</span>
+    name = <span class="hljs-string">'Bob'</span>
+
+    <span class="hljs-comment"># Methods</span>
+    do_something():
+        <span class="hljs-keyword">pass</span>
+</code></pre>
+    <h3 id="pythonic-guidelines-class-names">
+      Pythonic Guidelines - Class Names
+    </h3>
+    <figure>
+      <span
+        ><img
+          src="https://miro.medium.com/v2/1*ls5qApmZPtUIV3Z_wll7Fw.png"
+          alt="Figure"
+          style="width: 25%; height: auto"
+      /></span>
+    </figure>
+    <ul>
+      <li>
+        Per
+        <a href="https://www.python.org/dev/peps/pep-0008/#class-names"
+          >PEP 8 - Class Names</a
+        >.
+        <ul>
+          <li>
+            Class names are
+            <ul>
+              <li>PascalCase</li>
+              <li>nouns</li>
+            </ul>
+          </li>
+          <li>
+            Property names are
+            <ul>
+              <li>snake_case</li>
+              <li>nouns</li>
+            </ul>
+          </li>
+          <li>
+            Method names are
+            <ul>
+              <li>snake_case</li>
+              <li>verbs</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="instantiating-an-object">Instantiating an Object</h2>
+    <ul>
+      <li>
+        To create an <strong>instance</strong> of a class, we use parentheses
+        after the class name.
+      </li>
+      <li>
+        We will see shortly that this is because we&#39;re actually calling a
+        method.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Create two instances (variables) of the Person class</span>
+person1 = Person()
+person2 = Person()
+</code></pre>
+    <h2 id="accessing-properties-and-methods">
+      Accessing Properties and Methods
+    </h2>
+    <ul>
+      <li>
+        We use the <strong>dot operator</strong> to access properties and
+        methods of an object.
+      </li>
+      <li>
+        We can also use the <code>dir()</code> function to see all properties
+        and methods of an object.
+      </li>
+    </ul>
+    <pre><code class="language-python">person1 = Person()
+
+<span class="hljs-comment"># Call method</span>
+person1.do_something()
+
+<span class="hljs-comment"># Access property</span>
+print(person1.name)
+</code></pre>
+    <h3 id="the-self-keyword">The `self` Keyword</h3>
+    <ul>
+      <li>The <code>self</code> keyword refers to the current object.</li>
+      <li>We use it to access properties and methods inside the class.</li>
+      <li>
+        When calling a method, we do not need to pass <code>self</code> as an
+        argument.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Define the Person class</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+    name = <span class="hljs-string">'Bob'</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">do_something</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Access the name property of the current object</span>
+        print(self.name)
+
+<span class="hljs-comment"># Create an instance of the Person class</span>
+person1 = Person()
+
+<span class="hljs-comment"># Call the do_something method</span>
+<span class="hljs-comment"># No need to pass any arguments.</span>
+person1.do_something()
+</code></pre>
+    <h2 id="constructors">Constructors</h2>
+    <ul>
+      <li>
+        A <strong>constructor</strong> is a special method that is called when
+        an object is created.
+      </li>
+      <li>The constructor is used to initialize the object.</li>
+      <li>
+        In Python, the constructor is always called <code>__init__()</code>.
+      </li>
+      <li>The constructor is optional.</li>
+      <li>The first argument must be <code>self</code>.</li>
+      <li>
+        Since it&#39;s a function, we can define and pass other parameters to
+        initialize the object.
+      </li>
+    </ul>
+    <pre><code class="language-python"><span class="hljs-comment"># Class definition</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+    <span class="hljs-comment"># Constructor</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+        <span class="hljs-comment"># Initialize the name property</span>
+        self.name = name
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">do_something</span><span class="hljs-params">(self)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+        print(self.name)
+
+<span class="hljs-comment"># Create an instance of the Person class</span>
+person1 = Person(<span class="hljs-string">'Bob'</span>)
+</code></pre>
+  </body>
+</html>

@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes - SDLC</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://mpjovanovich.github.io/course-notes/assets/images/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mpjovanovich.github.io/course-notes/assets/css/highlight.css"
+    />
+  </head>
+  <body>
+    <h1 class="breadcrumb">&nbsp;&gt;&nbsp;<a href="">SDLC</a></h1>
+    <ul>
+      <li>
+        <a href="#software-development-life-cycle-sdlc"
+          >Software Development Life Cycle (SDLC)</a
+        >
+        <ul>
+          <li><a href="#stats">Stats</a></li>
+          <li>
+            <a href="#plan-driven-development">Plan Driven Development</a>
+            <ul>
+              <li><a href="#waterfall">Waterfall</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#agile-development">Agile Development</a>
+            <ul>
+              <li><a href="#principles">Principles</a></li>
+              <li>
+                <a href="#types-of-agile">Types of Agile</a>
+                <ul>
+                  <li><a href="#scrum">Scrum</a></li>
+                  <li><a href="#kanban">Kanban</a></li>
+                </ul>
+              </li>
+              <li><a href="#devops--devsecops">DevOps / DevSecOps</a></li>
+              <li><a href="#principles-1">Principles</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="software-development-life-cycle-sdlc-">
+      Software Development Life Cycle (SDLC)
+    </h1>
+    <figure>
+      <span
+        ><img
+          src="images/software_practices_venn.png"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <p>
+      Most software development processes are a mix of established practices.
+      The SDLC is a framework for organizing these practices.
+    </p>
+    <p>Which proccess is best depends on the project.</p>
+    <h2 id="stats">Stats</h2>
+    <figure>
+      <span
+        ><img
+          src="images/2022_methodologies_stats.png"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+    <p>
+      In <strong>agile development</strong>, software is developed in short
+      iterations. Each iteration is a complete development cycle, from planning
+      to deployment.
+    </p>
+    <p>
+      These methodologies are also used in other industries, such as
+      manufacturing.
+    </p>
+    <p><strong>Works well when:</strong></p>
+    <ul>
+      <li>Requirements are flexible</li>
+      <li>Close relationship between developers and stakeholders</li>
+      <li>Able to receive feedback and respond quickly</li>
+      <li>Teams are small and can be cross-functional</li>
+    </ul>
+    <p><strong>Examples:</strong></p>
+    <ul>
+      <li>Business software</li>
+      <li>Data analytics tooling</li>
+      <li>Web development</li>
+      <li>Mobile apps</li>
+    </ul>
+    <p><strong>Advantages:</strong></p>
+    <ul>
+      <li>Application is available early in the process.</li>
+      <li>Higher client and customer satisfaction.</li>
+      <li>Build relationships with clients and customers.</li>
+      <li>Changes are easy and inexpensive.</li>
+    </ul>
+    <p><strong>Disadvantages:</strong></p>
+    <ul>
+      <li>Less documentation.</li>
+      <li>Less accountability.</li>
+      <li>Less predictability.</li>
+    </ul>
+    <h3 id="principles">Principles</h3>
+    <p><em>Agile Manifesto:</em></p>
+    <ul>
+      <li>Individuals and interactions over processes and tools</li>
+      <li>Working software over comprehensive documentation</li>
+      <li>Customer collaboration over contract negotiation</li>
+      <li>Responding to change over following a plan</li>
+    </ul>
+    <h3 id="types-of-agile">Types of Agile</h3>
+    <p>Many principles and practices overlap between these methodologies.</p>
+    <h4 id="scrum">Scrum</h4>
+    <figure>
+      <span
+        ><img
+          src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*I6W0MRWWV-Nmnhd_.png"
+          alt="Figure"
+          style="width: 60%; height: auto"
+      /></span>
+    </figure>
+    <p>Popular in software and manufacturing.</p>
+    <p><strong>Sprints</strong></p>
+    <ul>
+      <li>Iterations with clear goals, start and end dates</li>
+      <li>Usually 2-4 weeks</li>
+    </ul>
+    <p><strong>Daily standups</strong></p>
+    <ul>
+      <li>15 minute meeting</li>
+      <li>Identify blockers</li>
+    </ul>
+    <p><strong>Backlog</strong></p>
+    <ul>
+      <li>List of tasks to be completed</li>
+      <li>Prioritized by importance</li>
+      <li>Tasks are assigned to sprints</li>
+    </ul>
+    <h4 id="kanban">Kanban</h4>
+    <figure>
+      <span
+        ><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Abstract_Kanban_Board.svg/1024px-Abstract_Kanban_Board.svg.png"
+          alt="Figure"
+          style="width: 80%; height: auto"
+      /></span>
+    </figure>
+    <p>
+      Work is assigned (from backlog) only when there is capacity to complete
+      it.
+    </p>
+    <ul>
+      <li>
+        Visual workflow
+        <ul>
+          <li>Kanban board (sticky note board)</li>
+          <li>Swimlanes</li>
+        </ul>
+      </li>
+      <li>Limit work in progress</li>
+    </ul>
+    <h3 id="devops-devsecops">DevOps / DevSecOps</h3>
+    <p>Focuses on use of automation and collaboration between teams.</p>
+    <p>
+      <strong>DevOps</strong> is a combination of development and operations.
+      <strong>DevSecOps</strong> is a combination of development, security, and
+      operations. Brings focus to security throughout the process.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Domain</th>
+          <th>Activities</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Development</td>
+          <td>Design, develop, test</td>
+        </tr>
+        <tr>
+          <td>Operations</td>
+          <td>Deploy, monitor, scale, maintain</td>
+        </tr>
+        <tr>
+          <td>Security</td>
+          <td>Assess risk, penetration testing, threat modeling</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>*Testing spans multiple domains.</em></p>
+    <p><strong>Works well when:</strong></p>
+    <ul>
+      <li>Very large projects</li>
+      <li>Multiple teams</li>
+      <li>Multiple applications</li>
+      <li>Multiple environments</li>
+    </ul>
+    <p><strong>Examples:</strong></p>
+    <ul>
+      <li>Large enterprise software</li>
+      <li>Large scale distributed applications</li>
+    </ul>
+    <p><strong>Advantages:</strong></p>
+    <ul>
+      <li>Focus on reliability and security</li>
+      <li>Fast development, deploymentment, feedback</li>
+      <li>
+        Avoid lag where there is handoff between teams, e.g.:
+        <ul>
+          <li>Waiting for operations to deploy</li>
+          <li>Waiting for security to approve</li>
+          <li>Waiting for new requirements</li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Disadvantages:</strong></p>
+    <ul>
+      <li>Requires expertise to implement.</li>
+      <li>Requires buy-in from all teams.</li>
+      <li>May not be appropriate for small projects / teams / businesses.</li>
+    </ul>
+    <h3 id="principles">Principles</h3>
+    <ul>
+      <li>Product is a living process.</li>
+      <li>Rapid feedback loops.</li>
+      <li>Continuous integration (CI)</li>
+      <li>Continuous delivery (CD)</li>
+    </ul>
+    <p class="demo">Demo:</p>
+
+    <p>GitHub Actions - build and deploy process.</p>
+    <ul>
+      <li>
+        GitHub project:
+        <a href="https://github.com/mpjovanovich/ivy_tech/tree/main/docs"
+          >https://github.com/mpjovanovich/ivy_tech/tree/main/docs</a
+        >
+      </li>
+      <li>
+        GitHub pages site:
+        <a href="https://mpjovanovich.github.io/ivy_tech/"
+          >https://mpjovanovich.github.io/ivy_tech/</a
+        >
+      </li>
+      <li>
+        Pages settings:
+        <a href="https://github.com/mpjovanovich/ivy_tech/settings/pages"
+          >https://github.com/mpjovanovich/ivy_tech/settings/pages</a
+        >
+      </li>
+      <li>
+        Build history:
+        <a href="https://github.com/mpjovanovich/ivy_tech/actions"
+          >https://github.com/mpjovanovich/ivy_tech/actions</a
+        >
+      </li>
+    </ul>
+    <p>
+      Let&#39;s try breaking it by putting a typo on the theme for the
+      _config.yml file.
+    </p>
+    <ul>
+      <li>
+        New theme:
+        <a href="https://github.com/pages-themes/architect"
+          >https://github.com/pages-themes/architect</a
+        >
+      </li>
+    </ul>
+    <p>
+      ... could have avoided the break if there were tests in our CI/CD
+      pipeline.
+    </p>
+  </body>
+</html>
