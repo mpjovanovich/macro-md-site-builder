@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Functions and Modularity
 course: SDEV140
 ---

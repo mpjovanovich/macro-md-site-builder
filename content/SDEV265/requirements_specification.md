@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Requirements Specification
 course: SDEV265
 ---
@@ -80,44 +79,7 @@ Describe what the system should do. Form the basis for use cases and test cases.
 
 ## Non-Functional Requirements
 
-<figure>
-    <span>
-        <img src="images/4.3_non_functional_requirements.jpg" style="">
-    </span>
-</figure>
-
-Describe how the system should do it. Often called "constraints".
-
-### Product Requirements
-
-- Performance
-- Reliability
-- Usability
-- Security
-
-### Organizational Requirements
-
-- Operational
-- Developmental
-- Environmental
-- E.g.: "The C# programming language shall be used for development."
-
-### External Requirements
-
-- Regulatory
-- Legislative
-- Ethical
-
-### Using Quantitative Metrics
-
-<figure>
-    <span>
-        <img src="images/4.5_nonfunctional_metrics.jpg" style="width: 90%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(90){images/4.3_non_functional_requirements.jpg}
 
 _Avoid:_
 

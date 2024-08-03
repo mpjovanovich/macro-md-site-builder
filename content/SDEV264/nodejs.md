@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Node.js Technologies
 course: SDEV264
 ---

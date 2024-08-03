@@ -1,14 +1,9 @@
 ---
-layout: base
 title: Home
 course: SDEV140
 ---
 
-<figure>
-    <span>
-        <img src="https://medievalists.gumlet.io/wp-content/uploads/2010/12/holy-grail.jpg" style="width: 80%;">
-    </span>
-</figure>
+~~fig(80){https://medievalists.gumlet.io/wp-content/uploads/2010/12/holy-grail.jpg}
 
 - [Announcements](#announcements)
 - [Schedule](#schedule)

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Interface Segregation Principle
 course: SDEV265
 ---

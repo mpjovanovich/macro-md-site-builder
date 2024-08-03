@@ -74,7 +74,10 @@ export function demo(content) {
 demo[MACRO_IDENTIFIER] = "demo";
 
 export function fig(content, width = "100", altText = "Figure") {
-  const href = getChildAttributeValue(content, "a", "href");
+  // If the content has an anchor tag...
+  const href = content.includes("<a")
+    ? getChildAttributeValue(content, "a", "href")
+    : content.replace("<p>", "").replace("</p>", "");
   content = `<img src="${href}" alt="${altText}" style="width:${width}%;height:auto;">`;
   content = wrapHtml(content, "span");
   content = wrapHtml(content, "figure");

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP -  Super Global Arrays
 course: SDEV255
 ---

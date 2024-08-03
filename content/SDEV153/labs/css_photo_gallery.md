@@ -1,5 +1,4 @@
 ---
-layout: base
 title: SDEV 153 Lab - CSS Static Photo Gallery
 ---
 

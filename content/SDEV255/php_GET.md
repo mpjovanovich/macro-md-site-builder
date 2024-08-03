@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - GET
 course: SDEV255
 ---

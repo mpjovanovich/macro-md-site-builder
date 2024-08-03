@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Git for this Course
 ---
 
@@ -54,14 +53,7 @@ Git is a **version control system (VCS)**:
 
 ## GitHub
 
-<figure>
-    <span>
-        <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" style="width: 20%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(20){https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png}
 
 **GitHub** is a website that hosts Git repositories.
 
@@ -152,14 +144,7 @@ You can always start a new one.
 
 ## VS Code
 
-<figure>
-    <span>
-        <img src="https://cdn.thenewstack.io/media/2021/10/4f0ac3e0-visual_studio_code.png" style="width: 20%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(20){https://cdn.thenewstack.io/media/2021/10/4f0ac3e0-visual_studio_code.png}
 
 ### VS Code Terminal
 

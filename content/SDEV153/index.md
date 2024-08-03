@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Home
 course: SDEV153
 ---
@@ -11,11 +10,7 @@ course: SDEV153
 
 # Announcements
 
-<figure>
-    <span>
-        <img src="https://i.kym-cdn.com/entries/icons/original/000/000/554/picard-facepalm.jpg" style="width: 50%">
-    </span>
-</figure>
+~~fig(50){https://i.kym-cdn.com/entries/icons/original/000/000/554/picard-facepalm.jpg}
 
 - Review: Final Project Sign Off Assignment
   - Make sure you're on the schedule.

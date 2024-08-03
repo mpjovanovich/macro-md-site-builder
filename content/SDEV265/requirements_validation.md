@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Requirements Validation
 course: SDEV265
 ---

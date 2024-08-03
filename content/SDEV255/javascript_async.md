@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Asynchronous JavaScript
 course: SDEV255
 ---

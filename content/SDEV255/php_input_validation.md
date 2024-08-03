@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Input Validation
 course: SDEV255
 ---

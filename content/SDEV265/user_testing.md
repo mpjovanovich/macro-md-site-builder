@@ -1,5 +1,4 @@
 ---
-layout: base
 title: User Testing
 course: SDEV265
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Intro to TypeScript
 course: SDEV264
 ---

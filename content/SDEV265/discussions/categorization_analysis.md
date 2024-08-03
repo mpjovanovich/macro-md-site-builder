@@ -23,19 +23,11 @@ Find release notes for any software product.
 
 ### Eisenhower Matrix
 
-<figure>
-    <span>
-        <img src="https://assets.asana.biz/transform/30c95d26-15e1-4df1-9655-27b28186f0f2/inline-leadership-eisenhower-matrix-2-2x" style="width: 80%;">
-    </span>
-</figure>
+~~fig(80){https://assets.asana.biz/transform/30c95d26-15e1-4df1-9655-27b28186f0f2/inline-leadership-eisenhower-matrix-2-2x}
 
 ### Impact / Effort Matrix
 
-<figure>
-    <span>
-        <img src="https://cdn-images-1.medium.com/v2/resize:fit:800/0*fAxZVRNG9st6Aiji." style="width: 80%;">
-    </span>
-</figure>
+~~fig(80){https://cdn-images-1.medium.com/v2/resize:fit:800/0*fAxZVRNG9st6Aiji.}
 
 ### MoSCoW Analysis
 

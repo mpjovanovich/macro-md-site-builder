@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Intro
 course: SDEV255
 ---

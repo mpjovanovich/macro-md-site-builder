@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Software Testing
 course: SDEV265
 ---
@@ -25,11 +24,7 @@ Demonstrate software meets requirements. Check against functional and non-functi
 
 Find inputs that cause software to break.
 
-<figure>
-    <span>
-        <img src="images/8.1_defect_testing.jpg" style="width: 80%;">
-    </span>
-</figure>
+~~fig(80){images/8.1_defect_testing.jpg}
 
 ## Stages of Testing
 

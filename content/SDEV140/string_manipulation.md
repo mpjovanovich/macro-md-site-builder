@@ -1,5 +1,4 @@
 ---
-layout: base
 title: String Manipulation
 course: SDEV140
 ---

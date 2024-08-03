@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Data Hierarchies
 course: SDEV265
 ---

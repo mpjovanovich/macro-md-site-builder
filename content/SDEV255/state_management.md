@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Client Side State Management
 course: SDEV255
 ---
@@ -20,11 +19,7 @@ course: SDEV255
       - [So uh... Should I Accept Cookies?](#so-uh-should-i-accept-cookies)
     - [Examples](#examples-1)
 
-<figure>
-    <span>
-        <img src="https://opendoorsorganizing.com/wp-content/uploads/2020/08/Portfolio-Cover-Shot-Before-3.jpg" style="width: 60%">
-    </span>
-</figure>
+~~fig(60){https://opendoorsorganizing.com/wp-content/uploads/2020/08/Portfolio-Cover-Shot-Before-3.jpg}
 
 # State Management
 

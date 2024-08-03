@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Coding Environments
 course: SDEV120
 ---
@@ -20,19 +19,7 @@ course: SDEV120
 
 # Coding Environments
 
-<figure>
-    <span>
-        <img src="https://imgs.xkcd.com/comics/code_quality_3_2x.png" style="">
-    </span>
-</figure>
-
-## Text Editors
-
-<figure>
-    <span>
-        <img src="images/notepad_plus_plus.PNG" style="width: 80%;">
-    </span>
-</figure>
+~~fig(80){https://imgs.xkcd.com/comics/code_quality_3_2x.png}
 
 A **text editor** is a type of program used for editing plain text files.
 
@@ -54,14 +41,7 @@ _Examples:_
 
 ## Integrated Development Environments (IDEs)
 
-<figure>
-    <span>
-        <img src="images/vs_code.PNG" style="width: 80%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(80){images/vs_code.PNG}
 
 An **integrated development environment (IDE)** is a software application used to develop software.
 

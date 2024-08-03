@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Polymorphism
 course: SDEV140
 ---

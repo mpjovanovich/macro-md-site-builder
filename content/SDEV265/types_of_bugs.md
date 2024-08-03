@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Types of Bugs
 course: SDEV265
 ---

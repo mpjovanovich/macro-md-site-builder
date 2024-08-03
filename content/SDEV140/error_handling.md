@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Error Handling and Input Validation
 course: SDEV140
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Variables, Constants, Data Types
 course: SDEV120
 ---

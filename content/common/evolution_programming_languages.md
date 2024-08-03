@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Overview of Programming
 ---
 

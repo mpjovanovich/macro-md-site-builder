@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Dictionaries
 course: SDEV140
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Session Storage
 course: SDEV255
 ---

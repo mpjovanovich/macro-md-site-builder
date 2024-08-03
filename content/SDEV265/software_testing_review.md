@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Software Testing Review
 course: SDEV265
 ---

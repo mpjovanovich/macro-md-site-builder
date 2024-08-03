@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Requirements Elicitation
 course: SDEV265
 ---
@@ -15,14 +14,7 @@ course: SDEV265
 
 # Requirements Elicitation
 
-<figure>
-    <span>
-        <img src="images/4.6_requirements_spiral.jpg" style="width: 70%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(70){images/4.6_requirements_spiral.jpg}
 
 Below processes are iterative and interleaved.
 

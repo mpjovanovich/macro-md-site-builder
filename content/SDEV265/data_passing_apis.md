@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Data Passing and APIs
 course: SDEV265
 ---

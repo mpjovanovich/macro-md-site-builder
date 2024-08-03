@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Software Communication Patterns
 course: SDEV265
 ---

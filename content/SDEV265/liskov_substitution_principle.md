@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Listov Substitution Principle
 course: SDEV265
 ---

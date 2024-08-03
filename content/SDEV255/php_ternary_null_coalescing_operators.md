@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Ternary If, Null Coalescing
 course: SDEV255
 ---

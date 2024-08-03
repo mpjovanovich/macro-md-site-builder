@@ -1,5 +1,4 @@
 ---
-layout: base
 title: CSS Print Media
 course: SDEV153
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: SQL Prepared Statements
 course: SDEV255
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Logic Gates
 course: SDEV120
 ---

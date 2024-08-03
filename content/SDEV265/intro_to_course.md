@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Introduction to the Course
 course: SDEV265
 ---

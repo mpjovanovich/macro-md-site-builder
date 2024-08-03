@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - HTTP Headers
 course: SDEV255
 ---

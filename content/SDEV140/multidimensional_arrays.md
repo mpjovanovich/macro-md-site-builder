@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Multidimensional Arrays
 course: SDEV140
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: File I/O
 course: SDEV140
 ---

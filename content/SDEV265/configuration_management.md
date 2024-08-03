@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Configuration Management
 course: SDEV265
 ---

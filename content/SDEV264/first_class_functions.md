@@ -1,5 +1,4 @@
 ---
-layout: base
 title: First Class Functions
 course: SDEV264
 ---

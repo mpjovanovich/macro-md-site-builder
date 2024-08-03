@@ -1,5 +1,4 @@
 ---
-layout: base
 title: CSS Responsive Design
 course: SDEV153
 ---
@@ -203,16 +202,9 @@ TODO: DEMO
 Use browser developer tools to test responsive design.
 
 - "Responsive Design Mode" in Firefox.
-<figure>
-    <span>
-        <img src="./images/dev_tools_responsive_design_firefox.png" style="width: 60%">
-    </span>
-</figure>
+
+~~fig(60){./images/dev_tools_responsive_design_firefox.png}
 
 - "Device Toolbar" in Chrome.
 
-<figure>
-    <span>
-        <img src="./images/dev_tools_responsive_design_chrome.png" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){./images/dev_tools_responsive_design_chrome.png}

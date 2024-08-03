@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Dependency Inversion Principle
 course: SDEV265
 ---

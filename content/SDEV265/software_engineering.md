@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Software Engineering
 course: SDEV265
 ---
@@ -41,11 +40,7 @@ course: SDEV265
 
 ## The Balancing Act
 
-<figure>
-    <span>
-        <img src="https://imgs.xkcd.com/comics/focus_knob_2x.png" style="width: 40%;">
-    </span>
-</figure>
+~~fig(40){https://imgs.xkcd.com/comics/focus_knob_2x.png}
 
 - Overengineering= bad
 - Underengineering= bad
@@ -104,11 +99,7 @@ Be aware of the differences and similarities when looking for jobs.
 
 ### Dillemas
 
-<figure>
-    <span>
-        <img src="https://imgs.xkcd.com/comics/settling_2x.png" style="width: 50%;">
-    </span>
-</figure>
+~~fig(50){https://imgs.xkcd.com/comics/settling_2x.png}
 
 #### Case 1: The Abusive Boss
 

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Decision Trees
 course: SDEV120
 ---

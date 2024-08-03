@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Propositional Logic - Intro and Connectives
 course: SDEV120
 ---

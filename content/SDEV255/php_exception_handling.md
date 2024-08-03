@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Exception Handling
 course: SDEV255
 ---

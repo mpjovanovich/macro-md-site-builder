@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Event Driven Programming
 course: SDEV140
 ---
@@ -20,11 +19,7 @@ The **producer-consumer pattern** is used when two parts of a system need to com
 
 They communicate via a **queue** or **buffer**:
 
-<figure>
-    <span>
-        <img src="https://iximiuz.com/nodejs-writable-streams-distilled/kdpv.gif" style="width: 80%;">
-    </span>
-</figure>
+~~fig(80){https://iximiuz.com/nodejs-writable-streams-distilled/kdpv.gif}
 
 - **Producer**: Generates data
 - **Consumer**: Consumes data

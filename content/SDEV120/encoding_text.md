@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Encoding Text for Computing
 course: SDEV120
 ---
@@ -28,16 +27,7 @@ course: SDEV120
 
 # Encoding Text for Computing
 
-<figure>
-    <span>
-        <img src="https://www.unicode.org/announcements/annc-iuc45-life-before-after.png" style="width: 40%">
-    </span>
-    <figcaption>
-        <a href="https://blog.unicode.org/2021/08/">
-            The Unicode Blog
-        </a>
-    </figcaption>
-</figure>
+~~fig(40){https://www.unicode.org/announcements/annc-iuc45-life-before-after.png}
 
 A computer can only store numbers, so we need a way to represent text as numbers.
 

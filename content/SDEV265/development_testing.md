@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Development Testing
 course: SDEV265
 ---
@@ -27,11 +26,7 @@ course: SDEV265
 
 ## Unit Testing
 
-<figure>
-    <span>
-        <img src="https://i.stack.imgur.com/XrF5e.png" style="width: 100%;">
-    </span>
-</figure>
+~~fig(100){https://i.stack.imgur.com/XrF5e.png}
 
 - Tests individual components of the software (e.g. functions, classes).
 - Automated tests run when code is compiled.
@@ -85,11 +80,7 @@ Sometimes hard to simulate a real test case:
 - Data set: empty, one record, many records
 - Categorical: one from each category (admin vs non-admin, etc.)
 
-<figure>
-    <span>
-        <img src="images/8.6_boundary_partition.jpg" style="width: 70%;">
-    </span>
-</figure>
+~~fig(70){images/8.6_boundary_partition.jpg}
 
 Divide input space into partitions and test one input from each partition. Include both valid and invalid inputs.
 

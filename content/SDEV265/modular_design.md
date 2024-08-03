@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Modular Design
 course: SDEV265
 ---
@@ -146,19 +145,11 @@ These subproblems can inform the design of modules and components.
 
 **Draw a House**
 
-<figure>
-    <span>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVobh4pk3683ngLad6LwokRt7rOCFVO96phfT6GfbDvjq8DR6ncdroBkbUYWEMrCibIoY&usqp=CAU" style="width: 100%;">
-    </span>
-</figure>
+~~fig(100){https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVobh4pk3683ngLad6LwokRt7rOCFVO96phfT6GfbDvjq8DR6ncdroBkbUYWEMrCibIoY&usqp=CAU}
 
 Reference:
 
-<figure>
-    <span>
-        <img src="https://cis.temple.edu/~wangp/1057-PC/Figure/03-10.png" style="width: 80%;">
-    </span>
-</figure>
+~~fig(80){https://cis.temple.edu/~wangp/1057-PC/Figure/03-10.png}
 
 Our problem:
 

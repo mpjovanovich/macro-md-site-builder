@@ -1,5 +1,4 @@
 ---
-layout: base
 title: UML
 course: SDEV120
 ---
@@ -32,11 +31,7 @@ course: SDEV120
       - [Swimlane Diagram](#swimlane-diagram)
       - [Custom](#custom)
 
-<figure>
-    <span>
-        <img src="images/uml_guys.png" style="width: 80%">
-    </span>
-</figure>
+~~fig(80){images/uml_guys.png}
 
 # Unified Modeling Language (UML)
 
@@ -91,50 +86,7 @@ Shows system defined at different scopes in varying levels of detail.
 
 ## Diagram Classifications
 
-<figure>
-    <span>
-        <img src="https://drawio-app.com/wp-content/uploads/2018/10/UMLdiagrams.png" style="">
-    </span>
-</figure>
-
-### Structural Diagrams
-
-**Structural Diagrams** show the static relationships between the components of a system.
-
-"Anatomy" of the system.
-
-- Class Diagram
-- Object Diagram
-- Component Diagram
-- Deployment Diagram
-- Package Diagram
-- Composite Structure Diagram
-
-### Behavioral Diagrams
-
-**Behavioral Diagrams** show interactions and changes within the system.
-
-"Physiology" of the system.
-
-- Use Case Diagram
-- Activity Diagram
-- State Machine Diagram
-- Sequence Diagram
-- Communication Diagram
-- Timing Diagram
-
-### Use Case Diagram
-
-<figure>
-    <span>
-        <img src="https://drawio-app.com/wp-content/uploads/2018/10/UseCase-HabitTrackingApp.png" style="width: 70%">
-    </span>
-    <figcaption>
-        <a href="https://drawio-app.com/wp-content/uploads/2018/10/UseCase-HabitTrackingApp.png">
-            Use case diagram for habit tracking app.
-        </a>
-    </figcaption>
-</figure>
+~~fig(70){https://drawio-app.com/wp-content/uploads/2018/10/UMLdiagrams.png}
 
 #### Description
 
@@ -153,16 +105,7 @@ Shows system defined at different scopes in varying levels of detail.
 
 ### Class Diagram
 
-<figure>
-    <span>
-        <img src="https://drawio-app.com/wp-content/uploads/2018/01/Class-Diagram-Habit-Tracker-app.png" style="width: 70%">
-    </span>
-    <figcaption>
-        <a href="https://drawio-app.com/wp-content/uploads/2018/01/Class-Diagram-Habit-Tracker-app.png">
-            Class diagram for a habit tracking app.
-        </a>
-    </figcaption>
-</figure>
+~~fig(70){https://drawio-app.com/wp-content/uploads/2018/01/Class-Diagram-Habit-Tracker-app.png}
 
 #### Description
 
@@ -205,16 +148,7 @@ Shows system defined at different scopes in varying levels of detail.
 
 ### Sequence Diagram
 
-<figure>
-    <span>
-        <img src="https://drawio-app.com/wp-content/uploads/2018/02/drawio-sequence-checkin.png" style="width: 70%">
-    </span>
-    <figcaption>
-        <a href="https://drawio-app.com/wp-content/uploads/2018/02/drawio-sequence-checkin.png">
-            Sequence diagram for a habit tracking app.
-        </a>
-    </figcaption>
-</figure>
+~~fig(70){https://drawio-app.com/wp-content/uploads/2018/02/drawio-sequence-checkin.png}
 
 #### Description
 
@@ -233,11 +167,7 @@ What has to happen before another thing happens? Who is involved?
 
 ### State Diagram
 
-<figure>
-    <span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/1185px-Turnstile_state_machine_colored.svg.png" style="width: 70%">
-    </span>
-</figure>
+~~fig(70){https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/1185px-Turnstile_state_machine_colored.svg.png}
 
 #### Description
 
@@ -256,16 +186,7 @@ State diagram for a light with two switches - one at each end of a hallway.
 
 ### Activity Diagram
 
-<figure>
-    <span>
-        <img src="https://cdn-images.visual-paradigm.com/guide/uml/what-is-activity-diagram/04-activity-diagram-example-process-order.png" style="width: 100%">
-    </span>
-    <figcaption>
-        <a href="https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-activity-diagram/">
-            Activity diagram for order processing.
-        </a>
-    </figcaption>
-</figure>
+~~fig(100){https://cdn-images.visual-paradigm.com/guide/uml/what-is-activity-diagram/04-activity-diagram-example-process-order.png}
 
 #### Description
 
@@ -283,16 +204,7 @@ State diagram for a light with two switches - one at each end of a hallway.
 
 #### Swimlane Diagram
 
-<figure>
-    <span>
-        <img src="https://img.officetimeline.com/website/Content/website/swimlane-diagram/swimlane-process-map-example.svg" style="width: 60%">
-    </span>
-    <figcaption>
-        <a href="https://www.officetimeline.com/swimlane-diagram">
-            Swimlane diagram for student application.
-        </a>
-    </figcaption>
-</figure>
+~~fig(60){https://img.officetimeline.com/website/Content/website/swimlane-diagram/swimlane-process-map-example.svg}
 
 - Like an activity diagram... with swimlanes.
 - Swimlanes show boundaries between actors / roles in system.

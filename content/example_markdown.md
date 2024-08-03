@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Example Markdown
 ---
 <!-- This is called the "yaml frontmatter". Nothing can go before it. -->
@@ -13,14 +12,7 @@ title: Example Markdown
 
 <!-- The wrapper span is needed to allow the image to be resized... who knows why. -->
 <!-- use "fig" snippet -->
-<figure>
-    <span>
-        <img src="https://img.freepik.com/premium-vector/vector-illustration-hand-drawn-realistic-sketch-pangolin-isolated-white-background_231873-577.jpg" style="width: 35%">
-    </span>
-    <figcaption>
-        <a href="">Some Link to Something</a>
-    </figcaption>
-</figure>
+~~fig(35){https://img.freepik.com/premium-vector/vector-illustration-hand-drawn-realistic-sketch-pangolin-isolated-white-background_231873-577.jpg}
 
 <!-- hr -->
 ___

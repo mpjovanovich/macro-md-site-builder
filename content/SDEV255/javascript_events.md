@@ -1,5 +1,4 @@
 ---
-layout: base
 title: JavaScript - Events
 course: SDEV255
 ---

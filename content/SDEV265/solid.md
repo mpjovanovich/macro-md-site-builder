@@ -1,5 +1,4 @@
 ---
-layout: base
 title: SOLID Programming
 course: SDEV265
 ---

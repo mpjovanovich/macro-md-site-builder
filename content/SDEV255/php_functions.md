@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Functions
 course: SDEV255
 ---

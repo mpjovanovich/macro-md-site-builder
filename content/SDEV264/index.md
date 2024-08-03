@@ -1,17 +1,9 @@
 ---
-layout: base
 title: Home
 course: SDEV264
 ---
 
-<figure>
-    <span>
-        <img src="images/huang_xiangjian_searching_for_my_parents.jpg" style="width: 100%;">
-    </span>
-    <figcaption>
-    Huang Xiangjian - Searching for my Parents
-    </figcaption>
-</figure>
+~~fig(100){images/huang_xiangjian_searching_for_my_parents.jpg}
 
 - [Announcements](#announcements)
 - [Schedule](#schedule)

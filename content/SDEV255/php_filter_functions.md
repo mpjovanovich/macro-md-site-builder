@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Filter Functions
 course: SDEV255
 ---

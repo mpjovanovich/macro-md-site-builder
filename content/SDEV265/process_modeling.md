@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Process Modeling
 course: SDEV265
 ---

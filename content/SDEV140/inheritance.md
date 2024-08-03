@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Inheritance
 course: SDEV140
 ---

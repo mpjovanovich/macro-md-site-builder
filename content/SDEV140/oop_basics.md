@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Object Oriented Programming
 course: SDEV140
 ---
@@ -51,16 +50,7 @@ class Person:
 
 ### Pythonic Guidelines - Class Names
 
-<figure>
-    <a href="https://peps.python.org/pep-0008/">
-    <span>
-        <img src="https://miro.medium.com/v2/1*ls5qApmZPtUIV3Z_wll7Fw.png" style="width:25%">
-    </span>
-    <figcaption>
-        PEP 8 – Style Guide for Python Code
-    </figcaption>
-    </a>
-</figure>
+~~fig(25){https://miro.medium.com/v2/1*ls5qApmZPtUIV3Z_wll7Fw.png}
 
 - Per [PEP 8 - Class Names](https://www.python.org/dev/peps/pep-0008/#class-names).
   - Class names are

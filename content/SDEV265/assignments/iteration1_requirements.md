@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Iteration 1 Requirements Documentation
 course: SDEV265
 ---

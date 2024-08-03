@@ -1,19 +1,11 @@
 ---
-layout: base
 title: Functions and Properties
 course: SDEV153
 ---
 
 # Functions
 
-<figure>
-    <span>
-        <img src="https://web.dev/static/learn/css/functions/image/a-diagram-a-function-de-e40ae94dbccc1.svg" style="width: 80%;">
-    </span>
-    <figcaption>
-        <a href="https://web.dev/learn/css/functions">Functions</a>
-    </figcaption>
-</figure>
+~~fig(80){https://web.dev/static/learn/css/functions/image/a-diagram-a-function-de-e40ae94dbccc1.svg}
 
 - CSS has built-in functions that can be used to manipulate values.
 

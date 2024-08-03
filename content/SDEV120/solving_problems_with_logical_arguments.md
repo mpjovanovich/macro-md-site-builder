@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Solving Problems with Logical Arguments
 course: SDEV120
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Classes and Objects
 course: SDEV255
 ---

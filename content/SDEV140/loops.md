@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Loops
 course: SDEV140
 ---
@@ -24,14 +23,7 @@ course: SDEV140
 
 ## Why Loops?
 
-<figure>
-    <span>
-        <img src="https://timmousk.com/wp-content/uploads/2022/03/2-6.jpg" style="width: 70%">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(70){https://timmousk.com/wp-content/uploads/2022/03/2-6.jpg}
 
 - Loops are commonly used to:
   - repeat a block of code

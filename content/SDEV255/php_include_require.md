@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Include and Require
 course: SDEV255
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Set Theory
 course: SDEV120
 ---

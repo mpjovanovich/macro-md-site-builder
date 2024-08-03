@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Redirect After POST
 course: SDEV255
 ---

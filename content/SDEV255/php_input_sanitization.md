@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Sanitization
 course: SDEV255
 ---
@@ -71,11 +70,8 @@ The scripts may then:
 #### How XSS Works
 
 1. Hacker visits a website and probes for query string vulnerabilities.
-<figure>
-    <span>
-        <img src="images/hacker.jpg" style="width:40%;">
-    </span>
-</figure>
+
+~~fig(40){images/hacker.jpg}
 
 2. Hacker finds query string named `q` is not sanitized.
 
@@ -85,11 +81,7 @@ The scripts may then:
 
 5. Hacker sells data on the dark web and buys yacht.
 
-<figure>
-    <span>
-        <img src="https://media.boatsnews.com/src/images/news/articles/ima-computer-science-screen-37738.webp" style="width:40%">
-    </span>
-</figure>
+~~fig(40){https://media.boatsnews.com/src/images/news/articles/ima-computer-science-screen-37738.webp}
 
 #### XSS Example
 

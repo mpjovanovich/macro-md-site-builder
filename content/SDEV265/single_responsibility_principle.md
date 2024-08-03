@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Single Responsibility Principle
 course: SDEV265
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: React Native Application Structure
 course: SDEV264
 ---
@@ -17,11 +16,7 @@ course: SDEV264
 
 # React Native Application Structure
 
-<figure>
-    <span>
-        <img src="images/react_project_1.png" style="width: 100%;">
-    </span>
-</figure>
+~~fig(100){images/react_project_1.png}
 
 React structure via Expo
 

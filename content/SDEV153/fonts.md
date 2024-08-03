@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Fonts
 course: SDEV255
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Distributed Systems
 course: SDEV265
 ---

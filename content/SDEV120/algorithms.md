@@ -24,14 +24,7 @@ course: SDEV120
 
 # Algorithms
 
-<figure>
-    <span>
-        <img src="https://imgs.xkcd.com/comics/linear_regression_2x.png" style="width: 60%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(60){https://imgs.xkcd.com/comics/linear_regression_2x.png}
 
 ## What is an Algorithm?
 
@@ -93,11 +86,7 @@ Types of algorithms:
 
 ### Sorting
 
-<figure>
-    <span>
-        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*nh6F_qERbgD3xmV-.gif" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://miro.medium.com/v2/resize:fit:640/format:webp/0*nh6F_qERbgD3xmV-.gif}
 
 ~~fig(sorting,60){https://miro.medium.com/v2/resize:fit:640/format:webp/0*nh6F_qERbgD3xmV-.gif}
 
@@ -110,11 +99,7 @@ Types of algorithms:
 
 ### Searching
 
-<figure>
-    <span>
-        <img src="https://miro.medium.com/v2/resize:fit:786/format:webp/1*GT9oSo0agIeIj6nTg3jFEA.gif" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://miro.medium.com/v2/resize:fit:786/format:webp/1*GT9oSo0agIeIj6nTg3jFEA.gif}
 
 "How do we find a specific piece of information?"
 
@@ -141,23 +126,7 @@ Types of algorithms:
 
 ### Pathfinding
 
-<figure>
-    <span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif" style="">
-    </span>
-</figure>
-
-"How do we find the shortest path between two points?"
-
-- Dijkstra's algorithm
-
-### Flocking
-
-<figure>
-    <span>
-        <img src="https://repository-images.githubusercontent.com/258305543/28971980-92d2-11ea-8a66-4d0d91c0e790" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif}
 
 "How do we simulate flock behavior?"
 
@@ -165,11 +134,7 @@ Types of algorithms:
 
 ### Classification
 
-<figure>
-    <span>
-        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*bhFifratH9DjKqMBTeQG5A.gif" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){https://miro.medium.com/v2/resize:fit:720/format:webp/1*bhFifratH9DjKqMBTeQG5A.gif}
 
 "How do we categorize items from a set of data?"
 

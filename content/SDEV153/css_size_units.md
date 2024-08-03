@@ -1,5 +1,4 @@
 ---
-layout: base
 title: CSS Size Units
 course: SDEV153
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: File Parsing
 course: SDEV140
 ---

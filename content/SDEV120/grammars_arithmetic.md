@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Grammar and Arithmetic
 course: SDEV120
 ---

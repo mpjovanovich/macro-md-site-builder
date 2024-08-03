@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Basic Styling
 course: SDEV264
 ---
@@ -93,11 +92,7 @@ From outermost to innermost:
 
 Margin > Border > Padding > Content
 
-<figure>
-    <span>
-        <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/CSS-Box-Model.png" style="width: 80%;">
-    </span>
-</figure>
+~~fig(80){https://www.simplilearn.com/ice9/free_resources_article_thumb/CSS-Box-Model.png}
 
 ## Relevant Styles
 

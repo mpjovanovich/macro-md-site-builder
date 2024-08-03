@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Release Testing
 course: SDEV265
 ---

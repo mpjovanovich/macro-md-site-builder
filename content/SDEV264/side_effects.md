@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Side Effects
 course: SDEV264
 ---

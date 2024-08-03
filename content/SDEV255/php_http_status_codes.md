@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - HTTP Status Codes
 course: SDEV255
 ---

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Types of Data
 course: SDEV265
 ---

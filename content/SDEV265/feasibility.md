@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Feasibility
 course: SDEV265
 ---

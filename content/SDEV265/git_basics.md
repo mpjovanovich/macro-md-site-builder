@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Git Basics
 course: SDEV265
 ---
@@ -34,14 +33,7 @@ Git is a **version control system (VCS)**:
 
 ## GitHub
 
-<figure>
-    <span>
-        <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" style="width: 20%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(20){https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png}
 
 **GitHub** is a website that hosts Git repositories.
 

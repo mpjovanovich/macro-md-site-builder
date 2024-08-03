@@ -1,5 +1,4 @@
 ---
-layout: base
 title: HTML Forms
 ---
 
@@ -96,11 +95,7 @@ Abbreviated versions:
 
 Describes the possible actions that an object can perform.
 
-<figure>
-    <span>
-        <img src="images/push_pull_door.jpg" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){images/push_pull_door.jpg}
 
 - "Don't let the user make a mistake (via architectural design)."
 - Button affords clicking.
@@ -111,11 +106,7 @@ Describes the possible actions that an object can perform.
 
 Signals that indicate how to interact with an object.
 
-<figure>
-    <span>
-        <img src="https://hadermann.be/wp-content/uploads/2015/07/bad_vending_ui.jpg" style="width: 50%">
-    </span>
-</figure>
+~~fig(50){https://hadermann.be/wp-content/uploads/2015/07/bad_vending_ui.jpg}
 
 - "Conform to user expectations."
 - Expect button looks rectangular.
@@ -126,11 +117,7 @@ Signals that indicate how to interact with an object.
 
 Limitations on the possible actions.
 
-<figure>
-    <span>
-        <img src="https://i.pinimg.com/736x/88/ba/35/88ba354a835d32cfbff6db9029e3cacb.jpg" style="width: 50%">
-    </span>
-</figure>
+~~fig(50){https://i.pinimg.com/736x/88/ba/35/88ba354a835d32cfbff6db9029e3cacb.jpg}
 
 - "Don't let the user make a mistake (via enforced validation)."
 - Text input has a maximum length.
@@ -140,11 +127,7 @@ Limitations on the possible actions.
 
 Relationship between controls and their effects.
 
-<figure>
-    <span>
-        <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*I2xA2Om8tZXki3g3CCxL_g.png" style="width: 80%">
-    </span>
-</figure>
+~~fig(80){https://miro.medium.com/v2/resize:fit:828/format:webp/1*I2xA2Om8tZXki3g3CCxL_g.png}
 
 - "Don't make the user guess what will happen."
 - Label is next to the input.
@@ -156,11 +139,7 @@ Relationship between controls and their effects.
 
 Response to an action.
 
-<figure>
-    <span>
-        <img src="https://www.mongodb.com/community/forums/uploads/default/optimized/3X/7/3/73a40e5fff34c1451c54b8bf244d307a5e9a8a1a_2_1035x436.png" style="width: 60%">
-    </span>
-</figure>
+~~fig(60){https://www.mongodb.com/community/forums/uploads/default/optimized/3X/7/3/73a40e5fff34c1451c54b8bf244d307a5e9a8a1a_2_1035x436.png}
 
 - "Don't make the user guess what happened."
 - Hovering over a button changes the cursor.

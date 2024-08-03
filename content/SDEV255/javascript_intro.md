@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Intro to JavaScript
 course: SDEV255
 ---
@@ -28,49 +27,7 @@ course: SDEV255
     - [Foreach](#foreach)
   - [Functions](#functions)
 
-<figure>
-    <span>
-        <img src="images/javascript_rotten_child.png" style="">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
-
-# JavaScript?
-
-JavaScript is a programming language that runs in the browser.
-
-JavaScript is a **client-side** programming language.
-
-# Where do I Write JavaScript?
-
-Most commonly, JavaScript is written in a separate file and linked the HTML file.
-
-```html
-<script src="myScript.js"></script>
-```
-
-JavaScript can also be written directly in the HTML file.
-
-```html
-<script>
-  // JavaScript goes here
-</script>
-```
-
-For quick demos and testing, JavaScript can be written directly in the browser's console.
-
-# The Console and Debugging
-
-<figure>
-    <span>
-        <img src="https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg" style="width: 40%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(40){images/javascript_rotten_child.png}
 
 ## Developer Tools and the Console
 
@@ -116,14 +73,7 @@ Whoa!
 
 ## Semicolons
 
-<figure>
-    <span>
-        <img src="https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Java-Jokes-768x935.jpg" style="width: 40%">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(40){https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Java-Jokes-768x935.jpg}
 
 Javascript is a semicolon-terminated language. They are required after every statement.
 

@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Interfacing with a Database in PHP
 course: SDEV255
 ---

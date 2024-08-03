@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Propositional Logic - Order of Operations
 course: SDEV120
 ---

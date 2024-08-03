@@ -1,5 +1,4 @@
 ---
-layout: base
 title: SDLC
 ---
 
@@ -17,14 +16,7 @@ title: SDLC
 
 # Software Development Life Cycle (SDLC)
 
-<figure>
-    <span>
-        <img src="images/software_practices_venn.png" style="width: 80%;">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(80){images/software_practices_venn.png}
 
 Most software development processes are a mix of established practices. The SDLC is a framework for organizing these practices.
 
@@ -32,79 +24,7 @@ Which proccess is best depends on the project.
 
 ## Stats
 
-<figure>
-    <span>
-        <img src="images/2022_methodologies_stats.png" style="">
-    </span>
-</figure>
-
-[Statistica - stats 2022](https://www.statista.com/statistics/1233917/software-development-methodologies-practiced/)
-
-<figure>
-    <span>
-        <img src="https://inoxoft.com/wp-content/uploads/2023/12/2-3-1-scaled.jpg.webp" style="">
-    </span>
-</figure>
-
-[Inixoft - stats 2023](https://inoxoft.com/blog/7-software-development-models-comparison-how-to-choose-the-right-one/)
-
-_\*This information varies by sources and date._
-
-Trends:
-
-- DevOps / DevSecOps is growing, and is expected to continue growing.
-- Agile is very popular.
-- Waterfall has its niche.
-
-## Plan Driven Development
-
-In **plan driven development**, the entire process is planned out before any work begins.
-
-**Works well when:**
-
-- Project is simple and well understood
-- Fixed requirements, timeline, budget
-- High risk scenario
-- Documentation is important
-- Audits and accountability are important
-
-**Examples:**
-
-- Medical devices
-- Embedded systems on cars, planes, etc.
-- Financial systems
-- Government software
-
-**Advantages:**
-
-- Clear expectations.
-- Clear milestones and deliverables.
-- Strong emphasis on documentation.
-
-**Disadvantages:**
-
-- Application not available until the end of the process.
-- Teams are siloed; lack of communication.
-- Bottlenecks between phases due to lack of overlap.
-- Not flexible. Changes are difficult and expensive, especially late in the process.
-
-### Waterfall
-
-<figure>
-    <span>
-        <img src="https://inoxoft.com/wp-content/uploads/2023/12/3-2-1-scaled.jpg.webp" style="">
-    </span>
-</figure>
-
-Focused on delivering a single application.
-
-## Agile Development
-
-<figure>
-    <span>
-        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*BqgGW7YKvikVnd30.jpg" style="width: 60%;">
-    </span>
-</figure>
+~~fig(60){images/2022_methodologies_stats.png}
 
 In **agile development**, software is developed in short iterations. Each iteration is a complete development cycle, from planning to deployment.
 
@@ -152,14 +72,7 @@ Many principles and practices overlap between these methodologies.
 
 #### Scrum
 
-<figure>
-    <span>
-        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*I6W0MRWWV-Nmnhd_.png" style="width: 60%;">
-    </span>
-    <figcaption>
-        Clients and stakeholders after meeting with development project manager.
-    </figcaption>
-</figure>
+~~fig(60){https://miro.medium.com/v2/resize:fit:640/format:webp/0*I6W0MRWWV-Nmnhd_.png}
 
 Popular in software and manufacturing.
 
@@ -181,14 +94,7 @@ Popular in software and manufacturing.
 
 #### Kanban
 
-<figure>
-    <span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Abstract_Kanban_Board.svg/1024px-Abstract_Kanban_Board.svg.png" style="width: 80%">
-    </span>
-    <figcaption>
-        <a href=""></a>
-    </figcaption>
-</figure>
+~~fig(80){https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Abstract_Kanban_Board.svg/1024px-Abstract_Kanban_Board.svg.png}
 
 Work is assigned (from backlog) only when there is capacity to complete it.
 

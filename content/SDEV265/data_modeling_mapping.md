@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Data Modeling and Mapping
 course: SDEV265
 ---
@@ -83,11 +82,7 @@ In this section we will focus on the interface between a database and a software
 
 **Crow's Foot Notation** is a visual representation of cardinality.
 
-<figure>
-    <span>
-        <img src="images/crows_feet.png" style="width: 90%;">
-    </span>
-</figure>
+~~fig(90){images/crows_feet.png}
 
 <p class="demo">Exercise:</p>
 
@@ -97,11 +92,7 @@ Use Crow's Foot Notation to model some of the above relationships.
 
 ### Class Diagram
 
-<figure>
-    <span>
-        <img src="https://www.drawio.com/assets/img/blog/class-diagram-example.png" style="width: 100%;">
-    </span>
-</figure>
+~~fig(100){https://www.drawio.com/assets/img/blog/class-diagram-example.png}
 
 Shows:
 

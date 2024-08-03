@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Solving Problems with Truth Tables
 course: SDEV120
 ---

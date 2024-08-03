@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Iteration 1 Release
 course: SDEV265
 ---

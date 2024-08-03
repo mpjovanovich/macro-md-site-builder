@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Basic State Management
 course: SDEV264
 ---

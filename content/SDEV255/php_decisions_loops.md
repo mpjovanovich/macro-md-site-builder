@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - Decisions and Loops
 course: SDEV255
 ---

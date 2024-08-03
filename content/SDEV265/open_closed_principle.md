@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Open/Closed Principle
 course: SDEV265
 ---

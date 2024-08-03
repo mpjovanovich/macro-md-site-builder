@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Flowcharts
 course: SDEV120
 ---

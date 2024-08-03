@@ -1,5 +1,4 @@
 ---
-layout: base
 title: PHP - POST
 course: SDEV255
 ---

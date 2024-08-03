@@ -1,5 +1,4 @@
 ---
-layout: base
 title: JavaScript - Manipulating the DOM
 course: SDEV255
 ---

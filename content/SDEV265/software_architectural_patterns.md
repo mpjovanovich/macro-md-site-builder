@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Software Architectural Patterns
 course: SDEV265
 ---
@@ -36,11 +35,7 @@ Best used when:
 
 #### Three-tier Architecture Example
 
-<figure>
-    <span>
-        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*4jyJN40XarxOInJvA9zEVw.jpeg" style="width: 100%;">
-    </span>
-</figure>
+~~fig(100){https://miro.medium.com/v2/resize:fit:640/format:webp/1*4jyJN40XarxOInJvA9zEVw.jpeg}
 
 - Presentation layer
   - User interface

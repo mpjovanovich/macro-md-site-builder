@@ -1,5 +1,4 @@
 ---
-layout: base
 title: Arrow Functions
 course: SDEV264
 ---

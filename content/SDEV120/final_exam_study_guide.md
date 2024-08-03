@@ -1,5 +1,4 @@
 ---
-layout: base
 title: SDEV 120 - Final Exam Study Guide 
 ---
 
