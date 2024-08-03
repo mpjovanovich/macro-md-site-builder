@@ -41,7 +41,9 @@ course: SDEV255
 - May optionally specify which characters to remove
 
 ```php
+<?php
 $cleanedInput = trim($userInput);
+?>
 ```
 
 ### strip_tags()
@@ -50,7 +52,9 @@ $cleanedInput = trim($userInput);
 - May optionally specify which tags to allow
 
 ```php
+<?php
 $cleanedInput = strip_tags($userInput);
+?>
 ```
 
 ## Escaping Values
@@ -95,7 +99,10 @@ The scripts may then:
 - May optionally specify which characters to convert and the character encoding
 
 ```php
+<?php
 $input = '<script>alert("XSS");</script>';
+?>
+
 <p><?php echo htmlspecialchars($input, ENT_QUOTES, 'UTF-8'); ?></p
 ```
 
